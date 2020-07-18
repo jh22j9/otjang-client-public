@@ -25,6 +25,6 @@ assignees: ''
 
 ```
 - Task Card 제목은 가독성을 위해 명사형으로 간결하게 써주세요. (ex: 구현하기 -> 구현)
-- Task Card 하나의 estimated time / consumed time 은 3h 이하로 설정해 주세요. 
-- Task Card 등록 시 Assignees, label(Estimated time, sprint)을 반드시 지정해 주세요. 
+- Task Card 하나의 estimated time / consumed time 은 되도록 3h 이하로 설정해 주세요. 
+- Task Card 등록 시 Assignees, Label(Estimated time, tech stack), Milestone 을 반드시 지정해 주세요. 
 ```
