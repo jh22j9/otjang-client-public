@@ -1,9 +1,5 @@
 # ----------------- COMMIT GUIDE -------------------
-<<<<<<< HEAD
-🐛 Fixing a bug :bug:
-=======
 🐛 Fixing  a bug :bug:
->>>>>>> 3b4cd46ca1ef9725ff136a2a352ce2617d7b4a77
 🔥 Removing code or files :fire:
 ✨ Introducing new features :zap:
 💄 Adding or updating style files :lipstick:
