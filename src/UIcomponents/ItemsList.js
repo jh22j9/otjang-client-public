@@ -2,7 +2,6 @@ import React from 'react';
 import { View, FlatList, StyleSheet, Dimensions } from 'react-native';
 import { Title } from 'react-native-paper';
 import Item from './Item'
-const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
     title: {

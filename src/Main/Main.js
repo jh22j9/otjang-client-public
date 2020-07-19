@@ -65,7 +65,7 @@ function Main({ navigation }) {
                     }}
                 />
             </Tab.Navigator>
-            <AddButton navigation={navigation} />
+            <AddButton onPress={() => { navigation.navigate('AddItems') }} />
         </>
     );
 }

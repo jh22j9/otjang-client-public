@@ -1,13 +1,13 @@
 # ----------------- COMMIT GUIDE -------------------
-🐛 Fixing  a bug :bug:
-🔥 Removing code or files :fire:
-✨ Introducing new features :zap:
-💄 Adding or updating style files :lipstick:
-🚧  Work in progress :construction:
-♻️ Refactoring code :recycle:
-✏️ Fixing typos :pencil2:
-🚚 Moving or renaming files :truck:
-👽 Updating code due to external API changes :alien:
+# 🐛 Fixing  a bug :bug:
+# 🔥 Removing code or files :fire:
+# ✨ Introducing new features :zap:
+# 💄 Adding or updating style files :lipstick:
+# 🚧  Work in progress :construction:
+# ♻️ Refactoring code :recycle:
+# ✏️ Fixing typos :pencil2:
+# 🚚 Moving or renaming files :truck:
+# 👽 Updating code due to external API changes :alien:
 # ---------------------------------------------------
 # 제목은 첫 글자를 대문자로 시작하는 동사원형
 # 제목 끝에 마침표(.) 없음 

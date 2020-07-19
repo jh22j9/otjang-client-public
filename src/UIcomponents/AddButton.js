@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Dimensions, Text, Pressable } from 'react-native';
-import { IconButton, Colors, Button } from 'react-native-paper';
+import { IconButton, Colors, Button, FAB } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 // MaterialCommunityIcons
 // pluscircleo
@@ -11,15 +11,17 @@ const styles = StyleSheet.create({
         position: 'absolute',
         right: width / 30,
         bottom: height / 12,
+        backgroundColor: '#6200ee'
     },
 });
 
 
-export default function AddButton({ navigation, ...rest }) {
+export default function AddButton({ ...rest }) {
     return (
-
-        <Pressable style={styles.buttonContainer} {...rest} onPress={() => { navigation.navigate('AddItems') }} >
-            <Icon name="plus-circle" color={'#6200ee'} size={60} />
-        </Pressable>
+        <FAB
+            style={styles.buttonContainer}
+            icon="plus"
+            {...rest}
+        />
     );
 }
