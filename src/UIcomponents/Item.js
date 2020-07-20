@@ -19,11 +19,10 @@ const styles = StyleSheet.create({
 export default function Item({ uri, title = '제목', ...rest }) {
 
     return (
-        <Card style={styles.card}>
-            {/* <View>
-                <Image resizeMode='contain' source={{ uri: 'https://file3.instiz.net/data/file3/2018/10/23/9/3/7/937b48176745a84e92f676df4580fc09.jpg' }} />
-            </View> */}
-            <Card.Cover style={styles.cardCover} resizeMode='contain' source={{ uri: uri }} />
+        <Card style={styles.card} {...rest}
+
+        >
+            <Card.Cover style={styles.cardCover} resizeMode='stretch' source={{ uri: uri }} />
 
         </Card>
     )
