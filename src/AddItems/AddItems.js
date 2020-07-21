@@ -64,9 +64,9 @@ function AddItems({ index = 0, user, clothes, onCreateClothes, onSetClothes }) {
 
     return (
         <View style={styles.container}>
-            <Gallery clothes={clothes.get(index)} onSetClothes={onSetClothes} />
+            <Gallery index={index} clothes={clothes.get(index)} onSetClothes={onSetClothes} />
             <TypeList index={index} clothes={clothes.get(index)} onSetClothes={onSetClothes} />
-            <Season />
+            <Season index={index} clothes={clothes.get(index)} onSetClothes={onSetClothes} />
             <View style={styles.optionsContainer}>
                 <Text >구분옵션</Text>
             </View>

@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
 export default function TypeList({ index,clothes, onSetClothes,...rest }) {
 
 
-    console.log('TypeList',clothes);
 
     function touchTop() {
         // state 변경 

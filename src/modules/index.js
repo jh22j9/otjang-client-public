@@ -17,7 +17,10 @@ const initialState = Map({
             price: null,
             brand: null,
             storage: null,
-            season: Map({})
+            season: Map({
+                seasonArray: List([null, null, null, null]),
+                spring: false, summer: false, fall: false, winter: false
+            })
         })
     ])
 })
