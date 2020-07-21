@@ -32,11 +32,12 @@ THINK:
 clothesObj 옷에 대한 모든 정보가 담긴 객체 
 수정사항이 생길 때마다 아래 객체에 반영하여 state 변경시킨다. 
 */
+
 var clothesObj = Map({
 
     item_id: null,
     image: null,
-    type: List([]),
+    type: Map({}),
     category: null,
     buydate: null,
     price: null,

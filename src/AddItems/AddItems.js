@@ -6,7 +6,7 @@ import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 
 import Gallery from '../UIcomponents/Gallery'
 import FormButton from '../UIcomponents/FormButton'
-import CategoryList from '../UIcomponents/CategoryList'
+import TypeList from '../UIcomponents/TypeList'
 import Season from '../UIcomponents/Season'
 
 
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
 })
 
 
-function AddItems({ user, clothes, onCreateClothes, onSetClothes }) {
+function AddItems({ index = 0, user, clothes, onCreateClothes, onSetClothes }) {
 
     /*  
     BUG: 권한 문제 해결, but 이미지를 출력하지 못하고 있음 
@@ -64,9 +64,9 @@ function AddItems({ user, clothes, onCreateClothes, onSetClothes }) {
 
     return (
         <View style={styles.container}>
-            <Gallery clothes={clothes} onSetClothes={onSetClothes} />
-            <CategoryList />
-            <Season />
+            <Gallery index={index} clothes={clothes.get(index)} onSetClothes={onSetClothes} />
+            <TypeList index={index} clothes={clothes.get(index)} onSetClothes={onSetClothes} />
+            <Season index={index} clothes={clothes.get(index)} onSetClothes={onSetClothes} />
             <View style={styles.optionsContainer}>
                 <Text >구분옵션</Text>
             </View>

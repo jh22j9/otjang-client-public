@@ -23,11 +23,16 @@ import Statistics from './src/Statistics/Statistics'
 import UserInfo from './src/UserInfo/UserInfo'
 import Setting from './src/Setting/Setting'
 import { Provider as PaperProvider } from 'react-native-paper';
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import reducers from './src/modules';
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { createLogger } from 'redux-logger';
+import ReduxThunk from 'redux-thunk';
+
+const logger = createLogger();
 const Stack = createStackNavigator();
-const store = createStore(reducers);
+const store = createStore(reducers, applyMiddleware(logger));
 
 function App() {
 

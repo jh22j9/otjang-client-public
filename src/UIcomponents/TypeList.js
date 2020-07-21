@@ -1,8 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import { Map } from 'immutable';
-
+import {Map, List } from 'immutable';
 
 const styles = StyleSheet.create({
 
@@ -22,26 +21,42 @@ const styles = StyleSheet.create({
         padding: 10,
 
     },
-  
 
 })
 
+/* var clothesObj = Map({
 
-export default function CategoryList({ ...rest }) {
+    item_id: null,
+    image: null,
+    type: Map({}),
+    category: null,
+    buydate: null,
+    price: null,
+    brand: null,
+    storage: null,
+    season: Map({})
+}) */
 
 
-    const [category, setCategory] = React.useState(Map({ typeValue: null, top: false, bottom: false, socks: false }));
+
+export default function TypeList({ index,clothes, onSetClothes,...rest }) {
+
+
 
     function touchTop() {
-        setCategory(Map({ typeValue: 'top', top: true, bottom: false, socks: false }))
+        // state 변경 
+        const topObject = { typeValue: 'top', top: true, bottom: false, socks: false }
+        onSetClothes({index:index,clothes:clothes.set('type',Map(topObject))});
     }
 
     function touchBottom() {
-        setCategory(Map({ typeValue: 'bottom', top: false, bottom: true, socks: false }))
+        const bottomObject = { typeValue: 'bottom', top: false, bottom: true, socks: false }
+        onSetClothes({index:index,clothes:clothes.set('type',Map(bottomObject))});
     }
 
     function touchsocks() {
-        setCategory(Map({ typeValue: 'socks', top: false, bottom: false, socks: true }))
+        const socksObject = { typeValue: 'socks', top: false, bottom: false, socks: true }
+        onSetClothes({index:index,clothes:clothes.set('type',Map(socksObject))});
     }
 
 
@@ -49,7 +64,7 @@ export default function CategoryList({ ...rest }) {
         <View style={styles.container} {...rest} >
             <ScrollView horizontal={true} >
                 <TouchableOpacity onPress={touchTop}>
-                    {category.get('top') ? <View style={styles.selectedContainer}>
+                    {clothes.get('type').get('top') ? <View style={styles.selectedContainer}>
                         <FontAwesome5Icons name="tshirt" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
                             <FontAwesome5Icons name="tshirt" size={50} />
@@ -58,7 +73,7 @@ export default function CategoryList({ ...rest }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={touchsocks}>
-                    {category.get('socks') ? <View style={styles.selectedContainer}>
+                    {clothes.get('type').get('socks') ? <View style={styles.selectedContainer}>
                         <FontAwesome5Icons name="socks" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
                             <FontAwesome5Icons name="socks" size={50} />
@@ -67,7 +82,7 @@ export default function CategoryList({ ...rest }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={touchBottom}>
-                    {category.get('bottom') ? <View style={styles.selectedContainer}>
+                    {clothes.get('type').get('bottom') ? <View style={styles.selectedContainer}>
                         <FontAwesome5Icons name="hiking" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
                             <FontAwesome5Icons name="hiking" size={50} />
