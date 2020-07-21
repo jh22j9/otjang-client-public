@@ -1,5 +1,5 @@
 import AddItems from './AddItems';
-import * as actions from '../modules/clothesReducer';
+import * as actions from '../modules/index';
 import { connect } from 'react-redux';
 
 
