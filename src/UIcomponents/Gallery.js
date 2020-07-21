@@ -4,26 +4,22 @@ import { Button } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Map, List } from 'immutable';
-// const { width, height } = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
 
     imagePicker: {
-        flex: 3,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: 'black',
-        borderWidth: 2,
         margin: 10,
-
     },
 
     image: {
 
-        width: '100%',
-        height: '100%'
+        width: width * 0.9,
+        height: height * 0.3,
     },
 
 })

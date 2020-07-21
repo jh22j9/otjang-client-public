@@ -2,16 +2,15 @@ import React from 'react';
 import { View, StyleSheet, Dimensions, Text, TouchableOpacity } from 'react-native';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import { Map, List } from 'immutable';
+const { width, height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
 
     container: {
         display: 'flex',
-        flex: 3,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        borderColor: 'black',
-        borderWidth: 2,
+        height: height * 0.1,
     },
 
     selectedContainer: {

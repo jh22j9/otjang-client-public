@@ -17,26 +17,24 @@ const styles = StyleSheet.create({
         display: 'flex',
         flex: 1,
         flexDirection: 'column',
+        justifyContent: 'space-between'
         // backgroundColor: 'red'
     },
     extraOptions: {
         display: 'flex',
-        flex: 0.1,
         borderColor: 'black',
         borderWidth: 2,
     },
     saveButtonContainer: {
+        height: height * 0.1,
         display: 'flex',
-        flex: 0.1,
         flexDirection: 'column',
-        // justifyContent: 'center',
+        justifyContent: 'center',
         alignItems: 'center',
-        borderColor: 'black',
         borderWidth: 2,
         // backgroundColor: 'blue'
     },
     optionsContainer: {
-        flex: 0.9,
 
     },
 
@@ -135,11 +133,11 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClot
         */
         <View style={styles.container}>
 
-            <ScrollView style={styles.optionsContainer}>
+            <ScrollView >
                 <Gallery temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
                 <TypeList temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
                 <Season temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-                <View style={styles.extraOptions}>
+                <View >
                     <List.Accordion
                         title="추가옵션 펼치기"
                     >
@@ -147,7 +145,14 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClot
                         <Text>김경원</Text>
                         <Text>김경원</Text>
                         <Text>김경원</Text>
-
+                        <Text>김경원</Text>
+                        <Text>김경원</Text>
+                        <Text>김경원</Text>
+                        <Text>김경원</Text>
+                        <Text>김경원</Text>
+                        <Text>김경원</Text>
+                        <Text>김경원</Text>
+                        <Text>김경원</Text>
                     </List.Accordion>
 
                 </View>
