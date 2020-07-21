@@ -3,7 +3,7 @@ import { StyleSheet, Dimensions, TouchableOpacity, Image, } from 'react-native';
 import { Button } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
+import { Map, List } from 'immutable';
 // const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -27,8 +27,25 @@ const styles = StyleSheet.create({
 
 })
 
+/*
+THINK: 
+clothesObj 옷에 대한 모든 정보가 담긴 객체 
+수정사항이 생길 때마다 아래 객체에 반영하여 state 변경시킨다. 
+*/
+var clothesObj = Map({
 
-export default function Gallery({ ...rest }) {
+    item_id: null,
+    image: null,
+    type: List([]),
+    category: null,
+    buydate: null,
+    price: null,
+    brand: null,
+    storage: null,
+    season: Map({})
+})
+
+export default function Gallery({ clothes, onSetClothes, ...rest }) {
 
     const [source, setImage] = React.useState(null);
 
@@ -56,9 +73,14 @@ export default function Gallery({ ...rest }) {
                 console.log('response확인', response)
                 let source = { uri: response.uri };
 
-                // You can also display the image using data:
-                // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+                /* 
+                uri 를 redux store 의 상태에 반영 
+                */
+
+                clothesObj = clothesObj.set('image', response.uri);
+                onSetClothes({ index: 0, clothes: clothesObj })
                 setImage(source);
+
             }
         });
     }
