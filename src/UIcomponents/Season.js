@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 
     container: {
         display: 'flex',
-        flex: 1.5,
+        flex: 3,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 })
 
-export default function Season({ index, clothes, onSetClothes, ...rest }) {
+export default function Season({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
 
     /* 
     TODO: 중복선택이 가능하도록 설정, 
@@ -45,11 +45,6 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
             season: Map({})
         })
     */
-    console.log('Season', clothes.get('season'))
-    /*  const [season, setSeasons] = React.useState(Map({
-         seasonArray: List([]),
-         spring: false, summer: false, fall: false, winter: false
-     })) */
 
 
     function setSpring() {
@@ -57,7 +52,7 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
         // THINK: 
         // 배열에서 찾아서 있으면 터치를 해제, 없으면 0번째 자리에 넣는다.  
         // 아니면 
-        var season = clothes.get('season');
+        var season = temporaryClothing.get('season');
         function findSpring(season) {
             return season === 'spring';
         }
@@ -70,27 +65,29 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
             // 0 번째자리를 null 로 변경 
             // spring 도 false 로 변경 
             // ,origin.get('seasonArray').update(2,item => 'spring'))
-
+            let seasonArray = season.get('seasonArray')
             let newSeason = season.set('spring', false)
-                .set('seasonArray', season.get('seasonArray').set(0, null));
+                .set('seasonArray', seasonArray.set(0, null));
 
-            onSetClothes({ index: index, clothes: clothes.set('season', newSeason) })
+            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
         else {
             // 기존에 봄이 선택되지 않은 상태라면 
             // 0 번째자리를 'spring' 로 변경 
             // spring 도 true 로 변경 
+            let seasonArray = season.get('seasonArray')
             let newSeason = season.set('spring', true)
-                .set('seasonArray', season.get('seasonArray').set(0, 'spring'));
+                .set('seasonArray', seasonArray.set(0, 'spring'));
 
-            onSetClothes({ index: index, clothes: clothes.set('season', newSeason) })
+
+            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
 
     }
 
     function setSummer() {
 
-        var season = clothes.get('season');
+        var season = temporaryClothing.get('season');
         function findSummer(season) {
             return season === 'summer';
         }
@@ -98,22 +95,24 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
         let isSummerSelected = season.get('seasonArray').toJS().find(findSummer);
         if (isSummerSelected) {
 
+            let seasonArray = season.get('seasonArray')
             let newSeason = season.set('summer', false)
-                .set('seasonArray', season.get('seasonArray').set(1, null));
+                .set('seasonArray', seasonArray.set(1, null));
 
-            onSetClothes({ index: index, clothes: clothes.set('season', newSeason) })
+            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
         else {
+            let seasonArray = season.get('seasonArray')
             let newSeason = season.set('summer', true)
-                .set('seasonArray', season.get('seasonArray').set(1, 'summer'));
+                .set('seasonArray', seasonArray.set(1, 'summer'));
 
-            onSetClothes({ index: index, clothes: clothes.set('season', newSeason) })
+            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
     }
 
     function setFall() {
 
-        var season = clothes.get('season');
+        var season = temporaryClothing.get('season');
         function findFall(season) {
             return season === 'fall';
         }
@@ -121,23 +120,25 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
         let isFallSelected = season.get('seasonArray').toJS().find(findFall);
         if (isFallSelected) {
 
+            let seasonArray = season.get('seasonArray')
             let newSeason = season.set('fall', false)
-                .set('seasonArray', season.get('seasonArray').set(2, null));
+                .set('seasonArray', seasonArray.set(2, null));
 
-            onSetClothes({ index: index, clothes: clothes.set('season', newSeason) })
+            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
         else {
+            let seasonArray = season.get('seasonArray')
             let newSeason = season.set('fall', true)
-                .set('seasonArray', season.get('seasonArray').set(2, 'fall'));
+                .set('seasonArray', seasonArray.set(2, 'fall'));
 
-            onSetClothes({ index: index, clothes: clothes.set('season', newSeason) })
+            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
 
     }
 
     function setWinter() {
 
-        var season = clothes.get('season');
+        var season = temporaryClothing.get('season');
         function findWinter(season) {
             return season === 'winter';
         }
@@ -145,16 +146,18 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
         let isFallSelected = season.get('seasonArray').toJS().find(findWinter);
         if (isFallSelected) {
 
+            let seasonArray = season.get('seasonArray')
             let newSeason = season.set('winter', false)
-                .set('seasonArray', season.get('seasonArray').set(3, null));
+                .set('seasonArray', seasonArray.set(3, null));
 
-            onSetClothes({ index: index, clothes: clothes.set('season', newSeason) })
+            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
         else {
+            let seasonArray = season.get('seasonArray')
             let newSeason = season.set('winter', true)
-                .set('seasonArray', season.get('seasonArray').set(3, 'winter'));
+                .set('seasonArray', seasonArray.set(3, 'winter'));
 
-            onSetClothes({ index: index, clothes: clothes.set('season', newSeason) })
+            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
 
     }
@@ -165,7 +168,7 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
         */
         <View style={styles.container} {...rest}>
             <TouchableOpacity onPress={setSpring}>
-                {clothes.get('season').get('spring') ?
+                {temporaryClothing.get('season').get('spring') ?
                     <View style={styles.selectedContainer}>
                         <Text >봄</Text>
                     </View> :
@@ -176,7 +179,7 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
             </TouchableOpacity>
             <TouchableOpacity onPress={setSummer}>
                 {
-                    clothes.get('season').get('summer') ?
+                    temporaryClothing.get('season').get('summer') ?
                         <View style={styles.selectedContainer}>
                             <Text >여름</Text>
                         </View> :
@@ -187,7 +190,7 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
             </TouchableOpacity>
             <TouchableOpacity onPress={setFall}>
                 {
-                    clothes.get('season').get('fall') ?
+                    temporaryClothing.get('season').get('fall') ?
                         <View style={styles.selectedContainer}>
                             <Text >가을</Text>
                         </View> :
@@ -198,7 +201,7 @@ export default function Season({ index, clothes, onSetClothes, ...rest }) {
             </TouchableOpacity>
             <TouchableOpacity onPress={setWinter}>
                 {
-                    clothes.get('season').get('winter') ?
+                    temporaryClothing.get('season').get('winter') ?
                         <View style={styles.selectedContainer}>
                             <Text >겨울</Text>
                         </View> :

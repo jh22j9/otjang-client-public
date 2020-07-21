@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
 
     container: {
         display: 'flex',
-        flex: 1.5,
+        flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
         borderColor: 'black',
@@ -24,39 +24,25 @@ const styles = StyleSheet.create({
 
 })
 
-/* var clothesObj = Map({
 
-    item_id: null,
-    image: null,
-    type: Map({}),
-    category: null,
-    buydate: null,
-    price: null,
-    brand: null,
-    storage: null,
-    season: Map({})
-}) */
-
-
-
-export default function TypeList({ index,clothes, onSetClothes,...rest }) {
+export default function TypeList({ temporaryClothing, onSetTemporaryClothing,...rest }) {
 
 
 
     function touchTop() {
         // state 변경 
         const topObject = { typeValue: 'top', top: true, bottom: false, socks: false }
-        onSetClothes({index:index,clothes:clothes.set('type',Map(topObject))});
+        onSetTemporaryClothing(temporaryClothing.set('type',Map(topObject)));
     }
 
     function touchBottom() {
         const bottomObject = { typeValue: 'bottom', top: false, bottom: true, socks: false }
-        onSetClothes({index:index,clothes:clothes.set('type',Map(bottomObject))});
+        onSetTemporaryClothing(temporaryClothing.set('type',Map(bottomObject)));
     }
 
     function touchsocks() {
         const socksObject = { typeValue: 'socks', top: false, bottom: false, socks: true }
-        onSetClothes({index:index,clothes:clothes.set('type',Map(socksObject))});
+        onSetTemporaryClothing(temporaryClothing.set('type',Map(socksObject)));
     }
 
 
@@ -64,7 +50,7 @@ export default function TypeList({ index,clothes, onSetClothes,...rest }) {
         <View style={styles.container} {...rest} >
             <ScrollView horizontal={true} >
                 <TouchableOpacity onPress={touchTop}>
-                    {clothes.get('type').get('top') ? <View style={styles.selectedContainer}>
+                    {temporaryClothing.get('type').get('top') ? <View style={styles.selectedContainer}>
                         <FontAwesome5Icons name="tshirt" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
                             <FontAwesome5Icons name="tshirt" size={50} />
@@ -73,7 +59,7 @@ export default function TypeList({ index,clothes, onSetClothes,...rest }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={touchsocks}>
-                    {clothes.get('type').get('socks') ? <View style={styles.selectedContainer}>
+                    {temporaryClothing.get('type').get('socks') ? <View style={styles.selectedContainer}>
                         <FontAwesome5Icons name="socks" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
                             <FontAwesome5Icons name="socks" size={50} />
@@ -82,7 +68,7 @@ export default function TypeList({ index,clothes, onSetClothes,...rest }) {
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={touchBottom}>
-                    {clothes.get('type').get('bottom') ? <View style={styles.selectedContainer}>
+                    {temporaryClothing.get('type').get('bottom') ? <View style={styles.selectedContainer}>
                         <FontAwesome5Icons name="hiking" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
                             <FontAwesome5Icons name="hiking" size={50} />

@@ -9,13 +9,14 @@ import { Map, List } from 'immutable';
 const styles = StyleSheet.create({
 
     imagePicker: {
-        flex: 5,
+        flex: 3,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
+        alignItems: 'center',
         borderColor: 'black',
         borderWidth: 2,
-        margin: 15
+        margin: 10,
 
     },
 
@@ -33,22 +34,8 @@ clothesObj 옷에 대한 모든 정보가 담긴 객체
 수정사항이 생길 때마다 아래 객체에 반영하여 state 변경시킨다. 
 */
 
-var clothesObj = Map({
+export default function Gallery({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
 
-    item_id: null,
-    image: null,
-    type: Map({}),
-    category: null,
-    buydate: null,
-    price: null,
-    brand: null,
-    storage: null,
-    season: Map({})
-})
-
-export default function Gallery({ clothes, onSetClothes, ...rest }) {
-
-    const [source, setImage] = React.useState(null);
 
     function selectPhotoTapped() {
 
@@ -72,22 +59,14 @@ export default function Gallery({ clothes, onSetClothes, ...rest }) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
                 console.log('response확인', response)
-                let source = { uri: response.uri };
-
-                /* 
-                uri 를 redux store 의 상태에 반영 
-                */
-
-                clothesObj = clothesObj.set('image', response.uri);
-                onSetClothes({ index: 0, clothes: clothesObj })
-                setImage(source);
+                onSetTemporaryClothing(temporaryClothing.set('image', response.uri))
 
             }
         });
     }
 
     return (<TouchableOpacity style={styles.imagePicker} onPress={selectPhotoTapped}{...rest} >
-        {source ? <Image resizeMode='stretch' style={styles.image} source={source} />
+        {temporaryClothing.get('image') ? <Image resizeMode='stretch' style={styles.image} source={{ uri: temporaryClothing.get('image') }} />
             : <Icon name='image' color={'black'} size={250} />}
     </TouchableOpacity>)
 

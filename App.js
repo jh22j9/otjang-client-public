@@ -16,6 +16,7 @@ import Logo from './src/Logo/Logo'
 import SignIn from './src/SignIn/SignIn'
 import SignUp from './src/SignUp/SignUp'
 import Main from './src/Main/Main'
+import AddItems from './src/AddItems/AddItems'
 import AddItemsContainer from './src/AddItems/AddItemsContainer'
 import ItemInfo from './src/ItemInfo/ItemInfo'
 import EditItem from './src/EditItem/EditItem'
@@ -47,6 +48,7 @@ function App() {
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="Main" component={Main} />
             <Stack.Screen name="AddItemsContainer" component={AddItemsContainer} />
+            <Stack.Screen name="AddItems" component={AddItems} />
             <Stack.Screen name="ItemInfo" component={ItemInfo} />
             <Stack.Screen name="EditItem" component={EditItem} />
             <Stack.Screen name="Statistics" component={Statistics} />

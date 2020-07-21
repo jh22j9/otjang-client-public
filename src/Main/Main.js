@@ -15,6 +15,7 @@ const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
 function Main({ navigation }) {
 
+    // THINK: navigation 객체를 사용하여 현재 위치 파악 
     return (
 
         <>
