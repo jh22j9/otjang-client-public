@@ -11,7 +11,7 @@ const initialState = Map({
         Map({
             item_id: null,
             image: null,
-            type: List([]),
+            type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
             category: null,
             buydate: null,
             price: null,
