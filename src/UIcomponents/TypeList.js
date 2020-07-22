@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Dimensions,Text, TouchableOpacity, ScrollView } from 'react-native';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Map, List } from 'immutable';
 const { width, height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
@@ -9,7 +8,6 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent:'space-around',
         alignItems: 'center',
         height: height * 0.1,
     },
@@ -25,32 +23,32 @@ const styles = StyleSheet.create({
 })
 
 
-export default function CategoryList({ temporaryClothing, onSetTemporaryClothing,...rest }) {
+export default function TypeList({ temporaryClothing, onSetTemporaryClothing,...rest }) {
 
 
 
-    function touchClothing() {
+    function touchTop() {
         // state 변경 
-        const clothingObject = { categoryValue: 'clothing', clothing: true, Shoes: false, Accessories: false }
-        onSetTemporaryClothing(temporaryClothing.set('category',Map(clothingObject)));
+        const topObject = { typeValue: 'top', top: true, bottom: false, socks: false }
+        onSetTemporaryClothing(temporaryClothing.set('type',Map(topObject)));
     }
 
-    function touchShoe() {
-        const shoesObject = { categoryValue: 'shoes', clothing: false, Shoes: true, Accessories: false }
-        onSetTemporaryClothing(temporaryClothing.set('category',Map(shoesObject)));
+    function touchBottom() {
+        const bottomObject = { typeValue: 'bottom', top: false, bottom: true, socks: false }
+        onSetTemporaryClothing(temporaryClothing.set('type',Map(bottomObject)));
     }
 
-    function touchAccessories() {
-        const accessoriesObject = { categoryValue: 'accessories', clothing: false, Shoes: false, Accessories: true }
-        onSetTemporaryClothing(temporaryClothing.set('category',Map(accessoriesObject)));
+    function touchsocks() {
+        const socksObject = { typeValue: 'socks', top: false, bottom: false, socks: true }
+        onSetTemporaryClothing(temporaryClothing.set('type',Map(socksObject)));
     }
 
 
     return (
         <View style={styles.container} {...rest} >
-
-                <TouchableOpacity onPress={touchClothing}>
-                    {temporaryClothing.get('category').get('clothing') ? <View style={styles.selectedContainer}>
+            <ScrollView horizontal={true} >
+                <TouchableOpacity onPress={touchTop}>
+                    {temporaryClothing.get('type').get('top') ? <View style={styles.selectedContainer}>
                         <FontAwesome5Icons name="tshirt" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
                             <FontAwesome5Icons name="tshirt" size={50} />
@@ -58,23 +56,26 @@ export default function CategoryList({ temporaryClothing, onSetTemporaryClothing
                     }
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={touchShoe}>
-                    {temporaryClothing.get('category').get('Shoes') ? <View style={styles.selectedContainer}>
-                    <MaterialCommunityIcons name="shoe-formal" size={50} />
+                <TouchableOpacity onPress={touchsocks}>
+                    {temporaryClothing.get('type').get('socks') ? <View style={styles.selectedContainer}>
+                        <FontAwesome5Icons name="socks" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
-                    <MaterialCommunityIcons name="shoe-formal" size={50} />
+                            <FontAwesome5Icons name="socks" size={50} />
                         </View>
                     }
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={touchAccessories}>
-                    {temporaryClothing.get('category').get('Accessories') ? <View style={styles.selectedContainer}>
-                    <MaterialCommunityIcons name="hat-fedora" size={50} />
+                <TouchableOpacity onPress={touchBottom}>
+                    {temporaryClothing.get('type').get('bottom') ? <View style={styles.selectedContainer}>
+                        <FontAwesome5Icons name="hiking" size={50} />
                     </View> : <View style={styles.notSelectedContainer}>
-                    <MaterialCommunityIcons name="hat-fedora" size={50} />
+                            <FontAwesome5Icons name="hiking" size={50} />
                         </View>
                     }
                 </TouchableOpacity>
+                {/*  */}
+
+            </ScrollView>
         </View>
     )
 }

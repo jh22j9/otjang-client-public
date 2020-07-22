@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state) => ({
 
     user: state.get('user'),
-    clothes: state.get('clothes')
+    clothes: state.get('clothes'),
+    temporaryClothing: state.get('temporaryClothing')
 
 
 })
@@ -17,6 +18,8 @@ const mapDispatchToProps = (dispatch) => ({
 
     onCreateClothes: (clothesObject) => dispatch(actions.createClothes(clothesObject)),
     onSetClothes: (setObjcet) => dispatch(actions.setClothes(setObjcet)),
+    onSetTemporaryClothing: (temporaryClothing) => dispatch(actions.setTemporaryClothing(temporaryClothing)),
+
 })
 
 const AddItemsContainer = connect(
