@@ -4,52 +4,34 @@ import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import { Button, List, TextInput } from 'react-native-paper';
 import { Map } from 'immutable';
 
-import Price from './OptionsComponent/Price'
-import Storage from './OptionsComponent/Storage'
-import Brand from './OptionsComponent/Brand';
-const styles = StyleSheet.create({
-    optionsContainer: {
-        display: 'flex',
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: 'black',
-        borderWidth: 2,
-    },
 
-    priceContainer: {
+const styles = StyleSheet.create({
+
+    barndContainer: {
         display: 'flex',
         flexDirection: 'column',
         margin: 10,
     },
-    inputContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    inputPrice: {
+    inputBrand: {
         display: 'flex',
         flexDirection: 'row',
     }
     ,
-    inputPriceNumber: {
+    inputBrandNumber: {
 
         flex: 7,
         margin: 10,
     },
-    inputPriceUnit: {
-        flex: 3,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-    },
+    inputBrandText: {
 
+
+    },
 
 
 })
 
 
-function ExtraOptions({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
+function Brand({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
     /* 
     buydate: null,
     price: null,
@@ -82,11 +64,14 @@ function ExtraOptions({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
 
     return (
 
-        <List.Accordion title="추가옵션 펼치기" style={styles.inputContainer} >
-            <Price />
-            <Storage />
-            <Brand />
-        </List.Accordion>
+        <View style={styles.barndContainer}>
+
+            <Text style={styles.inputBrandText}>브랜드</Text>
+            <View style={styles.inputBrand}>
+                <TextInput style={styles.inputBrandNumber} keyboardType='web-search' placeholder='보관장소'>
+                </TextInput>
+            </View>
+        </View>
     )
 
 }
@@ -94,4 +79,4 @@ function ExtraOptions({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
 
 
 
-export default ExtraOptions;
+export default Brand;

@@ -6,9 +6,10 @@ import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 
 import Gallery from '../UIcomponents/Gallery'
 import FormButton from '../UIcomponents/FormButton'
+import CategoryList from '../UIcomponents/CategoryList';
 import TypeList from '../UIcomponents/TypeList'
 import Season from '../UIcomponents/Season'
-
+import ExtraOptions from '../UIcomponents/ExtraOptions'
 
 const { width, height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
@@ -135,9 +136,12 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClot
 
             <ScrollView >
                 <Gallery temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
+                <CategoryList temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
                 <TypeList temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
                 <Season temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-                <View >
+                <ExtraOptions temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
+
+                {/*           <View >
                     <List.Accordion
                         title="추가옵션 펼치기"
                     >
@@ -155,7 +159,7 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClot
                         <Text>김경원</Text>
                     </List.Accordion>
 
-                </View>
+                </View> */}
             </ScrollView>
             <View style={styles.saveButtonContainer}>
                 <FormButton title='저장' modeValue='contained' onPress={saveClothes} />
