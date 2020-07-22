@@ -140,26 +140,6 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClot
                 <TypeList temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
                 <Season temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
                 <ExtraOptions temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-
-                {/*           <View >
-                    <List.Accordion
-                        title="추가옵션 펼치기"
-                    >
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                        <Text>김경원</Text>
-                    </List.Accordion>
-
-                </View> */}
             </ScrollView>
             <View style={styles.saveButtonContainer}>
                 <FormButton title='저장' modeValue='contained' onPress={saveClothes} />
