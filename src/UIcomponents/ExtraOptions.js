@@ -4,9 +4,10 @@ import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import { Button, List, TextInput } from 'react-native-paper';
 import { Map } from 'immutable';
 
-import Price from './OptionsComponent/Price'
-import Storage from './OptionsComponent/Storage'
-import Brand from './OptionsComponent/Brand';
+import Price from './Options/Price'
+import Storage from './Options/Storage'
+import Brand from './Options/Brand';
+import Buydate from './Options/Buydate';
 const styles = StyleSheet.create({
     optionsContainer: {
         display: 'flex',
@@ -18,33 +19,10 @@ const styles = StyleSheet.create({
         borderWidth: 2,
     },
 
-    priceContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        margin: 10,
-    },
     inputContainer: {
         display: 'flex',
         flexDirection: 'column',
     },
-    inputPrice: {
-        display: 'flex',
-        flexDirection: 'row',
-    }
-    ,
-    inputPriceNumber: {
-
-        flex: 7,
-        margin: 10,
-    },
-    inputPriceUnit: {
-        flex: 3,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-    },
-
-
 
 })
 
@@ -83,9 +61,10 @@ function ExtraOptions({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
     return (
 
         <List.Accordion title="추가옵션 펼치기" style={styles.inputContainer} >
-            <Price />
-            <Storage />
-            <Brand />
+            <Price temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
+            <Storage temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
+            <Brand temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
+            <Buydate temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
         </List.Accordion>
     )
 

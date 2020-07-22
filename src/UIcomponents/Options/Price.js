@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import { Button, List, TextInput } from 'react-native-paper';
-import { Map } from 'immutable';
 
 
 const styles = StyleSheet.create({
@@ -37,36 +36,16 @@ const styles = StyleSheet.create({
 })
 
 
+// NOTICE: props 로 받는 temporaryClothing 은 상태변화 전 상태이다. 
+// 저장버튼 누를 때는 변화된 상태가 반영된다.
+// Price 함수 안에서는 즉각 변화된 temporaryClothing 을 확인할 수 없다. 
 function Price({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
-    /* 
-    buydate: null,
-    price: null,
-    brand: null,
-    storage: null,
-    */
+    const [price, setPrice] = React.useState('');
 
-    /* 
-    THINK: 
+    function savePrice() {
 
-    1> buydate 
-
-    컴포넌트 호출 시 현재 날짜 받음 
-    년도만 뽑아냄 -> numberpicker 에 반영 
-    년, 월만 선택하도록 
-
-    number picker 선택이 완료되면 redux 로 상태변경 
-    구매일
-    
-    number picker 로 구성 
-
-    2> price 
-
-    <Input/> 원 
-    onChange 할 때마다 상태변경 
-
-
-    */
-
+        onSetTemporaryClothing(temporaryClothing.set('price', Number(price)))
+    }
 
     return (
 
@@ -74,11 +53,12 @@ function Price({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
 
             <Text style={styles.inputPriceText}>구매가격</Text>
             <View style={styles.inputPrice}>
-                <TextInput style={styles.inputPriceNumber} keyboardType='number-pad' placeholder='가격입력'>
+                <TextInput style={styles.inputPriceNumber}
+                    keyboardType='number-pad' placeholder='XXXX 원'
+                    onChangeText={price => setPrice(price)}
+                    onEndEditing={savePrice}
+                >
                 </TextInput>
-                <View style={styles.inputPriceUnit}>
-                    <Text >원</Text>
-                </View>
             </View>
         </View>
     )
