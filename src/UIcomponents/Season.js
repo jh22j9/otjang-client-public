@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
 
 })
 
-export default function Season({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
+export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
 
     /* 
-    TODO: 중복선택이 가능하도록 설정, 
+     중복선택이 가능하도록 설정, 
     선택을 했을 때 '계절들'을 중복없이 배열에 저장해야 함 
          clothes: Map({
             item_id: null,
@@ -68,7 +68,7 @@ export default function Season({ temporaryClothing, onSetTemporaryClothing, ...r
             let newSeason = season.set('spring', false)
                 .set('seasonArray', seasonArray.set(0, null));
 
-            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
+            ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
         else {
             // 기존에 봄이 선택되지 않은 상태라면 
@@ -79,7 +79,7 @@ export default function Season({ temporaryClothing, onSetTemporaryClothing, ...r
                 .set('seasonArray', seasonArray.set(0, 'spring'));
 
 
-            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
+            ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
 
     }
@@ -98,14 +98,14 @@ export default function Season({ temporaryClothing, onSetTemporaryClothing, ...r
             let newSeason = season.set('summer', false)
                 .set('seasonArray', seasonArray.set(1, null));
 
-            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
+            ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
         else {
             let seasonArray = season.get('seasonArray')
             let newSeason = season.set('summer', true)
                 .set('seasonArray', seasonArray.set(1, 'summer'));
 
-            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
+            ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
     }
 
@@ -123,14 +123,14 @@ export default function Season({ temporaryClothing, onSetTemporaryClothing, ...r
             let newSeason = season.set('fall', false)
                 .set('seasonArray', seasonArray.set(2, null));
 
-            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
+            ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
         else {
             let seasonArray = season.get('seasonArray')
             let newSeason = season.set('fall', true)
                 .set('seasonArray', seasonArray.set(2, 'fall'));
 
-            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
+            ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
 
     }
@@ -149,14 +149,14 @@ export default function Season({ temporaryClothing, onSetTemporaryClothing, ...r
             let newSeason = season.set('winter', false)
                 .set('seasonArray', seasonArray.set(3, null));
 
-            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
+            ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
         else {
             let seasonArray = season.get('seasonArray')
             let newSeason = season.set('winter', true)
                 .set('seasonArray', seasonArray.set(3, 'winter'));
 
-            onSetTemporaryClothing(temporaryClothing.set('season', newSeason))
+            ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
 
     }

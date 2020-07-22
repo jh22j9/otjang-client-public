@@ -23,24 +23,24 @@ const styles = StyleSheet.create({
 })
 
 
-export default function TypeList({ temporaryClothing, onSetTemporaryClothing,...rest }) {
+export default function TypeList({ temporaryClothing, ClothesActions,...rest }) {
 
 
 
     function touchTop() {
         // state 변경 
         const topObject = { typeValue: 'top', top: true, bottom: false, socks: false }
-        onSetTemporaryClothing(temporaryClothing.set('type',Map(topObject)));
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('type',Map(topObject)));
     }
 
     function touchBottom() {
         const bottomObject = { typeValue: 'bottom', top: false, bottom: true, socks: false }
-        onSetTemporaryClothing(temporaryClothing.set('type',Map(bottomObject)));
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('type',Map(bottomObject)));
     }
 
     function touchsocks() {
         const socksObject = { typeValue: 'socks', top: false, bottom: false, socks: true }
-        onSetTemporaryClothing(temporaryClothing.set('type',Map(socksObject)));
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('type',Map(socksObject)));
     }
 
 

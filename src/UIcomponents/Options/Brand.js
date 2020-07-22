@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
-import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import { Button, List, TextInput } from 'react-native-paper';
+import { View, StyleSheet, Text } from 'react-native';
+import { TextInput } from 'react-native-paper';
 
 
 const styles = StyleSheet.create({
@@ -30,12 +29,12 @@ const styles = StyleSheet.create({
 })
 
 
-function Brand({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
+function Brand({ temporaryClothing, ClothesActions, ...rest }) {
     const [brand, setBrand] = React.useState('');
 
     function saveBrand() {
 
-        onSetTemporaryClothing(temporaryClothing.set('brand', brand))
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('brand', brand))
     }
     return (
 

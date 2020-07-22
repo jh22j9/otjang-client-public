@@ -30,7 +30,7 @@ clothesObj 옷에 대한 모든 정보가 담긴 객체
 수정사항이 생길 때마다 아래 객체에 반영하여 state 변경시킨다. 
 */
 
-export default function Gallery({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
+export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) {
 
 
     function selectPhotoTapped() {
@@ -55,8 +55,7 @@ export default function Gallery({ temporaryClothing, onSetTemporaryClothing, ...
                 console.log('User tapped custom button: ', response.customButton);
             } else {
                 console.log('response확인', response)
-                onSetTemporaryClothing(temporaryClothing.set('image', response.uri))
-
+                ClothesActions.setTemporaryClothing(temporaryClothing.set('image', response.uri))
             }
         });
     }

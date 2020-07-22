@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 })
 
 
-function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClothes, onSetClothes, onSetTemporaryClothing }) {
+function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActions }) {
 
     /*  
     BUG: 권한 문제 해결, but 이미지를 출력하지 못하고 있음 
@@ -72,9 +72,9 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClot
 
         if (id) {
 
-            onSetClothes({ index: index, temporaryClothing })
-
-            /* TODO: 
+            // onSetClothes({ index: index, temporaryClothing })
+            ClothesActions.setClothes({ index: index, temporaryClothing })
+            /*  
             
             SET_CLOTHES 
 
@@ -90,7 +90,8 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClot
 
         else {
 
-            onCreateClothes(temporaryClothing);
+            // onCreateClothes(temporaryClothing);
+            ClothesActions.createClothes(temporaryClothing);
 
             /*
             TODO: 
@@ -135,11 +136,11 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, onCreateClot
         <View style={styles.container}>
 
             <ScrollView >
-                <Gallery temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-                <CategoryList temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-                <TypeList temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-                <Season temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-                <ExtraOptions temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
+                <Gallery temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+                <CategoryList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+                <TypeList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+                <Season temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+                <ExtraOptions temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
             </ScrollView>
             <View style={styles.saveButtonContainer}>
                 <FormButton title='저장' modeValue='contained' onPress={saveClothes} />
