@@ -4,28 +4,13 @@ import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import { Button, List, TextInput } from 'react-native-paper';
 import { Map } from 'immutable';
 
-import Price from './OptionsComponent/Price'
-import Storage from './OptionsComponent/Storage'
-import Brand from './OptionsComponent/Brand';
+
 const styles = StyleSheet.create({
-    optionsContainer: {
-        display: 'flex',
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderColor: 'black',
-        borderWidth: 2,
-    },
 
     priceContainer: {
         display: 'flex',
         flexDirection: 'column',
         margin: 10,
-    },
-    inputContainer: {
-        display: 'flex',
-        flexDirection: 'column',
     },
     inputPrice: {
         display: 'flex',
@@ -43,13 +28,16 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
     },
+    inputPriceText: {
 
+
+    },
 
 
 })
 
 
-function ExtraOptions({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
+function Price({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
     /* 
     buydate: null,
     price: null,
@@ -82,11 +70,17 @@ function ExtraOptions({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
 
     return (
 
-        <List.Accordion title="추가옵션 펼치기" style={styles.inputContainer} >
-            <Price />
-            <Storage />
-            <Brand />
-        </List.Accordion>
+        <View style={styles.priceContainer}>
+
+            <Text style={styles.inputPriceText}>구매가격</Text>
+            <View style={styles.inputPrice}>
+                <TextInput style={styles.inputPriceNumber} keyboardType='number-pad' placeholder='가격입력'>
+                </TextInput>
+                <View style={styles.inputPriceUnit}>
+                    <Text >원</Text>
+                </View>
+            </View>
+        </View>
     )
 
 }
@@ -94,4 +88,4 @@ function ExtraOptions({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
 
 
 
-export default ExtraOptions;
+export default Price;

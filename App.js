@@ -8,10 +8,8 @@
 
 
 import React from 'react';
-import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import Logo from './src/Logo/Logo'
 import SignIn from './src/SignIn/SignIn'
 import SignUp from './src/SignUp/SignUp'
@@ -23,7 +21,7 @@ import EditItem from './src/EditItem/EditItem'
 import Statistics from './src/Statistics/Statistics'
 import UserInfo from './src/UserInfo/UserInfo'
 import Setting from './src/Setting/Setting'
-import { Provider as PaperProvider } from 'react-native-paper';
+import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import reducers from './src/modules';
@@ -33,14 +31,20 @@ import ReduxThunk from 'redux-thunk';
 
 const logger = createLogger();
 const Stack = createStackNavigator();
-const store = createStore(reducers, applyMiddleware(logger));
+const store = createStore(reducers, applyMiddleware(logger, ReduxThunk));
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+
+  },
+};
 
 function App() {
 
-  console.log('store', store.getState().toJS())
   return (
     <Provider store={store}>
-      <PaperProvider>
+      <PaperProvider theme={theme}>
         <NavigationContainer>
           < Stack.Navigator initialRouteName="Logo">
             <Stack.Screen name="Logo" component={Logo} />

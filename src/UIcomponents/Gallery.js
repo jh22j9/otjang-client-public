@@ -13,13 +13,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 10,
+        margin: 5,
     },
 
     image: {
 
         width: width * 0.9,
-        height: height * 0.3,
+        height: height * 0.35,
     },
 
 })
@@ -63,7 +63,7 @@ export default function Gallery({ temporaryClothing, onSetTemporaryClothing, ...
 
     return (<TouchableOpacity style={styles.imagePicker} onPress={selectPhotoTapped}{...rest} >
         {temporaryClothing.get('image') ? <Image resizeMode='stretch' style={styles.image} source={{ uri: temporaryClothing.get('image') }} />
-            : <Icon name='image' color={'black'} size={250} />}
+            : <Icon name='image' color={'black'} size={230} />}
     </TouchableOpacity>)
 
 }
