@@ -25,24 +25,24 @@ const styles = StyleSheet.create({
 })
 
 
-export default function CategoryList({ temporaryClothing, onSetTemporaryClothing,...rest }) {
+export default function CategoryList({ temporaryClothing, ClothesActions,...rest }) {
 
 
 
     function touchClothing() {
         // state 변경 
         const clothingObject = { categoryValue: 'clothing', clothing: true, Shoes: false, Accessories: false }
-        onSetTemporaryClothing(temporaryClothing.set('category',Map(clothingObject)));
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(clothingObject)));
     }
 
     function touchShoe() {
         const shoesObject = { categoryValue: 'shoes', clothing: false, Shoes: true, Accessories: false }
-        onSetTemporaryClothing(temporaryClothing.set('category',Map(shoesObject)));
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(shoesObject)));
     }
 
     function touchAccessories() {
         const accessoriesObject = { categoryValue: 'accessories', clothing: false, Shoes: false, Accessories: true }
-        onSetTemporaryClothing(temporaryClothing.set('category',Map(accessoriesObject)));
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(accessoriesObject)));
     }
 
 

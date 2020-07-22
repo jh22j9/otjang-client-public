@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
-import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import { Button, List, TextInput } from 'react-native-paper';
+import { View, StyleSheet, Text } from 'react-native';
+import { TextInput } from 'react-native-paper';
 
 
 const styles = StyleSheet.create({
@@ -39,12 +38,12 @@ const styles = StyleSheet.create({
 // NOTICE: props 로 받는 temporaryClothing 은 상태변화 전 상태이다. 
 // 저장버튼 누를 때는 변화된 상태가 반영된다.
 // Price 함수 안에서는 즉각 변화된 temporaryClothing 을 확인할 수 없다. 
-function Price({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
+function Price({ temporaryClothing, ClothesActions, ...rest }) {
     const [price, setPrice] = React.useState('');
 
     function savePrice() {
 
-        onSetTemporaryClothing(temporaryClothing.set('price', Number(price)))
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('price', Number(price)))
     }
 
     return (
