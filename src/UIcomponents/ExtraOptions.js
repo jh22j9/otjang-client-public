@@ -1,13 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
-import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import { Button, List, TextInput } from 'react-native-paper';
-import { Map } from 'immutable';
+import { StyleSheet } from 'react-native';
 
 import Price from './Options/Price'
 import Storage from './Options/Storage'
 import Brand from './Options/Brand';
 import Buydate from './Options/Buydate';
+import { List } from 'react-native-paper';
 const styles = StyleSheet.create({
     optionsContainer: {
         display: 'flex',
@@ -27,44 +25,16 @@ const styles = StyleSheet.create({
 })
 
 
-function ExtraOptions({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
-    /* 
-    buydate: null,
-    price: null,
-    brand: null,
-    storage: null,
-    */
-
-    /* 
-    THINK: 
-
-    1> buydate 
-
-    컴포넌트 호출 시 현재 날짜 받음 
-    년도만 뽑아냄 -> numberpicker 에 반영 
-    년, 월만 선택하도록 
-
-    number picker 선택이 완료되면 redux 로 상태변경 
-    구매일
-    
-    number picker 로 구성 
-
-    2> price 
-
-    <Input/> 원 
-    onChange 할 때마다 상태변경 
-
-
-    */
+function ExtraOptions({ temporaryClothing, ClothesActions, ...rest }) {
 
 
     return (
 
         <List.Accordion title="추가옵션 펼치기" style={styles.inputContainer} >
-            <Price temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-            <Storage temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-            <Brand temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
-            <Buydate temporaryClothing={temporaryClothing} onSetTemporaryClothing={onSetTemporaryClothing} />
+            <Price temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <Storage temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <Brand temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <Buydate temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
         </List.Accordion>
     )
 

@@ -1,10 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Text, Pressable, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
-import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import { Button, List, Modal, Portal, TextInput } from 'react-native-paper';
+import { View, StyleSheet, Text, Pressable, Dimensions } from 'react-native';
+import { Button,Modal, Portal, TextInput } from 'react-native-paper';
 import { ScrollPicker } from 'react-native-value-picker';
-import BottomSheet from 'reanimated-bottom-sheet'
-import { Map } from 'immutable';
 const { width, height } = Dimensions.get('screen');
 const yearArray = [];
 const monthArray = [];
@@ -75,14 +72,11 @@ const styles = StyleSheet.create({
 
     }
 
-
-
-
 })
 
 
 
-function Buydate({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
+function Buydate({ temporaryClothing,ClothesActions, ...rest }) {
 
 
 
@@ -96,7 +90,7 @@ function Buydate({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
 
         setYearVisible(!isVisibleYear);
         let splitYear = String(year).split('').splice(2).join('');
-        onSetTemporaryClothing(temporaryClothing.set('buydate',`${splitYear}${month}`))
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('buydate',`${splitYear}${month}`))
         
     }
     function showMonth() {
@@ -112,7 +106,7 @@ function Buydate({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
             changedMonth = month;
         }
         
-        onSetTemporaryClothing(temporaryClothing.set('buydate',`${splitYear}${changedMonth}`))
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('buydate',`${splitYear}${changedMonth}`))
     }
     
 

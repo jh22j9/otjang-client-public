@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView } from 'react-native';
-import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
+import { View, StyleSheet, Text } from 'react-native';
 import { TextInput } from 'react-native-paper';
 
 
@@ -30,12 +29,12 @@ const styles = StyleSheet.create({
 })
 
 
-function Storage({ temporaryClothing, onSetTemporaryClothing, ...rest }) {
+function Storage({ temporaryClothing, ClothesActions, ...rest }) {
     const [storage, setStorage] = React.useState('');
 
     function saveStorage() {
 
-        onSetTemporaryClothing(temporaryClothing.set('storage', storage))
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('storage', storage))
     }
 
     return (
