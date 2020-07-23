@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, StyleSheet, Dimensions } from 'react-native';
 import { Title } from 'react-native-paper';
 import Item from './Item'
-import { Map, List } from 'immutable';
+import { Map, List, fromJS } from 'immutable';
 const styles = StyleSheet.create({
     title: {
 
@@ -29,8 +29,9 @@ export default function ItemsList({ navigation, title, items, ClothesActions, ..
 
 
         // 여기서 Item component import 해서 리턴 
+
         return (
-            <Item item={Map(item)} index={index}
+            <Item item={fromJS(item)} index={index}
                 ClothesActions={ClothesActions} navigation={navigation} />
         );
     }

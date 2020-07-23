@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Dimensions, Image, View } from 'react-native';
+import { StyleSheet, Dimensions, Image, View, Pressable } from 'react-native';
 import { Card, Title } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -13,11 +14,19 @@ const styles = StyleSheet.create({
         width: width / 4,
         height: width / 4,
     },
+    cardContainer: {
+        display: 'flex',
+    },
+    deleteButton: {
+
+
+    }
 }
 );
 
 export default function Item({ navigation, item, index, ClothesActions, ...rest }) {
 
+    const [isVisibleDeleteBtn, setDeleteBtn] = React.useState(false);
     /* 
     THINK:
     ITEM 을 터치했을 때 편집창을 STACK 에 띄운다. 
@@ -34,19 +43,61 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
     
     */
 
-    console.log('navigation', navigation)
+    /* 
+    THINK 삭제기능 구현 
+
+    
+    
+    */
 
     function setEditItem() {
 
         ClothesActions.setTemporaryClothing(item);
         navigation.navigate('EditItem')
     }
+
+    function showDeleteBtn() {
+        /* 
+        THINK 
+        해당 아이템의 카테고리 배열 안의 INDEX 를 알 수 있다. 
+        SPLICE 한 것을 SET 
+
+        */
+        // console.log('아이템', item.get('category'))
+        // console.log('index', index)
+        setDeleteBtn(true)
+    }
+
+    function hideDeleteBtn() {
+        setDeleteBtn(false)
+    }
+
+    function deleteItem() {
+
+        const deletedItem = { index: index, item: item }
+
+        ClothesActions.removeClothes(deletedItem)
+        setDeleteBtn(false)
+    }
+
+    function handelDeleteBtn() {
+        return (isVisibleDeleteBtn ?
+            <>
+                <Pressable style={styles.deleteButton} onPress={deleteItem}>
+                    <Icon name="delete" size={26} />
+                </Pressable>
+                <Pressable style={styles.deleteButton} onPress={hideDeleteBtn}>
+                    <Icon name="cancel" size={26} />
+                </Pressable>
+            </> : <></>)
+    }
     return (
-        <Card style={styles.card} {...rest} onPress={setEditItem}>
-
-            <Card.Cover style={styles.cardCover} resizeMode='stretch'
-                source={{ uri: item.get('image') }} />
-
-        </Card>
+        <Pressable style={styles.cardContainer} onPress={setEditItem} {...rest} onLongPress={showDeleteBtn}>
+            <Card style={styles.card} >
+                <Card.Cover style={styles.cardCover} resizeMode='stretch'
+                    source={{ uri: item.get('image') }} />
+            </Card>
+            {handelDeleteBtn()}
+        </Pressable>
     )
 }
