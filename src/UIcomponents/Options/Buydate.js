@@ -90,7 +90,17 @@ function Buydate({ temporaryClothing,ClothesActions, ...rest }) {
 
         setYearVisible(!isVisibleYear);
         let splitYear = String(year).split('').splice(2).join('');
-        ClothesActions.setTemporaryClothing(temporaryClothing.set('buydate',`${splitYear}${month}`))
+        var changedMonth;
+
+        if(month<10){
+            changedMonth=`0${month}`
+        }
+
+        else {
+            changedMonth = month;
+        }
+        let buydate=Number(`${splitYear}${changedMonth}`);
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('buydate',buydate))
         
     }
     function showMonth() {
@@ -106,7 +116,8 @@ function Buydate({ temporaryClothing,ClothesActions, ...rest }) {
             changedMonth = month;
         }
         
-        ClothesActions.setTemporaryClothing(temporaryClothing.set('buydate',`${splitYear}${changedMonth}`))
+        let buydate=Number(`${splitYear}${changedMonth}`);
+        ClothesActions.setTemporaryClothing(temporaryClothing.set('buydate',buydate))
     }
     
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import Accessories from './TabMenu/Accessories';
-import AllClothes from './TabMenu/AllClothes';
-import Clothes from './TabMenu/Clothes';
+import AllClothesContainer from './TabMenu/AllClothesContainer';
+import Clothing from './TabMenu/Clothing';
 import Shoe from './TabMenu/Shoe';
 import ETC from './TabMenu/ETC';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -15,8 +15,17 @@ const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
 function Main({ navigation }) {
 
-    // THINK: navigation 객체를 사용하여 현재 위치 파악 
+    /* 
+        TODO>
+        
+        서버에서 전체 의류 데이터를 받으면 
+        CLOTHING, SHOES, ACC 로 분류한다. 
 
+    */
+
+    function moveToAddItems() {
+        navigation.navigate('AddItemsContainer')
+    }
 
 
     return (
@@ -26,7 +35,7 @@ function Main({ navigation }) {
                 initialRouteName="AllClothes"
                 activeColor="white"
             >
-                <Tab.Screen name="AllClothes" component={AllClothes}
+                <Tab.Screen name="AllClothes" component={AllClothesContainer}
                     options={{
                         tabBarLabel: 'AllClothes',
                         // Tab.Navigator 에서 설정한 color 를 상속받기 위함 
@@ -35,9 +44,9 @@ function Main({ navigation }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Clothes" component={Clothes}
+                <Tab.Screen name="Clothing" component={Clothing}
                     options={{
-                        tabBarLabel: 'Clothes',
+                        tabBarLabel: 'Clothing',
                         tabBarIcon: ({ color }) => (
                             <FontAwesome5Icons name="tshirt" color={color} size={20} />
                         ),
@@ -69,7 +78,7 @@ function Main({ navigation }) {
                     }}
                 />
             </Tab.Navigator>
-            <AddButton onPress={() => { navigation.navigate('AddItemsContainer') }} />
+            <AddButton onPress={moveToAddItems} />
         </>
     );
 }
