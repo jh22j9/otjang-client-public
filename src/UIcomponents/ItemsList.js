@@ -2,7 +2,7 @@ import React from 'react';
 import { View, FlatList, StyleSheet, Dimensions } from 'react-native';
 import { Title } from 'react-native-paper';
 import Item from './Item'
-
+import { Map, List } from 'immutable';
 const styles = StyleSheet.create({
     title: {
 
@@ -19,23 +19,33 @@ export default function ItemsList({ title, items, ...rest }) {
   title ( ex> clothing, shoe 등 )
   
       */
-    function renderItem({ item }) {
+    /* 
+    THINK
+    옷 터치해서 수정할 때 immutable js 사용해야 하니 
+    넘겨줄 때 clothes 로 넘겨줘야 함 
+
+    */
+    function renderItem({ item, index }) {
+
+
         // 여기서 Item component import 해서 리턴 
         return (
-            <Item uri={item.uri} />
+            <Item item={Map(item)} index={index} />
         );
     }
 
 
     return (
         <View>
-            <Title style={styles.title}>{`${title} (${items.length})`}</Title>
+            <Title style={styles.title}>{`${title} (${items.toJS().length})`}</Title>
             <FlatList
                 horizontal={true}
-                data={items}
+                data={items.toJS()}
                 renderItem={renderItem}
                 {...rest}
-                keyExtractor={item => item.id}
+                keyExtractor={(item, index) => {
+                    return (String(index))
+                }}
             />
 
         </View>)

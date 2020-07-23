@@ -14,6 +14,7 @@ import Logo from './src/Logo/Logo'
 import SignIn from './src/SignIn/SignIn'
 import SignUp from './src/SignUp/SignUp'
 import Main from './src/Main/Main'
+import MainContainer from './src/Main/MainContainer';
 import AddItems from './src/AddItems/AddItems'
 import AddItemsContainer from './src/AddItems/AddItemsContainer'
 import ItemInfo from './src/ItemInfo/ItemInfo'
@@ -21,6 +22,7 @@ import EditItem from './src/EditItem/EditItem'
 import Statistics from './src/Statistics/Statistics'
 import UserInfo from './src/UserInfo/UserInfo'
 import Setting from './src/Setting/Setting'
+import AllClothesContainer from './src/Main/TabMenu/AllClothesContainer'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -65,6 +67,8 @@ function App() {
             <Stack.Screen name="Statistics" component={Statistics} />
             <Stack.Screen name="UserInfo" component={UserInfo} />
             <Stack.Screen name="Setting" component={Setting} />
+            <Stack.Screen name='AllClothesContainer' component={AllClothesContainer} />
+            <Stack.Screen name='MainContainer' component={MainContainer} />
           </Stack.Navigator>
         </NavigationContainer >
       </PaperProvider>

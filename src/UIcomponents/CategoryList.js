@@ -27,8 +27,6 @@ const styles = StyleSheet.create({
 
 export default function CategoryList({ temporaryClothing, ClothesActions,...rest }) {
 
-
-
     function touchClothing() {
         // state 변경 
         const clothingObject = { categoryValue: 'clothing', clothing: true, Shoes: false, Accessories: false }
