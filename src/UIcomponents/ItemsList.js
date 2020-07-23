@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 
     },
 });
-export default function ItemsList({ title, items, ...rest }) {
+export default function ItemsList({ navigation, title, items, ClothesActions, ...rest }) {
 
     /*   
   받을 것 (parameter)
@@ -30,7 +30,8 @@ export default function ItemsList({ title, items, ...rest }) {
 
         // 여기서 Item component import 해서 리턴 
         return (
-            <Item item={Map(item)} index={index} />
+            <Item item={Map(item)} index={index}
+                ClothesActions={ClothesActions} navigation={navigation} />
         );
     }
 
