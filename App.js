@@ -32,6 +32,8 @@ import { createLogger } from 'redux-logger';
 import ReduxThunk from 'redux-thunk';
 import store from './store';
 
+import SplashScreen from 'react-native-splash-screen';
+
 const Stack = createStackNavigator();
 const theme = {
   ...DefaultTheme,
@@ -42,6 +44,12 @@ const theme = {
 };
 
 function App() {
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 3000);
+  }, [])
 
   return (
     <Provider store={store}>

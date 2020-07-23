@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, AsyncStorage, Alert } from 'react-native';
 import { Title } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
+
+import axios from 'axios';
 
 const styles = StyleSheet.create({
     container: {
@@ -25,10 +27,26 @@ const styles = StyleSheet.create({
 
 })
 
-
 function SignIn({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+
+    const handleSignIn = (email, password) => {
+        axios.post('http://54.180.149.177:5000/user/signin', {
+            email: email,
+            password: password
+        }).then(res => {
+            if (res.status === 200) {
+                console.log(res.data);
+                let token = res.data.token;
+                AsyncStorage.setItem("TOKEN", JSON.stringify(token));
+                navigation.navigate('Main');
+            }
+        }).catch(err => {
+            console.log(err)
+            Alert.alert("유효하지 않은 회원입니다.");
+        })
+    };
 
     return (
         <View style={styles.container} >
@@ -49,7 +67,7 @@ function SignIn({ navigation }) {
                 title='Sign In'
                 modeValue='contained'
                 labelStyle={styles.loginButtonLabel}
-                onPress={() => { navigation.navigate('MainContainer') }}
+                onPress={() => handleSignIn(email, password)}
             />
             <FormButton
                 title='Sign Up'

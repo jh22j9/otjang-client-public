@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { Title, IconButton } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
 // import { Button } from 'react-native-elements';
+
+import axios from 'axios';
 
 const styles = StyleSheet.create({
     container: {
@@ -11,7 +13,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         justifyContent: 'center',
         alignItems: 'center'
-
     },
     titleText: {
         fontSize: 24,
@@ -23,12 +24,27 @@ const styles = StyleSheet.create({
     navButtonText: {
         fontSize: 16
     }
-
 })
 
 function SignUp({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+
+    const handleSignUp = (email, password) => {
+        axios.post('http://54.180.149.177:5000/user/signup', {
+            email: email,
+            password: password
+        }).then(res => {
+            console.log(res.data)
+            if (res.status === 200) {
+                Alert.alert("회원가입이 완료되었습니다.")
+                navigation.navigate('SignIn')
+            }
+        }).catch(err => {
+            console.log(err)
+            Alert.alert("이미 가입한 회원입니다.")
+        })
+    };
 
     return (
         <View style={styles.container} >
@@ -49,8 +65,9 @@ function SignUp({ navigation }) {
                 title='Sign Up'
                 modeValue='contained'
                 labelStyle={styles.signUpButtonLabel}
-
+                onPress={() => handleSignUp(email, password)}
             />
+
             <FormButton
                 title='go to Sign In'
                 icon='keyboard-backspace'
