@@ -21,14 +21,23 @@ const styles = StyleSheet.create({
     },
 });
 
-function AllClothes() {
+function AllClothes({ navigation, clothing, shoes, accessories, temporaryClothing, ClothesActions, }) {
 
-    console.log('dummyData', dummyData);
+
+    /* 
+    TODO: CLOTHES, SHOES ACC 분류하여 ITEMLIST 에 각각 넣어주어야 함 
+    
+    THINK 
+    상태를 각각 따로 분리해야 하나? 
+
+    1> 서버에서 데이터를 받은 후 카테고리에 따라 분류 한 후 넘겨준다. 
+
+    */
     return (
         <View style={styles.container}>
-            <ItemsList title='Clothes' items={dummyData} />
-            <ItemsList title='Shoes' items={dummyData} />
-            <ItemsList title='Accessories' items={dummyData} />
+            <ItemsList title='Clothing' items={clothing} temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <ItemsList title='Shoes' items={shoes} temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <ItemsList title='Accessories' items={accessories} temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
         </View>
     );
 }

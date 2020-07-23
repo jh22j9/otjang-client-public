@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
 
-function Clothes() {
+function Clothing() {
     return (
         <View style={{
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            <Text>Clothes화면</Text>
+            <Text>Clothing화면</Text>
         </View>
     );
 }
 
-export default Clothes;
+export default Clothing;
