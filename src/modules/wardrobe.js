@@ -149,9 +149,27 @@ export default handleActions({
      */
     [REMOVE_CLOTHES]: (state, action) => {
 
-        console.log('REMOVE_CLOTHES', clothes);
-        const clothes = state.get('clothes');
-        return state.set('clothes', clothes.pop());
+        /* THINK 
+        PAYLOAD 로 INDEX 를 받아야 함 
+        아이템 추가 처럼 카테고리 값에 따라 SPLICE 한것을 STATE 에 반영하면 됨 
+        */
+        const index = action.payload.index;
+        const item = action.payload.item;
+        const clothing = state.get('clothing');
+        const shoes = state.get('shoes');
+        const accessories = state.get('accessories');
+        const category = item.get('category').get('categoryValue');
+        if (category === 'clothing') {
+            return state.set('clothing', clothing.splice(index, 1))
+        }
+
+        else if (category === 'shoes') {
+            return state.set('shoes', shoes.splice(index, 1))
+        }
+
+        else if (category === 'accessories') {
+            return state.set('accessories', accessories.splice(index, 1))
+        }
     },
 
     /* THINK
