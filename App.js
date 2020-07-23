@@ -23,13 +23,9 @@ import Statistics from './src/Statistics/Statistics'
 import UserInfo from './src/UserInfo/UserInfo'
 import Setting from './src/Setting/Setting'
 import AllClothesContainer from './src/Main/TabMenu/AllClothesContainer'
+import Item from './src/UIcomponents/Item'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import reducers from './src/modules';
-import { composeWithDevTools } from 'redux-devtools-extension'
-import { createLogger } from 'redux-logger';
-import ReduxThunk from 'redux-thunk';
 import store from './store';
 
 import SplashScreen from 'react-native-splash-screen';
@@ -55,7 +51,7 @@ function App() {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          < Stack.Navigator initialRouteName="Logo">
+          < Stack.Navigator initialRouteName="MainContainer">
             <Stack.Screen name="Logo" component={Logo} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
@@ -69,6 +65,7 @@ function App() {
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name='AllClothesContainer' component={AllClothesContainer} />
             <Stack.Screen name='MainContainer' component={MainContainer} />
+            <Stack.Screen name='Item' component={Item} />
           </Stack.Navigator>
         </NavigationContainer >
       </PaperProvider>
