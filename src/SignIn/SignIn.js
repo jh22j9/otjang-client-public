@@ -49,7 +49,7 @@ function SignIn({ navigation }) {
                 title='Sign In'
                 modeValue='contained'
                 labelStyle={styles.loginButtonLabel}
-                onPress={() => { navigation.navigate('Main') }}
+                onPress={() => { navigation.navigate('MainContainer') }}
             />
             <FormButton
                 title='Sign Up'

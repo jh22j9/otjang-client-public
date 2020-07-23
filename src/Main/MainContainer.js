@@ -1,4 +1,4 @@
-import AddItems from './AddItems';
+import Main from './Main';
 import * as clothesActions from '../modules/wardrobe';
 import * as serverActions from '../modules/server'
 import { connect } from 'react-redux';
@@ -20,10 +20,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 })
 
-const AddItemsContainer = connect(
+const MainContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(AddItems)
+)(Main)
 
 
-export default AddItemsContainer;
+export default MainContainer;
