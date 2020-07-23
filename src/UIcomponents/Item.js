@@ -16,13 +16,14 @@ const styles = StyleSheet.create({
 }
 );
 
-export default function Item({ uri, title = '제목', ...rest }) {
+export default function Item({ item, index, ...rest }) {
+
 
     return (
-        <Card style={styles.card} {...rest}
+        <Card style={styles.card} {...rest}>
 
-        >
-            <Card.Cover style={styles.cardCover} resizeMode='stretch' source={{ uri: uri }} />
+            <Card.Cover style={styles.cardCover} resizeMode='stretch'
+                source={{ uri: item.get('image') }} />
 
         </Card>
     )

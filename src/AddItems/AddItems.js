@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
 })
 
 
-function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActions }) {
+function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActions, ServerActions }) {
 
     /*  
     BUG: 권한 문제 해결, but 이미지를 출력하지 못하고 있음 
@@ -63,8 +63,6 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
     저장 버튼 누르면 현재 의류의 상태 객체를 서버에 보내고 id 를 받아서 저장 
 
     */
-    const [expanded, setExpanded] = React.useState(false);
-
 
     function saveClothes() {
 
@@ -82,7 +80,7 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
             
             전부 완료되면 해당 화면 stack 에서 제거 
 
-            THINK: navigation 객체 어떻게 받음? 
+        
             */
 
             navigation.goBack();
@@ -101,8 +99,7 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
              > 받은 응답으로 ID UPDATE 
              
 
-            THINK: navigation 객체 어떻게 받음? 
-
+      
              전부 완료되면 해당 화면 stack 에서 제거 
              */
 
