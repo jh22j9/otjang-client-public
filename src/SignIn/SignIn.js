@@ -40,7 +40,7 @@ function SignIn({ navigation }) {
                 console.log(res.data);
                 let token = res.data.token;
                 AsyncStorage.setItem("TOKEN", JSON.stringify(token));
-                navigation.navigate('Main');
+                navigation.navigate('MainContainer');
             }
         }).catch(err => {
             console.log(err)
