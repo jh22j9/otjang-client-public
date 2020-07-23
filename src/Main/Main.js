@@ -10,10 +10,27 @@ import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import AddButton from '../UIcomponents/AddButton'
-
+import { Map, List } from 'immutable';
 const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
-function Main({ navigation }) {
+
+
+const emptyClothing = Map({
+    item_id: null,
+    image: null,
+    type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
+    category: Map({ categoryValue: null, clothing: false, Shoes: false, Accessories: false }),
+    buydate: null,
+    price: null,
+    brand: null,
+    storage: null,
+    season: Map({
+        seasonArray: List([null, null, null, null]),
+        spring: false, summer: false, fall: false, winter: false
+    })
+})
+
+function Main({ navigation, ClothesActions }) {
 
     /* 
         TODO>
@@ -24,6 +41,7 @@ function Main({ navigation }) {
     */
 
     function moveToAddItems() {
+        ClothesActions.setTemporaryClothing(emptyClothing);
         navigation.navigate('AddItemsContainer')
     }
 
