@@ -16,12 +16,12 @@ const styles = StyleSheet.create({
 }
 );
 
-export default function Item({ item, index, ...rest }) {
+export default function Item({ navigation, item, index, ClothesActions, ...rest }) {
 
     function setClickedItem() {
 
         ClothesActions.setTemporaryClothing(item);
-        navigation.navigate('ItemInfo')
+        navigation.navigate('ItemInfoContainer')
     }
 
     return (
