@@ -63,6 +63,7 @@ function App() {
             <Stack.Screen name="AddItemsContainer" component={AddItemsContainer} />
             <Stack.Screen name="AddItems" component={AddItems} />
             <Stack.Screen name="ItemInfo" component={ItemInfo} />
+            <Stack.Screen name="EditItemContainer" component={EditItemContainer} />
             <Stack.Screen name="EditItem" component={EditItem} />
             <Stack.Screen name="Statistics" component={Statistics} />
             <Stack.Screen name="UserInfo" component={UserInfo} />
