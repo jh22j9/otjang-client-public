@@ -18,7 +18,9 @@ import MainContainer from './src/Main/MainContainer';
 import AddItems from './src/AddItems/AddItems'
 import AddItemsContainer from './src/AddItems/AddItemsContainer'
 import ItemInfo from './src/ItemInfo/ItemInfo'
+import ItemInfoContainer from './src/ItemInfo/ItemInfoContainer'
 import EditItem from './src/EditItem/EditItem'
+import EditItemContainer from './src/EditItem/EditItemContainer'
 import Statistics from './src/Statistics/Statistics'
 import UserInfo from './src/UserInfo/UserInfo'
 import Setting from './src/Setting/Setting'
@@ -59,6 +61,7 @@ function App() {
             <Stack.Screen name="AddItemsContainer" component={AddItemsContainer} />
             <Stack.Screen name="AddItems" component={AddItems} />
             <Stack.Screen name="ItemInfo" component={ItemInfo} />
+            <Stack.Screen name="ItemInfoContainer" component={ItemInfoContainer} />
             <Stack.Screen name="EditItemContainer" component={EditItemContainer} />
             <Stack.Screen name="EditItem" component={EditItem} />
             <Stack.Screen name="Statistics" component={Statistics} />
