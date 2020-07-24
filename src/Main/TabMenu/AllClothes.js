@@ -1,16 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
 import ItemsList from '../../UIcomponents/ItemsList'
-var dummyData = [];
 const { width, height } = Dimensions.get('screen');
-const dogUri = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjY4XAol3KxWGXJLUG3SwILG-M7NeyoxPbOA&usqp=CAU'
-
-for (let i = 0; i < 20; i++) {
-    var dummyObj = {}
-    dummyObj['uri'] = dogUri;
-    dummyObj['id'] = `아이디:${i}`;
-    dummyData.push(dummyObj);
-}
 
 const styles = StyleSheet.create({
     container: {
@@ -35,9 +26,15 @@ function AllClothes({ navigation, clothing, shoes, accessories, temporaryClothin
     */
     return (
         <View style={styles.container}>
-            <ItemsList title='Clothing' items={clothing} temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
-            <ItemsList title='Shoes' items={shoes} temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
-            <ItemsList title='Accessories' items={accessories} temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <ItemsList title='Clothing' items={clothing} temporaryClothing={temporaryClothing}
+                ClothesActions={ClothesActions}
+                navigation={navigation} />
+            <ItemsList title='Shoes' items={shoes} temporaryClothing={temporaryClothing}
+                ClothesActions={ClothesActions}
+                navigation={navigation} />
+            <ItemsList title='Accessories' items={accessories} temporaryClothing={temporaryClothing}
+                ClothesActions={ClothesActions}
+                navigation={navigation} />
         </View>
     );
 }
