@@ -21,7 +21,7 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
     function setClickedItem() {
 
         ClothesActions.setTemporaryClothing(item);
-        navigation.navigate('ItemInfoContainer')
+        navigation.navigate('ItemInfoContainer', { index: index })
     }
 
     return (
