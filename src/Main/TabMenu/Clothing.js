@@ -1,14 +1,26 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
+import ItemsList from '../../UIcomponents/ItemsList'
+const { width, height } = Dimensions.get('screen');
 
-function Clothing() {
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: "flex-start",
+        padding: 25
+        // height: '100%'
+    },
+});
+
+function Clothing({ navigation, clothing, ClothesActions, }) {
+
     return (
-        <View style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            <Text>Clothing화면</Text>
+        <View style={styles.container}>
+            <ItemsList title='Clothing' items={clothing}
+                ClothesActions={ClothesActions}
+                navigation={navigation} />
         </View>
     );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import Accessories from './TabMenu/Accessories';
 import AllClothesContainer from './TabMenu/AllClothesContainer';
-import Clothing from './TabMenu/Clothing';
+import ClothingContainer from './TabMenu/ClothingContainer';
 import Shoe from './TabMenu/Shoe';
 import ETC from './TabMenu/ETC';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -62,7 +62,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Clothing" component={Clothing}
+                <Tab.Screen name="Clothing" component={ClothingContainer}
                     options={{
                         tabBarLabel: 'Clothing',
                         tabBarIcon: ({ color }) => (
