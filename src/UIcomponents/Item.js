@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Dimensions, Image, View } from 'react-native';
+import { StyleSheet, Dimensions, Image, View, Pressable } from 'react-native';
 import { Card, Title } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -21,11 +22,11 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
 
     const [isVisibleDeleteBtn, setDeleteBtn] = React.useState(false);
 
-   function showDeleteBtn() {
+    function showDeleteBtn() {
 
         setDeleteBtn(true)
     }
-  function hideDeleteBtn() {
+    function hideDeleteBtn() {
         setDeleteBtn(false)
     }
 
@@ -56,13 +57,13 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
     }
 
     return (
-             <Pressable style={styles.cardContainer} onPress={setClickedItem} {...rest} onLongPress={showDeleteBtn}>
+        <Pressable style={styles.cardContainer} onPress={setClickedItem} {...rest} onLongPress={showDeleteBtn}>
             <Card style={styles.card} >
                 <Card.Cover style={styles.cardCover} resizeMode='stretch'
                     source={{ uri: item.get('image') }} />
             </Card>
             {handelDeleteBtn()}
         </Pressable>
-  
+
     )
 }
