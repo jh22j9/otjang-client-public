@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        backgroundColor: 'yellow',
     },
     selectionContainer: {
         display: 'flex',
@@ -40,7 +39,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end',
         alignItems: 'center',
-        backgroundColor: 'green',
         marginRight: 20
 
     },
@@ -55,7 +53,6 @@ const styles = StyleSheet.create({
         flex: 7,
         flexDirection: 'row',
         justifyContent: 'center',
-        backgroundColor: '#c8c8c8',
 
     }
 });
