@@ -32,7 +32,7 @@ function SignIn({ navigation }) {
     const [password, setPassword] = React.useState('');
 
     const handleSignIn = (email, password) => {
-        axios.post('http://54.180.149.177:5000/user/signin', {
+        axios.post('http://18.218.160.166:5000/user/signin', {
             email: email,
             password: password
         }).then(res => {
