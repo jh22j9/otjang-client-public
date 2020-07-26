@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
-import Accessories from './TabMenu/Accessories';
-import AllClothesContainer from './TabMenu/AllClothesContainer';
-import Clothing from './TabMenu/Clothing';
-import Shoe from './TabMenu/Shoe';
-import ETC from './TabMenu/ETC';
+import Accessories from './BottomTab/Accessories';
+import AllClothesContainer from './BottomTab/AllClothesContainer';
+import ClothingContainer from './BottomTab/ClothingContainer';
+import ShoeContainer from './BottomTab/ShoeContainer';
+import BagAccContainer from './BottomTab/BagAccContainer';
+import ETC from './BottomTab/ETC';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -18,7 +19,7 @@ const Tab = createMaterialBottomTabNavigator();
 const emptyClothing = Map({
     item_id: null,
     image: null,
-    type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
+    type: Map({ typeValue: null, top: false, bottom: false, dress: false }),
     category: Map({ categoryValue: null, clothing: false, Shoes: false, Accessories: false }),
     buydate: null,
     price: null,
@@ -62,7 +63,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Clothing" component={Clothing}
+                <Tab.Screen name="Clothing" component={ClothingContainer}
                     options={{
                         tabBarLabel: 'Clothing',
                         tabBarIcon: ({ color }) => (
@@ -70,7 +71,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Shoe" component={Shoe}
+                <Tab.Screen name="Shoe" component={ShoeContainer}
                     options={{
                         tabBarLabel: 'Shoe',
                         tabBarIcon: ({ color }) => (
@@ -78,7 +79,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Accessories" component={Accessories}
+                <Tab.Screen name="Accessories" component={BagAccContainer}
                     options={{
                         tabBarLabel: 'Accessories',
                         tabBarIcon: ({ color }) => (
