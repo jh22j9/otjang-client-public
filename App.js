@@ -25,6 +25,11 @@ import Statistics from './src/Statistics/Statistics'
 import UserInfo from './src/UserInfo/UserInfo'
 import Setting from './src/Setting/Setting'
 import AllClothesContainer from './src/Main/TabMenu/AllClothesContainer'
+import ClothingContainer from './src/Main/TabMenu/Clothing'
+import ShoeContainer from './src/Main/TabMenu/ShoeContainer'
+import BagAccContainer from './src/Main/TabMenu/BagAccContainer'
+
+
 import Item from './src/UIcomponents/Item'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from "react-redux";
@@ -67,8 +72,11 @@ function App() {
             <Stack.Screen name="Statistics" component={Statistics} />
             <Stack.Screen name="UserInfo" component={UserInfo} />
             <Stack.Screen name="Setting" component={Setting} />
-            <Stack.Screen name='AllClothesContainer' component={AllClothesContainer} />
             <Stack.Screen name='MainContainer' component={MainContainer} />
+            <Stack.Screen name='AllClothesContainer' component={AllClothesContainer} />
+            <Stack.Screen name='ClothingContainer' component={ClothingContainer} />
+            <Stack.Screen name='ShoeContainer' component={ShoeContainer} />
+            <Stack.Screen name='BagAccContainer' component={BagAccContainer} />
             <Stack.Screen name='Item' component={Item} />
           </Stack.Navigator>
         </NavigationContainer>
