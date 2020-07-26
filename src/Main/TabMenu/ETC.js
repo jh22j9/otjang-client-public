@@ -1,16 +1,20 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
+import ItemsList from '../../UIcomponents/ItemsList'
+const { width, height } = Dimensions.get('screen');
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+});
 
 function ETC() {
-    return (
-        <View style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            <Text>ETC화면</Text>
-        </View>
-    );
+
+  return (
+    <Text>More</Text>
+  );
 }
 
 export default ETC;

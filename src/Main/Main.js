@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import Accessories from './TabMenu/Accessories';
 import AllClothesContainer from './TabMenu/AllClothesContainer';
 import ClothingContainer from './TabMenu/ClothingContainer';
-import Shoe from './TabMenu/Shoe';
+import ShoeContainer from './TabMenu/ShoeContainer';
+import BagAccContainer from './TabMenu/BagAccContainer';
 import ETC from './TabMenu/ETC';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
@@ -11,7 +12,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import AddButton from '../UIcomponents/AddButton'
 import { Map, List } from 'immutable';
-import ShoeContainer from './TabMenu/ShoeContainer';
 const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
 
@@ -79,7 +79,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Accessories" component={Accessories}
+                <Tab.Screen name="Accessories" component={BagAccContainer}
                     options={{
                         tabBarLabel: 'Accessories',
                         tabBarIcon: ({ color }) => (
