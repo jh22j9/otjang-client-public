@@ -44,7 +44,7 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
     */
 
     /* 
-    THINK 삭제기능 구현 
+    update 용 
 
     
     
