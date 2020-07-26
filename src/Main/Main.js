@@ -11,6 +11,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import AddButton from '../UIcomponents/AddButton'
 import { Map, List } from 'immutable';
+import ShoeContainer from './TabMenu/ShoeContainer';
 const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
 
@@ -70,7 +71,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Shoe" component={Shoe}
+                <Tab.Screen name="Shoe" component={ShoeContainer}
                     options={{
                         tabBarLabel: 'Shoe',
                         tabBarIcon: ({ color }) => (
