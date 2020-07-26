@@ -19,7 +19,7 @@ const Tab = createMaterialBottomTabNavigator();
 const emptyClothing = Map({
     item_id: null,
     image: null,
-    type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
+    type: Map({ typeValue: null, top: false, bottom: false, dress: false }),
     category: Map({ categoryValue: null, clothing: false, Shoes: false, Accessories: false }),
     buydate: null,
     price: null,
