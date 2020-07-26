@@ -1,20 +1,29 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import ItemsList from '../../UIcomponents/ItemsList'
-const { width, height } = Dimensions.get('screen');
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-});
+import { View, Text, Pressable } from 'react-native';
+import OcticonsIcon from 'react-native-vector-icons/Octicons';
+import { useNavigation } from '@react-navigation/native';
+function ETC(props) {
 
-function ETC() {
+    const navigation = useNavigation();
 
-  return (
-    <Text>More</Text>
-  );
+    function moveToStatistics() {
+        navigation.navigate('Statistics')
+    }
+    return (
+        <View style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center'
+        }}>
+            <Pressable onPress={moveToStatistics} >
+                <OcticonsIcon name='graph' size={100} />
+            </Pressable>
+
+            <Text>ETC화면</Text>
+        </View>
+    );
+
 }
 
 export default ETC;

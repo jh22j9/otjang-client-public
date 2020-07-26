@@ -6,8 +6,6 @@ import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state) => ({
 
-    user: state.wardrobe.get('user'),
-    clothes: state.wardrobe.get('clothes'),
     clothing: state.wardrobe.get('clothing'),
     shoes: state.wardrobe.get('shoes'),
     accessories: state.wardrobe.get('accessories'),

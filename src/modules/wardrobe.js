@@ -9,23 +9,6 @@ const dog1 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjY4XAol3K
 const dog2 = 'https://i.insider.com/5df126b679d7570ad2044f3e?width=1100&format=jpeg&auto=webp'
 const dog3 = 'https://www.thesprucepets.com/thmb/kV_cfc9P4QWe-klxZ8y--awxvY4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/adorable-white-pomeranian-puppy-spitz-921029690-5c8be25d46e0fb000172effe.jpg'
 const initialState = Map({
-    user: Map({ email: null, password: null }),
-    clothes: List([
-        Map({
-            item_id: 1,
-            image: dog1,
-            type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
-            category: Map({ categoryValue: null, clothing: false, Shoes: false, Accessories: false }),
-            buydate: null,
-            price: null,
-            brand: null,
-            storage: null,
-            season: Map({
-                seasonArray: List([null, null, null, null]),
-                spring: false, summer: false, fall: false, winter: false
-            })
-        }),
-    ]),
     clothing: List([
         Map({
             item_id: 18,
