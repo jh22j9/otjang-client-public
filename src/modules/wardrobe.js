@@ -14,7 +14,7 @@ const initialState = Map({
         Map({
             item_id: 1,
             image: dog1,
-            type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
+            type: Map({ typeValue: null, top: true, bottom: false, socks: false }),
             category: Map({ categoryValue: null, clothing: false, Shoes: false, Accessories: false }),
             buydate: null,
             price: null,
@@ -30,7 +30,7 @@ const initialState = Map({
         Map({
             item_id: 18,
             image: dog1,
-            type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
+            type: Map({ typeValue: null, top: true, bottom: false, socks: false }),
             category: Map({ categoryValue: 'clothing', clothing: false, Shoes: false, Accessories: false }),
             buydate: null,
             price: null,
