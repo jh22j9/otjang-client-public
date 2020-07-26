@@ -14,15 +14,17 @@ const styles = StyleSheet.create({
     },
 });
 
-function Clothing({ navigation, clothing, ClothesActions, }) {
+function BagAcc({ navigation, accessories, ClothesActions, }) {
 
     return (
         <View style={styles.container}>
-            <ItemsList title='Clothing' items={clothing}
+            <ItemsList
+                title='Accessories'
+                items={accessories}
                 ClothesActions={ClothesActions}
                 navigation={navigation} />
         </View>
     );
 }
 
-export default Clothing;
+export default BagAcc;

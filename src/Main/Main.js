@@ -2,8 +2,9 @@ import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import Accessories from './TabMenu/Accessories';
 import AllClothesContainer from './TabMenu/AllClothesContainer';
-import Clothing from './TabMenu/Clothing';
-import Shoe from './TabMenu/Shoe';
+import ClothingContainer from './TabMenu/ClothingContainer';
+import ShoeContainer from './TabMenu/ShoeContainer';
+import BagAccContainer from './TabMenu/BagAccContainer';
 import ETC from './TabMenu/ETC';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
@@ -62,7 +63,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Clothing" component={Clothing}
+                <Tab.Screen name="Clothing" component={ClothingContainer}
                     options={{
                         tabBarLabel: 'Clothing',
                         tabBarIcon: ({ color }) => (
@@ -70,7 +71,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Shoe" component={Shoe}
+                <Tab.Screen name="Shoe" component={ShoeContainer}
                     options={{
                         tabBarLabel: 'Shoe',
                         tabBarIcon: ({ color }) => (
@@ -78,7 +79,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Accessories" component={Accessories}
+                <Tab.Screen name="Accessories" component={BagAccContainer}
                     options={{
                         tabBarLabel: 'Accessories',
                         tabBarIcon: ({ color }) => (
