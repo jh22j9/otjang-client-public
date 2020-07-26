@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
-import Accessories from './TabMenu/Accessories';
-import AllClothesContainer from './TabMenu/AllClothesContainer';
-import ClothingContainer from './TabMenu/ClothingContainer';
-import ShoeContainer from './TabMenu/ShoeContainer';
-import BagAccContainer from './TabMenu/BagAccContainer';
-import ETC from './TabMenu/ETC';
+import Accessories from './BottomTab/Accessories';
+import AllClothesContainer from './BottomTab/AllClothesContainer';
+import ClothingContainer from './BottomTab/ClothingContainer';
+import ShoeContainer from './BottomTab/ShoeContainer';
+import BagAccContainer from './BottomTab/BagAccContainer';
+import ETC from './BottomTab/ETC';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -19,7 +19,7 @@ const Tab = createMaterialBottomTabNavigator();
 const emptyClothing = Map({
     item_id: null,
     image: null,
-    type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
+    type: Map({ typeValue: null, top: false, bottom: false, dress: false }),
     category: Map({ categoryValue: null, clothing: false, Shoes: false, Accessories: false }),
     buydate: null,
     price: null,
