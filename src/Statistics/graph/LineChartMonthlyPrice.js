@@ -10,21 +10,24 @@ export default function LineChartMonthlyPrice() {
         THINK 도메인은 실수좌표계 이다. 
         
     */
-    const [monthDomian, setMonthDomain] = React.useState({ x: [0.5, 6.5] });
+    const [monthDomain, setMonthDomain] = React.useState({ x: [0.5, 6.5], y: [0, 900000] });
 
 
     function handleMonthDomain(domain) {
 
+        console.log('domain', domain);
+        console.log('monthDomain', monthDomain);
         setMonthDomain(domain)
     }
 
 
-    var lineData = utils.clothing;
+
+    var lineData = utils.getAnnualPurchaseData();
     return (<VictoryChart width={400} theme={VictoryTheme.material}
 
         domainPadding={10} containerComponent={<VictoryZoomContainer
-            zoomDimension="x"
-            zoomDomain={monthDomian}
+            // zoomDimension='x'
+            zoomDomain={monthDomain}
             onZoomDomainChange={handleMonthDomain}
         />}
     >
@@ -40,13 +43,14 @@ export default function LineChartMonthlyPrice() {
         <VictoryScatter data={lineData} x={utils.transformBuydate} y={'price'}
             size={5}
             style={{ data: { fill: "#c43a31" } }}
+            labels={({ datum }) => `${datum.price / 10000}만원`}
         />
         <VictoryAxis crossAxis
 
             domain={[1, 12]}
         />
         <VictoryAxis dependentAxis crossAxis
-
+            domain={[1, 10]}
             tickFormat={(data) => (`${data / 10000}만원`)}
         />
 

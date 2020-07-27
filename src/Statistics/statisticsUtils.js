@@ -11,6 +11,7 @@ export const totalAccessoriesPrice = getPrice(accessories);
 export const totalPrice = getPrice(clothes);
 
 var currentMonth = new Date().getMonth() + 1;
+
 export const currentYear = String(new Date().getFullYear()).split('').splice(2).join('')
 
 if (currentMonth < 10) {
@@ -18,7 +19,50 @@ if (currentMonth < 10) {
 }
 export const currentDate = `${currentYear}${currentMonth}`;
 
+/* export const monthlyPriceSum = [];
 
+
+for (let i = 1; i <= 12; i++) {
+
+    let monthlyPriceObject = { buydate: null, price: null }
+    if (i < 10) {
+        monthlyPriceObject.buydate = Number(`${currentYear}0${i}`);
+        monthlyPriceObject.price = getMonthlyPrice(clothes, Number(`${currentYear}0${i}`));
+        monthlyPriceSum.push(monthlyPriceObject)
+    }
+
+    else {
+        monthlyPriceObject.buydate = Number(`${currentYear}${i}`);
+        monthlyPriceObject.price = getMonthlyPrice(clothes, Number(`${currentYear}${i}`));
+        monthlyPriceSum.push(monthlyPriceObject)
+    }
+} */
+
+export function getAnnualPurchaseData() {
+
+    var monthlyPriceSum = [];
+
+
+    for (let i = 1; i <= 12; i++) {
+
+        let monthlyPriceObject = { buydate: null, price: null }
+        if (i < 10) {
+            monthlyPriceObject.buydate = Number(`${currentYear}0${i}`);
+            monthlyPriceObject.price = getMonthlyPrice(clothes, Number(`${currentYear}0${i}`));
+            monthlyPriceSum.push(monthlyPriceObject)
+        }
+
+        else {
+            monthlyPriceObject.buydate = Number(`${currentYear}${i}`);
+            monthlyPriceObject.price = getMonthlyPrice(clothes, Number(`${currentYear}${i}`));
+            monthlyPriceSum.push(monthlyPriceObject)
+        }
+    }
+
+
+    return monthlyPriceSum;
+
+}
 export function getPrice(clothesList) {
 
     var clothesListPrice = 0;
@@ -40,6 +84,16 @@ export function getMonthlyList(clothesList, buydate) {
 
     }
     return clothesList.filter(confirmMonth)
+
+}
+
+export function getMonthlyPrice(clothesList, buydate) {
+    /* 
+        THINK 
+        특정달에 해당하는 항목의 전체 금액을 리턴한다. 
+    */
+    return getPrice(getMonthlyList(clothesList, buydate))
+
 
 }
 export function getSeasonList(clothesList, season) {
