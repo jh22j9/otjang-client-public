@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     popupMenuContainer: {
-        flex: 1.5,
+        flex: 0.5,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-end',
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     },
 
     graphContainer: {
-        flex: 7,
+        flex: 8,
         flexDirection: 'row',
         justifyContent: 'center',
 
