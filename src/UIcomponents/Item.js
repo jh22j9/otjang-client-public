@@ -14,6 +14,14 @@ const styles = StyleSheet.create({
         width: width / 4,
         height: width / 4,
     },
+    buttonContainer: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+
+    }
+    ,
 }
 );
 
@@ -40,14 +48,14 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
 
     function handelDeleteBtn() {
         return (isVisibleDeleteBtn ?
-            <>
+            <View style={styles.buttonContainer}>
                 <Pressable style={styles.deleteButton} onPress={deleteItem}>
                     <Icon name="delete" size={26} />
                 </Pressable>
                 <Pressable style={styles.deleteButton} onPress={hideDeleteBtn}>
                     <Icon name="cancel" size={26} />
                 </Pressable>
-            </> : <></>)
+            </View> : <></>)
     }
 
 
