@@ -1,4 +1,4 @@
-import Sneakers from './Sneakers';
+import OtherAcc from './OtherAcc';
 import * as clothesActions from '../../../modules/wardrobe';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -6,21 +6,21 @@ import { bindActionCreators } from 'redux';
 const mapStateToProps = (state) => ({
 
   user: state.wardrobe.get('user'),
-  shoes: state.wardrobe.get('shoes'),
+  accessories: state.wardrobe.get('accessories'),
   temporaryClothing: state.wardrobe.get('temporaryClothing')
 
 })
 
 const mapDispatchToProps = (dispatch) => ({
 
-  ClothesActions: bindActionCreators(clothesActions, dispatch),
+  ClothesActions: bindActionCreators(clothesActions, dispatch)
 
 })
 
-const SneakersContainer = connect(
+const OtherAccContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Sneakers)
+)(OtherAcc)
 
 
-export default SneakersContainer;
+export default OtherAccContainer;

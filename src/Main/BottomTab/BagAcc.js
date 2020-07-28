@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import ItemsList from '../../UIcomponents/ItemsList'
+import BagContainer from '../TopTab/BagAccTab/BagContainer';
+import HeadContainer from '../TopTab/BagAccTab/HeadContainer';
+import OtherAccContainer from '../TopTab/BagAccTab/OtherAccContainer';
 const { width, height } = Dimensions.get('screen');
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+const Tab = createMaterialTopTabNavigator();
 
 const styles = StyleSheet.create({
     container: {
@@ -10,20 +14,20 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: "flex-start",
         padding: 25
-        // height: '100%'
     },
 });
 
-function BagAcc({ navigation, accessories, ClothesActions, }) {
+
+function BagAcc() {
 
     return (
-        <View style={styles.container}>
-            <ItemsList
-                title='Accessories'
-                items={accessories}
-                ClothesActions={ClothesActions}
-                navigation={navigation} />
-        </View>
+        <>
+            <Tab.Navigator>
+                <Tab.Screen name="💼" component={BagContainer} />
+                <Tab.Screen name="🧢" component={HeadContainer} />
+                <Tab.Screen name="💎⌚️🧤" component={OtherAccContainer} />
+            </Tab.Navigator>
+        </>
     );
 }
 

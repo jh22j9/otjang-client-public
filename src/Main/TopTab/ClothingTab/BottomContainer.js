@@ -1,5 +1,5 @@
 import Bottom from './Bottom';
-import * as clothesActions from '../../modules/wardrobe';
+import * as clothesActions from '../../../modules/wardrobe';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
