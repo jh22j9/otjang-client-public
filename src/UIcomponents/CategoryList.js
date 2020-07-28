@@ -29,17 +29,17 @@ export default function CategoryList({ temporaryClothing, ClothesActions,...rest
 
     function touchClothing() {
         // state 변경 
-        const clothingObject = { categoryValue: 'clothing', clothing: true, Shoes: false, Accessories: false }
+        const clothingObject = { categoryValue: 'clothing', clothing: true, shoes: false, accessories: false }
         ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(clothingObject)));
     }
 
     function touchShoe() {
-        const shoesObject = { categoryValue: 'shoes', clothing: false, Shoes: true, Accessories: false }
+        const shoesObject = { categoryValue: 'shoes', clothing: false, shoes: true, accessories: false }
         ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(shoesObject)));
     }
 
     function touchAccessories() {
-        const accessoriesObject = { categoryValue: 'accessories', clothing: false, Shoes: false, Accessories: true }
+        const accessoriesObject = { categoryValue: 'accessories', clothing: false, shoes: false, accessories: true }
         ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(accessoriesObject)));
     }
 

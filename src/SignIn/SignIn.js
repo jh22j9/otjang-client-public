@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, AsyncStorage, Alert } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Alert } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Title } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';

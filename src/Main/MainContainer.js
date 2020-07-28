@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 const mapStateToProps = (state) => ({
 
     temporaryClothing: state.wardrobe.get('temporaryClothing'),
+    wardrobe: state.wardrobe.toJS()
 
 })
 
