@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import ItemsList from '../../UIcomponents/ItemsList';
-import TopContainer from '../TopTab/TopContainer';
-import BottomContainer from '../TopTab/BottomContainer';
-// import DressContainer from '../TopTab/DressContainer';
+import TopContainer from '../TopTab/ClothingTab/TopContainer';
+import BottomContainer from '../TopTab/ClothingTab/BottomContainer';
+import OuterContainer from '../TopTab/ClothingTab/OuterContainer';
+import DressContainer from '../TopTab/ClothingTab/DressContainer';
 const { width, height } = Dimensions.get('screen');
-// npm install @react-navigation/material-top-tabs react-native-tab-view
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 const Tab = createMaterialTopTabNavigator();
 
@@ -21,14 +20,15 @@ const styles = StyleSheet.create({
 });
 
 
-function Clothing({ navigation, clothing, ClothesActions, }) {
+function Clothing({ navigation, clothing, ClothesActions }) {
 
     return (
         <>
             <Tab.Navigator>
                 <Tab.Screen name="👕" component={TopContainer} />
                 <Tab.Screen name="👖" component={BottomContainer} />
-                {/* <Tab.Screen name="👗" component={DressContainer} /> */}
+                <Tab.Screen name="🥼" component={OuterContainer} />
+                <Tab.Screen name="👗" component={DressContainer} />
             </Tab.Navigator>
         </>
     );

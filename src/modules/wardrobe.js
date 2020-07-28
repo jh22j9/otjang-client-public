@@ -23,15 +23,30 @@ export const initialState = Map({
         Map({
             item_id: 18,
             image: dog1,
-            type: Map({ typeValue: null, top: true, bottom: false, socks: false }),
-            category: Map({ categoryValue: 'clothing', clothing: true, shoes: false, accessories: false }),
+
+            category: Map({
+                categoryValue: 'clothing',
+                clothing: false,
+                shoes: false,
+                accessories: false
+            }),
+            type: Map({
+                typeValue: null,
+                top: true,
+                bottom: false,
+                outer: false,
+                dress: false
+            }),
             buydate: null,
             price: null,
             brand: null,
             storage: null,
             season: Map({
                 seasonArray: List([null, null, null, null]),
-                spring: false, summer: false, fall: false, winter: false
+                spring: false,
+                summer: false,
+                fall: false,
+                winter: false
             })
         }),
     ]),
@@ -39,15 +54,28 @@ export const initialState = Map({
         Map({
             item_id: 31,
             image: dog2,
-            type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
-            category: Map({ categoryValue: 'shoes', clothing: false, shoes: true, accessories: false }),
+            category: Map({
+                categoryValue: 'shoes',
+                clothing: false,
+                shoes: true,
+                accessories: false
+            }),
+            type: Map({
+                typeValue: null,
+                sneakers: false,
+                leather: true,
+                other: false
+            }),
             buydate: null,
             price: null,
             brand: null,
             storage: null,
             season: Map({
                 seasonArray: List([null, null, null, null]),
-                spring: false, summer: false, fall: false, winter: false
+                spring: false,
+                summer: false,
+                fall: false,
+                winter: false
             })
         }),
     ]),
@@ -55,30 +83,57 @@ export const initialState = Map({
         Map({
             item_id: 56,
             image: dog3,
-            type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
-            category: Map({ categoryValue: 'accessories', clothing: false, shoes: true, accessories: true }),
+            category: Map({
+                categoryValue: 'accessories',
+                clothing: false,
+                shoes: false,
+                accessories: false
+            }),
+            type: Map({
+                typeValue: null,
+                bag: false,
+                head: false,
+                other: false,
+            }),
             buydate: null,
             price: null,
             brand: null,
             storage: null,
             season: Map({
                 seasonArray: List([null, null, null, null]),
-                spring: false, summer: false, fall: false, winter: false
+                spring: false,
+                summer: false,
+                fall: false,
+                winter: false
             })
         }),
     ]),
     temporaryClothing: Map({
         item_id: null,
         image: null,
-        type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
-        category: Map({ categoryValue: null, clothing: false, shoes: true, accessories: false }),
+        category: Map({
+            categoryValue: null,
+            clothing: false,
+            shoes: false,
+            accessories: false
+        }),
+        type: Map({
+            typeValue: null,
+            top: false,
+            bottom: false,
+            outer: false,
+            dress: false
+        }),
         buydate: null,
         price: null,
         brand: null,
         storage: null,
         season: Map({
             seasonArray: List([null, null, null, null]),
-            spring: false, summer: false, fall: false, winter: false
+            spring: false,
+            summer: false,
+            fall: false,
+            winter: false
         })
     })
 

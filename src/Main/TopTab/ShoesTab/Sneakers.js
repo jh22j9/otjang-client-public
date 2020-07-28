@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import ItemsList from '../../UIcomponents/ItemsList'
+import ItemsList from '../../../UIcomponents/ItemsList'
 import { fromJS } from 'immutable';
+import { MaterialTopTabBar } from '@react-navigation/material-top-tabs';
+const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
@@ -14,15 +16,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function Top({ navigation, clothing, ClothesActions }) {
+function Sneakers({ navigation, shoes, ClothesActions }) {
 
-  let jsClothing = clothing.toJS()
-  let top = fromJS(jsClothing.filter(item => item.type.top === true))
+  let jsShoes = shoes.toJS()
+  let sneakers = fromJS(jsShoes.filter(item => item.type.sneakers === true))
 
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Top' items={top}
+        <ItemsList title='Sneakers' items={sneakers}
           ClothesActions={ClothesActions}
           navigation={navigation} />
       </View>
@@ -30,4 +32,4 @@ function Top({ navigation, clothing, ClothesActions }) {
   );
 }
 
-export default Top;
+export default Sneakers;
