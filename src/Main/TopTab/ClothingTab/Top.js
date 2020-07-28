@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import ItemsList from '../../UIcomponents/ItemsList'
+import ItemsList from '../../../UIcomponents/ItemsList'
 import { fromJS } from 'immutable';
 
 const styles = StyleSheet.create({

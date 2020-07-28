@@ -16,12 +16,12 @@ const initialState = Map({
             category: Map({
                 categoryValue: 'clothing',
                 clothing: false,
-                Shoes: false,
-                Accessories: false
+                shoes: false,
+                accessories: false
             }),
             type: Map({
                 typeValue: null,
-                top: false,
+                top: true,
                 bottom: false,
                 outer: false,
                 dress: false
@@ -46,13 +46,13 @@ const initialState = Map({
             category: Map({
                 categoryValue: 'shoes',
                 clothing: false,
-                Shoes: false,
-                Accessories: false
+                shoes: true,
+                accessories: false
             }),
             type: Map({
                 typeValue: null,
                 sneakers: false,
-                leather: false,
+                leather: true,
                 other: false
             }),
             buydate: null,
@@ -75,8 +75,8 @@ const initialState = Map({
             category: Map({
                 categoryValue: 'accessories',
                 clothing: false,
-                Shoes: false,
-                Accessories: false
+                shoes: false,
+                accessories: false
             }),
             type: Map({
                 typeValue: null,
@@ -103,8 +103,8 @@ const initialState = Map({
         category: Map({
             categoryValue: null,
             clothing: false,
-            Shoes: false,
-            Accessories: false
+            shoes: false,
+            accessories: false
         }),
         type: Map({
             typeValue: null,

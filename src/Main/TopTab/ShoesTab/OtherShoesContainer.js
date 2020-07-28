@@ -1,4 +1,4 @@
-import Dress from './Bottom';
+import OtherShoes from './OtherShoes';
 import * as clothesActions from '../../modules/wardrobe';
 import * as serverActions from '../../modules/server'
 import { connect } from 'react-redux';
@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 const mapStateToProps = (state) => ({
 
   user: state.wardrobe.get('user'),
-  clothing: state.wardrobe.get('clothing'),
+  shoes: state.wardrobe.get('shoes'),
   temporaryClothing: state.wardrobe.get('temporaryClothing'),
   post: state.server.data,
   loading: state.server.pending,
@@ -22,10 +22,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 })
 
-const DressContainer = connect(
+const OtherShoesContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Dress)
+)(OtherShoes)
 
 
-export default DressContainer;
+export default OtherShoesContainer;

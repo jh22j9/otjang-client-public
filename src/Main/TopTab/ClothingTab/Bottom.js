@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import ItemsList from '../../UIcomponents/ItemsList'
+import ItemsList from '../../../UIcomponents/ItemsList'
 import { fromJS } from 'immutable';
 import { MaterialTopTabBar } from '@react-navigation/material-top-tabs';
 const { width, height } = Dimensions.get('screen');
@@ -16,15 +16,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function Dress({ navigation, clothing, ClothesActions }) {
+function Bottom({ navigation, clothing, ClothesActions }) {
 
   let jsClothing = clothing.toJS()
-  let dress = fromJS(jsClothing.filter(item => item.type.dress === true))
+  let bottom = fromJS(jsClothing.filter(item => item.type.bottom === true))
 
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Dress' items={dress}
+        <ItemsList title='Bottom' items={bottom}
           ClothesActions={ClothesActions}
           navigation={navigation} />
       </View>
@@ -32,4 +32,4 @@ function Dress({ navigation, clothing, ClothesActions }) {
   );
 }
 
-export default Dress;
+export default Bottom;
