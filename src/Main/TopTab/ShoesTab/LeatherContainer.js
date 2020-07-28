@@ -1,6 +1,5 @@
 import Leather from './Leather';
 import * as clothesActions from '../../../modules/wardrobe';
-// import * as serverActions from '../../../modules/server'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
