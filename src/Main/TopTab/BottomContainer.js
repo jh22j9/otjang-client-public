@@ -14,7 +14,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 
   ClothesActions: bindActionCreators(clothesActions, dispatch),
-  ServerActions: bindActionCreators(serverActions, dispatch)
 
 })
 
