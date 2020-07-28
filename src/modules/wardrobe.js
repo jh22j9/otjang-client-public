@@ -5,9 +5,11 @@ const CREATE_CLOTHES = 'wardrobe/CREATE_CLOTHES';
 const REMOVE_CLOTHES = 'wardrobe/REMOVE_CLOTHES';
 const SET_CLOTHES = 'wardrobe/SET_CLOTHES';
 const SET_TEMPORARY_CLOTHING = 'wardrobe/SET_TEMPORARY_CLOTHING';
-const POST_ADDITEM = 'wardrobe/POST_ADDITEM';
-const POST_UPDATEITEM = 'wardrobe/POST_UPDATEITEM';
-const POST_DELETEITEM = 'wardrobe/POST_DELETEITEM';
+// 서버
+const POST_ADD_ITEM = 'wardrobe/POST_ADDITEM';
+const POST_UPDATE_ITEM = 'wardrobe/POST_UPDATEITEM';
+const POST_REMOVE_ITEM = 'wardrobe/POST_DELETEITEM';
+const GET_CLOTHES = 'wardrobe/GET_CLOTHES'
 
 const dog1 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjY4XAol3KxWGXJLUG3SwILG-M7NeyoxPbOA&usqp=CAU'
 const dog2 = 'https://i.insider.com/5df126b679d7570ad2044f3e?width=1100&format=jpeg&auto=webp'
@@ -22,7 +24,7 @@ export const initialState = Map({
             item_id: 18,
             image: dog1,
             type: Map({ typeValue: null, top: true, bottom: false, socks: false }),
-            category: Map({ categoryValue: 'clothing', clothing: false, Shoes: false, Accessories: false }),
+            category: Map({ categoryValue: 'clothing', clothing: true, shoes: false, accessories: false }),
             buydate: null,
             price: null,
             brand: null,
@@ -38,7 +40,7 @@ export const initialState = Map({
             item_id: 31,
             image: dog2,
             type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
-            category: Map({ categoryValue: 'shoes', clothing: false, Shoes: false, Accessories: false }),
+            category: Map({ categoryValue: 'shoes', clothing: false, shoes: true, accessories: false }),
             buydate: null,
             price: null,
             brand: null,
@@ -54,7 +56,7 @@ export const initialState = Map({
             item_id: 56,
             image: dog3,
             type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
-            category: Map({ categoryValue: 'accessories', clothing: false, Shoes: false, Accessories: false }),
+            category: Map({ categoryValue: 'accessories', clothing: false, shoes: true, accessories: true }),
             buydate: null,
             price: null,
             brand: null,
@@ -69,7 +71,7 @@ export const initialState = Map({
         item_id: null,
         image: null,
         type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
-        category: Map({ categoryValue: null, clothing: false, Shoes: false, Accessories: false }),
+        category: Map({ categoryValue: null, clothing: false, shoes: true, accessories: false }),
         buydate: null,
         price: null,
         brand: null,
@@ -84,13 +86,23 @@ export const initialState = Map({
 
 // 액션 생성자
 // 해당 액션상성자가 어떤 parameter 를 받아야 하는지 주석으로 적음 
-function getAddPostAPI(sendingClothingToServer) {
+function AddItemInServer(sendingClothingToServer) {
 
+
+    /* 
+    BUG AXIOS 에서 자동으로 JSON 으로 변환하며 이미 문자열로 된 TOKEN 에 "" 을 한번 더 붙여서 
+    서버에서 토큰을 확인하지 못함. 
+    AsyncStorage 에서 get 한 이후 데이터를 JSON.parse() 하여 해결함 
+
+    
+    */
     const url = 'http://13.125.237.84:5000/item'
     const token = sendingClothingToServer.token;
     const item = sendingClothingToServer.item.toJS();
+
+
     const data = {
-        weather: item.season.seasonArray, image: item.image, type: item.type.typeValue,
+        season: item.season.seasonArray, image: item.image, type: item.type.typeValue,
         category: item.category.categoryValue, buydate: item.buydate, price: item.price,
         brand: item.brand, storage: item.storage,
     }
@@ -98,47 +110,52 @@ function getAddPostAPI(sendingClothingToServer) {
     return axios.post(url, data, config)
 }
 
-function getUpdatePostAPI(sendingClothingToServer) {
+function updateItemInServer(sendingClothingToServer) {
 
     const item = sendingClothingToServer.item.toJS();
     const id = item.item_id;
-    const url = `http://13.125.237.84:5000/item/:${id}`
+
+    const url = `http://13.125.237.84:5000/item/${id}`
     const token = sendingClothingToServer.token;
 
+    /* 
+       TODO: DATA 형식 문제로 수정이 안되고 있음 확인바람 
+       */
 
+    /* THINK
+     item.season.seasonArray 에 NULL 이 있다면 제거해라 
+    */
+
+    const noNullValueSeason = item.season.seasonArray.filter((season) => (season !== null))
     const data = {
-        weather: item.season.seasonArray, image: item.image, type: item.type.typeValue,
+        season: noNullValueSeason, image: item.image, type: item.type.typeValue,
         category: item.category.categoryValue, buydate: item.buydate, price: item.price,
         brand: item.brand, storage: item.storage,
     }
+
     const config = { headers: { token: token } }
-    return axios.post(url, data, config)
-    /* 
-        const url = `http://13.125.237.84:5000/item/:${item_id}`
-        const data = {
-            weather: null, image: null, type: null,
-            category: null, buydate: null, price: null,
-            brand: null, storage: null,
-        }
-        const config = { headers: { token: 'tokenString' } }
-        return axios.post(url, data, config) */
+    return axios.patch(url, data, config)
 }
 
-function getDeletePostAPI(deletingClothingToServer) {
+function deleteItemInServer(deletingClothingToServer) {
 
     const item = deletingClothingToServer.item.toJS();
     const id = item.item_id;
-    const url = `http://13.125.237.84:5000/item/:${id}`
+    const url = `http://13.125.237.84:5000/item/${id}`
+    console.log('삭제 url', url)
     const token = deletingClothingToServer.token;
 
 
     const config = { headers: { token: token } }
-    return axios.post(url, null, config);
+    return axios.delete(url, config);
+}
 
-    /*   const url = `http://13.125.237.84:5000/item/:${item_id}`
-      const data = null;
-      const config = { headers: { token: 'tokenString' } }
-      return axios.post(url, data, config) */
+
+function getItemsFromServer(token) {
+
+    const url = 'http://13.125.237.84:5000/info';
+    const config = { headers: { token: token } }
+    return axios.get(url, config);
 }
 
 export const createClothes = createAction(CREATE_CLOTHES);
@@ -150,31 +167,44 @@ export const setTemporaryClothing = createAction(SET_TEMPORARY_CLOTHING) // {ite
 // sendingClothingToServer={token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const createClothesToServer = (sendingClothingToServer) => ({
 
-    type: POST_ADDITEM,
+    type: POST_ADD_ITEM,
     async payload() {
-        const { item_id } = await getAddPostAPI(sendingClothingToServer);
-        return sendingClothingToServer.item.set('item_id', item_id);
+        const { data } = await AddItemInServer(sendingClothingToServer);
+        console.log('response 확인!', data)
+        console.log('response id 확인!', data['item_id'])
+        const id = data['item_id']
+        return sendingClothingToServer.item.set('item_id', id);
     }
 })
 // sendingClothingToServer={token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const updateClothesToServer = (sendingClothingToServer) => ({
 
-    type: POST_UPDATEITEM,
+    type: POST_UPDATE_ITEM,
     async payload() {
 
-        await getUpdatePostAPI(sendingClothingToServer);
+        await updateItemInServer(sendingClothingToServer);
         return sendingClothingToServer;
     }
 })
 // sendingClothingToServer={index:index,token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const deleteClothesToServer = (deletingClothingToServer) => ({
 
-    type: POST_DELETEITEM,
+    type: POST_REMOVE_ITEM,
     async payload() {
 
-        await getDeletePostAPI(deletingClothingToServer);
+        await deleteItemInServer(deletingClothingToServer);
         return deletingClothingToServer;
     }
+})
+
+export const getClothesToServer = (token) => ({
+
+    type: GET_CLOTHES,
+    async payload() {
+
+        return await getItemsFromServer(token);
+    }
+
 })
 
 // 우리의 액션타입에는 접두사가 들어가있기 때문에 그냥 CREATE: 를 하면 안되고, [CREATE]: 로 해주어야합니다.
@@ -304,9 +334,113 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         return state.set('temporaryClothing', temporaryClothing)
 
     },
+    [`${GET_CLOTHES}_PENDING`]: (state, action) => {
+        return state
+
+    },
+    [`${GET_CLOTHES}_FULFILLED`]: (state, action) => {
 
 
-    [`${POST_ADDITEM}_PENDING`]: (state, action) => {
+
+        const clothes = action.payload.data.data;
+        console.log('action.payload', action.payload.data.data)
+        /* 
+        THINK 
+        카테고리에 따라 분류한 것을 양식을 변경한 후 state 의 카테고리 배열에 덮어씌운다.  
+
+        */
+
+        function checkSeason(clothesObject) {
+
+            var seasonObject = {
+                seasonArray: [null, null, null, null],
+                spring: false, summer: false, fall: false, winter: false
+            }
+            /* 
+            THINK 1이면 해당 계절 TRUE 로 변경하고 SEASON ARR 해당 위치에 값 추가 
+            아니면 그대로 NULL, FALSE 로 놔둠 
+
+            */
+
+            if (clothesObject.sp === 1) {
+                seasonObject.seasonArray[0] = 'sp';
+                seasonObject.spring = true;
+
+            }
+
+            else if (clothesObject.sm === 1) {
+                seasonObject.seasonArray[1] = 'sm';
+                seasonObject.summer = true;
+            }
+
+            else if (clothesObject.f === 1) {
+                seasonObject.seasonArray[2] = 'f';
+                seasonObject.fall = true;
+            }
+
+            else if (clothesObject.w === 1) {
+                seasonObject.seasonArray[3] = 'w';
+                seasonObject.winter = true;
+            }
+            return seasonObject;
+
+        }
+
+        function changeClothesForm(clothes) {
+
+            // TODO : 서버에서 받은 데이터의 형식을 클라이언트에서 관리하는 형식으로 변경
+            //  clothes-> ARRAY 
+
+            var clientClothingArray = [];
+
+            for (let i = 0; i < clothes.length; i++) {
+
+                let clientClothingObject = {
+                    item_id: clothes[i].ItemId,
+                    image: clothes[i].image,
+                    type: { typeValue: clothes[i].type, top: false, bottom: false, socks: false },
+                    category: { categoryValue: clothes[i].category, clothing: false, Shoes: false, Accessories: false },
+                    buydate: clothes[i].buydate,
+                    price: clothes[i].price,
+                    brand: clothes[i].brand,
+                    storage: clothes[i].storage,
+                    season: {
+                        seasonArray: [null, null, null, null],
+                        spring: false, summer: false, fall: false, winter: false
+                    }
+                }
+
+                // 카테고리,type 확인한 후 해당 카테고리 ,type 를 true 로 변경 
+
+                clientClothingObject.category[`${clothes[i].category}`] = true;
+                clientClothingObject.type[`${clothes[i].type}`] = true;
+                clientClothingArray.season = checkSeason(clothes[i]);
+                // season 0 -> false season 1 -> true 
+                clientClothingArray.push(clientClothingObject);
+
+            }
+            return clientClothingArray;
+        }
+
+        const clothingFromServer = clothes.filter((cloth) => (cloth.category === 'clothing'))
+        const shoesFromServer = clothes.filter((cloth) => (cloth.category === 'shoes'))
+        const accessoriesFromServer = clothes.filter((cloth) => (cloth.category === 'accessories'))
+
+        const clothingInClient = fromJS(changeClothesForm(clothingFromServer))
+        const shoesInClient = fromJS(changeClothesForm(shoesFromServer))
+        const accessoriesInClient = fromJS(changeClothesForm(accessoriesFromServer))
+
+        return state.set('clothing', clothingInClient).set('shoes', shoesInClient).set('accessories', accessoriesInClient)
+    },
+
+    [`${GET_CLOTHES}_REJECTED`]: (state, action) => {
+        return state
+    },
+
+
+    [`${POST_ADD_ITEM}_PENDING`]: (state, action) => {
+
+
         /* 
         BUG 
         
@@ -317,7 +451,7 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         return state
 
     },
-    [`${POST_ADDITEM}_FULFILLED`]: (state, action) => {
+    [`${POST_ADD_ITEM}_FULFILLED`]: (state, action) => {
         console.log('_FULFILLED', state.toJS())
         const clothing = state.get('clothing');
         const shoes = state.get('shoes');
@@ -346,12 +480,12 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
     },
 
-    [`${POST_ADDITEM}_REJECTED`]: (state, action) => {
+    [`${POST_ADD_ITEM}_REJECTED`]: (state, action) => {
         return state
     },
 
 
-    [`${POST_UPDATEITEM}_PENDING`]: (state, action) => {
+    [`${POST_UPDATE_ITEM}_PENDING`]: (state, action) => {
         /* 
         BUG 
         
@@ -362,7 +496,7 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         return state
 
     },
-    [`${POST_UPDATEITEM}_FULFILLED`]: (state, action) => {
+    [`${POST_UPDATE_ITEM}_FULFILLED`]: (state, action) => {
 
 
         const index = action.payload.index;
@@ -392,11 +526,11 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
     },
 
-    [`${POST_UPDATEITEM}_REJECTED`]: (state, action) => {
+    [`${POST_UPDATE_ITEM}_REJECTED`]: (state, action) => {
         return state
     },
 
-    [`${POST_DELETEITEM}_PENDING`]: (state, action) => {
+    [`${POST_REMOVE_ITEM}_PENDING`]: (state, action) => {
         /* 
         BUG 
         
@@ -407,7 +541,7 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         return state
 
     },
-    [`${POST_DELETEITEM}_FULFILLED`]: (state, action) => {
+    [`${POST_REMOVE_ITEM}_FULFILLED`]: (state, action) => {
 
 
         const index = action.payload.index;
@@ -430,7 +564,7 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
     },
 
-    [`${POST_DELETEITEM}_REJECTED`]: (state, action) => {
+    [`${POST_REMOVE_ITEM}_REJECTED`]: (state, action) => {
         return state
     },
 }, initialState);

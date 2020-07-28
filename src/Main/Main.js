@@ -8,10 +8,10 @@ import BagAccContainer from './BottomTab/BagAccContainer';
 import ETC from './BottomTab/ETC';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import AddButton from '../UIcomponents/AddButton'
 import { Map, List } from 'immutable';
+import AsyncStorage from '@react-native-community/async-storage';
 const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
 
@@ -31,7 +31,7 @@ const emptyClothing = Map({
     })
 })
 
-function Main({ navigation, ClothesActions }) {
+function Main({ navigation, ClothesActions, wardrobe }) {
 
     /* 
         TODO>
@@ -40,8 +40,27 @@ function Main({ navigation, ClothesActions }) {
         CLOTHING, SHOES, ACC 로 분류한다. 
 
     */
+    /*   async function getClothes() {
+          let token = await AsyncStorage.getItem('TOKEN');
+          token = JSON.parse(token);
+          ClothesActions.getClothesToServer(token);
+  
+      } */
+    /* 
+    */
+    React.useEffect(() => {
+        async function getClothes() {
+            let token = await AsyncStorage.getItem('TOKEN');
+            token = JSON.parse(token);
+            ClothesActions.getClothesToServer(token);
+
+        }
+        getClothes();
+    }, []);
+
 
     function moveToAddItems() {
+        getClothes();
         console.log('ClothesActions', ClothesActions)
         ClothesActions.setTemporaryClothing(emptyClothing);
         navigation.navigate('AddItemsContainer')

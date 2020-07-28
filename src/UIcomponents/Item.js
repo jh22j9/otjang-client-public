@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Dimensions, Image, View, Pressable } from 'react-native';
 import { Card, Title } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AsyncStorage from '@react-native-community/async-storage';
 const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -38,11 +39,20 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
         setDeleteBtn(false)
     }
 
-    function deleteItem() {
+    async function deleteItem() {
 
-        const deletedItem = { index: index, item: item }
+        // const deletedItem = { index: index, item: item }
 
-        ClothesActions.removeClothes(deletedItem)
+        // ClothesActions.removeClothes(deletedItem)
+
+
+        let token = await AsyncStorage.getItem('TOKEN');
+        token = JSON.parse(token);
+        console.log('token', token)
+        let sendingClothingToServer = { index: index, token: token, item: item }
+        // ClothesActions.updateClothesToServer(sendingClothingToServer);
+
+        ClothesActions.deleteClothesToServer(sendingClothingToServer);
         setDeleteBtn(false)
     }
 

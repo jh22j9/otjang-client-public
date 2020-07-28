@@ -1,6 +1,7 @@
 import * as React from 'react';
 import axios from 'axios';
-import { View, Text, ScrollView, StyleSheet, AsyncStorage, Dimensions, FlatList } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Dimensions, FlatList } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { IconButton, Colors, Button, Card, Chip, List } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
@@ -71,13 +72,16 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
 
     async function saveClothes() {
 
-        ClothesActions.createClothes(temporaryClothing);
+        // ClothesActions.createClothes(temporaryClothing);
 
-        /* TODO 서버연결
+
+        // TODO 서버연결
         let token = await AsyncStorage.getItem('TOKEN');
+        token = JSON.parse(token);
+        console.log('token', token)
         let sendingClothingToServer = { token: token, item: temporaryClothing }
-        ClothesActions.createClothesToServer(sendingClothingToServer); 
-        */
+        ClothesActions.createClothesToServer(sendingClothingToServer);
+
 
         navigation.goBack();
 

@@ -37,7 +37,7 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
         // 아니면 
         var season = temporaryClothing.get('season');
         function findSpring(season) {
-            return season === 'spring';
+            return season === 'sp';
         }
 
         // let isSpringSelected = seasons.get('seasonArray').toJS().find(findSpring);
@@ -72,7 +72,7 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
 
         var season = temporaryClothing.get('season');
         function findSummer(season) {
-            return season === 'summer';
+            return season === 'sm';
         }
 
         let isSummerSelected = season.get('seasonArray').toJS().find(findSummer);
@@ -97,7 +97,7 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
 
         var season = temporaryClothing.get('season');
         function findFall(season) {
-            return season === 'fall';
+            return season === 'f';
         }
 
         let isFallSelected = season.get('seasonArray').toJS().find(findFall);
@@ -123,7 +123,7 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
 
         var season = temporaryClothing.get('season');
         function findWinter(season) {
-            return season === 'winter';
+            return season === 'w';
         }
 
         let isFallSelected = season.get('seasonArray').toJS().find(findWinter);
