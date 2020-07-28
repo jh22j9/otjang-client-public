@@ -1,18 +1,15 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet, Dimensions, Pressable } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import { Chip } from 'react-native-paper'
-import * as dummy from './dummyData';
-import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { VictoryBar, VictoryLine, VictoryPie, VictoryGroup, VictoryScatter, VictoryChart, VictoryLabel, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
-import * as utils from './statisticsUtils';
+import Menu, { MenuItem, } from 'react-native-material-menu';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import LineChartMonthlyPrice from './graph/LineChartMonthlyPrice';
 import PieChartCategoryPercentage from './graph/PieChartCategoryPercentage';
 import BarChartSeasonsAmount from './graph/BarChartSeasonsAmount';
 import BarChartSeasonsPrice from './graph/BarChartSeasonsPrice';
 import BarChartCategoryAmount from './graph/BarChartCategoryAmount';
-import BarChartCategoryPrice from './graph/BarChartCategoryPrice'
-// import { acc } from 'react-native-reanimated';
+import BarChartCategoryPrice from './graph/BarChartCategoryPrice';
+
 const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -176,7 +173,7 @@ function Statistics() {
             }
 
             else if (categoryMenu.amount) {
-                return <BarChartSeasonsAmount />
+                return <BarChartCategoryAmount />
             }
         }
 

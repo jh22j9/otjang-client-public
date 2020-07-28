@@ -44,7 +44,7 @@ function EditItem({ navigation, index = 0, user, temporaryClothing, ClothesActio
         var id = temporaryClothing.get('item_id');
         if (id) {
             // onSetClothes({ index: index, temporaryClothing })
-            ClothesActions.setClothes({ index: index, temporaryClothing })
+            ClothesActions.setClothes({ index: index, item: temporaryClothing })
             navigation.goBack();
         }
     }
