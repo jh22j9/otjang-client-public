@@ -29,22 +29,6 @@ const styles = StyleSheet.create({
 
 export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
 
-    /* 
-     중복선택이 가능하도록 설정, 
-    선택을 했을 때 '계절들'을 중복없이 배열에 저장해야 함 
-         clothes: Map({
-            item_id: null,
-            image: null,
-            type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
-            category: null,
-            buydate: null,
-            price: null,
-            brand: null,
-            storage: null,
-            season: Map({})
-        })
-    */
-
 
     function setSpring() {
 
@@ -76,7 +60,7 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
             // spring 도 true 로 변경 
             let seasonArray = season.get('seasonArray')
             let newSeason = season.set('spring', true)
-                .set('seasonArray', seasonArray.set(0, 'spring'));
+                .set('seasonArray', seasonArray.set(0, 'sp'));
 
 
             ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
@@ -103,7 +87,7 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
         else {
             let seasonArray = season.get('seasonArray')
             let newSeason = season.set('summer', true)
-                .set('seasonArray', seasonArray.set(1, 'summer'));
+                .set('seasonArray', seasonArray.set(1, 'sm'));
 
             ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
@@ -128,7 +112,7 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
         else {
             let seasonArray = season.get('seasonArray')
             let newSeason = season.set('fall', true)
-                .set('seasonArray', seasonArray.set(2, 'fall'));
+                .set('seasonArray', seasonArray.set(2, 'f'));
 
             ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }
@@ -154,7 +138,7 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
         else {
             let seasonArray = season.get('seasonArray')
             let newSeason = season.set('winter', true)
-                .set('seasonArray', seasonArray.set(3, 'winter'));
+                .set('seasonArray', seasonArray.set(3, 'w'));
 
             ClothesActions.setTemporaryClothing(temporaryClothing.set('season', newSeason))
         }

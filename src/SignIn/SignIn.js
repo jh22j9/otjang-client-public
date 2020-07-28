@@ -4,6 +4,7 @@ import { Title } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
 
+
 import axios from 'axios';
 
 const styles = StyleSheet.create({
@@ -32,7 +33,7 @@ function SignIn({ navigation }) {
     const [password, setPassword] = React.useState('');
 
     const handleSignIn = (email, password) => {
-        axios.post('http://18.218.160.166:5000/user/signin', {
+        axios.post('http://13.125.237.84:5000/user/signin', {
             email: email,
             password: password
         }).then(res => {

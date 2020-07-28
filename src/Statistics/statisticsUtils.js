@@ -19,24 +19,6 @@ if (currentMonth < 10) {
 }
 export const currentDate = `${currentYear}${currentMonth}`;
 
-/* export const monthlyPriceSum = [];
-
-
-for (let i = 1; i <= 12; i++) {
-
-    let monthlyPriceObject = { buydate: null, price: null }
-    if (i < 10) {
-        monthlyPriceObject.buydate = Number(`${currentYear}0${i}`);
-        monthlyPriceObject.price = getMonthlyPrice(clothes, Number(`${currentYear}0${i}`));
-        monthlyPriceSum.push(monthlyPriceObject)
-    }
-
-    else {
-        monthlyPriceObject.buydate = Number(`${currentYear}${i}`);
-        monthlyPriceObject.price = getMonthlyPrice(clothes, Number(`${currentYear}${i}`));
-        monthlyPriceSum.push(monthlyPriceObject)
-    }
-} */
 
 export function getAnnualPurchaseData() {
 
