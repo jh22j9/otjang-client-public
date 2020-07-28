@@ -27,7 +27,7 @@ function Clothing({ navigation, clothing, ClothesActions }) {
             <Tab.Navigator>
                 <Tab.Screen name="👕" component={TopContainer} />
                 <Tab.Screen name="👖" component={BottomContainer} />
-                {/* <Tab.Screen name="🥼" component={OuterContainer} /> */}
+                <Tab.Screen name="🥼" component={OuterContainer} />
                 <Tab.Screen name="👗" component={DressContainer} />
             </Tab.Navigator>
         </>
