@@ -1,13 +1,13 @@
-import Top from './Top';
-import * as clothesActions from '../../modules/wardrobe';
+import Sneakers from './Sneakers';
+import * as clothesActions from '../../../modules/wardrobe';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state) => ({
 
   user: state.wardrobe.get('user'),
-  clothing: state.wardrobe.get('clothing'),
-  temporaryClothing: state.wardrobe.get('temporaryClothing'),
+  shoes: state.wardrobe.get('shoes'),
+  temporaryClothing: state.wardrobe.get('temporaryClothing')
 
 })
 
@@ -17,10 +17,10 @@ const mapDispatchToProps = (dispatch) => ({
 
 })
 
-const TopContainer = connect(
+const SneakersContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Top)
+)(Sneakers)
 
 
-export default TopContainer;
+export default SneakersContainer;

@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
-import ItemsList from '../../UIcomponents/ItemsList'
+import SneakersContainer from '../TopTab/ShoesTab/SneakersContainer';
+import LeatherContainer from '../TopTab/ShoesTab/LeatherContainer';
+import OtherShoesContainer from '../TopTab/ShoesTab/OtherShoesContainer';
 const { width, height } = Dimensions.get('screen');
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+const Tab = createMaterialTopTabNavigator();
 
 const styles = StyleSheet.create({
     container: {
@@ -14,16 +18,17 @@ const styles = StyleSheet.create({
     },
 });
 
-function Shoe({ navigation, shoes, ClothesActions, }) {
+
+function Shoe() {
 
     return (
-        <View style={styles.container}>
-            <ItemsList
-                title='Shoes'
-                items={shoes}
-                ClothesActions={ClothesActions}
-                navigation={navigation} />
-        </View>
+        <>
+            <Tab.Navigator>
+                <Tab.Screen name="👟" component={SneakersContainer} />
+                <Tab.Screen name="👞" component={LeatherContainer} />
+                <Tab.Screen name="👡👢🥿" component={OtherShoesContainer} />
+            </Tab.Navigator>
+        </>
     );
 }
 
