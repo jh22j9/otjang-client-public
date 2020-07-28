@@ -60,8 +60,6 @@ function Main({ navigation, ClothesActions, wardrobe }) {
 
 
     function moveToAddItems() {
-        getClothes();
-        console.log('ClothesActions', ClothesActions)
         ClothesActions.setTemporaryClothing(emptyClothing);
         navigation.navigate('AddItemsContainer')
     }
