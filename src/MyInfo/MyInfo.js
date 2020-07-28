@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
 // import { Button } from 'react-native-elements';
-function UserInfo() {
+
+function MyInfo() {
     return (
         <View style={{
             flex: 1,
@@ -13,4 +14,4 @@ function UserInfo() {
     );
 }
 
-export default UserInfo;
+export default MyInfo;

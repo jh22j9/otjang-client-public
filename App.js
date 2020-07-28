@@ -22,7 +22,7 @@ import ItemInfoContainer from './src/ItemInfo/ItemInfoContainer'
 import EditItem from './src/EditItem/EditItem'
 import EditItemContainer from './src/EditItem/EditItemContainer'
 import Statistics from './src/Statistics/Statistics'
-import UserInfo from './src/UserInfo/UserInfo'
+import MyInfo from './src/MyInfo/MyInfo'
 import Setting from './src/Setting/Setting'
 import AllClothesContainer from './src/Main/BottomTab/AllClothesContainer'
 import ClothingContainer from './src/Main/BottomTab/Clothing'
@@ -70,7 +70,7 @@ function App() {
             <Stack.Screen name="EditItemContainer" component={EditItemContainer} />
             <Stack.Screen name="EditItem" component={EditItem} />
             <Stack.Screen name="Statistics" component={Statistics} />
-            <Stack.Screen name="UserInfo" component={UserInfo} />
+            <Stack.Screen name="MyInfo" component={MyInfo} />
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name='MainContainer' component={MainContainer} />
             <Stack.Screen name='AllClothesContainer' component={AllClothesContainer} />

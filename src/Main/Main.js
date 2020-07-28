@@ -5,7 +5,7 @@ import AllClothesContainer from './BottomTab/AllClothesContainer';
 import ClothingContainer from './BottomTab/ClothingContainer';
 import ShoeContainer from './BottomTab/ShoeContainer';
 import BagAccContainer from './BottomTab/BagAccContainer';
-import ETC from './BottomTab/ETC';
+import More from './BottomTab/More';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -89,9 +89,9 @@ function Main({ navigation, ClothesActions }) {
                     }}
                 />
                 {/* dots-horizontal */}
-                <Tab.Screen name="ETC" component={ETC}
+                <Tab.Screen name="More" component={More}
                     options={{
-                        tabBarLabel: 'ETC',
+                        tabBarLabel: 'More',
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="dots-horizontal" color={color} size={26} />
                         ),
