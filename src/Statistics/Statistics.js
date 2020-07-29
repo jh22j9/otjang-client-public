@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
 
 
 
-function Statistics() {
+function Statistics({ wardrobe }) {
 
     /* 
     THINK 
@@ -96,6 +96,12 @@ function Statistics() {
     - 바로 아래에 우측에 통계메뉴 선택 
     
     */
+    const clothing = wardrobe.clothing;
+    const shoes = wardrobe.shoes;
+    const accessories = wardrobe.accessories;
+    console.log('clothing', clothing);
+    console.log('shoes', shoes);
+    console.log('accessories', accessories);
     const [selectStatistics, setStatistics] = React.useState({ duration: true, category: false, season: false, type: false });
     const [categoryMenu, setCategoryMenu] = React.useState({ price: true, percentage: false, amount: false });
     const [seasonMenu, setSeasonMenu] = React.useState({ price: true, amount: false });
@@ -188,33 +194,33 @@ function Statistics() {
 
                 if (typeMenu.clothingPrice) {
 
-                    return <BarChartClothingPrice />
+                    return <BarChartClothingPrice wardrobe={wardrobe} />
 
                 }
 
                 else if (typeMenu.clothingAmount) {
-                    return <BarChartClothingAmount />
+                    return <BarChartClothingAmount wardrobe={wardrobe} />
                 }
 
                 else if (typeMenu.clothingPercentage) {
 
-                    return <PieChartClothingPercentage />
+                    return <PieChartClothingPercentage wardrobe={wardrobe} />
                 }
             }
 
             else if (categoryInType.shoes) {
 
                 if (typeMenu.shoesPrice) {
-                    return <BarChartShoesPrice />
+                    return <BarChartShoesPrice wardrobe={wardrobe} />
 
                 }
 
                 else if (typeMenu.shoesAmount) {
-                    return <BarChartShoesAmount />
+                    return <BarChartShoesAmount wardrobe={wardrobe} />
                 }
 
                 else if (typeMenu.shoesPercentage) {
-                    return <PieChartShoesPercentage />
+                    return <PieChartShoesPercentage wardrobe={wardrobe} />
                 }
             }
 
@@ -222,15 +228,15 @@ function Statistics() {
 
                 if (typeMenu.accessoriesPrice) {
 
-                    return <BarChartAccessoriesPrice />
+                    return <BarChartAccessoriesPrice wardrobe={wardrobe} />
                 }
 
                 else if (typeMenu.accessoriesAmount) {
-                    return <BarChartAccessoriesAmount />
+                    return <BarChartAccessoriesAmount wardrobe={wardrobe} />
                 }
 
                 else if (typeMenu.accessoriesPercentage) {
-                    return <PieChartAccessoriesPercentage />
+                    return <PieChartAccessoriesPercentage wardrobe={wardrobe} />
                 }
             }
 
@@ -396,7 +402,7 @@ function Statistics() {
                     </Menu>
                 </View>
                 <View style={styles.graphContainer}>
-                    <LineChartMonthlyPrice />
+                    <LineChartMonthlyPrice wardrobe={wardrobe} />
                 </View>
             </>
         )
@@ -410,15 +416,15 @@ function Statistics() {
 
             if (categoryMenu.price) {
 
-                return <BarChartCategoryPrice />
+                return <BarChartCategoryPrice wardrobe={wardrobe} />
             }
 
             else if (categoryMenu.percentage) {
-                return <PieChartClothingTypePercentage />
+                return <PieChartClothingTypePercentage wardrobe={wardrobe} />
             }
 
             else if (categoryMenu.amount) {
-                return <BarChartCategoryAmount />
+                return <BarChartCategoryAmount wardrobe={wardrobe} />
             }
         }
 
@@ -475,11 +481,11 @@ function Statistics() {
 
             if (seasonMenu.price) {
 
-                return <BarChartSeasonsPrice />
+                return <BarChartSeasonsPrice wardrobe={wardrobe} />
             }
 
             else if (seasonMenu.amount) {
-                return <BarChartSeasonsAmount />
+                return <BarChartSeasonsAmount wardrobe={wardrobe} />
             }
         }
 

@@ -25,10 +25,10 @@ import Statistics from './src/Statistics/Statistics'
 import MyInfo from './src/MyInfo/MyInfo'
 import Setting from './src/Setting/Setting'
 import AllClothesContainer from './src/Main/BottomTab/AllClothesContainer'
-import ClothingContainer from './src/Main/BottomTab/Clothing'
+import ClothingContainer from './src/Main/BottomTab/ClothingContainer'
 import ShoeContainer from './src/Main/BottomTab/ShoeContainer'
 import BagAccContainer from './src/Main/BottomTab/BagAccContainer'
-
+import StatisticsContainer from './src/Statistics/StatisticsContainer'
 
 import Item from './src/UIcomponents/Item'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -70,6 +70,7 @@ function App() {
             <Stack.Screen name="EditItemContainer" component={EditItemContainer} />
             <Stack.Screen name="EditItem" component={EditItem} />
             <Stack.Screen name="Statistics" component={Statistics} />
+            <Stack.Screen name='StatisticsContainer' component={StatisticsContainer} />
             <Stack.Screen name="MyInfo" component={MyInfo} />
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name='MainContainer' component={MainContainer} />

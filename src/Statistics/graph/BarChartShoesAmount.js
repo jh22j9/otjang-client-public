@@ -2,7 +2,7 @@ import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
 
-export default function BarChartShoesAmount() {
+export default function BarChartShoesAmount({ wardrobe }) {
 
     /* 
         THINK
@@ -15,10 +15,18 @@ export default function BarChartShoesAmount() {
 
     */
 
+    // 실제 data 
+
+    // const shoes = wardrobe.shoes;
+
+    // dummy data 
+
+    const shoes = utils.shoes;
+
     var shoesTypeAmount = [
-        { type: 'sneakers', amount: utils.getTypeList(utils.shoes, 'sneakers').length },
-        { type: 'leather', amount: utils.getTypeList(utils.shoes, 'leather').length },
-        { type: 'other', amount: utils.getTypeList(utils.shoes, 'other').length },
+        { type: 'sneakers', amount: utils.getTypeList(shoes, 'sneakers').length },
+        { type: 'leather', amount: utils.getTypeList(shoes, 'leather').length },
+        { type: 'other', amount: utils.getTypeList(shoes, 'other').length },
     ]
 
     return (

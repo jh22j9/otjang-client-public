@@ -4,25 +4,38 @@ import { VictoryBar, VictoryLine, VictoryPie, VictoryGroup, VictoryScatter, Vict
 import * as utils from '../statisticsUtils';
 
 
-export default function LineChartMonthlyPrice() {
+export default function LineChartMonthlyPrice({ wardrobe }) {
 
     /*
         THINK 도메인은 실수좌표계 이다. 
         
     */
+    // 실제 data 
+
+    /*  
+
+     const clothing = wardrobe.clothing;
+     const shoes = wardrobe.shoes;
+     const accessories = wardrobe.accessories;
+     const clothes = clothing.concat(shoes).concat(accessories); 
+     
+     */
+
+    //  dummy data 
+
+    const clothes = utils.clothes;
+
     const [monthDomain, setMonthDomain] = React.useState({ x: [0.5, 6.5], y: [0, 900000] });
 
 
     function handleMonthDomain(domain) {
 
-        console.log('domain', domain);
-        console.log('monthDomain', monthDomain);
         setMonthDomain(domain)
     }
 
 
 
-    var lineData = utils.getAnnualPurchaseData();
+    var lineData = utils.getAnnualPurchaseData(clothes);
     return (<VictoryChart width={400} theme={VictoryTheme.material}
 
         domainPadding={10} containerComponent={<VictoryZoomContainer

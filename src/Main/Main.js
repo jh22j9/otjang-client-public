@@ -42,20 +42,31 @@ function Main({ navigation, ClothesActions, wardrobe }) {
     */
     /* 
 
+    TODO 
+
+    MORE 에서는 플러스 버튼 지우기 
+
+    TAB BAR 가 more 에 focused 되어있을 때만 지운다. 
+
+    or more 을 tab press 했을 때만 지운다. 
+
     navigation
     */
 
+    /* THINK 
+
+    wardrobe 가 최신화 될 때 마다 통계에서 데이터 받기 
+    */
     //  서버 get 
     React.useEffect(() => {
         async function getClothes() {
             let token = await AsyncStorage.getItem('TOKEN');
             token = JSON.parse(token);
             ClothesActions.getClothesFromServer(token);
-
         }
         getClothes();
     }, []);
-
+    AsyncStorage.setItem('wardrobe', JSON.stringify(wardrobe))
 
     function moveToAddItems() {
         ClothesActions.setTemporaryClothing(emptyClothing);
@@ -103,14 +114,14 @@ function Main({ navigation, ClothesActions, wardrobe }) {
                         ),
                     }}
                 />
-                {/* dots-horizontal */}
-                <Tab.Screen name="More" component={More}
+                <Tab.Screen name="More" component={More} initialParams={{ clothes: wardrobe }}
                     options={{
                         tabBarLabel: 'More',
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="dots-horizontal" color={color} size={26} />
                         ),
                     }}
+
                 />
             </Tab.Navigator>
             <AddButton onPress={moveToAddItems} />

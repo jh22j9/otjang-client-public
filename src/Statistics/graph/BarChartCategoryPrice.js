@@ -1,8 +1,9 @@
 import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
+import { acc } from 'react-native-reanimated';
 
-export default function BarChartCategoryPrice() {
+export default function BarChartCategoryPrice({ wardrobe }) {
 
     /* color scales: "grayscale", "qualitative", "heatmap", "warm", "cool", "red", "green","blue" */
     /* 
@@ -16,12 +17,31 @@ export default function BarChartCategoryPrice() {
 
     */
 
+    // 실제 data 
 
+    /*  
+    
+    const clothing = wardrobe.clothing;
+     const shoes = wardrobe.shoes;
+     const accessories = wardrobe.accessories; 
+     
+     */
+
+    // dummy data 
+
+    const clothing = utils.clothing;
+    const shoes = utils.shoes;
+    const accessories = utils.accessories;
+
+    // 서버, dummy 공통적용
+    const clothingPrice = utils.getPrice(clothing);
+    const shoesPrice = utils.getPrice(shoes);
+    const accessoriesPrice = utils.getPrice(accessories);
 
     var categoryPrice = [
-        { category: 'clothing', price: utils.totalClothingPrice },
-        { category: 'shoes', price: utils.totalShoesPrice },
-        { category: 'accessories', price: utils.totalAccessoriesPrice }
+        { category: 'clothing', price: clothingPrice },
+        { category: 'shoes', price: shoesPrice },
+        { category: 'accessories', price: accessoriesPrice }
     ]
 
     // BUG PRICE, AMOUNT 는 실제 숫자가 아니면 그래프에서 계산을 하지 못한다. 

@@ -2,7 +2,7 @@ import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
 import * as utils from '../statisticsUtils';
 
-export default function BarChartSeasonsPrice() {
+export default function BarChartSeasonsPrice({ wardrobe }) {
 
     /* 
         THINK
@@ -15,12 +15,27 @@ export default function BarChartSeasonsPrice() {
 
     */
 
+    // 실제 data 
+
+    /*  
+
+     const clothing = wardrobe.clothing;
+     const shoes = wardrobe.shoes;
+     const accessories = wardrobe.accessories;
+     const clothes = clothing.concat(shoes).concat(accessories); 
+     
+     */
+
+    //  dummy data 
+
+    const clothes = utils.clothes;
+
 
     var seasonsPrice = [
-        { season: 'spring', price: utils.getPrice(utils.getSeasonList(utils.clothes, 'spring')) },
-        { season: 'summer', price: utils.getPrice(utils.getSeasonList(utils.clothes, 'summer')) },
-        { season: 'fall', price: utils.getPrice(utils.getSeasonList(utils.clothes, 'fall')) },
-        { season: 'winter', price: utils.getPrice(utils.getSeasonList(utils.clothes, 'winter')) },
+        { season: 'spring', price: utils.getPrice(utils.getSeasonList(clothes, 'spring')) },
+        { season: 'summer', price: utils.getPrice(utils.getSeasonList(clothes, 'summer')) },
+        { season: 'fall', price: utils.getPrice(utils.getSeasonList(clothes, 'fall')) },
+        { season: 'winter', price: utils.getPrice(utils.getSeasonList(clothes, 'winter')) },
 
     ]
 

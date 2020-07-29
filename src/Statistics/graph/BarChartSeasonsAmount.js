@@ -2,7 +2,7 @@ import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
 import * as utils from '../statisticsUtils';
 
-export default function BarChartSeasonsAmount() {
+export default function BarChartSeasonsAmount({ wardrobe }) {
 
     /* 
         THINK
@@ -15,11 +15,26 @@ export default function BarChartSeasonsAmount() {
 
     */
 
+    // 실제 data 
+
+    /*  
+
+     const clothing = wardrobe.clothing;
+     const shoes = wardrobe.shoes;
+     const accessories = wardrobe.accessories;
+     const clothes = clothing.concat(shoes).concat(accessories); 
+     
+     */
+
+    //  dummy data 
+
+    const clothes = utils.clothes;
+
     var seasonsAmount = [
-        { category: 'spring', amount: utils.getSeasonList(utils.clothes, 'spring').length },
-        { category: 'summer', amount: utils.getSeasonList(utils.clothes, 'summer').length },
-        { category: 'fall', amount: utils.getSeasonList(utils.clothes, 'fall').length },
-        { category: 'winter', amount: utils.getSeasonList(utils.clothes, 'winter').length }
+        { category: 'spring', amount: utils.getSeasonList(clothes, 'spring').length },
+        { category: 'summer', amount: utils.getSeasonList(clothes, 'summer').length },
+        { category: 'fall', amount: utils.getSeasonList(clothes, 'fall').length },
+        { category: 'winter', amount: utils.getSeasonList(clothes, 'winter').length }
     ]
 
     return (

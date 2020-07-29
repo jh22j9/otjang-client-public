@@ -2,18 +2,37 @@ import React from 'react';
 import { VictoryBar, VictoryLine, VictoryPie, VictoryGroup, VictoryScatter, VictoryChart, VictoryLabel, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
 import * as utils from '../statisticsUtils';
 
-export default function PieChartClothingPercentage() {
+export default function PieChartClothingPercentage({ wardrobe }) {
 
-    const topList = utils.getTypeList(utils.clothing, 'top');
-    const bottomList = utils.getTypeList(utils.clothing, 'bottom');
-    const outerList = utils.getTypeList(utils.clothing, 'outer');
-    const dressList = utils.getTypeList(utils.clothing, 'dress');
+
+    // 실제 data 
+
+    /*  
+
+     const clothing = wardrobe.clothing;
+     const shoes = wardrobe.shoes;
+     const accessories = wardrobe.accessories;
+     const clothes = clothing.concat(shoes).concat(accessories); 
+     
+     */
+
+    //  dummy data 
+
+    const clothing = utils.clothing;
+
+    // 서버, dummy 서버, dummy 서버, dummy 공통적용적용적용
+
+    const topList = utils.getTypeList(clothing, 'top');
+    const bottomList = utils.getTypeList(clothing, 'bottom');
+    const outerList = utils.getTypeList(clothing, 'outer');
+    const dressList = utils.getTypeList(clothing, 'dress');
+    const clothingPrice = utils.getPrice(clothing);
 
     var data = [
-        { type: 'top', percentage: Math.floor(utils.getPrice(topList) / utils.totalClothingPrice * 100) },
-        { type: 'bottom', percentage: Math.floor(utils.getPrice(bottomList) / utils.totalClothingPrice * 100) },
-        { type: 'outer', percentage: Math.floor(utils.getPrice(outerList) / utils.totalClothingPrice * 100) },
-        { type: 'dress', percentage: Math.floor(utils.getPrice(dressList) / utils.totalClothingPrice * 100) }
+        { type: 'top', percentage: Math.floor(utils.getPrice(topList) / clothingPrice * 100) },
+        { type: 'bottom', percentage: Math.floor(utils.getPrice(bottomList) / clothingPrice * 100) },
+        { type: 'outer', percentage: Math.floor(utils.getPrice(outerList) / clothingPrice * 100) },
+        { type: 'dress', percentage: Math.floor(utils.getPrice(dressList) / clothingPrice * 100) }
     ]
 
 

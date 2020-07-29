@@ -2,7 +2,7 @@ import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
 
-export default function BarChartAccessoriesAmount() {
+export default function BarChartAccessoriesAmount({ wardrobe }) {
 
     /* 
         THINK
@@ -14,11 +14,15 @@ export default function BarChartAccessoriesAmount() {
     X축에는 카테고리, y축은 따로 표시하지 않고 labels 로 금액을 표시할 것 
 
     */
+    // 실제 데이터 
+    // const accessories = wardrobe.accessories;
 
+    // dummy
+    const accessories = utils.accessories;
     var AccessoriesTypeAmount = [
-        { type: 'bag', amount: utils.getTypeList(utils.accessories, 'bag').length },
-        { type: 'head', amount: utils.getTypeList(utils.accessories, 'head').length },
-        { type: 'other', amount: utils.getTypeList(utils.accessories, 'other').length },
+        { type: 'bag', amount: utils.getTypeList(accessories, 'bag').length },
+        { type: 'head', amount: utils.getTypeList(accessories, 'head').length },
+        { type: 'other', amount: utils.getTypeList(accessories, 'other').length },
     ]
 
     return (

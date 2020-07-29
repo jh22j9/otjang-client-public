@@ -197,7 +197,6 @@ function deleteItemInServer(deletingClothingToServer) {
     const item = deletingClothingToServer.item.toJS();
     const id = item.item_id;
     const url = `http://13.125.237.84:5000/item/${id}`
-    console.log('삭제 url', url)
     const token = deletingClothingToServer.token;
 
 
@@ -225,8 +224,6 @@ export const createClothesToServer = (sendingClothingToServer) => ({
     type: POST_ADD_ITEM,
     async payload() {
         const { data } = await AddItemInServer(sendingClothingToServer);
-        console.log('response 확인!', data)
-        console.log('response id 확인!', data['item_id'])
         const id = data['item_id']
         return sendingClothingToServer.item.set('item_id', id);
     }
@@ -398,7 +395,6 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
 
         const clothes = action.payload.data.data;
-        console.log('action.payload', action.payload.data.data)
         /* 
         THINK 
         카테고리에 따라 분류한 것을 양식을 변경한 후 state 의 카테고리 배열에 덮어씌운다.  
@@ -507,7 +503,6 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
     },
     [`${POST_ADD_ITEM}_FULFILLED`]: (state, action) => {
-        console.log('_FULFILLED', state.toJS())
         const clothing = state.get('clothing');
         const shoes = state.get('shoes');
         const accessories = state.get('accessories');
@@ -517,7 +512,6 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         // newClothing -> ID 가 있는 상태 
         const newClothing = action.payload;
 
-        console.log('action.payload', action.payload)
         const category = newClothing.get('category').get('categoryValue');
 
 
