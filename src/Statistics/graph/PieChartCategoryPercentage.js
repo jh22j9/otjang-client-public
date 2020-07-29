@@ -2,7 +2,7 @@ import React from 'react';
 import { VictoryBar, VictoryLine, VictoryPie, VictoryGroup, VictoryScatter, VictoryChart, VictoryLabel, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
 import * as utils from '../statisticsUtils';
 
-export default function PieChartCategoryPercentage() {
+export default function PieChartClothingTypePercentage() {
 
 
     var data = [

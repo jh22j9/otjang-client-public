@@ -46,15 +46,15 @@ function Main({ navigation, ClothesActions, wardrobe }) {
     */
 
     //  서버 get 
-    /*   React.useEffect(() => {
-          async function getClothes() {
-              let token = await AsyncStorage.getItem('TOKEN');
-              token = JSON.parse(token);
-              ClothesActions.getClothesFromServer(token);
-  
-          }
-          getClothes();
-      }, []); */
+    React.useEffect(() => {
+        async function getClothes() {
+            let token = await AsyncStorage.getItem('TOKEN');
+            token = JSON.parse(token);
+            ClothesActions.getClothesFromServer(token);
+
+        }
+        getClothes();
+    }, []);
 
 
     function moveToAddItems() {

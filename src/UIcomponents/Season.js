@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Dimensions, Text, TouchableOpacity } from 'react-native';
+import { Chip } from 'react-native-paper'
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import { Map, List } from 'immutable';
 const { width, height } = Dimensions.get('screen');
@@ -150,49 +151,10 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
                 예를 들면 dispatch 됨가 동시에 아이콘이 바뀌도록 
         */
         <View style={styles.container} {...rest}>
-            <TouchableOpacity onPress={setSpring}>
-                {temporaryClothing.get('season').get('spring') ?
-                    <View style={styles.selectedContainer}>
-                        <Text >봄</Text>
-                    </View> :
-                    <View style={styles.notSelectedContainer}>
-                        <Text >봄</Text>
-                    </View>
-                }
-            </TouchableOpacity>
-            <TouchableOpacity onPress={setSummer}>
-                {
-                    temporaryClothing.get('season').get('summer') ?
-                        <View style={styles.selectedContainer}>
-                            <Text >여름</Text>
-                        </View> :
-                        <View style={styles.notSelectedContainer}>
-                            <Text >여름</Text>
-                        </View>
-                }
-            </TouchableOpacity>
-            <TouchableOpacity onPress={setFall}>
-                {
-                    temporaryClothing.get('season').get('fall') ?
-                        <View style={styles.selectedContainer}>
-                            <Text >가을</Text>
-                        </View> :
-                        <View style={styles.notSelectedContainer}>
-                            <Text >가을</Text>
-                        </View>
-                }
-            </TouchableOpacity>
-            <TouchableOpacity onPress={setWinter}>
-                {
-                    temporaryClothing.get('season').get('winter') ?
-                        <View style={styles.selectedContainer}>
-                            <Text >겨울</Text>
-                        </View> :
-                        <View style={styles.notSelectedContainer}>
-                            <Text >겨울</Text>
-                        </View>
-                }
-            </TouchableOpacity>
+            <Chip onPress={setSpring} selected={temporaryClothing.get('season').get('spring')}>🌱 봄</Chip>
+            <Chip onPress={setSummer} selected={temporaryClothing.get('season').get('summer')}>⛱️ 여름</Chip>
+            <Chip onPress={setFall} selected={temporaryClothing.get('season').get('fall')}>🍁 가을</Chip>
+            <Chip onPress={setWinter} selected={temporaryClothing.get('season').get('winter')}>⛄ 겨울</Chip>
         </View>
 
     )
