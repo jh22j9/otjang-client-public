@@ -242,7 +242,7 @@ export const updateClothesToServer = (sendingClothingToServer) => ({
     }
 })
 // sendingClothingToServer={index:index,token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
-export const deleteClothesToServer = (deletingClothingToServer) => ({
+export const removeClothesToServer = (deletingClothingToServer) => ({
 
     type: POST_REMOVE_ITEM,
     async payload() {
@@ -252,7 +252,7 @@ export const deleteClothesToServer = (deletingClothingToServer) => ({
     }
 })
 
-export const getClothesToServer = (token) => ({
+export const getClothesFromServer = (token) => ({
 
     type: GET_CLOTHES,
     async payload() {
