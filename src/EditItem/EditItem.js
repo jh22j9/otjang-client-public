@@ -44,15 +44,16 @@ function EditItem({ navigation, index = 0, user, temporaryClothing, ClothesActio
         var id = temporaryClothing.get('item_id');
         if (id) {
             // onSetClothes({ index: index, temporaryClothing })
-            // ClothesActions.setClothes({ index: index, item: temporaryClothing })
+            ClothesActions.setClothes({ index: index, item: temporaryClothing })
 
-            let token = await AsyncStorage.getItem('TOKEN');
-            token = JSON.parse(token);
-            console.log('token', token)
-            let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
-            ClothesActions.updateClothesToServer(sendingClothingToServer);
+            // 서버연결 
 
-            // ClothesActions.deleteClothesToServer(sendingClothingToServer);
+            /*        let token = await AsyncStorage.getItem('TOKEN');
+                   token = JSON.parse(token);
+                   console.log('token', token)
+                   let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
+                   ClothesActions.updateClothesToServer(sendingClothingToServer); */
+
             navigation.goBack();
         }
     }

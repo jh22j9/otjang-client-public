@@ -78,51 +78,26 @@ export function getMonthlyPrice(clothesList, buydate) {
 
 
 }
+
 export function getSeasonList(clothesList, season) {
 
-    function getSpringList() {
 
-        return clothesList.filter((clothes) => (clothes.season.spring === true))
-    }
-
-    function getSummerList() {
-
-        return clothesList.filter((clothes) => (clothes.season.summer === true))
-    }
-
-    function getFallList() {
-
-        return clothesList.filter((clothes) => (clothes.season.fall === true))
-    }
-
-    function getWinterList() {
-
-        return clothesList.filter((clothes) => (clothes.season.winter === true))
-    }
-
-
-    if (season === 'spring') {
-        return getSpringList();
-    }
-
-    else if (season === 'summer') {
-        return getSummerList();
-    }
-
-    else if (season === 'fall') {
-        return getFallList();
-    }
-
-    else if (season === 'winter') {
-        return getWinterList();
-    }
-
-    else {
-
-        console.warn('잘못된 입력입니다!')
-    }
+    return clothesList.filter((clothes) => (clothes.season[`${season}`] === true))
 
 }
+
+
+
+export function getTypeList(clothesList, type) {
+
+    return clothesList.filter((clothes) => (clothes.type[`${type}`] === true))
+
+}
+
+
+
+
+
 
 export function transformBuydate(data) {
 
