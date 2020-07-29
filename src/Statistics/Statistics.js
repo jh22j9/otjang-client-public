@@ -4,12 +4,20 @@ import { Chip } from 'react-native-paper'
 import Menu, { MenuItem, } from 'react-native-material-menu';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import LineChartMonthlyPrice from './graph/LineChartMonthlyPrice';
-import PieChartCategoryPercentage from './graph/PieChartCategoryPercentage';
+import PieChartClothingTypePercentage from './graph/PieChartCategoryPercentage';
 import BarChartSeasonsAmount from './graph/BarChartSeasonsAmount';
 import BarChartSeasonsPrice from './graph/BarChartSeasonsPrice';
 import BarChartCategoryAmount from './graph/BarChartCategoryAmount';
 import BarChartCategoryPrice from './graph/BarChartCategoryPrice';
-
+import BarChartClothingPrice from './graph/BarChartClothingPrice';
+import BarChartClothingAmount from './graph/BarChartClothingAmount';
+import PieChartClothingPercentage from './graph/PieChartClothingPercentage';
+import BarChartShoesPrice from './graph/BarChartShoesPrice';
+import BarChartShoesAmount from './graph/BarChartShoesAmount';
+import PieChartShoesPercentage from './graph/PieChartShoesPercentage';
+import BarChartAccessoriesPrice from './graph/BarChartAccessoriesPrice';
+import BarChartAccessoriesAmount from './graph/BarChartAccessoriesAmount';
+import PieChartAccessoriesPercentage from './graph/PieChartAccessoriesPercentage'
 const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -43,7 +51,7 @@ const styles = StyleSheet.create({
     popupMenuButton: {
         display: 'flex',
         flexDirection: 'row',
-
+        marginHorizontal: 10,
     },
 
     graphContainer: {
@@ -51,6 +59,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
 
+    },
+    popupMenu: {
+
+        marginHorizontal: 10,
     }
 });
 
@@ -87,7 +99,19 @@ function Statistics() {
     const [selectStatistics, setStatistics] = React.useState({ duration: true, category: false, season: false, type: false });
     const [categoryMenu, setCategoryMenu] = React.useState({ price: true, percentage: false, amount: false });
     const [seasonMenu, setSeasonMenu] = React.useState({ price: true, amount: false });
+    const [categoryInType, setcategoryInType] = React.useState({ clothing: true, shoes: false, accessories: false })
+    const [typeMenu, setTypeMenu] = React.useState({
 
+        clothingPrice: true,
+        clothingAmount: false,
+        clothingPercentage: false,
+        shoesPrice: false,
+        shoesAmount: false,
+        shoesPercentage: false,
+        accessoriesPrice: false,
+        accessoriesAmount: false,
+        accessoriesPercentage: false,
+    })
     function handleDuration() {
 
         setStatistics({ duration: true, category: false, season: false, type: false })
@@ -104,6 +128,7 @@ function Statistics() {
 
         setStatistics({ duration: false, category: false, season: false, type: true })
     }
+
 
     /* 
     TODO : 메뉴까지 포함해서 기간, CATEGORY,계절, TYPE 별 렌더링 되도록 해야함 
@@ -129,6 +154,226 @@ function Statistics() {
         _menu = ref;
     };
 
+    var _categoryMenu = null;
+    var hideCategoryMenu = () => {
+        _categoryMenu.hide();
+    };
+
+    var showCategoryMenu = () => {
+        _categoryMenu.show();
+    };
+
+
+    var setCategoryMenuRef = ref => {
+        _categoryMenu = ref;
+    };
+
+
+    function renderTypeGraph() {
+
+
+        /* 
+        THINK 
+
+        카테고리 선택 -> 통계선택할 수 있도록 
+
+        카테고리에 따라서 내용은 같은데 그래프는 달라짐 
+
+        clothins, shoes, accessories 에 따라서 menu 의 onPress 가 달라지게 된다. 
+        */
+
+        function chooseTypeGraph() {
+
+            if (categoryInType.clothing) {
+
+                if (typeMenu.clothingPrice) {
+
+                    return <BarChartClothingPrice />
+
+                }
+
+                else if (typeMenu.clothingAmount) {
+                    return <BarChartClothingAmount />
+                }
+
+                else if (typeMenu.clothingPercentage) {
+
+                    return <PieChartClothingPercentage />
+                }
+            }
+
+            else if (categoryInType.shoes) {
+
+                if (typeMenu.shoesPrice) {
+                    return <BarChartShoesPrice />
+
+                }
+
+                else if (typeMenu.shoesAmount) {
+                    return <BarChartShoesAmount />
+                }
+
+                else if (typeMenu.shoesPercentage) {
+                    return <PieChartShoesPercentage />
+                }
+            }
+
+            else if (categoryInType.accessories) {
+
+                if (typeMenu.accessoriesPrice) {
+
+                    return <BarChartAccessoriesPrice />
+                }
+
+                else if (typeMenu.accessoriesAmount) {
+                    return <BarChartAccessoriesAmount />
+                }
+
+                else if (typeMenu.accessoriesPercentage) {
+                    return <PieChartAccessoriesPercentage />
+                }
+            }
+
+        }
+
+        const AllFalseObj = {
+
+            clothingPrice: false,
+            clothingAmount: false,
+            clothingPercentage: false,
+            shoesPrice: false,
+            shoesAmount: false,
+            shoesPercentage: false,
+            accessoriesPrice: false,
+            accessoriesAmount: false,
+            accessoriesPercentage: false,
+        }
+
+        function setTypeGraphMenu() {
+
+            if (categoryInType.clothing) {
+                return (
+                    <>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, clothingPrice: true })
+                            _menu.hide();
+                        }}>clothing 구매금액</MenuItem>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, clothingPercentage: true })
+                            _menu.hide();
+                        }}>clothing 구매비율</MenuItem>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, clothingAmount: true })
+                            _menu.hide();
+                        }}>clothing 보유수량</MenuItem>
+                    </>)
+            }
+
+            else if (categoryInType.shoes) {
+                return (
+                    <>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, shoesPrice: true })
+                            _menu.hide();
+                        }}>shoes 구매금액</MenuItem>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, shoesPercentage: true })
+                            _menu.hide();
+                        }}>shoes 구매비율</MenuItem>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, shoesAmount: true })
+                            _menu.hide();
+                        }}>shoes 보유수량</MenuItem>
+                    </>)
+            }
+
+            else if (categoryInType.accessories) {
+                return (
+                    <>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, accessoriesPrice: true })
+                            _menu.hide();
+                        }}>accessories 구매금액</MenuItem>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, accessoriesPercentage: true })
+                            _menu.hide();
+                        }}>accessories 구매비율</MenuItem>
+                        <MenuItem onPress={() => {
+                            setTypeMenu({ ...AllFalseObj, accessoriesAmount: true })
+                            _menu.hide();
+                        }}>accessories 보유수량</MenuItem>
+                    </>)
+            }
+
+
+        }
+
+        function selectClothing() {
+
+            setcategoryInType({ clothing: true, shoes: false, accessories: false });
+            setTypeMenu({ ...AllFalseObj, clothingPrice: true })
+            hideCategoryMenu();
+        }
+
+        function selectShoes() {
+            setcategoryInType({ clothing: false, shoes: true, accessories: false });
+            setTypeMenu({ ...AllFalseObj, shoesPrice: true })
+            _categoryMenu.hide();
+
+        }
+
+        function selectAccessories() {
+            setcategoryInType({ clothing: false, shoes: false, accessories: true });
+            setTypeMenu({ ...AllFalseObj, accessoriesPrice: true })
+            _categoryMenu.hide();
+        }
+
+
+
+        return (
+
+
+            <>
+                <View style={styles.popupMenuContainer}>
+                    <Menu
+                        ref={setCategoryMenuRef}
+                        button={<Pressable onPress={showCategoryMenu} style={styles.popupMenuButton}>
+                            <Text >카테고리  </Text>
+                            <View>
+                                <Icon name='caret-down' size={22} />
+                            </View>
+
+                        </Pressable>}
+                    >
+
+                        {/* 카테고리에 따라서 onPress 내용이 달라져야 함  */}
+                        <MenuItem onPress={selectClothing} >Clothing</MenuItem>
+                        <MenuItem onPress={selectShoes}>Shoes</MenuItem>
+                        <MenuItem onPress={selectAccessories} >Accessories</MenuItem>
+
+                    </Menu>
+                    <Menu
+                        ref={setMenuRef}
+                        button={<Pressable onPress={showMenu} style={styles.popupMenuButton}>
+                            <Text >통계  </Text>
+                            <View>
+                                <Icon name='caret-down' size={22} />
+                            </View>
+
+                        </Pressable>}
+                    >
+                        {setTypeGraphMenu()}
+                    </Menu>
+                </View>
+                <View style={styles.graphContainer}>
+
+                    {chooseTypeGraph()}
+                </View>
+            </>
+        )
+
+
+    }
     function renderDurationGraph() {
 
         return (
@@ -169,7 +414,7 @@ function Statistics() {
             }
 
             else if (categoryMenu.percentage) {
-                return <PieChartCategoryPercentage />
+                return <PieChartClothingTypePercentage />
             }
 
             else if (categoryMenu.amount) {
@@ -297,7 +542,7 @@ function Statistics() {
         }
 
         else if (selectStatistics.type) {
-            return;
+            return renderTypeGraph();
         }
     }
 

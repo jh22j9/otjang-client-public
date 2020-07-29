@@ -40,23 +40,21 @@ function Main({ navigation, ClothesActions, wardrobe }) {
         CLOTHING, SHOES, ACC 로 분류한다. 
 
     */
-    /*   async function getClothes() {
-          let token = await AsyncStorage.getItem('TOKEN');
-          token = JSON.parse(token);
-          ClothesActions.getClothesToServer(token);
-  
-      } */
     /* 
-    */
-    React.useEffect(() => {
-        async function getClothes() {
-            let token = await AsyncStorage.getItem('TOKEN');
-            token = JSON.parse(token);
-            ClothesActions.getClothesToServer(token);
 
-        }
-        getClothes();
-    }, []);
+    navigation
+    */
+
+    //  서버 get 
+    /*   React.useEffect(() => {
+          async function getClothes() {
+              let token = await AsyncStorage.getItem('TOKEN');
+              token = JSON.parse(token);
+              ClothesActions.getClothesFromServer(token);
+  
+          }
+          getClothes();
+      }, []); */
 
 
     function moveToAddItems() {

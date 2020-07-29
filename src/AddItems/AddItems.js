@@ -72,15 +72,15 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
 
     async function saveClothes() {
 
-        // ClothesActions.createClothes(temporaryClothing);
+        ClothesActions.createClothes(temporaryClothing);
 
 
-        // TODO 서버연결
-        let token = await AsyncStorage.getItem('TOKEN');
-        token = JSON.parse(token);
-        console.log('token', token)
-        let sendingClothingToServer = { token: token, item: temporaryClothing }
-        ClothesActions.createClothesToServer(sendingClothingToServer);
+        // 서버연결
+        /*        let token = await AsyncStorage.getItem('TOKEN');
+               token = JSON.parse(token);
+               console.log('token', token)
+               let sendingClothingToServer = { token: token, item: temporaryClothing }
+               ClothesActions.createClothesToServer(sendingClothingToServer); */
 
 
         navigation.goBack();

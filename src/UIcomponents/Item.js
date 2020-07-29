@@ -43,16 +43,16 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
 
         // const deletedItem = { index: index, item: item }
 
-        // ClothesActions.removeClothes(deletedItem)
+        ClothesActions.removeClothes(deletedItem)
 
+        // 서버연결
+        /* 
+                let token = await AsyncStorage.getItem('TOKEN');
+                token = JSON.parse(token);
+                console.log('token', token)
+                let sendingClothingToServer = { index: index, token: token, item: item }
+                ClothesActions.removeClothesToServer(sendingClothingToServer); */
 
-        let token = await AsyncStorage.getItem('TOKEN');
-        token = JSON.parse(token);
-        console.log('token', token)
-        let sendingClothingToServer = { index: index, token: token, item: item }
-        // ClothesActions.updateClothesToServer(sendingClothingToServer);
-
-        ClothesActions.deleteClothesToServer(sendingClothingToServer);
         setDeleteBtn(false)
     }
 
