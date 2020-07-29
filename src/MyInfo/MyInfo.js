@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { View, Text } from 'react-native';
+// import { Button } from 'react-native-elements';
 
-function ETC() {
+function MyInfo() {
     return (
         <View style={{
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            <Text>ETC화면</Text>
+            <Text>UserInfo화면</Text>
         </View>
     );
 }
 
-export default ETC;
+export default MyInfo;

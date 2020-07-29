@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, AsyncStorage, Alert } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Alert } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { Title } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
+
 
 import axios from 'axios';
 
@@ -32,7 +34,7 @@ function SignIn({ navigation }) {
     const [password, setPassword] = React.useState('');
 
     const handleSignIn = (email, password) => {
-        axios.post('http://18.218.160.166:5000/user/signin', {
+        axios.post('http://13.125.237.84:5000/user/signin', {
             email: email,
             password: password
         }).then(res => {

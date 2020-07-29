@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, Dimensions, FlatList } from 'react-native';
+import axios from 'axios';
+import { View, Text, ScrollView, StyleSheet, Dimensions, FlatList } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { IconButton, Colors, Button, Card, Chip, List } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
@@ -64,59 +66,24 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
 
     */
 
-    function saveClothes() {
+    /* 
+    axios.post(url, data, {headers : {'X-Requested-With': 'XMLHttpRequest'} })
+    */
 
-        var id = temporaryClothing.get('item_id');
+    async function saveClothes() {
 
-        if (id) {
-
-            // onSetClothes({ index: index, temporaryClothing })
-            ClothesActions.setClothes({ index: index, temporaryClothing })
-            /*  
-            
-            SET_CLOTHES 
-
-            서버로 데이터 보냄
-            
-            전부 완료되면 해당 화면 stack 에서 제거 
-
-        
-            */
-
-            navigation.goBack();
-        }
-
-        else {
-
-            // onCreateClothes(temporaryClothing);
-            ClothesActions.createClothes(temporaryClothing);
-
-            /*
-            TODO: 
-
-             > POST temporaryClothing TO SERVER
-             
-             > 받은 응답으로 ID UPDATE 
-             
-
-      
-             전부 완료되면 해당 화면 stack 에서 제거 
-             */
-
-            navigation.goBack();
-        }
+        ClothesActions.createClothes(temporaryClothing);
 
 
-        /* THINK: 
+        // 서버연결
+        /*        let token = await AsyncStorage.getItem('TOKEN');
+               token = JSON.parse(token);
+               console.log('token', token)
+               let sendingClothingToServer = { token: token, item: temporaryClothing }
+               ClothesActions.createClothesToServer(sendingClothingToServer); */
 
-        임시의류 id 가 없으면 새로 추가 
-        있으면 수정 
-        
-        저장하기 버튼을 누르면 서버로 데이터를 보낸다. 
-          서버에서 itemId 가 오면 SET_CLOthes 로 id 를 반영한다. 
-  
-        
-        */
+
+        navigation.goBack();
 
     }
     return (

@@ -1,16 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
-import Accessories from './TabMenu/Accessories';
-import AllClothesContainer from './TabMenu/AllClothesContainer';
-import Clothing from './TabMenu/Clothing';
-import Shoe from './TabMenu/Shoe';
-import ETC from './TabMenu/ETC';
+import Accessories from './BottomTab/Accessories';
+import AllClothesContainer from './BottomTab/AllClothesContainer';
+import ClothingContainer from './BottomTab/ClothingContainer';
+import ShoeContainer from './BottomTab/ShoeContainer';
+import BagAccContainer from './BottomTab/BagAccContainer';
+import More from './BottomTab/More';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import AddButton from '../UIcomponents/AddButton'
 import { Map, List } from 'immutable';
+import AsyncStorage from '@react-native-community/async-storage';
 const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
 
@@ -18,7 +19,7 @@ const Tab = createMaterialBottomTabNavigator();
 const emptyClothing = Map({
     item_id: null,
     image: null,
-    type: Map({ typeValue: null, top: false, bottom: false, socks: false }),
+    type: Map({ typeValue: null, top: false, bottom: false, dress: false }),
     category: Map({ categoryValue: null, clothing: false, Shoes: false, Accessories: false }),
     buydate: null,
     price: null,
@@ -30,7 +31,7 @@ const emptyClothing = Map({
     })
 })
 
-function Main({ navigation, ClothesActions }) {
+function Main({ navigation, ClothesActions, wardrobe }) {
 
     /* 
         TODO>
@@ -39,6 +40,22 @@ function Main({ navigation, ClothesActions }) {
         CLOTHING, SHOES, ACC 로 분류한다. 
 
     */
+    /* 
+
+    navigation
+    */
+
+    //  서버 get 
+    /*   React.useEffect(() => {
+          async function getClothes() {
+              let token = await AsyncStorage.getItem('TOKEN');
+              token = JSON.parse(token);
+              ClothesActions.getClothesFromServer(token);
+  
+          }
+          getClothes();
+      }, []); */
+
 
     function moveToAddItems() {
         ClothesActions.setTemporaryClothing(emptyClothing);
@@ -62,7 +79,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Clothing" component={Clothing}
+                <Tab.Screen name="Clothing" component={ClothingContainer}
                     options={{
                         tabBarLabel: 'Clothing',
                         tabBarIcon: ({ color }) => (
@@ -70,7 +87,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Shoe" component={Shoe}
+                <Tab.Screen name="Shoe" component={ShoeContainer}
                     options={{
                         tabBarLabel: 'Shoe',
                         tabBarIcon: ({ color }) => (
@@ -78,7 +95,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="Accessories" component={Accessories}
+                <Tab.Screen name="Accessories" component={BagAccContainer}
                     options={{
                         tabBarLabel: 'Accessories',
                         tabBarIcon: ({ color }) => (
@@ -87,9 +104,9 @@ function Main({ navigation, ClothesActions }) {
                     }}
                 />
                 {/* dots-horizontal */}
-                <Tab.Screen name="ETC" component={ETC}
+                <Tab.Screen name="More" component={More}
                     options={{
-                        tabBarLabel: 'ETC',
+                        tabBarLabel: 'More',
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="dots-horizontal" color={color} size={26} />
                         ),

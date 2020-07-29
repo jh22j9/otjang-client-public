@@ -3,7 +3,7 @@ import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, Dimensions
 import { IconButton, Colors, Button, Card, Chip, List } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-
+import AsyncStorage from '@react-native-community/async-storage';
 import Gallery from '../UIcomponents/Gallery'
 import FormButton from '../UIcomponents/FormButton'
 import CategoryList from '../UIcomponents/CategoryList';
@@ -40,11 +40,20 @@ const styles = StyleSheet.create({
 
 function EditItem({ navigation, index = 0, user, temporaryClothing, ClothesActions, ServerActions }) {
 
-    function saveEditedItem() {
+    async function saveEditedItem() {
         var id = temporaryClothing.get('item_id');
         if (id) {
             // onSetClothes({ index: index, temporaryClothing })
-            ClothesActions.setClothes({ index: index, temporaryClothing })
+            ClothesActions.setClothes({ index: index, item: temporaryClothing })
+
+            // 서버연결 
+
+            /*        let token = await AsyncStorage.getItem('TOKEN');
+                   token = JSON.parse(token);
+                   console.log('token', token)
+                   let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
+                   ClothesActions.updateClothesToServer(sendingClothingToServer); */
+
             navigation.goBack();
         }
     }
