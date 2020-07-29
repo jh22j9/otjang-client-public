@@ -2,33 +2,19 @@ import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
 
-export default function BarChartShoesPrice() {
+export default function BarChartShoesPrice({ wardrobe }) {
+    // 실제 data 
 
-    /* color scales: "grayscale", "qualitative", "heatmap", "warm", "cool", "red", "green","blue" */
-    /* 
-        THINK
-    X - 카테고리
-    Y - 구매금액
+    // const shoes = wardrobe.shoes;
 
-    카테고리 설정으로 하지 말고 이미 뽑아놓은 데이터를 사용하여 작성 
+    // dummy data 
 
-    X축에는 카테고리, y축은 따로 표시하지 않고 labels 로 금액을 표시할 것 
-
-    */
-    /* 
-                   accessories
-    
-                  bag: false,
-                  head: false,
-                  other: false,
-    
-      
-      */
+    const shoes = utils.shoes;
 
     var shoesTypePrice = [
-        { type: 'sneakers', price: utils.getPrice(utils.getTypeList(utils.shoes, 'sneakers')) },
-        { type: 'leather', price: utils.getPrice(utils.getTypeList(utils.shoes, 'leather')) },
-        { type: 'other', price: utils.getPrice(utils.getTypeList(utils.shoes, 'other')) },
+        { type: 'sneakers', price: utils.getPrice(utils.getTypeList(shoes, 'sneakers')) },
+        { type: 'leather', price: utils.getPrice(utils.getTypeList(shoes, 'leather')) },
+        { type: 'other', price: utils.getPrice(utils.getTypeList(shoes, 'other')) },
 
     ]
 

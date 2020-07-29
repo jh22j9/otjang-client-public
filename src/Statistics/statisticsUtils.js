@@ -1,5 +1,4 @@
 import * as dummy from './dummyData';
-
 export const clothing = dummy.clothing.toJS();
 export const shoes = dummy.shoes.toJS();
 export const accessories = dummy.accessories.toJS();
@@ -20,7 +19,7 @@ if (currentMonth < 10) {
 export const currentDate = `${currentYear}${currentMonth}`;
 
 
-export function getAnnualPurchaseData() {
+export function getAnnualPurchaseData(clothesList) {
 
     var monthlyPriceSum = [];
 
@@ -30,17 +29,16 @@ export function getAnnualPurchaseData() {
         let monthlyPriceObject = { buydate: null, price: null }
         if (i < 10) {
             monthlyPriceObject.buydate = Number(`${currentYear}0${i}`);
-            monthlyPriceObject.price = getMonthlyPrice(clothes, Number(`${currentYear}0${i}`));
+            monthlyPriceObject.price = getMonthlyPrice(clothesList, Number(`${currentYear}0${i}`));
             monthlyPriceSum.push(monthlyPriceObject)
         }
 
         else {
             monthlyPriceObject.buydate = Number(`${currentYear}${i}`);
-            monthlyPriceObject.price = getMonthlyPrice(clothes, Number(`${currentYear}${i}`));
+            monthlyPriceObject.price = getMonthlyPrice(clothesList, Number(`${currentYear}${i}`));
             monthlyPriceSum.push(monthlyPriceObject)
         }
     }
-
 
     return monthlyPriceSum;
 
@@ -76,16 +74,12 @@ export function getMonthlyPrice(clothesList, buydate) {
     */
     return getPrice(getMonthlyList(clothesList, buydate))
 
-
 }
 
 export function getSeasonList(clothesList, season) {
 
-
     return clothesList.filter((clothes) => (clothes.season[`${season}`] === true))
-
 }
-
 
 
 export function getTypeList(clothesList, type) {
@@ -93,11 +87,6 @@ export function getTypeList(clothesList, type) {
     return clothesList.filter((clothes) => (clothes.type[`${type}`] === true))
 
 }
-
-
-
-
-
 
 export function transformBuydate(data) {
 

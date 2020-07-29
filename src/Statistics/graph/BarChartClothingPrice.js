@@ -2,7 +2,7 @@ import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
 
-export default function BarChartClothingPrice() {
+export default function BarChartClothingPrice({ wardrobe }) {
 
     /* color scales: "grayscale", "qualitative", "heatmap", "warm", "cool", "red", "green","blue" */
     /* 
@@ -15,34 +15,21 @@ export default function BarChartClothingPrice() {
     X축에는 카테고리, y축은 따로 표시하지 않고 labels 로 금액을 표시할 것 
 
     */
-    /* 
-                  clothing 
-    
-                  top: true,
-                  bottom: false,
-                  outer: false,
-                  dress: false
-    
-                  shoes 
-    
-                  sneakers: false,
-                  leather: true,
-                  other: false
-    
-                  accessories
-    
-                  bag: false,
-                  head: false,
-                  other: false,
-    
-      
-      */
+
+    // 실제 data 
+
+    // const clothing = wardrobe.clothing;
+
+    // dummy data 
+
+    const clothing = utils.clothing;
+
 
     var clothingTypePrice = [
-        { type: 'top', price: utils.getPrice(utils.getTypeList(utils.clothing, 'top')) },
-        { type: 'bottom', price: utils.getPrice(utils.getTypeList(utils.clothing, 'bottom')) },
-        { type: 'outer', price: utils.getPrice(utils.getTypeList(utils.clothing, 'outer')) },
-        { type: 'dress', price: utils.getPrice(utils.getTypeList(utils.clothing, 'dress')) },
+        { type: 'top', price: utils.getPrice(utils.getTypeList(clothing, 'top')) },
+        { type: 'bottom', price: utils.getPrice(utils.getTypeList(clothing, 'bottom')) },
+        { type: 'outer', price: utils.getPrice(utils.getTypeList(clothing, 'outer')) },
+        { type: 'dress', price: utils.getPrice(utils.getTypeList(clothing, 'dress')) },
 
     ]
 

@@ -2,13 +2,37 @@ import React from 'react';
 import { VictoryBar, VictoryLine, VictoryPie, VictoryGroup, VictoryScatter, VictoryChart, VictoryLabel, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
 import * as utils from '../statisticsUtils';
 
-export default function PieChartClothingTypePercentage() {
+export default function PieChartClothingTypePercentage({ wardrobe }) {
+
+    // 실제 data 
+
+    /*  
+
+     const clothing = wardrobe.clothing;
+     const shoes = wardrobe.shoes;
+     const accessories = wardrobe.accessories;
+     const clothes = clothing.concat(shoes).concat(accessories); 
+     
+     */
+
+    //  dummy data 
+
+    const clothing = utils.clothing;
+    const shoes = utils.shoes;
+    const accessories = utils.accessories;
+    const clothes = utils.clothes;
+
+    // 서버, dummy 공통적용
+    const clothingPrice = utils.getPrice(clothing);
+    const shoesPrice = utils.getPrice(shoes);
+    const accessoriesPrice = utils.getPrice(accessories);
+    const totalPrice = utils.getPrice(clothes);
 
 
     var data = [
-        { category: 'clothing', percentage: Math.floor(utils.totalClothingPrice / utils.totalPrice * 100) },
-        { category: 'shoes', percentage: Math.floor(utils.totalShoesPrice / utils.totalPrice * 100) },
-        { category: 'accessories', percentage: Math.floor(utils.totalAccessoriesPrice / utils.totalPrice * 100) }
+        { category: 'clothing', percentage: Math.floor(clothingPrice / totalPrice * 100) },
+        { category: 'shoes', percentage: Math.floor(shoesPrice / totalPrice * 100) },
+        { category: 'accessories', percentage: Math.floor(accessoriesPrice / totalPrice * 100) }
     ]
 
 

@@ -20,16 +20,16 @@ const styles = StyleSheet.create({
     }
 })
 
-function More(props) {
+function More() {
 
-    const navigation = useNavigation();
+    const moreNavigation = useNavigation();
 
     function moveToStatistics() {
-        navigation.navigate('Statistics');
+        moreNavigation.navigate('StatisticsContainer');
     }
 
     function moveToMyInfo() {
-        navigation.navigate('MyInfo');
+        moreNavigation.navigate('MyInfo');
     }
 
     return (
