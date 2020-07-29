@@ -10,8 +10,10 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import AddButton from '../UIcomponents/AddButton'
-import { Map, List } from 'immutable';
+import { Map, List, is } from 'immutable';
 import AsyncStorage from '@react-native-community/async-storage';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import kmpFinder from 'kmp-matcher';
 const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
 
@@ -31,7 +33,8 @@ const emptyClothing = Map({
     })
 })
 
-function Main({ navigation, ClothesActions, wardrobe }) {
+function Main({ navigation, ClothesActions }) {
+
 
     /* 
         TODO>
@@ -53,11 +56,26 @@ function Main({ navigation, ClothesActions, wardrobe }) {
     navigation
     */
 
-    /* THINK 
-
-    wardrobe 가 최신화 될 때 마다 통계에서 데이터 받기 
-    */
     //  서버 get 
+
+    const mainNavigation = useNavigation();
+    const route = useRoute();
+    // var history = mainRoute.state.history;
+    // THINK 맨 처음에는 STATE 가 없음 
+    const routeKeys = Object.keys(route);
+    const isInStateInRoute = routeKeys.find((key) => { return key === 'state' });
+    var history;
+    var currentLocation;
+    var isInMore = false;
+    if (isInStateInRoute) {
+        history = route.state.history;
+        currentLocation = history[history.length - 1].key;
+        let moreFindResult = kmpFinder.kmp(currentLocation, 'More');
+        if (moreFindResult.length > 0) {
+            isInMore = true;
+        }
+    }
+    // console.log('route 확인', history[history.length - 1]);
     React.useEffect(() => {
         async function getClothes() {
             let token = await AsyncStorage.getItem('TOKEN');
@@ -66,7 +84,7 @@ function Main({ navigation, ClothesActions, wardrobe }) {
         }
         getClothes();
     }, []);
-    AsyncStorage.setItem('wardrobe', JSON.stringify(wardrobe))
+
 
     function moveToAddItems() {
         ClothesActions.setTemporaryClothing(emptyClothing);
@@ -114,7 +132,7 @@ function Main({ navigation, ClothesActions, wardrobe }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="More" component={More} initialParams={{ clothes: wardrobe }}
+                <Tab.Screen name="More" component={More} onPress={() => { console.log('누름1') }}
                     options={{
                         tabBarLabel: 'More',
                         tabBarIcon: ({ color }) => (
@@ -124,7 +142,7 @@ function Main({ navigation, ClothesActions, wardrobe }) {
 
                 />
             </Tab.Navigator>
-            <AddButton onPress={moveToAddItems} />
+            {isInMore ? <></> : <AddButton onPress={moveToAddItems} />}
         </>
     );
 }
