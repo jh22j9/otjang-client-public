@@ -23,6 +23,7 @@ import EditItem from './src/EditItem/EditItem'
 import EditItemContainer from './src/EditItem/EditItemContainer'
 import Statistics from './src/Statistics/Statistics'
 import MyInfo from './src/MyInfo/MyInfo'
+import MyInfoContainer from './src/MyInfo/MyInfoContainer'
 import Setting from './src/Setting/Setting'
 import AllClothesContainer from './src/Main/BottomTab/AllClothesContainer'
 import ClothingContainer from './src/Main/BottomTab/ClothingContainer'
@@ -59,7 +60,7 @@ function App() {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="More">
+          <Stack.Navigator initialRouteName="MainContainer">
             <Stack.Screen name="Logo" component={Logo} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
@@ -73,6 +74,7 @@ function App() {
             <Stack.Screen name="Statistics" component={Statistics} />
             <Stack.Screen name='StatisticsContainer' component={StatisticsContainer} />
             <Stack.Screen name="MyInfo" component={MyInfo} />
+            <Stack.Screen name="MyInfoContainer" component={MyInfoContainer} />
             <Stack.Screen name="ChangePassword" component={ChangePassword} />
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name='MainContainer' component={MainContainer} />
