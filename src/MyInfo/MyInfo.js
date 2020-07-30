@@ -59,14 +59,14 @@ function MyInfo(props) {
             <View style={styles.buttoncontainer}>
                 <Button
                     style={styles.button}
-                    icon="account"
+                    icon="keyboard-outline"
                     mode="contained"
                     onPress={moveToChangePassword}>
                     비밀번호 변경
             </Button>
                 <Button
                     style={styles.button}
-                    icon="graph"
+                    icon="account-off"
                     mode="contained"
                 // onPress={}
                 >
