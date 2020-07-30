@@ -47,48 +47,72 @@ const styles = StyleSheet.create({
         marginBottom: 10
     },
 
-    PortalContainer: {
+   modalContainer:{
 
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#6060dd'
 
-    },
+    display:'flex',
+    flexDirection:'column',
+    height: height * 0.35,
+    width: width * 1,
+    backgroundColor: '#00ff0000',
+    justifyContent:'center',
+    alignItems:'center'
+   },
 
     modalScrollContainer: {
 
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display:'flex',
+        flex:9,
+        flexDirection:'row',
+        justifyContent:'center',
+        backgroundColor: '#00ff0000',
 
     },
+    yearScroll:{
+        backgroundColor: 'white',
+        width: '30%',
+        paddingLeft:10
+    },
 
-    modalScroll: {
-        backgroundColor: '#fff',
-        height: height * 0.4,
-        width: width * 0.5,
-
+    monthScroll:{
+        backgroundColor: 'white',
+        width: '15%'
+    },
+    buttonContainer:{
+        backgroundColor: 'white',
+        flex:1,
+        width: '45%',
+        paddingBottom:15,
+       
     }
 
 })
+/* 
+THINK 
 
+날짜 부분을 터치했을 때 MODAL 이 open 
+
+model 에서 연도를 스크롤 하면 상태에서 반영, 선택하면 선택한 연도가 반영 
+
+월도 똑같이 적용 
+
+현재는 연,월 개별 선택으로 구성됨 
+
+
+*/
 
 
 function Buydate({ temporaryClothing,ClothesActions, ...rest }) {
 
-
-
-    const [isVisibleYear, setYearVisible] = React.useState(false);
-    const [isVisibleMonth, setMonthVisible] = React.useState(false);
-
     const [year, setYear] = React.useState(currentYear);
     const [month, setMonth] = React.useState(currentMonth);
+    const [isVisibleDateModal,setVisibleDateModal] = React.useState(false);
 
-    function showYear() {
 
-        setYearVisible(!isVisibleYear);
+    function setBuyDate ()
+
+    {
+              
         let splitYear = String(year).split('').splice(2).join('');
         var changedMonth;
 
@@ -101,72 +125,42 @@ function Buydate({ temporaryClothing,ClothesActions, ...rest }) {
         }
         let buydate=Number(`${splitYear}${changedMonth}`);
         ClothesActions.setTemporaryClothing(temporaryClothing.set('buydate',buydate))
-        
     }
-    function showMonth() {
-        setMonthVisible(!isVisibleMonth);
-        let splitYear = String(year).split('').splice(2).join('');
-        var changedMonth;
 
-        if(month<10){
-            changedMonth=`0${month}`
-        }
+    function showDateModal()
 
-        else {
-            changedMonth = month;
-        }
-        
-        let buydate=Number(`${splitYear}${changedMonth}`);
-        ClothesActions.setTemporaryClothing(temporaryClothing.set('buydate',buydate))
+    {
+        setVisibleDateModal(!isVisibleDateModal);
+        setBuyDate();
     }
+  
+    /* 
+    THINK 
+
+    화면배치 
+
+    MODAL 이 가운데 정렬, 
+
+    스크롤은 row 로 설정 
+
+    스크롤컨테이너, 버튼 은 column 
     
 
-    function chooseMonthModal() {
+    BUG 한 VIEW 안에는 한개의 SCROLL 만 넣을 수 있음 
+    */
+
+    function renderBuyDateModal() {
         return (
 
             <Portal >
                 <Modal
-                    visible={isVisibleMonth} onDismiss={showMonth}>
+                    visible={isVisibleDateModal} onDismiss={showDateModal}>
 
-                    <View style={styles.modalScrollContainer}>
-                        <View style={styles.modalScroll}>
-                            <ScrollPicker
-                                // We need to tell the picker the current picked value
-                                currentValue={month}
-                                // The picker is a pure component so we need to tell it
-                                // what data it needs to subscribe to, otherwise it won't
-                                // re-render
-                                extraData={month}
-                                // The array of objects which makes up the list
-                                list={monthArray}
-                                // Callback function to update the picked value
-                                onItemPress={setMonth}
-                                // Changes the text color in the list
-                                labelColor="blue"
-                                // Changes color of the row separator in the list
-                                separatorColor="none"
-                                // Changes color of the text of the picked item in the list
-                                selectedColor="red"
-                            />
-                            <Button onPress={showMonth}>확인</Button>
-                        </View>
-                    </View>
-                </Modal>
-            </Portal>)
-
-
-    }
-    function chooseYearModal() {
-
-        return (
-
-            <Portal >
-
-                <Modal
-                    visible={isVisibleYear} onDismiss={showYear}>
-
-                    <View style={styles.modalScrollContainer}>
-                        <View style={styles.modalScroll}>
+                    <View style={styles.modalContainer}>
+                   
+                   <View style={styles.modalScrollContainer}>
+                   
+                   <View style={styles.yearScroll} >
                             <ScrollPicker
                                 // We need to tell the picker the current picked value
                                 currentValue={year}
@@ -185,13 +179,47 @@ function Buydate({ temporaryClothing,ClothesActions, ...rest }) {
                                 // Changes color of the text of the picked item in the list
                                 selectedColor="red"
                             />
-                            <Button onPress={showYear}>확인</Button>
+                     
+
                         </View>
+
+
+                        <View style={styles.monthScroll}>
+                               <ScrollPicker
+                                // We need to tell the picker the current picked value
+                                currentValue={month}
+                                // The picker is a pure component so we need to tell it
+                                // what data it needs to subscribe to, otherwise it won't
+                                // re-render
+                                extraData={month}
+                                // The array of objects which makes up the list
+                                list={monthArray}
+                                // Callback function to update the picked value
+                                onItemPress={setMonth}
+                                // Changes the text color in the list
+                                labelColor="blue"
+                                // Changes color of the row separator in the list
+                                separatorColor="none"
+                                // Changes color of the text of the picked item in the list
+                                selectedColor="red"
+                            />
+                           
+                        </View>
+
+                   </View>
+                        
+                        <View style={styles.buttonContainer}>
+                        <Button  onPress={showDateModal}>확인</Button>
+                        </View>
+                       
                     </View>
+
+
                 </Modal>
             </Portal>)
-    }
 
+
+    }
 
 
     return (
@@ -202,29 +230,16 @@ function Buydate({ temporaryClothing,ClothesActions, ...rest }) {
             <View style={styles.inputBuydate}>
 
                 <Pressable style={styles.inputBuydateYear}
-                    onPress={showYear}
+                    onPress={showDateModal}
                 >
                     <TextInput
                         editable={false}
-                        placeholder={`${year}년`}
+                        placeholder={`${year}년 ${month}월`}
                         textAlign='center'
                     >
                     </TextInput>
                 </Pressable>
-
-                <Pressable style={styles.inputBuydateYear}
-                    onPress={showMonth}
-                >
-                    <TextInput style={styles.inputBuydateMonth}
-                        editable={false}
-                        placeholder={`${month}월`}
-                        textAlign='center'
-                    >
-                    </TextInput>
-
-                </Pressable>
-                {chooseYearModal()}
-                {chooseMonthModal()}
+                {renderBuyDateModal()}
             </View>
         </View>
     )

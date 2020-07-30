@@ -46,12 +46,7 @@ const selectTypeObject = {
 
 export default function TypeList({ temporaryClothing, ClothesActions, ...rest }) {
 
-    const [isSelected, setIsSelected] = React.useState(false)
     const [selectType, setSelectType] = React.useState({ ...selectTypeObject })
-
-
-
-
 
     function selectTop() {
 
