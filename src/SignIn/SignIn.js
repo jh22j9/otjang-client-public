@@ -46,6 +46,8 @@ function SignIn({ navigation }) {
 
                     if (res.status === 200) {
                         await AsyncStorage.setItem('TOKEN', token);
+                        await AsyncStorage.setItem('EMAIL', email);
+                        console.log("토큰, 이메일 저장")
                         navigation.navigate('MainContainer');
                     }
                 } catch (e) {

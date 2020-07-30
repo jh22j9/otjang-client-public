@@ -26,6 +26,18 @@ const styles = StyleSheet.create({
 
 function MyInfo(props) {
 
+    const [email, setEmail] = React.useState('')
+
+    // Warning: An effect function must not return anything besides a function, which is used for clean-up. 를 해결하려면 promise를 반환하는 함수를 useEffect 내부에서 선언해야 한다. 
+    React.useEffect(() => {
+        const getEmail = async () => {
+            const email = await AsyncStorage.getItem('EMAIL');
+            console.log('email-----', email);
+            setEmail(email);
+        }
+        getEmail()
+    }, [])
+
     const [expandedFirst, setExpandedFirst] = React.useState(true);
     const [expandedSecond, setExpandedSecond] = React.useState(true);
     const handlePressFirst = () => setExpandedFirst(!expandedFirst);
@@ -37,6 +49,9 @@ function MyInfo(props) {
         MyInfoNavigation.navigate('ChangePassword');
     }
 
+
+    // <Title style={styles.title}>{`${title} (${items.toJS().length})`}</Title>
+
     return (
         <View style={styles.container}>
             <List.Section>
@@ -45,7 +60,7 @@ function MyInfo(props) {
                     left={props => <List.Icon {...props} icon="account" />}
                     expanded={expandedFirst}
                     onPress={handlePressFirst}>
-                    <List.Item title="이메일" />
+                    <List.Item title={`Email : ${email}`} />
                 </List.Accordion>
                 <List.Accordion
                     title="사용 정보"
