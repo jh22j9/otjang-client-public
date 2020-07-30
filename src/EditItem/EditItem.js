@@ -50,7 +50,6 @@ function EditItem({ navigation, index = 0, user, temporaryClothing, ClothesActio
 
             let token = await AsyncStorage.getItem('TOKEN');
             token = JSON.parse(token);
-            console.log('token', token)
             let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
             ClothesActions.updateClothesToServer(sendingClothingToServer);
 
