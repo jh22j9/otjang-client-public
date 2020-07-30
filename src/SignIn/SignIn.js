@@ -5,8 +5,8 @@ import { Title } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
 
-
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 const styles = StyleSheet.create({
     container: {
@@ -34,20 +34,28 @@ function SignIn({ navigation }) {
     const [password, setPassword] = React.useState('');
 
     const handleSignIn = (email, password) => {
+
         axios.post('http://13.125.237.84:5000/user/signin', {
             email: email,
             password: password
-        }).then(res => {
-            if (res.status === 200) {
-                console.log(res.data);
-                let token = res.data.token;
-                AsyncStorage.setItem("TOKEN", JSON.stringify(token));
-                navigation.navigate('MainContainer');
-            }
-        }).catch(err => {
-            console.log(err)
-            Alert.alert("유효하지 않은 회원입니다.");
         })
+            .then(async res => { // async 위치 변경하여 에러 해결 
+                // console.log(res.data.token)
+                try { // try, catch 구문 사용하지 않으면 RN에서 에러 발생함
+                    let token = res.data.token;
+
+                    if (res.status === 200) {
+                        await AsyncStorage.setItem('TOKEN', token);
+                        navigation.navigate('MainContainer');
+                    }
+                } catch (e) {
+                    console.log(e)
+                    Alert.alert("유효하지 않은 회원입니다.")
+                }
+            }).catch(e => { // Possible unhandled promise rejection 에러 해결 
+                console.log(e)
+                Alert.alert("유효하지 않은 회원입니다.")
+            })
     };
 
     return (
