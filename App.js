@@ -29,6 +29,7 @@ import ClothingContainer from './src/Main/BottomTab/ClothingContainer'
 import ShoeContainer from './src/Main/BottomTab/ShoeContainer'
 import BagAccContainer from './src/Main/BottomTab/BagAccContainer'
 import StatisticsContainer from './src/Statistics/StatisticsContainer'
+import ChangePassword from './src/MyInfo/ChangePassword'
 
 import Item from './src/UIcomponents/Item'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -58,7 +59,7 @@ function App() {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="SignIn">
+          <Stack.Navigator initialRouteName="More">
             <Stack.Screen name="Logo" component={Logo} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
@@ -72,6 +73,7 @@ function App() {
             <Stack.Screen name="Statistics" component={Statistics} />
             <Stack.Screen name='StatisticsContainer' component={StatisticsContainer} />
             <Stack.Screen name="MyInfo" component={MyInfo} />
+            <Stack.Screen name="ChangePassword" component={ChangePassword} />
             <Stack.Screen name="Setting" component={Setting} />
             <Stack.Screen name='MainContainer' component={MainContainer} />
             <Stack.Screen name='AllClothesContainer' component={AllClothesContainer} />
