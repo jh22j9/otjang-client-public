@@ -96,12 +96,7 @@ function Statistics({ wardrobe }) {
     - 바로 아래에 우측에 통계메뉴 선택 
     
     */
-    const clothing = wardrobe.clothing;
-    const shoes = wardrobe.shoes;
-    const accessories = wardrobe.accessories;
-    console.log('clothing', clothing);
-    console.log('shoes', shoes);
-    console.log('accessories', accessories);
+
     const [selectStatistics, setStatistics] = React.useState({ duration: true, category: false, season: false, type: false });
     const [categoryMenu, setCategoryMenu] = React.useState({ price: true, percentage: false, amount: false });
     const [seasonMenu, setSeasonMenu] = React.useState({ price: true, amount: false });

@@ -58,7 +58,6 @@ function Main({ navigation, ClothesActions }) {
 
     //  서버 get 
 
-    const mainNavigation = useNavigation();
     const route = useRoute();
     // var history = mainRoute.state.history;
     // THINK 맨 처음에는 STATE 가 없음 
@@ -75,7 +74,6 @@ function Main({ navigation, ClothesActions }) {
             isInMore = true;
         }
     }
-    // console.log('route 확인', history[history.length - 1]);
     React.useEffect(() => {
         async function getClothes() {
             let token = await AsyncStorage.getItem('TOKEN');
