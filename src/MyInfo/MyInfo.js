@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { List, Button, Badge } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation } from '@react-navigation/native';
+
+import axios from 'axios';
 
 const styles = StyleSheet.create({
     container: {
@@ -32,13 +34,15 @@ function MyInfo({ clothing, shoes, accessories }) {
     const accCount = accessories.toJS().length;
     const allItemsCount = clothingCount + shoesCount + accCount;
 
-    const [email, setEmail] = React.useState('')
+    const [email, setEmail] = React.useState('');
+    const [userToken, setUserToken] = React.useState('');
 
     React.useEffect(() => {
         const getEmail = async () => {
-            const email = await AsyncStorage.getItem('EMAIL');
-            console.log('email-----', email);
+            let email = await AsyncStorage.getItem('EMAIL');
+            let token = await AsyncStorage.getItem('TOKEN')
             setEmail(email);
+            setUserToken(token);
         }
         getEmail()
     }, [])
@@ -48,6 +52,28 @@ function MyInfo({ clothing, shoes, accessories }) {
     const moveToChangePassword = () => {
         MyInfoNavigation.navigate('ChangePassword');
     }
+
+    const handleDeleteAccount = (token) => {
+        const url = `http://13.125.237.84:5000/user/delete`;
+        const config = { headers: { token: token } };
+        axios.delete(url, config)
+            .then(res => {
+                if (res.status === 200) {
+                    Alert.alert("계정을 삭제하시겠습니까?", "모든 데이터를 삭제하고 로그인 화면으로 이동합니다.",
+                        [
+                            {
+                                text: "취소", onPress: () => console.log("Cancle Pressed"),
+                                style: "cancle"
+                            },
+                            { text: "확인", onPress: () => MyInfoNavigation.navigate('SignIn') }
+                        ],
+                        { cancelable: false }
+                    );
+                }
+            }).catch = (e) => {
+                console.log(e)
+            }
+    };
 
     return (
         <View style={styles.container}>
@@ -88,7 +114,7 @@ function MyInfo({ clothing, shoes, accessories }) {
                     style={styles.button}
                     icon="account-off"
                     mode="contained"
-                // onPress={}
+                    onPress={() => handleDeleteAccount(userToken)}
                 >
                     회원 탈퇴
                 </Button>
