@@ -32,36 +32,35 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
     var clothing = temporaryClothing.toJS();
     const category = clothing.category.categoryValue;
     const type = clothing.type.typeValue;
-    const seasons = convertSeasonsText(clothing.season.seasonArray).join(', ');
+    const seasons = convertSeasonsText(clothing.season.seasonArray).join(' ');
     const { brand, storage, price } = clothing;
     const buydate = convertBuydateText(clothing.buydate);
 
-    const infoObject = {
-        category: category,
-        type: type,
-        seasons: seasons,
-        brand: brand,
-        storage: storage,
-        price: price,
-        buydate: buydate
+    function moveToEditItem() {
+        navigation.navigate('EditItemContainer', { index: index, category: category })
+    };
+
+    function deleteItemInClient() {
+        const deletedItem = { index: index, item: temporaryClothing }
+        ClothesActions.removeClothes(deletedItem)
     }
 
-    console.log('infoObject', infoObject)
-    function moveToEditItem() {
-        navigation.navigate('EditItemContainer', { index: index })
-    };
+    async function deleteItemInServer() {
+        let token = await AsyncStorage.getItem('TOKEN');
+        token = JSON.parse(token);
+        let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
+        ClothesActions.removeClothesToServer(sendingClothingToServer);
+
+    }
 
     function deleteItem() {
 
-        async function deleteAfterValidate() {
+        function deleteAfterValidate() {
 
-            let token = await AsyncStorage.getItem('TOKEN');
-            token = JSON.parse(token);
-            let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
-            ClothesActions.removeClothesToServer(sendingClothingToServer);
 
-            /*    let targetItem = { index: index, item: temporaryClothing }
-               ClothesActions.removeClothes(targetItem); */
+            deleteItemInClient()
+            // 서버연결시 deleteItemInServer() 주석 해제, deleteItemInClient() 주석처리 
+            // deleteItemInServer()
             navigation.goBack();
         };
 
@@ -79,6 +78,9 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
 
     function convertBuydateText(buydate) {
 
+        if (!buydate) {
+            return buydate;
+        }
         const year = String(buydate).split('').slice(0, 2).join('');
         var month = String(buydate).split('').slice(2)
 

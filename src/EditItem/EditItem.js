@@ -38,23 +38,38 @@ const styles = StyleSheet.create({
     },
 })
 
-function EditItem({ navigation, index = 0, user, temporaryClothing, ClothesActions, ServerActions }) {
+function EditItem({ navigation, route, user, temporaryClothing, ClothesActions, ServerActions }) {
 
-    async function saveEditedItem() {
+    const { index, category } = route.params;
+
+    function editItemInClient() {
+        ClothesActions.setClothes({ index: index, item: temporaryClothing, category: category })
+        navigation.goBack();
+    }
+
+
+    async function editItemInServer() {
+
+        let token = await AsyncStorage.getItem('TOKEN');
+        token = JSON.parse(token);
+
+        let sendingClothingToServer = { index: index, token: token, item: temporaryClothing, category: category }
+        ClothesActions.updateClothesToServer(sendingClothingToServer);
+
+        navigation.goBack();
+    }
+
+    function saveEditedItem() {
         var id = temporaryClothing.get('item_id');
+
         if (id) {
-            // onSetClothes({ index: index, temporaryClothing })
-            // ClothesActions.setClothes({ index: index, item: temporaryClothing })
-
-            // 서버연결 
-
-            let token = await AsyncStorage.getItem('TOKEN');
-            token = JSON.parse(token);
-            let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
-            ClothesActions.updateClothesToServer(sendingClothingToServer);
-
-            navigation.goBack();
+            editItemInServer();
         }
+
+        else {
+            editItemInClient();
+        }
+
     }
     return (
         <View style={styles.container}>

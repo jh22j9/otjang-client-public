@@ -69,17 +69,25 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
     /* 
     axios.post(url, data, {headers : {'X-Requested-With': 'XMLHttpRequest'} })
     */
+    function addItemInClient() {
+        ClothesActions.createClothes(temporaryClothing);
+    }
 
-    async function saveClothes() {
-
-        // ClothesActions.createClothes(temporaryClothing);
-
+    async function addItemInServer() {
 
         // 서버연결
         let token = await AsyncStorage.getItem('TOKEN');
         token = JSON.parse(token);
         let sendingClothingToServer = { token: token, item: temporaryClothing }
         ClothesActions.createClothesToServer(sendingClothingToServer);
+    }
+
+    function saveClothes() {
+
+        addItemInClient()
+
+        // 서버연결시 addItemInServer() 주석 해제, addItemInClient() 주석처리
+        //  addItemInServer()
         navigation.goBack();
 
     }

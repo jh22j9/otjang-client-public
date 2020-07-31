@@ -162,7 +162,9 @@ function AddItemInServer(sendingClothingToServer) {
         brand: item.brand, storage: item.storage,
     }
     const config = { headers: { token: token } }
-    return axios.post(url, data, config)
+    return axios.post(url, data, config).catch(err => {
+        console.warn(err)
+    });
 }
 
 function updateItemInServer(sendingClothingToServer) {
@@ -189,7 +191,7 @@ function updateItemInServer(sendingClothingToServer) {
     }
 
     const config = { headers: { token: token } }
-    return axios.patch(url, data, config)
+    return axios.patch(url, data, config);
 }
 
 function deleteItemInServer(deletingClothingToServer) {
@@ -260,7 +262,6 @@ export const getClothesFromServer = (token) => ({
 })
 
 // 우리의 액션타입에는 접두사가 들어가있기 때문에 그냥 CREATE: 를 하면 안되고, [CREATE]: 로 해주어야합니다.
-
 export default handleActions({
 
     /* 
@@ -354,27 +355,66 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         */
         const index = action.payload.index;
         const item = action.payload.item;
+        const originCategory = action.payload.category;
         const clothing = state.get('clothing');
         const shoes = state.get('shoes');
         const accessories = state.get('accessories');
+
         const category = item.get('category').get('categoryValue');
 
+        console.log('변경하고자 하는 category', category)
+        if (originCategory !== category) {
+            var originCategoryData = state.get(`${originCategory}`);
+            var removedOriginCategoryState = state.set(`${originCategory}`, originCategoryData.splice(index, 1))
+            console.log('원래카테고리', originCategoryData.toJS());
+            console.log('삭제상태', removedOriginCategoryState.toJS());
+        }
+
+        /* 
+
+        originCategory 와 현재 category 값이 다르면 원래 카테고리에서 제거 
+state.set('clothing', clothing.splice(index, 1))
+        */
 
         /* 
         TODO
         카테고리를 변경하면 원래 있었던 카테고리에서 삭제되어야 함 
 
+        - 기존 카테고리값을 받아서 기존 카테고리 키에 있던 값을 삭제, 
+
         */
         if (category === 'clothing') {
-            return state.set('clothing', clothing.set(index, item))
+
+            if (originCategory !== category) {
+                return removedOriginCategoryState.set('clothing', clothing.push(item));
+            }
+
+            else {
+                return state.set('clothing', clothing.set(index, item))
+            }
         }
 
         else if (category === 'shoes') {
-            return state.set('shoes', shoes.set(index, item))
+
+            if (originCategory !== category) {
+                return removedOriginCategoryState.set('shoes', shoes.push(item));
+            }
+
+            else {
+                return state.set('shoes', shoes.set(index, item))
+            }
+
         }
 
         else if (category === 'accessories') {
-            return state.set('accessories', accessories.set(index, item))
+
+            if (originCategory !== category) {
+                return removedOriginCategoryState.set('accessories', accessories.push(item));
+            }
+
+            else {
+                return state.set('accessories', accessories.set(index, item))
+            }
         }
 
     },
@@ -547,31 +587,78 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
     },
     [`${POST_UPDATE_ITEM}_FULFILLED`]: (state, action) => {
 
-
         const index = action.payload.index;
         const item = action.payload.item;
+        const originCategory = action.payload.category;
         const clothing = state.get('clothing');
         const shoes = state.get('shoes');
         const accessories = state.get('accessories');
+
         const category = item.get('category').get('categoryValue');
 
+        if (originCategory !== category) {
+            var originCategoryData = state.get(`${originCategory}`);
+            var removedOriginCategoryState = state.set(`${originCategory}`, originCategoryData.splice(index, 1))
+        }
 
-        /* 
-        TODO
-        카테고리를 변경하면 원래 있었던 카테고리에서 삭제되어야 함 
-
-        */
         if (category === 'clothing') {
-            return state.set('clothing', clothing.set(index, item))
+
+            if (originCategory !== category) {
+                return removedOriginCategoryState.set('clothing', clothing.push(item));
+            }
+
+            else {
+                return state.set('clothing', clothing.set(index, item))
+            }
         }
 
         else if (category === 'shoes') {
-            return state.set('shoes', shoes.set(index, item))
+
+            if (originCategory !== category) {
+                return removedOriginCategoryState.set('shoes', shoes.push(item));
+            }
+
+            else {
+                return state.set('shoes', shoes.set(index, item))
+            }
+
         }
 
         else if (category === 'accessories') {
-            return state.set('accessories', accessories.set(index, item))
+
+            if (originCategory !== category) {
+                return removedOriginCategoryState.set('accessories', accessories.push(item));
+            }
+
+            else {
+                return state.set('accessories', accessories.set(index, item))
+            }
         }
+
+        // const index = action.payload.index;
+        // const item = action.payload.item;
+        // const clothing = state.get('clothing');
+        // const shoes = state.get('shoes');
+        // const accessories = state.get('accessories');
+        // const category = item.get('category').get('categoryValue');
+
+
+        // /* 
+        // TODO
+        // 카테고리를 변경하면 원래 있었던 카테고리에서 삭제되어야 함 
+
+        // */
+        // if (category === 'clothing') {
+        //     return state.set('clothing', clothing.set(index, item))
+        // }
+
+        // else if (category === 'shoes') {
+        //     return state.set('shoes', shoes.set(index, item))
+        // }
+
+        // else if (category === 'accessories') {
+        //     return state.set('accessories', accessories.set(index, item))
+        // }
 
     },
 
