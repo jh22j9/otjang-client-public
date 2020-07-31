@@ -30,7 +30,6 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
 
 
     const [isVisibleDeleteBtn, setDeleteBtn] = React.useState(false);
-
     function showDeleteBtn() {
 
         setDeleteBtn(true)
@@ -39,20 +38,25 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
         setDeleteBtn(false)
     }
 
-    async function deleteItem() {
+    function deleteItemInClient() {
+        const deletedItem = { index: index, item: item }
+        ClothesActions.removeClothes(deletedItem)
+    }
 
-        // const deletedItem = { index: index, item: item }
-
-        // ClothesActions.removeClothes(deletedItem)
-
-        // 서버연결
-
+    async function deleteItemInServer() {
         let token = await AsyncStorage.getItem('TOKEN');
         token = JSON.parse(token);
         let sendingClothingToServer = { index: index, token: token, item: item }
         ClothesActions.removeClothesToServer(sendingClothingToServer);
 
-        setDeleteBtn(false)
+    }
+
+    function deleteItem() {
+
+        deleteItemInClient();
+        // 서버연결시 deleteItemInServer() 주석해제, deleteItemInClient() 주석처리 
+        // deleteItemInServer()
+        hideDeleteBtn()
     }
 
     function handelDeleteBtn() {

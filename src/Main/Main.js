@@ -56,7 +56,7 @@ function Main({ navigation, ClothesActions }) {
     navigation
     */
 
-    //  서버 get 
+
 
     const route = useRoute();
     // var history = mainRoute.state.history;
@@ -74,14 +74,17 @@ function Main({ navigation, ClothesActions }) {
             isInMore = true;
         }
     }
-    React.useEffect(() => {
-        async function getClothes() {
-            let token = await AsyncStorage.getItem('TOKEN');
-            token = JSON.parse(token);
-            ClothesActions.getClothesFromServer(token);
-        }
-        getClothes();
-    }, []);
+
+    //  서버 get 
+
+    /*  React.useEffect(() => {
+         async function getClothes() {
+             let token = await AsyncStorage.getItem('TOKEN');
+             token = JSON.parse(token);
+             ClothesActions.getClothesFromServer(token);
+         }
+         getClothes();
+     }, []); */
 
 
     function moveToAddItems() {
@@ -130,7 +133,7 @@ function Main({ navigation, ClothesActions }) {
                         ),
                     }}
                 />
-                <Tab.Screen name="More" component={More} onPress={() => { console.log('누름1') }}
+                <Tab.Screen name="More" component={More}
                     options={{
                         tabBarLabel: 'More',
                         tabBarIcon: ({ color }) => (
