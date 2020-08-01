@@ -13,7 +13,6 @@ import AddButton from '../UIcomponents/AddButton'
 import { Map, List, is } from 'immutable';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import kmpFinder from 'kmp-matcher';
 const Tab = createMaterialBottomTabNavigator();
 // shoe-formal
 
@@ -69,8 +68,7 @@ function Main({ navigation, ClothesActions }) {
     if (isInStateInRoute) {
         history = route.state.history;
         currentLocation = history[history.length - 1].key;
-        let moreFindResult = kmpFinder.kmp(currentLocation, 'More');
-        if (moreFindResult.length > 0) {
+        if (currentLocation.includes('More')) {
             isInMore = true;
         }
     }
