@@ -38,6 +38,7 @@ function SignIn({ navigation }) {
         axios.post('http://13.125.237.84:5000/user/signin', {
             email: email,
             password: password
+
         })
             .then(async res => { // async 위치 변경하여 에러 해결 
                 // console.log(res.data.token)
@@ -49,7 +50,7 @@ function SignIn({ navigation }) {
                         await AsyncStorage.setItem('EMAIL', email);
                         setEmail('');
                         setPassword('');
-                        navigation.navigate('MainContainer');
+                        navigation.replace('MainContainer');
                     }
                 } catch (e) {
                     console.log(e)
