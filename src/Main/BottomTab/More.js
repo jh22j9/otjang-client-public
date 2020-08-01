@@ -29,7 +29,8 @@ function More() {
     }
 
     function moveToMyInfo() {
-        moreNavigation.navigate('MyInfo');
+        moreNavigation.navigate('MyInfoContainer');
+        console.log("이동")
     }
 
     return (
