@@ -78,7 +78,7 @@ function Main({ navigation, ClothesActions }) {
     React.useEffect(() => {
         async function getClothes() {
             let token = await AsyncStorage.getItem('TOKEN');
-            token = JSON.parse(token);
+            // token = JSON.parse(token);
             ClothesActions.getClothesFromServer(token);
         }
         getClothes();

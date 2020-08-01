@@ -50,7 +50,6 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
 
     async function deleteItemInServer() {
         let token = await AsyncStorage.getItem('TOKEN');
-        token = JSON.parse(token);
         let sendingClothingToServer = { index: index, token: token, item: item }
         ClothesActions.removeClothesToServer(sendingClothingToServer);
 
