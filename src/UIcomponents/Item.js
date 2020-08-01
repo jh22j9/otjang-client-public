@@ -58,9 +58,9 @@ export default function Item({ navigation, item, index, ClothesActions, ...rest 
 
     function deleteItem() {
 
-        deleteItemInClient();
+        // deleteItemInClient();
         // 서버연결시 deleteItemInServer() 주석해제, deleteItemInClient() 주석처리 
-        // deleteItemInServer()
+        deleteItemInServer()
         hideDeleteBtn()
     }
 

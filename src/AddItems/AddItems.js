@@ -84,10 +84,10 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
 
     function saveClothes() {
 
-        addItemInClient()
+        // addItemInClient()
 
         // 서버연결시 addItemInServer() 주석 해제, addItemInClient() 주석처리
-        //  addItemInServer()
+        addItemInServer()
         navigation.goBack();
 
     }

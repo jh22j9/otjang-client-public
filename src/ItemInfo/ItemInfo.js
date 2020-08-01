@@ -58,9 +58,9 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
         function deleteAfterValidate() {
 
 
-            deleteItemInClient()
+            // deleteItemInClient()
             // 서버연결시 deleteItemInServer() 주석 해제, deleteItemInClient() 주석처리 
-            // deleteItemInServer()
+            deleteItemInServer()
             navigation.goBack();
         };
 
