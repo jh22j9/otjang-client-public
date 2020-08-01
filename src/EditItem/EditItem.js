@@ -51,12 +51,11 @@ function EditItem({ navigation, route, user, temporaryClothing, ClothesActions, 
     async function editItemInServer() {
 
         let token = await AsyncStorage.getItem('TOKEN');
-        token = JSON.parse(token);
 
         let sendingClothingToServer = { index: index, token: token, item: temporaryClothing, category: category }
         ClothesActions.updateClothesToServer(sendingClothingToServer);
+        navigation.popToTop()
 
-        navigation.goBack();
     }
 
     function saveEditedItem() {

@@ -47,7 +47,6 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
 
     async function deleteItemInServer() {
         let token = await AsyncStorage.getItem('TOKEN');
-        token = JSON.parse(token);
         let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
         ClothesActions.removeClothesToServer(sendingClothingToServer);
 

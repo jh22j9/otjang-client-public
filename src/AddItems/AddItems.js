@@ -77,7 +77,6 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
 
         // 서버연결
         let token = await AsyncStorage.getItem('TOKEN');
-        token = JSON.parse(token);
         let sendingClothingToServer = { token: token, item: temporaryClothing }
         ClothesActions.createClothesToServer(sendingClothingToServer);
     }
