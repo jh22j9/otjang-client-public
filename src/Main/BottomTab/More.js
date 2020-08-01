@@ -33,6 +33,11 @@ function More() {
         console.log("이동")
     }
 
+    function moveToWashing() {
+        moreNavigation.navigate('HowToWash'); //정적인 데이터만 담을거라서 container가 필요하진 않은데... 음... 이건 좀 물어봐야 할 것 같아..!
+        console.log('세탁 이동')
+    }
+
     return (
         <View style={styles.container}>
             <Button
@@ -49,6 +54,14 @@ function More() {
                 onPress={moveToStatistics}>
                 STATISTICS
                 </Button>
+            <Button
+                style={styles.button}
+                icon="washing-machine" // 이거 어떻게 가져오는거지..? : 'react-native-paper'
+                mode="contained"
+                onPress={moveToWashing}>
+                HOW TO WASH
+                </Button>
+
         </View>
     );
 }
