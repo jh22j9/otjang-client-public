@@ -49,20 +49,20 @@ function ChangePassword() {
     if (newPassword === confirmPassword) {
       axios.post(url, data, config)
         .then(res => {
-          if (res.status === 409) {
-            // 작동하지 않음
-            Alert.alert("현재 비밀번호가 일치하지 않습니다.")
-          }
-          else if (res.status === 200) {
+          console.log('res.status----', res.status)
+          if (res.status === 200) {
             Alert.alert("비밀번호가 변경되었습니다.", "로그인 페이지로 이동합니다.",
               [
                 { text: '확인', onPress: () => Navigation.navigate('SignIn') },
               ],
               { cancelable: false })
           }
-        }).catch = (e) => {
-          console.log(e);
-        }
+        })
+        .catch(err => {
+          if (err.response.status === 409) {
+            Alert.alert("현재 비밀번호가 일치하지 않습니다.")
+          }
+        })
     } else {
       Alert.alert("새 비밀번호와 비밀번호 확인이 일치하지 않습니다.")
     };
