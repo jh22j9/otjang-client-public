@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Alert } from 'react-native';
-import { Title, IconButton } from 'react-native-paper';
+import { Title, HelperText } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
 // import { Button } from 'react-native-elements';
@@ -30,6 +30,15 @@ function SignUp({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
+    const hasEmailError = () => {
+
+        if (email.length > 4 && email.includes('@') === false) {
+            return (<HelperText type="error" visible={true}>
+                올바른 Email 형식이 아닙니다!
+            </HelperText>)
+        }
+    };
+
     const handleSignUp = (email, password) => {
         axios.post('http://13.125.237.84:5000/user/signup', {
             email: email,
@@ -55,6 +64,7 @@ function SignUp({ navigation }) {
                 autoCapitalize='none'
                 onChangeText={email => setEmail(email)}
             />
+            {hasEmailError()}
             <FormInput
                 labelName='Password'
                 value={password}

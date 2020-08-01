@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Title } from 'react-native-paper';
+import { Title, HelperText } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
 
@@ -32,6 +32,15 @@ const styles = StyleSheet.create({
 function SignIn({ navigation }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
+
+    const hasEmailError = () => {
+
+        if (email.length > 4 && email.includes('@') === false) {
+            return (<HelperText type="error" visible={true}>
+                올바른 Email 형식이 아닙니다!
+            </HelperText>)
+        }
+    };
 
     const handleSignIn = (email, password) => {
 
@@ -71,6 +80,7 @@ function SignIn({ navigation }) {
                 autoCapitalize='none'
                 onChangeText={email => setEmail(email)}
             />
+            {hasEmailError()}
             <FormInput
                 labelName='Password'
                 value={password}

@@ -20,5 +20,6 @@ export default function FormInput({ labelName, ...rest }) {
             numberOfLines={1}
             {...rest}
         />
+
     );
 }
