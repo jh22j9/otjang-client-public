@@ -75,16 +75,16 @@ function Main({ navigation, ClothesActions }) {
         }
     }
 
-    //  서버 get 
+    //  서버연결시 아래주석 해제
 
-    /*  React.useEffect(() => {
-         async function getClothes() {
-             let token = await AsyncStorage.getItem('TOKEN');
-             token = JSON.parse(token);
-             ClothesActions.getClothesFromServer(token);
-         }
-         getClothes();
-     }, []); */
+    React.useEffect(() => {
+        async function getClothes() {
+            let token = await AsyncStorage.getItem('TOKEN');
+            token = JSON.parse(token);
+            ClothesActions.getClothesFromServer(token);
+        }
+        getClothes();
+    }, []);
 
 
     function moveToAddItems() {

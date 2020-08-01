@@ -155,16 +155,16 @@ function AddItemInServer(sendingClothingToServer) {
     const token = sendingClothingToServer.token;
     const item = sendingClothingToServer.item.toJS();
 
-
+    const noNullValueSeason = item.season.seasonArray.filter((season) => (season !== null))
     const data = {
-        season: item.season.seasonArray, image: item.image, type: item.type.typeValue,
+        season: noNullValueSeason, image: item.image, type: item.type.typeValue,
         category: item.category.categoryValue, buydate: item.buydate, price: item.price,
         brand: item.brand, storage: item.storage,
     }
     const config = { headers: { token: token } }
-    return axios.post(url, data, config).catch(err => {
-        console.warn(err)
-    });
+    return axios.post(url, data, config)
+        .then((res) => (res))
+        .catch((err) => { console.warn(err) });
 }
 
 function updateItemInServer(sendingClothingToServer) {
@@ -191,7 +191,8 @@ function updateItemInServer(sendingClothingToServer) {
     }
 
     const config = { headers: { token: token } }
-    return axios.patch(url, data, config);
+    return axios.patch(url, data, config).then((res) => (res))
+        .catch((err) => { console.warn(err) });
 }
 
 function deleteItemInServer(deletingClothingToServer) {
@@ -203,7 +204,8 @@ function deleteItemInServer(deletingClothingToServer) {
 
 
     const config = { headers: { token: token } }
-    return axios.delete(url, config);
+    return axios.delete(url, config).then((res) => (res))
+        .catch((err) => { console.warn(err) });
 }
 
 
@@ -211,7 +213,8 @@ function getItemsFromServer(token) {
 
     const url = 'http://13.125.237.84:5000/info';
     const config = { headers: { token: token } }
-    return axios.get(url, config);
+    return axios.get(url, config).then((res) => (res))
+        .catch((err) => { console.warn(err) });
 }
 
 export const createClothes = createAction(CREATE_CLOTHES);
@@ -362,12 +365,9 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
         const category = item.get('category').get('categoryValue');
 
-        console.log('변경하고자 하는 category', category)
         if (originCategory !== category) {
             var originCategoryData = state.get(`${originCategory}`);
             var removedOriginCategoryState = state.set(`${originCategory}`, originCategoryData.splice(index, 1))
-            console.log('원래카테고리', originCategoryData.toJS());
-            console.log('삭제상태', removedOriginCategoryState.toJS());
         }
 
         /* 
