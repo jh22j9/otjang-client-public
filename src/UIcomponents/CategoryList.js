@@ -3,6 +3,8 @@ import { View, StyleSheet, Dimensions,Text, TouchableOpacity, ScrollView } from 
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Map, List } from 'immutable';
+import {Chip} from 'react-native-paper';
+
 const { width, height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
 
@@ -27,18 +29,18 @@ const styles = StyleSheet.create({
 
 export default function CategoryList({ temporaryClothing, ClothesActions,...rest }) {
 
-    function touchClothing() {
+    function selectClothing() {
         // state 변경 
         const clothingObject = { categoryValue: 'clothing', clothing: true, shoes: false, accessories: false }
         ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(clothingObject)));
     }
 
-    function touchShoe() {
+    function selectShoe() {
         const shoesObject = { categoryValue: 'shoes', clothing: false, shoes: true, accessories: false }
         ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(shoesObject)));
     }
 
-    function touchAccessories() {
+    function selectAccessories() {
         const accessoriesObject = { categoryValue: 'accessories', clothing: false, shoes: false, accessories: true }
         ClothesActions.setTemporaryClothing(temporaryClothing.set('category',Map(accessoriesObject)));
     }
@@ -47,32 +49,32 @@ export default function CategoryList({ temporaryClothing, ClothesActions,...rest
     return (
         <View style={styles.container} {...rest} >
 
-                <TouchableOpacity onPress={touchClothing}>
-                    {temporaryClothing.get('category').get('clothing') ? <View style={styles.selectedContainer}>
-                        <FontAwesome5Icons name="tshirt" size={50} />
-                    </View> : <View style={styles.notSelectedContainer}>
-                            <FontAwesome5Icons name="tshirt" size={50} />
-                        </View>
-                    }
-                </TouchableOpacity>
+            <Chip 
+                onPress={selectClothing}
+                icon={() => (<FontAwesome5Icons name="tshirt"  size={25} />)}
+                textStyle={{ fontSize: 20 }}
+                selected={temporaryClothing.get('category').get('clothing')}
+                            
+            >clothing
+            </Chip>
 
-                <TouchableOpacity onPress={touchShoe}>
-                    {temporaryClothing.get('category').get('Shoes') ? <View style={styles.selectedContainer}>
-                    <MaterialCommunityIcons name="shoe-formal" size={50} />
-                    </View> : <View style={styles.notSelectedContainer}>
-                    <MaterialCommunityIcons name="shoe-formal" size={50} />
-                        </View>
-                    }
-                </TouchableOpacity>
+            <Chip 
+                onPress={selectShoe}
+                icon={() => ( <MaterialCommunityIcons name="shoe-formal" size={25} />)}
+                textStyle={{ fontSize: 20 }}
+                selected={temporaryClothing.get('category').get('shoes')}
+                            
+            >shoes
+            </Chip>
 
-                <TouchableOpacity onPress={touchAccessories}>
-                    {temporaryClothing.get('category').get('Accessories') ? <View style={styles.selectedContainer}>
-                    <MaterialCommunityIcons name="hat-fedora" size={50} />
-                    </View> : <View style={styles.notSelectedContainer}>
-                    <MaterialCommunityIcons name="hat-fedora" size={50} />
-                        </View>
-                    }
-                </TouchableOpacity>
+            <Chip 
+                onPress={selectAccessories}
+                icon={() => (<MaterialCommunityIcons name="hat-fedora" size={25} />)}
+                textStyle={{ fontSize: 20 }}
+                selected={temporaryClothing.get('category').get('accessories')}
+                            
+            >Accessories
+            </Chip>
         </View>
     )
 }
