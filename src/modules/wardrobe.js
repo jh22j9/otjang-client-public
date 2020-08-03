@@ -64,7 +64,8 @@ export const initialState = Map({
                 typeValue: null,
                 sneakers: false,
                 leather: true,
-                other: false
+                sandals: false,
+                boots: false
             }),
             buydate: null,
             price: null,
@@ -93,6 +94,7 @@ export const initialState = Map({
                 typeValue: null,
                 bag: false,
                 head: false,
+                jewelry: false,
                 other: false,
             }),
             buydate: null,

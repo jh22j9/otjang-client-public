@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
-import Accessories from './BottomTab/Accessories';
 import AllClothesContainer from './BottomTab/AllClothesContainer';
 import ClothingContainer from './BottomTab/ClothingContainer';
 import ShoeContainer from './BottomTab/ShoeContainer';

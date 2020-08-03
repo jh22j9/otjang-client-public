@@ -61,7 +61,7 @@ function App() {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="SignIn">
+          <Stack.Navigator initialRouteName="MainContainer">
             <Stack.Screen name="Logo" component={Logo} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
