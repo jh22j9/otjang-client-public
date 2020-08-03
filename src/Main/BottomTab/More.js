@@ -30,7 +30,6 @@ function More() {
 
     function moveToMyInfo() {
         moreNavigation.navigate('MyInfoContainer');
-        console.log("이동")
     }
 
     return (

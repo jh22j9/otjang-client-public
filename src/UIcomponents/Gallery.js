@@ -1,9 +1,12 @@
 import React from 'react';
 import { StyleSheet, Dimensions, TouchableOpacity, Image, } from 'react-native';
-import { Button } from 'react-native-paper';
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { Map, List } from 'immutable';
+import { decode } from 'base64-arraybuffer';
+import S3 from 'aws-sdk/clients/s3'
+import { ACCESS_KEY_ID, SECRET_ACCESS_KEY, BUCKET } from 'envStorage';
+
+
 const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -26,6 +29,8 @@ const styles = StyleSheet.create({
 
 /*
 THINK: 
+
+
 clothesObj 옷에 대한 모든 정보가 담긴 객체 
 수정사항이 생길 때마다 아래 객체에 반영하여 state 변경시킨다. 
 */
@@ -44,9 +49,39 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
             },
         };
 
+        const uploadImageOnS3 = (file) => {
+            // var uri = '초기값';
+            const s3bucket = new S3({
+                accessKeyId: ACCESS_KEY_ID,
+                secretAccessKey: SECRET_ACCESS_KEY,
+                Bucket: BUCKET,
+                signatureVersion: 'v4',
+            });
+            let contentType = file.type;
+            let contentDeposition = 'inline;filename="' + file.name + '"';
+            const arrayBuffer = decode(file.data);
+
+            return s3bucket.createBucket(() => {
+                const params = {
+                    Bucket: 'otjang-image-storage',
+                    Key: file.name,
+                    Body: arrayBuffer,
+                    ContentDisposition: contentDeposition,
+                    ContentType: contentType,
+                };
+
+                let promiseS3 = s3bucket.upload(params).promise()
+
+                promiseS3.then(function (data) {
+                    ClothesActions.setTemporaryClothing(temporaryClothing.set('image', data.Location))
+                }).catch((err) => { console.warn(err) })
+            })
+        };
+
+
+
         ImagePicker.showImagePicker(options, response => {
             console.log('Response = ', response);
-
             if (response.didCancel) {
                 console.log('User cancelled photo picker');
             } else if (response.error) {
@@ -55,7 +90,39 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
                 console.log('User tapped custom button: ', response.customButton);
             } else {
                 console.log('response확인', response)
-                ClothesActions.setTemporaryClothing(temporaryClothing.set('image', response.uri))
+
+                /* 
+                THINK 
+                무조건 s3 로 보낸 후 받은 uri 를 임시 저장창고에 저장 
+                
+                */
+
+                /* 
+                BUG : S3 로 부터 이미지 URI 를 받은후 -> setTemporaryClothing() 가 실행되어야 함
+                */
+
+                function uploadS3Uri() {
+
+                    const file = {
+                        uri: `file://${response.path}`,
+                        name: response.fileName,
+                        type: response.type,
+                        data: response.data,
+                    }
+
+                    try {
+                        uploadImageOnS3(file);
+                    } catch (error) {
+                        console.warn(err)
+                    }
+
+                }
+
+                uploadS3Uri();
+
+                // 스마트폰 내부의 위치로 저장 
+                // ClothesActions.setTemporaryClothing(temporaryClothing.set('image', `file://${response.path}`))
+
             }
         });
     }
