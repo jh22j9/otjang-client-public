@@ -22,32 +22,34 @@ const styles = StyleSheet.create({
     },
     notSelectedContainer: {
         padding: 10,
-
     },
     chip: {
-        marginRight: 10
+        marginRight: 15
     }
-})
-
+});
 
 const selectTypeObject = {
     top: false,
     bottom: false,
     outer: false,
     dress: false,
+
     sneakers: false,
     leather: false,
-    shoesOthers: false,
+    sandals: false,
+    boots: false,
+
     bag: false,
     head: false,
+    jewelry: false,
     accOthers: false,
-
 }
 
 export default function TypeList({ temporaryClothing, ClothesActions, ...rest }) {
 
     const [selectType, setSelectType] = React.useState({ ...selectTypeObject })
 
+    // clothing
     function selectTop() {
 
         setSelectType({ ...selectTypeObject, top: true });
@@ -61,8 +63,6 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
         };
         ClothesActions
             .setTemporaryClothing(temporaryClothing.set('type', Map(clothingTypeObj)));
-
-
     };
 
     function selectBottom() {
@@ -109,6 +109,7 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
             .setTemporaryClothing(temporaryClothing.set('type', Map(clothingTypeObj)));
     };
 
+    // shoes
     function selectSneakers() {
         setSelectType({ ...selectTypeObject, sneakers: true });
 
@@ -116,6 +117,7 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
             typeValue: 'sneakers',
             sneakers: true,
             leather: false,
+            sandals: false,
             other: false
         };
         ClothesActions
@@ -130,26 +132,44 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
             typeValue: 'leather',
             sneakers: false,
             leather: true,
-            other: false
+            sandals: false,
+            boots: false
         };
         ClothesActions
             .setTemporaryClothing(temporaryClothing.set('type', Map(shoesTypeObj)));
     };
 
-    function selectOtherShoes() {
+    function selectSandals() {
 
-        setSelectType({ ...selectTypeObject, shoesOthers: true });
+        setSelectType({ ...selectTypeObject, sandals: true });
+
+        const shoesTypeObj = {
+            typeValue: 'leather',
+            sneakers: false,
+            leather: false,
+            sandals: true,
+            boots: false
+        };
+        ClothesActions
+            .setTemporaryClothing(temporaryClothing.set('type', Map(shoesTypeObj)));
+    };
+
+    function selectBoots() {
+
+        setSelectType({ ...selectTypeObject, boots: true });
 
         const shoesTypeObj = {
             typeValue: 'other',
             sneakers: false,
             leather: false,
-            other: true
+            sandals: false,
+            boots: true
         };
         ClothesActions
             .setTemporaryClothing(temporaryClothing.set('type', Map(shoesTypeObj)));
     };
 
+    // accessories
     function selectBag() {
 
         setSelectType({ ...selectTypeObject, bag: true });
@@ -178,6 +198,21 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
             .setTemporaryClothing(temporaryClothing.set('type', Map(accTypeObj)));
     };
 
+    function selectJewelry() {
+
+        setSelectType({ ...selectTypeObject, jewelry: true });
+
+        const accTypeObj = {
+            typeValue: 'head',
+            bag: false,
+            head: false,
+            jewelry: true,
+            other: false,
+        };
+        ClothesActions
+            .setTemporaryClothing(temporaryClothing.set('type', Map(accTypeObj)));
+    };
+
     function selectOtherAcc() {
 
         setSelectType({ ...selectTypeObject, accOthers: true });
@@ -192,7 +227,7 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
             .setTemporaryClothing(temporaryClothing.set('type', Map(accTypeObj)));
     };
 
-    // render 
+    // accessories 
     if (temporaryClothing.get('category').get('categoryValue') === 'accessories') {
         return (
             <View style={styles.container} {...rest} >
@@ -202,25 +237,33 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
                         style={styles.chip}
                         selected={selectType.bag}
                         textStyle={{ fontSize: 15 }}>
-                        💼 Bag
+                        💼 가방
                     </Chip>
                     <Chip
                         onPress={selectHead}
                         style={styles.chip}
                         selected={selectType.head}
                         textStyle={{ fontSize: 15 }}>
-                        🧢 Head
+                        🧢 모자
+                    </Chip>
+                    <Chip
+                        onPress={selectJewelry}
+                        style={styles.chip}
+                        selected={selectType.jewelry}
+                        textStyle={{ fontSize: 15 }}>
+                        💎 액세서리
                     </Chip>
                     <Chip
                         onPress={selectOtherAcc}
                         style={styles.chip}
                         selected={selectType.accOthers}
                         textStyle={{ fontSize: 15 }}>
-                        💎⌚️🧤
+                        •••
                     </Chip>
                 </ScrollView>
             </View>
         )
+        // shoes
     } else if (temporaryClothing.get('category').get('categoryValue') === 'shoes') {
         return (
             <View style={styles.container} {...rest} >
@@ -230,25 +273,33 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
                         style={styles.chip}
                         selected={selectType.sneakers}
                         textStyle={{ fontSize: 15 }}>
-                        👟 Sneakers
+                        👟 운동화
                     </Chip>
                     <Chip
                         onPress={selectLeather}
                         style={styles.chip}
                         selected={selectType.leather}
                         textStyle={{ fontSize: 15 }}>
-                        👞 Leather
+                        👞 구두
                     </Chip>
                     <Chip
-                        onPress={selectOtherShoes}
+                        onPress={selectSandals}
                         style={styles.chip}
-                        selected={selectType.shoesOthers}
+                        selected={selectType.sandals}
                         textStyle={{ fontSize: 15 }}>
-                        👡👢🥿
+                        👡 샌들
+                    </Chip>
+                    <Chip
+                        onPress={selectBoots}
+                        style={styles.chip}
+                        selected={selectType.boots}
+                        textStyle={{ fontSize: 15 }}>
+                        👢 부츠
                     </Chip>
                 </ScrollView>
             </View>
         )
+        // clothing
     } else {
         return (
             <View style={styles.container} {...rest} >
@@ -258,28 +309,28 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
                         style={styles.chip}
                         selected={selectType.top}
                         textStyle={{ fontSize: 15 }}>
-                        👕 Top
+                        👕 상의
                     </Chip>
                     <Chip
                         onPress={selectBottom}
                         style={styles.chip}
                         selected={selectType.bottom}
                         textStyle={{ fontSize: 15 }}>
-                        👖 Bottom
+                        👖 하의
                     </Chip>
                     <Chip
                         onPress={selectOuter}
                         style={styles.chip}
                         selected={selectType.outer}
                         textStyle={{ fontSize: 15 }}>
-                        🥼 Outer
+                        🥼 자켓
                     </Chip>
                     <Chip
                         onPress={selectDress}
                         style={styles.chip}
                         selected={selectType.dress}
                         textStyle={{ fontSize: 15 }}>
-                        👗 Dress
+                        👗 드레스
                     </Chip>
                 </ScrollView>
             </View>

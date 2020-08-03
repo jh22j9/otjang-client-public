@@ -16,15 +16,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function OtherShoes({ navigation, shoes, ClothesActions }) {
+function Boots({ navigation, shoes, ClothesActions }) {
 
   let jsShoes = shoes.toJS()
-  let other = fromJS(jsShoes.filter(item => item.type.other === true))
+  let boots = fromJS(jsShoes.filter(item => item.type.boots === true))
 
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Other' items={other}
+        <ItemsList title='Boots' items={boots}
           ClothesActions={ClothesActions}
           navigation={navigation} />
       </View>
@@ -32,4 +32,4 @@ function OtherShoes({ navigation, shoes, ClothesActions }) {
   );
 }
 
-export default OtherShoes;
+export default Boots;
