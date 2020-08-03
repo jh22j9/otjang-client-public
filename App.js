@@ -31,6 +31,7 @@ import ShoeContainer from './src/Main/BottomTab/ShoeContainer'
 import BagAccContainer from './src/Main/BottomTab/BagAccContainer'
 import StatisticsContainer from './src/Statistics/StatisticsContainer'
 import ChangePassword from './src/MyInfo/ChangePassword'
+import HowToWash from './src/Wash/HowToWash'
 
 import Item from './src/UIcomponents/Item'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
@@ -83,6 +84,7 @@ function App() {
             <Stack.Screen name='ShoeContainer' component={ShoeContainer} />
             <Stack.Screen name='BagAccContainer' component={BagAccContainer} />
             <Stack.Screen name='Item' component={Item} />
+            <Stack.Screen name='HowToWash' component={HowToWash} />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
