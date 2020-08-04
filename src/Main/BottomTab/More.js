@@ -12,8 +12,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     button: {
-        width: "65%",
-        height: "20%",
+        width: "60%",
+        height: "15%",
         justifyContent: "center",
         margin: 20,
         borderRadius: 30
@@ -33,7 +33,7 @@ function More() {
     }
 
     function moveToWashing() {
-        moreNavigation.navigate('HowToWash'); //정적인 데이터만 담을거라서 container가 필요하진 않은데... 음... 이건 좀 물어봐야 할 것 같아..!
+        moreNavigation.navigate('HowToWash');
         console.log('세탁 이동')
     }
 
@@ -55,7 +55,7 @@ function More() {
                 </Button>
             <Button
                 style={styles.button}
-                icon="washing-machine" // 이거 어떻게 가져오는거지..? : 'react-native-paper'
+                icon="washing-machine"
                 mode="contained"
                 onPress={moveToWashing}>
                 HOW TO WASH
