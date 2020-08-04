@@ -1,24 +1,21 @@
 import React from 'react';
 import { VictoryBar, VictoryLine, VictoryPie, VictoryGroup, VictoryScatter, VictoryChart, VictoryLabel, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
 import * as utils from '../statisticsUtils';
-
+import NoStatisticsData from './NoStatisticsData';
 export default function PieChartClothingPercentage({ wardrobe }) {
 
 
     // 실제 data 
 
-    /*  
 
-     const clothing = wardrobe.clothing;
-     const shoes = wardrobe.shoes;
-     const accessories = wardrobe.accessories;
-     const clothes = clothing.concat(shoes).concat(accessories); 
-     
-     */
+
+    const clothing = wardrobe.clothing;
+
+
 
     //  dummy data 
 
-    const clothing = utils.clothing;
+    // const clothing = utils.clothing;
 
     // 서버, dummy 서버, dummy 서버, dummy 공통적용적용적용
 
@@ -40,6 +37,16 @@ export default function PieChartClothingPercentage({ wardrobe }) {
         let label = `${datum.type}\n\n${datum.percentage}%`
         return (label);
 
+    }
+
+    let isExistData = data.find((percentageObj) => {
+
+        if (percentageObj.percentage) {
+            return true;
+        }
+    })
+    if (!isExistData) {
+        return <NoStatisticsData />
     }
     return (
         <>
