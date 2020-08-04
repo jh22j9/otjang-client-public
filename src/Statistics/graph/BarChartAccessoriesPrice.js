@@ -13,6 +13,7 @@ export default function BarChartAccessoriesPrice({ wardrobe }) {
     var AccessoriesTypePrice = [
         { type: 'bag', price: utils.getPrice(utils.getTypeList(accessories, 'bag')) },
         { type: 'head', price: utils.getPrice(utils.getTypeList(accessories, 'head')) },
+        { type: 'jewelry', price: utils.getPrice(utils.getTypeList(accessories, 'jewelry')) },
         { type: 'other', price: utils.getPrice(utils.getTypeList(accessories, 'other')) },
 
     ]

@@ -26,11 +26,13 @@ export default function PieChartAccessoriesPercentage({ wardrobe }) {
 
     const bagList = utils.getTypeList(accessories, 'bag');
     const headList = utils.getTypeList(accessories, 'head');
+    const jewelryList = utils.getTypeList(accessories, 'jewelry');
     const otherList = utils.getTypeList(accessories, 'other');
 
     var data = [
         { type: 'bag', percentage: Math.floor(utils.getPrice(bagList) / accessoriesPrice * 100) },
         { type: 'head', percentage: Math.floor(utils.getPrice(headList) / accessoriesPrice * 100) },
+        { type: 'jewelry', percentage: Math.floor(utils.getPrice(jewelryList) / accessoriesPrice * 100) },
         { type: 'other', percentage: Math.floor(utils.getPrice(otherList) / accessoriesPrice * 100) },
     ]
 

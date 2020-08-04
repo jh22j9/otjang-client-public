@@ -22,13 +22,16 @@ export default function PieChartClothingPercentage({ wardrobe }) {
     // 서버, dummy 공통적용
     const sneakersList = utils.getTypeList(shoes, 'sneakers');
     const leatherList = utils.getTypeList(shoes, 'leather');
-    const otherList = utils.getTypeList(shoes, 'other');
+    const sandalsList = utils.getTypeList(shoes, 'sandals');
+    const bootsList = utils.getTypeList(shoes, 'boots');
     const shoesPrice = utils.getPrice(shoes);
 
     var data = [
         { type: 'sneakers', percentage: Math.floor(utils.getPrice(sneakersList) / shoesPrice * 100) },
         { type: 'leather', percentage: Math.floor(utils.getPrice(leatherList) / shoesPrice * 100) },
-        { type: 'other', percentage: Math.floor(utils.getPrice(otherList) / shoesPrice * 100) },
+        { type: 'sandals', percentage: Math.floor(utils.getPrice(sandalsList) / shoesPrice * 100) },
+        { type: 'boots', percentage: Math.floor(utils.getPrice(bootsList) / shoesPrice * 100) },
+
     ]
 
 
@@ -39,7 +42,6 @@ export default function PieChartClothingPercentage({ wardrobe }) {
     }
     return (
         <>
-
             <VictoryPie
                 animate={{
                     duration: 2000,
@@ -55,7 +57,6 @@ export default function PieChartClothingPercentage({ wardrobe }) {
                 labelRadius={72}
                 labels={transformPieLabels}
             />
-
         </>
     )
 
