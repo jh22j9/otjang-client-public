@@ -22,6 +22,7 @@ export default function BarChartAccessoriesAmount({ wardrobe }) {
     var AccessoriesTypeAmount = [
         { type: 'bag', amount: utils.getTypeList(accessories, 'bag').length },
         { type: 'head', amount: utils.getTypeList(accessories, 'head').length },
+        { type: 'jewelry', amount: utils.getTypeList(accessories, 'jewelry').length },
         { type: 'other', amount: utils.getTypeList(accessories, 'other').length },
     ]
 

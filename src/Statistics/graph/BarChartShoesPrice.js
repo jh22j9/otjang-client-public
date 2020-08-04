@@ -14,7 +14,8 @@ export default function BarChartShoesPrice({ wardrobe }) {
     var shoesTypePrice = [
         { type: 'sneakers', price: utils.getPrice(utils.getTypeList(shoes, 'sneakers')) },
         { type: 'leather', price: utils.getPrice(utils.getTypeList(shoes, 'leather')) },
-        { type: 'other', price: utils.getPrice(utils.getTypeList(shoes, 'other')) },
+        { type: 'sandals', price: utils.getPrice(utils.getTypeList(shoes, 'sandals')) },
+        { type: 'boots', price: utils.getPrice(utils.getTypeList(shoes, 'boots')) },
 
     ]
 

@@ -26,7 +26,8 @@ export default function BarChartShoesAmount({ wardrobe }) {
     var shoesTypeAmount = [
         { type: 'sneakers', amount: utils.getTypeList(shoes, 'sneakers').length },
         { type: 'leather', amount: utils.getTypeList(shoes, 'leather').length },
-        { type: 'other', amount: utils.getTypeList(shoes, 'other').length },
+        { type: 'sandals', amount: utils.getTypeList(shoes, 'sandals').length },
+        { type: 'boots', amount: utils.getTypeList(shoes, 'boots').length },
     ]
 
     return (
