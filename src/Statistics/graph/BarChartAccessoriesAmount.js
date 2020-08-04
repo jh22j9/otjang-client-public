@@ -1,7 +1,7 @@
 import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
-
+import NoStatisticsData from './NoStatisticsData';
 export default function BarChartAccessoriesAmount({ wardrobe }) {
 
     /* 
@@ -15,44 +15,55 @@ export default function BarChartAccessoriesAmount({ wardrobe }) {
 
     */
     // 실제 데이터 
-    // const accessories = wardrobe.accessories;
+    const accessories = wardrobe.accessories;
 
     // dummy
-    const accessories = utils.accessories;
+    // const accessories = utils.accessories;
     var AccessoriesTypeAmount = [
         { type: 'bag', amount: utils.getTypeList(accessories, 'bag').length },
         { type: 'head', amount: utils.getTypeList(accessories, 'head').length },
         { type: 'jewelry', amount: utils.getTypeList(accessories, 'jewelry').length },
         { type: 'other', amount: utils.getTypeList(accessories, 'other').length },
     ]
+    // amount 가 전부다 0이면 no data 표시한다. 
 
-    return (
-        <VictoryChart>
-            <VictoryBar
-                animate={{
-                    duration: 2000,
-                    onLoad: { duration: 1000 },
-                    easing: "bounce"
-                }}
-                domainPadding={{ x: [60, 60] }}
-                alignment="middle"
-                barRatio={0.6}
-                style={{ data: { fill: 'tomato' } }}
-                data={AccessoriesTypeAmount} x={'type'} y={'amount'}
-            />
+    let isExistData = AccessoriesTypeAmount.find((amountObj) => {
 
-            <VictoryAxis crossAxis
+        if (amountObj.amount !== 0) {
+            return true;
+        }
+    })
+    if (!isExistData) {
+        return <NoStatisticsData />
+    }
 
-                domain={[0.1, 0.5]}
-            />
-            <VictoryAxis dependentAxis crossAxis
+    else {
+        return (
+            <VictoryChart>
+                <VictoryBar
+                    animate={{
+                        duration: 2000,
+                        onLoad: { duration: 1000 },
+                        easing: "bounce"
+                    }}
+                    domainPadding={{ x: [60, 60] }}
+                    alignment="middle"
+                    barRatio={0.6}
+                    style={{ data: { fill: 'tomato' } }}
+                    data={AccessoriesTypeAmount} x={'type'} y={'amount'}
+                />
 
-                offsetX={65}
-                tickFormat={(data) => (`${data}EA`)}
-            />
+                <VictoryAxis crossAxis
 
+                    domain={[0.1, 0.5]}
+                />
+                <VictoryAxis dependentAxis crossAxis
 
-        </VictoryChart>
-    )
+                    offsetX={65}
+                    tickFormat={(data) => (`${data}EA`)}
+                />
+            </VictoryChart>
+        )
+    }
 
 }

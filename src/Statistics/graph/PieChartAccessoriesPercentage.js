@@ -2,24 +2,23 @@ import React from 'react';
 import { VictoryBar, VictoryLine, VictoryPie, VictoryGroup, VictoryScatter, VictoryChart, VictoryLabel, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
 import * as utils from '../statisticsUtils';
 import { acc } from 'react-native-reanimated';
-
+import NoStatisticsData from './NoStatisticsData';
 export default function PieChartAccessoriesPercentage({ wardrobe }) {
 
 
     // 실제 data 
 
-    /*  
 
-     const clothing = wardrobe.clothing;
-     const shoes = wardrobe.shoes;
-     const accessories = wardrobe.accessories;
-     const clothes = clothing.concat(shoes).concat(accessories); 
-     
-     */
+
+    const clothing = wardrobe.clothing;
+    const shoes = wardrobe.shoes;
+    const accessories = wardrobe.accessories;
+
+
 
     //  dummy data 
 
-    const accessories = utils.accessories;
+    // const accessories = utils.accessories;
 
     // 서버, dummy 공통적용
     const accessoriesPrice = utils.getPrice(accessories);
@@ -41,6 +40,16 @@ export default function PieChartAccessoriesPercentage({ wardrobe }) {
         let label = `${datum.type}\n\n${datum.percentage}%`
         return (label);
 
+    }
+
+    let isExistData = data.find((percentageObj) => {
+
+        if (percentageObj.percentage) {
+            return true;
+        }
+    })
+    if (!isExistData) {
+        return <NoStatisticsData />
     }
     return (
         <>

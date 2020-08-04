@@ -1,7 +1,7 @@
 import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
-
+import NoStatisticsData from './NoStatisticsData';
 export default function BarChartClothingPrice({ wardrobe }) {
 
     /* color scales: "grayscale", "qualitative", "heatmap", "warm", "cool", "red", "green","blue" */
@@ -18,11 +18,11 @@ export default function BarChartClothingPrice({ wardrobe }) {
 
     // 실제 data 
 
-    // const clothing = wardrobe.clothing;
+    const clothing = wardrobe.clothing;
 
     // dummy data 
 
-    const clothing = utils.clothing;
+    // const clothing = utils.clothing;
 
 
     var clothingTypePrice = [
@@ -32,6 +32,16 @@ export default function BarChartClothingPrice({ wardrobe }) {
         { type: 'dress', price: utils.getPrice(utils.getTypeList(clothing, 'dress')) },
 
     ]
+
+    let isExistData = clothingTypePrice.find((priceObj) => {
+
+        if (priceObj.price !== 0) {
+            return true;
+        }
+    })
+    if (!isExistData) {
+        return <NoStatisticsData />
+    }
 
     // BUG PRICE, AMOUNT 는 실제 숫자가 아니면 그래프에서 계산을 하지 못한다. 
     // 그래프에 계산되는 것은 숫자로 하고 표시되는 축 만 바꿔야 한다. 
