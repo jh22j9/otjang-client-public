@@ -10,10 +10,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Logo from './src/Logo/Logo'
 import SignIn from './src/SignIn/SignIn'
 import SignUp from './src/SignUp/SignUp'
-import Main from './src/Main/Main'
 import MainContainer from './src/Main/MainContainer';
 import AddItems from './src/AddItems/AddItems'
 import AddItemsContainer from './src/AddItems/AddItemsContainer'
@@ -62,17 +60,11 @@ function App() {
       <PaperProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="SignIn">
-            <Stack.Screen name="Logo" component={Logo} />
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen name="Main" component={Main} />
             <Stack.Screen name="AddItemsContainer" component={AddItemsContainer} />
-            <Stack.Screen name="AddItems" component={AddItems} />
-            <Stack.Screen name="ItemInfo" component={ItemInfo} />
             <Stack.Screen name="ItemInfoContainer" component={ItemInfoContainer} />
             <Stack.Screen name="EditItemContainer" component={EditItemContainer} />
-            <Stack.Screen name="EditItem" component={EditItem} />
-            <Stack.Screen name="Statistics" component={Statistics} />
             <Stack.Screen name='StatisticsContainer' component={StatisticsContainer} />
             <Stack.Screen name="MyInfo" component={MyInfo} />
             <Stack.Screen name="MyInfoContainer" component={MyInfoContainer} />

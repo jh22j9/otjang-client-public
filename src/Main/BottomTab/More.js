@@ -1,9 +1,7 @@
-import * as React from 'react';
-
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { Border } from 'victory-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -22,19 +20,18 @@ const styles = StyleSheet.create({
 
 function More() {
 
-    const moreNavigation = useNavigation();
+    const navigation = useNavigation();
 
     function moveToStatistics() {
-        moreNavigation.navigate('StatisticsContainer');
+        navigation.navigate('StatisticsContainer');
     }
 
     function moveToMyInfo() {
-        moreNavigation.navigate('MyInfoContainer');
+        navigation.navigate('MyInfoContainer');
     }
 
     function moveToWashing() {
-        moreNavigation.navigate('HowToWash'); //정적인 데이터만 담을거라서 container가 필요하진 않은데... 음... 이건 좀 물어봐야 할 것 같아..!
-        console.log('세탁 이동')
+        navigation.navigate('HowToWash'); //정적인 데이터만 담을거라서 container가 필요하진 않은데... 음... 이건 좀 물어봐야 할 것 같아..!
     }
 
     return (

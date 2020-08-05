@@ -1,10 +1,9 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, Dimensions, Alert } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Alert } from 'react-native';
 import Gallery from '../UIcomponents/Gallery'
 import EditButton from '../UIcomponents/EditButton';
 import DeleteButton from '../UIcomponents/DeleteButton';
 import AsyncStorage from '@react-native-community/async-storage';
-const { width, height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
 
     wrapper: {
@@ -125,7 +124,6 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
     function renderItemInfoText() {
 
         return (
-
 
             <ScrollView>
                 <Text style={styles.text}>

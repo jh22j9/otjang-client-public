@@ -31,7 +31,7 @@ const emptyClothing = Map({
     })
 })
 
-function Main({ navigation, ClothesActions }) {
+function Main({ ClothesActions }) {
 
 
     /* 
@@ -54,7 +54,7 @@ function Main({ navigation, ClothesActions }) {
     navigation
     */
 
-
+    const navigation = useNavigation();
 
     const route = useRoute();
     // var history = mainRoute.state.history;
