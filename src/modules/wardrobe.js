@@ -11,7 +11,6 @@ const UPDATE_ITEM = 'wardrobe/POST_UPDATEITEM';
 const REMOVE_ITEM = 'wardrobe/POST_DELETEITEM';
 const GET_CLOTHES = 'wardrobe/GET_CLOTHES'
 
-
 const dog1 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjY4XAol3KxWGXJLUG3SwILG-M7NeyoxPbOA&usqp=CAU'
 const dog2 = 'https://i.insider.com/5df126b679d7570ad2044f3e?width=1100&format=jpeg&auto=webp'
 const dog3 = 'https://www.thesprucepets.com/thmb/kV_cfc9P4QWe-klxZ8y--awxvY4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/adorable-white-pomeranian-puppy-spitz-921029690-5c8be25d46e0fb000172effe.jpg'
@@ -65,8 +64,7 @@ export const initialState = Map({
             price: null,
             brand: null,
             storage: null,
-            season: Map(seasonObject),
-            isloading: false
+            season: Map(seasonObject)
         }),
     ]),
     shoes: List([
@@ -82,8 +80,7 @@ export const initialState = Map({
             price: null,
             brand: null,
             storage: null,
-            season: Map(seasonObject),
-            isloading: false
+            season: Map(seasonObject)
         }),
     ]),
     accessories: List([
@@ -99,8 +96,7 @@ export const initialState = Map({
             price: null,
             brand: null,
             storage: null,
-            season: Map(seasonObject),
-            isloading: false
+            season: Map(seasonObject)
         }),
     ]),
     temporaryClothing: Map({
@@ -112,8 +108,7 @@ export const initialState = Map({
         price: null,
         brand: null,
         storage: null,
-        season: Map(seasonObject),
-        isloading: false
+        season: Map(seasonObject)
     })
 
 })
@@ -352,7 +347,6 @@ export default handleActions({
     
     서버 관련된 처리를 REDUX 전에 처리해야 함 추가,수정,삭제 전부 
     */
-
     [CREATE_CLOTHES]: (state, action) => {
 
         return addItemInClient(state, action)

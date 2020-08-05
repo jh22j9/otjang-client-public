@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
 
 function SignIn({ navigation }) {
     useEffect(() => {
-        autoLogin()
-    })
+       autoLogin()
+   })
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -49,14 +49,13 @@ function SignIn({ navigation }) {
 
     async function autoLogin() {
         let arr = await AsyncStorage.multiGet(['EMAIL','PASSWORD'])
-        if(arr) {
+        if(arr[0][1] && arr[1][1]) {
             try{ axios.post('http://13.125.237.84:5000/user/signin', {
                 email: arr[0][1],
                 password: arr[1][1]
             }).then(async res => {
                 try {
-                    let token = res.data.token;
-
+                    let token = res.data.token;   
                     if(res.status === 200) {
                         await AsyncStorage.setItem('TOKEN', token);
                         return navigation.replace('MainContainer');
@@ -65,8 +64,9 @@ function SignIn({ navigation }) {
                     Alert.alert('입력 정보를 다시 확인해주세요')
                     console.log(e)
                 }
-            })
+            }).catch(e => e)
             } catch(e) {
+                console.log('hi')
                 Alert.alert('입력 정보를 다시 확인해주세요')
                 console.log(e)
             }
@@ -83,30 +83,29 @@ function SignIn({ navigation }) {
             email: email,
             password: password
 
-        })
-            .then(async res => { // async 위치 변경하여 에러 해결 
-                // console.log(res.data.token)
-                try { // try, catch 구문 사용하지 않으면 RN에서 에러 발생함
-                    
-                    let token = res.data.token;
+        }).then(async res => { // async 위치 변경하여 에러 해결 
+            // console.log(res.data.token)
+            try { // try, catch 구문 사용하지 않으면 RN에서 에러 발생함
+                
+                let token = res.data.token;
 
-                    if (res.status === 200) {
-                        await AsyncStorage.setItem('TOKEN', token);
-                        await AsyncStorage.setItem('EMAIL', email);
-                        await AsyncStorage.setItem('PASSWORD', password);
-                        // setEmail('');
-                        // setPassword('');
+                if (res.status === 200) {
+                    await AsyncStorage.setItem('TOKEN', token);
+                    await AsyncStorage.setItem('EMAIL', email);
+                    await AsyncStorage.setItem('PASSWORD', password);
+                    // setEmail('');
+                    // setPassword('');
 
-                        return navigation.replace('MainContainer');
-                    }
-                } catch (e) {
-                    console.log(e)
-                    Alert.alert("유효하지 않은 회원입니다.")
+                    return navigation.replace('MainContainer');
                 }
-            }).catch(e => { // Possible unhandled promise rejection 에러 해결 
+            } catch (e) {
                 console.log(e)
                 Alert.alert("유효하지 않은 회원입니다.")
-            })
+            }
+        }).catch(e => { // Possible unhandled promise rejection 에러 해결 
+            console.log(e)
+            Alert.alert("유효하지 않은 회원입니다.")
+        })
     };
 
 
@@ -156,29 +155,3 @@ function SignIn({ navigation }) {
 }
 
 export default SignIn;
-
-
-/* 
-if()를 쓸까? 아니면 위에서 promise형태로 써도 될까?
-1. 첫번째 로그인 성공 후 async storage에 토큰을 저장해놨다가
-AsyncStorage.setItem('Email',email)
-AsyncStorage.setItem('Password', password)     
-2-1. 성공하게 되면 그 토큰을 asyncstorage에 저장해서 계속 쓰고
-AsyncStorage.setItem('TOKEN', token);
-2-2-1. 실패하게 되면 async storage에 있는 아이디, 비밀번호를 통해 로그인을 한다
-axios.post('http://13.125.237.84:5000/user/signin', {
-    email: AsyncStorage.getItem('Email')
-    password: AsyncStorage.getItem('Password')
-}).then(async res
-    try { 
-    2-2-2. 위 과정이 성공하면 그 토큰을 asyncstorage에 새로 저장한다.
-        let token = res.data.token;
-        AsyncStorage.setItem('TOKEN', token);
-    } catch(e) {
-        console.warn(e)
-    }
-)
-    
-AsyncStorage.setItem('TOKEN', token);
-*/
-
