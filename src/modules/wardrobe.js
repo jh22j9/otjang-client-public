@@ -32,10 +32,20 @@ export const initialState = Map({
             }),
             type: Map({
                 typeValue: null,
-                top: true,
+                top: false,
                 bottom: false,
                 outer: false,
-                dress: false
+                dress: false,
+
+                sneakers: false,
+                leather: false,
+                sandals: false,
+                boots: false,
+
+                bag: false,
+                head: false,
+                jewelry: false,
+                other: false,
             }),
             buydate: null,
             price: null,
@@ -62,10 +72,20 @@ export const initialState = Map({
             }),
             type: Map({
                 typeValue: null,
+                top: false,
+                bottom: false,
+                outer: false,
+                dress: false,
+
                 sneakers: false,
-                leather: true,
+                leather: false,
                 sandals: false,
-                boots: false
+                boots: false,
+
+                bag: false,
+                head: false,
+                jewelry: false,
+                other: false,
             }),
             buydate: null,
             price: null,
@@ -92,6 +112,16 @@ export const initialState = Map({
             }),
             type: Map({
                 typeValue: null,
+                top: false,
+                bottom: false,
+                outer: false,
+                dress: false,
+
+                sneakers: false,
+                leather: false,
+                sandals: false,
+                boots: false,
+
                 bag: false,
                 head: false,
                 jewelry: false,
@@ -124,7 +154,17 @@ export const initialState = Map({
             top: false,
             bottom: false,
             outer: false,
-            dress: false
+            dress: false,
+
+            sneakers: false,
+            leather: false,
+            sandals: false,
+            boots: false,
+
+            bag: false,
+            head: false,
+            jewelry: false,
+            other: false,
         }),
         buydate: null,
         price: null,
