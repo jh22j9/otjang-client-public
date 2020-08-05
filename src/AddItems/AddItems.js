@@ -1,10 +1,6 @@
 import * as React from 'react';
-import axios from 'axios';
-import { View, Text, ScrollView, StyleSheet, Dimensions, FlatList } from 'react-native';
+import { View, ScrollView, StyleSheet, Dimensions, } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { IconButton, Colors, Button, Card, Chip, List } from 'react-native-paper';
-import ImagePicker from 'react-native-image-picker';
-import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 
 import Gallery from '../UIcomponents/Gallery'
 import FormButton from '../UIcomponents/FormButton'
@@ -21,7 +17,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between'
-        // backgroundColor: 'red'
     },
     extraOptions: {
         display: 'flex',
@@ -35,7 +30,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 2,
-        // backgroundColor: 'blue'
     },
     optionsContainer: {
 
@@ -47,7 +41,7 @@ const styles = StyleSheet.create({
 })
 
 
-function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActions, ServerActions }) {
+function AddItems({ navigation, temporaryClothing, ClothesActions, }) {
 
     /*  
     BUG: 권한 문제 해결, but 이미지를 출력하지 못하고 있음 
@@ -64,10 +58,6 @@ function AddItems({ navigation, index = 0, user, temporaryClothing, ClothesActio
 
     저장 버튼 누르면 현재 의류의 상태 객체를 서버에 보내고 id 를 받아서 저장 
 
-    */
-
-    /* 
-    axios.post(url, data, {headers : {'X-Requested-With': 'XMLHttpRequest'} })
     */
     function addItemInClient() {
         ClothesActions.createClothes(temporaryClothing);

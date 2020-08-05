@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Dimensions, Image, View, Pressable } from 'react-native';
-import { Card, Title } from 'react-native-paper';
+import { StyleSheet, Dimensions, View, Pressable } from 'react-native';
+import { Card, } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-community/async-storage';
+import { useNavigation } from '@react-navigation/native';
 const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -26,8 +27,10 @@ const styles = StyleSheet.create({
 }
 );
 
-export default function Item({ navigation, item, index, ClothesActions, ...rest }) {
+export default function Item({ item, index, ClothesActions, ...rest }) {
 
+
+    const navigation = useNavigation();
     function setClickedItem() {
 
         ClothesActions.setTemporaryClothing(item);

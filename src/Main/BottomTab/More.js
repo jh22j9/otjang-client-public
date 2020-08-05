@@ -1,9 +1,9 @@
+
 import * as React from 'react';
 
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { Modal, Portal, Button, Provider, Badge } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { Border } from 'victory-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -87,9 +87,10 @@ const styles = StyleSheet.create({
 
 function More() {
 
-    const moreNavigation = useNavigation();
+    const navigation = useNavigation();
 
     function moveToStatistics() {
+
         moreNavigation.navigate('StatisticsContainer');
     };
 

@@ -7,17 +7,6 @@ import BootsContainer from '../TopTab/ShoesTab/BootsContainer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 const Tab = createMaterialTopTabNavigator();
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: "flex-start",
-        padding: 25
-        // height: '100%'
-    },
-});
-
 
 function Shoe() {
     return (

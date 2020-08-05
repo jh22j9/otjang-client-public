@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         marginLeft: 20
     },
     inputBuydateText: {
-
+        paddingLeft: 13,
         marginBottom: 10
     },
 

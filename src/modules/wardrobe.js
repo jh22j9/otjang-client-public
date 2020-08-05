@@ -6,17 +6,49 @@ const REMOVE_CLOTHES = 'wardrobe/REMOVE_CLOTHES';
 const SET_CLOTHES = 'wardrobe/SET_CLOTHES';
 const SET_TEMPORARY_CLOTHING = 'wardrobe/SET_TEMPORARY_CLOTHING';
 // 서버
-const POST_ADD_ITEM = 'wardrobe/POST_ADDITEM';
-const POST_UPDATE_ITEM = 'wardrobe/POST_UPDATEITEM';
-const POST_REMOVE_ITEM = 'wardrobe/POST_DELETEITEM';
+const ADD_ITEM = 'wardrobe/POST_ADDITEM';
+const UPDATE_ITEM = 'wardrobe/POST_UPDATEITEM';
+const REMOVE_ITEM = 'wardrobe/POST_DELETEITEM';
 const GET_CLOTHES = 'wardrobe/GET_CLOTHES'
+
 
 const dog1 = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQjY4XAol3KxWGXJLUG3SwILG-M7NeyoxPbOA&usqp=CAU'
 const dog2 = 'https://i.insider.com/5df126b679d7570ad2044f3e?width=1100&format=jpeg&auto=webp'
 const dog3 = 'https://www.thesprucepets.com/thmb/kV_cfc9P4QWe-klxZ8y--awxvY4=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/adorable-white-pomeranian-puppy-spitz-921029690-5c8be25d46e0fb000172effe.jpg'
 
 
+const typeObject = {
+    typeValue: null,
+    top: false,
+    bottom: false,
+    outer: false,
+    dress: false,
 
+    sneakers: false,
+    leather: false,
+    sandals: false,
+    boots: false,
+
+    bag: false,
+    head: false,
+    jewelry: false,
+    other: false,
+}
+
+const seasonObject = {
+    seasonArray: List([null, null, null, null]),
+    spring: false,
+    summer: false,
+    fall: false,
+    winter: false
+}
+
+const categoryObject = {
+    categoryValue: null,
+    clothing: false,
+    shoes: false,
+    accessories: false
+}
 
 export const initialState = Map({
     clothing: List([
@@ -25,29 +57,16 @@ export const initialState = Map({
             image: dog1,
 
             category: Map({
+                ...categoryObject,
                 categoryValue: 'clothing',
-                clothing: false,
-                shoes: false,
-                accessories: false
             }),
-            type: Map({
-                typeValue: null,
-                top: true,
-                bottom: false,
-                outer: false,
-                dress: false
-            }),
+            type: Map(typeObject),
             buydate: null,
             price: null,
             brand: null,
             storage: null,
-            season: Map({
-                seasonArray: List([null, null, null, null]),
-                spring: false,
-                summer: false,
-                fall: false,
-                winter: false
-            })
+            season: Map(seasonObject),
+            isloading: false
         }),
     ]),
     shoes: List([
@@ -55,29 +74,16 @@ export const initialState = Map({
             item_id: 31,
             image: dog2,
             category: Map({
+                ...categoryObject,
                 categoryValue: 'shoes',
-                clothing: false,
-                shoes: true,
-                accessories: false
             }),
-            type: Map({
-                typeValue: null,
-                sneakers: false,
-                leather: true,
-                sandals: false,
-                boots: false
-            }),
+            type: Map(typeObject),
             buydate: null,
             price: null,
             brand: null,
             storage: null,
-            season: Map({
-                seasonArray: List([null, null, null, null]),
-                spring: false,
-                summer: false,
-                fall: false,
-                winter: false
-            })
+            season: Map(seasonObject),
+            isloading: false
         }),
     ]),
     accessories: List([
@@ -85,58 +91,29 @@ export const initialState = Map({
             item_id: 56,
             image: dog3,
             category: Map({
+                ...categoryObject,
                 categoryValue: 'accessories',
-                clothing: false,
-                shoes: false,
-                accessories: false
             }),
-            type: Map({
-                typeValue: null,
-                bag: false,
-                head: false,
-                jewelry: false,
-                other: false,
-            }),
+            type: Map(typeObject),
             buydate: null,
             price: null,
             brand: null,
             storage: null,
-            season: Map({
-                seasonArray: List([null, null, null, null]),
-                spring: false,
-                summer: false,
-                fall: false,
-                winter: false
-            })
+            season: Map(seasonObject),
+            isloading: false
         }),
     ]),
     temporaryClothing: Map({
         item_id: null,
         image: null,
-        category: Map({
-            categoryValue: null,
-            clothing: false,
-            shoes: false,
-            accessories: false
-        }),
-        type: Map({
-            typeValue: null,
-            top: false,
-            bottom: false,
-            outer: false,
-            dress: false
-        }),
+        category: Map(categoryObject),
+        type: Map(typeObject),
         buydate: null,
         price: null,
         brand: null,
         storage: null,
-        season: Map({
-            seasonArray: List([null, null, null, null]),
-            spring: false,
-            summer: false,
-            fall: false,
-            winter: false
-        })
+        season: Map(seasonObject),
+        isloading: false
     })
 
 })
@@ -228,7 +205,7 @@ export const setTemporaryClothing = createAction(SET_TEMPORARY_CLOTHING) // {ite
 // sendingClothingToServer={token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const createClothesToServer = (sendingClothingToServer) => ({
 
-    type: POST_ADD_ITEM,
+    type: ADD_ITEM,
     async payload() {
         const { data } = await AddItemInServer(sendingClothingToServer);
         const id = data['item_id']
@@ -238,7 +215,7 @@ export const createClothesToServer = (sendingClothingToServer) => ({
 // sendingClothingToServer={token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const updateClothesToServer = (sendingClothingToServer) => ({
 
-    type: POST_UPDATE_ITEM,
+    type: UPDATE_ITEM,
     async payload() {
 
         await updateItemInServer(sendingClothingToServer);
@@ -248,7 +225,7 @@ export const updateClothesToServer = (sendingClothingToServer) => ({
 // sendingClothingToServer={index:index,token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const removeClothesToServer = (deletingClothingToServer) => ({
 
-    type: POST_REMOVE_ITEM,
+    type: REMOVE_ITEM,
     async payload() {
 
         await deleteItemInServer(deletingClothingToServer);
@@ -266,6 +243,107 @@ export const getClothesFromServer = (token) => ({
 
 })
 
+
+function addItemInClient(state, action) {
+
+    const clothing = state.get('clothing');
+    const shoes = state.get('shoes');
+    const accessories = state.get('accessories');
+
+    // THINK: 의류에 대한 정보를 등록한 후 저장하기 버튼을 누르면 서버에 post 요청을 보내고
+    // 이후 응답으로 받은 id 를 받아서 argument 로 넘긴다.
+    // newClothing -> ID 가 있는 상태 
+    const newClothing = action.payload;
+    const category = newClothing.get('category').get('categoryValue');
+
+
+    if (category === 'clothing') {
+        return state.set('clothing', clothing.push(newClothing))
+    }
+
+    else if (category === 'shoes') {
+        return state.set('shoes', shoes.push(newClothing))
+    }
+
+    else if (category === 'accessories') {
+        return state.set('accessories', accessories.push(newClothing))
+    }
+
+}
+
+function updateItemInClient(state, action) {
+
+    const index = action.payload.index;
+    const item = action.payload.item;
+    const originCategory = action.payload.category;
+    const clothing = state.get('clothing');
+    const shoes = state.get('shoes');
+    const accessories = state.get('accessories');
+
+    const category = item.get('category').get('categoryValue');
+
+    if (originCategory !== category) {
+        var originCategoryData = state.get(`${originCategory}`);
+        var removedOriginCategoryState = state.set(`${originCategory}`, originCategoryData.splice(index, 1))
+    }
+
+    if (category === 'clothing') {
+
+        if (originCategory !== category) {
+            return removedOriginCategoryState.set('clothing', clothing.push(item));
+        }
+
+        else {
+            return state.set('clothing', clothing.set(index, item))
+        }
+    }
+
+    else if (category === 'shoes') {
+
+        if (originCategory !== category) {
+            return removedOriginCategoryState.set('shoes', shoes.push(item));
+        }
+
+        else {
+            return state.set('shoes', shoes.set(index, item))
+        }
+
+    }
+
+    else if (category === 'accessories') {
+
+        if (originCategory !== category) {
+            return removedOriginCategoryState.set('accessories', accessories.push(item));
+        }
+
+        else {
+            return state.set('accessories', accessories.set(index, item))
+        }
+    }
+}
+
+function deleteItemInClient(state, action) {
+
+    const index = action.payload.index;
+    const item = action.payload.item;
+    const clothing = state.get('clothing');
+    const shoes = state.get('shoes');
+    const accessories = state.get('accessories');
+    const category = item.get('category').get('categoryValue');
+    if (category === 'clothing') {
+        return state.set('clothing', clothing.splice(index, 1))
+    }
+
+    else if (category === 'shoes') {
+        return state.set('shoes', shoes.splice(index, 1))
+    }
+
+    else if (category === 'accessories') {
+        return state.set('accessories', accessories.splice(index, 1))
+    }
+}
+
+
 // 우리의 액션타입에는 접두사가 들어가있기 때문에 그냥 CREATE: 를 하면 안되고, [CREATE]: 로 해주어야합니다.
 export default handleActions({
 
@@ -274,29 +352,14 @@ export default handleActions({
     
     서버 관련된 처리를 REDUX 전에 처리해야 함 추가,수정,삭제 전부 
     */
+
     [CREATE_CLOTHES]: (state, action) => {
-        const clothing = state.get('clothing');
-        const shoes = state.get('shoes');
-        const accessories = state.get('accessories');
+
+        return addItemInClient(state, action)
 
         // THINK: 의류에 대한 정보를 등록한 후 저장하기 버튼을 누르면 서버에 post 요청을 보내고
         // 이후 응답으로 받은 id 를 받아서 argument 로 넘긴다.
         // newClothing -> ID 가 있는 상태 
-        const newClothing = action.payload;
-        const category = newClothing.get('category').get('categoryValue');
-
-
-        if (category === 'clothing') {
-            return state.set('clothing', clothing.push(newClothing))
-        }
-
-        else if (category === 'shoes') {
-            return state.set('shoes', shoes.push(newClothing))
-        }
-
-        else if (category === 'accessories') {
-            return state.set('accessories', accessories.push(newClothing))
-        }
         /* 
         TODO: 
         newClothing 에서 CATEGORY 를 확인하여 해당 CATEGORY 키에 PUSH 한다. 
@@ -321,27 +384,8 @@ export default handleActions({
      */
     [REMOVE_CLOTHES]: (state, action) => {
 
-        /* THINK 
-        PAYLOAD 로 INDEX 를 받아야 함 
-        아이템 추가 처럼 카테고리 값에 따라 SPLICE 한것을 STATE 에 반영하면 됨 
-        */
-        const index = action.payload.index;
-        const item = action.payload.item;
-        const clothing = state.get('clothing');
-        const shoes = state.get('shoes');
-        const accessories = state.get('accessories');
-        const category = item.get('category').get('categoryValue');
-        if (category === 'clothing') {
-            return state.set('clothing', clothing.splice(index, 1))
-        }
 
-        else if (category === 'shoes') {
-            return state.set('shoes', shoes.splice(index, 1))
-        }
-
-        else if (category === 'accessories') {
-            return state.set('accessories', accessories.splice(index, 1))
-        }
+        return deleteItemInClient(state, action);
     },
 
     /* THINK
@@ -358,67 +402,8 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         /* THINK: payload= {index:3,clothes:{item_id:43,image:'sfsdf',type:null....}} 
             의류정보가 담긴 객체로 덮어 씌움  
         */
-        const index = action.payload.index;
-        const item = action.payload.item;
-        const originCategory = action.payload.category;
-        const clothing = state.get('clothing');
-        const shoes = state.get('shoes');
-        const accessories = state.get('accessories');
 
-        const category = item.get('category').get('categoryValue');
-
-        if (originCategory !== category) {
-            var originCategoryData = state.get(`${originCategory}`);
-            var removedOriginCategoryState = state.set(`${originCategory}`, originCategoryData.splice(index, 1))
-        }
-
-        /* 
-
-        originCategory 와 현재 category 값이 다르면 원래 카테고리에서 제거 
-state.set('clothing', clothing.splice(index, 1))
-        */
-
-        /* 
-        TODO
-        카테고리를 변경하면 원래 있었던 카테고리에서 삭제되어야 함 
-
-        - 기존 카테고리값을 받아서 기존 카테고리 키에 있던 값을 삭제, 
-
-        */
-        if (category === 'clothing') {
-
-            if (originCategory !== category) {
-                return removedOriginCategoryState.set('clothing', clothing.push(item));
-            }
-
-            else {
-                return state.set('clothing', clothing.set(index, item))
-            }
-        }
-
-        else if (category === 'shoes') {
-
-            if (originCategory !== category) {
-                return removedOriginCategoryState.set('shoes', shoes.push(item));
-            }
-
-            else {
-                return state.set('shoes', shoes.set(index, item))
-            }
-
-        }
-
-        else if (category === 'accessories') {
-
-            if (originCategory !== category) {
-                return removedOriginCategoryState.set('accessories', accessories.push(item));
-            }
-
-            else {
-                return state.set('accessories', accessories.set(index, item))
-            }
-        }
-
+        return updateItemInClient(state, action);
     },
 
     [SET_TEMPORARY_CLOTHING]: (state, action) => {
@@ -461,17 +446,17 @@ state.set('clothing', clothing.splice(index, 1))
 
             }
 
-            else if (clothesObject.sm === 1) {
+            if (clothesObject.sm === 1) {
                 seasonObject.seasonArray[1] = 'sm';
                 seasonObject.summer = true;
             }
 
-            else if (clothesObject.f === 1) {
+            if (clothesObject.f === 1) {
                 seasonObject.seasonArray[2] = 'f';
                 seasonObject.fall = true;
             }
 
-            else if (clothesObject.w === 1) {
+            if (clothesObject.w === 1) {
                 seasonObject.seasonArray[3] = 'w';
                 seasonObject.winter = true;
             }
@@ -507,10 +492,10 @@ state.set('clothing', clothing.splice(index, 1))
 
                 clientClothingObject.category[`${clothes[i].category}`] = true;
                 clientClothingObject.type[`${clothes[i].type}`] = true;
-                clientClothingArray.season = checkSeason(clothes[i]);
+                clientClothingObject.season = checkSeason(clothes[i]);
+
                 // season 0 -> false season 1 -> true 
                 clientClothingArray.push(clientClothingObject);
-
             }
             return clientClothingArray;
         }
@@ -518,10 +503,11 @@ state.set('clothing', clothing.splice(index, 1))
         const clothingFromServer = clothes.filter((cloth) => (cloth.category === 'clothing'))
         const shoesFromServer = clothes.filter((cloth) => (cloth.category === 'shoes'))
         const accessoriesFromServer = clothes.filter((cloth) => (cloth.category === 'accessories'))
-
         const clothingInClient = fromJS(changeClothesForm(clothingFromServer))
         const shoesInClient = fromJS(changeClothesForm(shoesFromServer))
         const accessoriesInClient = fromJS(changeClothesForm(accessoriesFromServer))
+        // TODO, BUG : 서버로부터 계절을 받아서 분배하지 못하고 있다. 
+
 
         return state.set('clothing', clothingInClient).set('shoes', shoesInClient).set('accessories', accessoriesInClient)
     },
@@ -531,52 +517,23 @@ state.set('clothing', clothing.splice(index, 1))
     },
 
 
-    [`${POST_ADD_ITEM}_PENDING`]: (state, action) => {
+    [`${ADD_ITEM}_PENDING`]: (state, action) => {
 
 
-        /* 
-        BUG 
-        
-        PENDING 일때 기존 STATE 를 그대로 리턴해야함 
-        
-         { state } 로 리턴하고 있었음.. 
-        */
         return state
 
     },
-    [`${POST_ADD_ITEM}_FULFILLED`]: (state, action) => {
-        const clothing = state.get('clothing');
-        const shoes = state.get('shoes');
-        const accessories = state.get('accessories');
+    [`${ADD_ITEM}_FULFILLED`]: (state, action) => {
 
-        // THINK: 의류에 대한 정보를 등록한 후 저장하기 버튼을 누르면 서버에 post 요청을 보내고
-        // 이후 응답으로 받은 id 를 받아서 argument 로 넘긴다.
-        // newClothing -> ID 가 있는 상태 
-        const newClothing = action.payload;
-
-        const category = newClothing.get('category').get('categoryValue');
-
-
-        if (category === 'clothing') {
-            return state.set('clothing', clothing.push(newClothing))
-        }
-
-        else if (category === 'shoes') {
-            return state.set('shoes', shoes.push(newClothing))
-        }
-
-        else if (category === 'accessories') {
-            return state.set('accessories', accessories.push(newClothing))
-        }
-
+        return addItemInClient(state, action);
     },
 
-    [`${POST_ADD_ITEM}_REJECTED`]: (state, action) => {
+    [`${ADD_ITEM}_REJECTED`]: (state, action) => {
         return state
     },
 
 
-    [`${POST_UPDATE_ITEM}_PENDING`]: (state, action) => {
+    [`${UPDATE_ITEM}_PENDING`]: (state, action) => {
         /* 
         BUG 
         
@@ -587,88 +544,17 @@ state.set('clothing', clothing.splice(index, 1))
         return state
 
     },
-    [`${POST_UPDATE_ITEM}_FULFILLED`]: (state, action) => {
+    [`${UPDATE_ITEM}_FULFILLED`]: (state, action) => {
 
-        const index = action.payload.index;
-        const item = action.payload.item;
-        const originCategory = action.payload.category;
-        const clothing = state.get('clothing');
-        const shoes = state.get('shoes');
-        const accessories = state.get('accessories');
-
-        const category = item.get('category').get('categoryValue');
-
-        if (originCategory !== category) {
-            var originCategoryData = state.get(`${originCategory}`);
-            var removedOriginCategoryState = state.set(`${originCategory}`, originCategoryData.splice(index, 1))
-        }
-
-        if (category === 'clothing') {
-
-            if (originCategory !== category) {
-                return removedOriginCategoryState.set('clothing', clothing.push(item));
-            }
-
-            else {
-                return state.set('clothing', clothing.set(index, item))
-            }
-        }
-
-        else if (category === 'shoes') {
-
-            if (originCategory !== category) {
-                return removedOriginCategoryState.set('shoes', shoes.push(item));
-            }
-
-            else {
-                return state.set('shoes', shoes.set(index, item))
-            }
-
-        }
-
-        else if (category === 'accessories') {
-
-            if (originCategory !== category) {
-                return removedOriginCategoryState.set('accessories', accessories.push(item));
-            }
-
-            else {
-                return state.set('accessories', accessories.set(index, item))
-            }
-        }
-
-        // const index = action.payload.index;
-        // const item = action.payload.item;
-        // const clothing = state.get('clothing');
-        // const shoes = state.get('shoes');
-        // const accessories = state.get('accessories');
-        // const category = item.get('category').get('categoryValue');
-
-
-        // /* 
-        // TODO
-        // 카테고리를 변경하면 원래 있었던 카테고리에서 삭제되어야 함 
-
-        // */
-        // if (category === 'clothing') {
-        //     return state.set('clothing', clothing.set(index, item))
-        // }
-
-        // else if (category === 'shoes') {
-        //     return state.set('shoes', shoes.set(index, item))
-        // }
-
-        // else if (category === 'accessories') {
-        //     return state.set('accessories', accessories.set(index, item))
-        // }
+        return updateItemInClient(state, action);
 
     },
 
-    [`${POST_UPDATE_ITEM}_REJECTED`]: (state, action) => {
+    [`${UPDATE_ITEM}_REJECTED`]: (state, action) => {
         return state
     },
 
-    [`${POST_REMOVE_ITEM}_PENDING`]: (state, action) => {
+    [`${REMOVE_ITEM}_PENDING`]: (state, action) => {
         /* 
         BUG 
         
@@ -679,30 +565,14 @@ state.set('clothing', clothing.splice(index, 1))
         return state
 
     },
-    [`${POST_REMOVE_ITEM}_FULFILLED`]: (state, action) => {
+    [`${REMOVE_ITEM}_FULFILLED`]: (state, action) => {
 
 
-        const index = action.payload.index;
-        const item = action.payload.item;
-        const clothing = state.get('clothing');
-        const shoes = state.get('shoes');
-        const accessories = state.get('accessories');
-        const category = item.get('category').get('categoryValue');
-        if (category === 'clothing') {
-            return state.set('clothing', clothing.splice(index, 1))
-        }
-
-        else if (category === 'shoes') {
-            return state.set('shoes', shoes.splice(index, 1))
-        }
-
-        else if (category === 'accessories') {
-            return state.set('accessories', accessories.splice(index, 1))
-        }
+        return deleteItemInClient(state, action);
 
     },
 
-    [`${POST_REMOVE_ITEM}_REJECTED`]: (state, action) => {
+    [`${REMOVE_ITEM}_REJECTED`]: (state, action) => {
         return state
     },
 }, initialState);

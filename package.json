@@ -21,6 +21,7 @@
     "axios": "^0.19.2",
     "base64-arraybuffer": "^0.2.0",
     "immutable": "^4.0.0-rc.12",
+    "lottie-react-native": "^3.5.0",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-dotenv": "^2.2.6",

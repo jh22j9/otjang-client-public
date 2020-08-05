@@ -7,6 +7,7 @@ import { Text } from 'react-native'
 import NoStatisticsData from './NoStatisticsData';
 export default function LineChartMonthlyPrice({ wardrobe }) {
 
+
     /*
         THINK 도메인은 실수좌표계 이다. 
         
@@ -37,7 +38,6 @@ export default function LineChartMonthlyPrice({ wardrobe }) {
 
 
     var lineData = utils.getAnnualPurchaseData(clothes);
-
     let isExistData = lineData.find((priceObj) => {
 
         if (priceObj.price !== 0) {
@@ -50,7 +50,7 @@ export default function LineChartMonthlyPrice({ wardrobe }) {
     return (<VictoryChart width={400} theme={VictoryTheme.material}
 
         domainPadding={10} containerComponent={<VictoryZoomContainer
-            // zoomDimension='x'
+            zoomDimension='x'
             zoomDomain={monthDomain}
             onZoomDomainChange={handleMonthDomain}
         />}
