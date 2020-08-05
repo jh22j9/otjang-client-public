@@ -1,23 +1,32 @@
 import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
-
+import NoStatisticsData from './NoStatisticsData';
 export default function BarChartAccessoriesPrice({ wardrobe }) {
 
     // 실제 데이터 
-    // const accessories = wardrobe.accessories;
+    const accessories = wardrobe.accessories;
 
     // dummy data 
-    const accessories = utils.accessories;
+    // const accessories = utils.accessories;
 
     var AccessoriesTypePrice = [
         { type: 'bag', price: utils.getPrice(utils.getTypeList(accessories, 'bag')) },
         { type: 'head', price: utils.getPrice(utils.getTypeList(accessories, 'head')) },
+        { type: 'jewelry', price: utils.getPrice(utils.getTypeList(accessories, 'jewelry')) },
         { type: 'other', price: utils.getPrice(utils.getTypeList(accessories, 'other')) },
 
     ]
 
+    let isExistData = AccessoriesTypePrice.find((priceObj) => {
 
+        if (priceObj.price !== 0) {
+            return true;
+        }
+    })
+    if (!isExistData) {
+        return <NoStatisticsData />
+    }
     return (
         <VictoryChart>
             <VictoryBar

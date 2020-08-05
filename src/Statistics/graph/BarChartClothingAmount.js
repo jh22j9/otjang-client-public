@@ -1,7 +1,7 @@
 import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
-
+import NoStatisticsData from './NoStatisticsData';
 export default function BarChartClothingAmount({ wardrobe }) {
 
     /* 
@@ -17,11 +17,11 @@ export default function BarChartClothingAmount({ wardrobe }) {
 
     // 실제 data 
 
-    // const clothing = wardrobe.clothing;
+    const clothing = wardrobe.clothing;
 
     // dummy data 
 
-    const clothing = utils.clothing;
+    // const clothing = utils.clothing;
 
     var clothingTypeAmount = [
         { type: 'top', amount: utils.getTypeList(clothing, 'top').length },
@@ -29,6 +29,16 @@ export default function BarChartClothingAmount({ wardrobe }) {
         { type: 'outer', amount: utils.getTypeList(clothing, 'outer').length },
         { type: 'dress', amount: utils.getTypeList(clothing, 'dress').length },
     ]
+
+    let isExistData = clothingTypeAmount.find((clothingAmountObj) => {
+
+        if (clothingAmountObj.amount !== 0) {
+            return true;
+        }
+    })
+    if (!isExistData) {
+        return <NoStatisticsData />
+    }
 
     return (
         <VictoryChart>

@@ -144,7 +144,7 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
         setSelectType({ ...selectTypeObject, sandals: true });
 
         const shoesTypeObj = {
-            typeValue: 'leather',
+            typeValue: 'sandals',
             sneakers: false,
             leather: false,
             sandals: true,
@@ -159,7 +159,7 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
         setSelectType({ ...selectTypeObject, boots: true });
 
         const shoesTypeObj = {
-            typeValue: 'other',
+            typeValue: 'boots',
             sneakers: false,
             leather: false,
             sandals: false,
@@ -203,7 +203,7 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
         setSelectType({ ...selectTypeObject, jewelry: true });
 
         const accTypeObj = {
-            typeValue: 'head',
+            typeValue: 'jewelry',
             bag: false,
             head: false,
             jewelry: true,

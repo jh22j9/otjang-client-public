@@ -1,26 +1,36 @@
 import React from 'react';
 import * as utils from '../statisticsUtils';
 import { VictoryBar, VictoryChart, VictoryAxis, } from "victory-native";
-
+import NoStatisticsData from './NoStatisticsData';
 export default function BarChartShoesPrice({ wardrobe }) {
     // 실제 data 
 
-    // const shoes = wardrobe.shoes;
+    const shoes = wardrobe.shoes;
 
     // dummy data 
 
-    const shoes = utils.shoes;
+    // const shoes = utils.shoes;
 
     var shoesTypePrice = [
         { type: 'sneakers', price: utils.getPrice(utils.getTypeList(shoes, 'sneakers')) },
         { type: 'leather', price: utils.getPrice(utils.getTypeList(shoes, 'leather')) },
-        { type: 'other', price: utils.getPrice(utils.getTypeList(shoes, 'other')) },
+        { type: 'sandals', price: utils.getPrice(utils.getTypeList(shoes, 'sandals')) },
+        { type: 'boots', price: utils.getPrice(utils.getTypeList(shoes, 'boots')) },
 
     ]
 
     // BUG PRICE, AMOUNT 는 실제 숫자가 아니면 그래프에서 계산을 하지 못한다. 
     // 그래프에 계산되는 것은 숫자로 하고 표시되는 축 만 바꿔야 한다. 
 
+    let isExistData = shoesTypePrice.find((priceObj) => {
+
+        if (priceObj.price !== 0) {
+            return true;
+        }
+    })
+    if (!isExistData) {
+        return <NoStatisticsData />
+    }
     return (
         <VictoryChart>
             <VictoryBar
