@@ -440,17 +440,17 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
             }
 
-            else if (clothesObject.sm === 1) {
+            if (clothesObject.sm === 1) {
                 seasonObject.seasonArray[1] = 'sm';
                 seasonObject.summer = true;
             }
 
-            else if (clothesObject.f === 1) {
+            if (clothesObject.f === 1) {
                 seasonObject.seasonArray[2] = 'f';
                 seasonObject.fall = true;
             }
 
-            else if (clothesObject.w === 1) {
+            if (clothesObject.w === 1) {
                 seasonObject.seasonArray[3] = 'w';
                 seasonObject.winter = true;
             }
@@ -486,10 +486,10 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
                 clientClothingObject.category[`${clothes[i].category}`] = true;
                 clientClothingObject.type[`${clothes[i].type}`] = true;
-                clientClothingArray.season = checkSeason(clothes[i]);
+                clientClothingObject.season = checkSeason(clothes[i]);
+
                 // season 0 -> false season 1 -> true 
                 clientClothingArray.push(clientClothingObject);
-
             }
             return clientClothingArray;
         }
@@ -497,10 +497,11 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         const clothingFromServer = clothes.filter((cloth) => (cloth.category === 'clothing'))
         const shoesFromServer = clothes.filter((cloth) => (cloth.category === 'shoes'))
         const accessoriesFromServer = clothes.filter((cloth) => (cloth.category === 'accessories'))
-
         const clothingInClient = fromJS(changeClothesForm(clothingFromServer))
         const shoesInClient = fromJS(changeClothesForm(shoesFromServer))
         const accessoriesInClient = fromJS(changeClothesForm(accessoriesFromServer))
+        // TODO, BUG : 서버로부터 계절을 받아서 분배하지 못하고 있다. 
+
 
         return state.set('clothing', clothingInClient).set('shoes', shoesInClient).set('accessories', accessoriesInClient)
     },
