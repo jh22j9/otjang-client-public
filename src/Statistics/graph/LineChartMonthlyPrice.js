@@ -8,6 +8,7 @@ import NoStatisticsData from './NoStatisticsData';
 export default function LineChartMonthlyPrice({ wardrobe }) {
 
 
+    console.log('선 그래프', wardrobe);
     /*
         THINK 도메인은 실수좌표계 이다. 
         
@@ -38,6 +39,7 @@ export default function LineChartMonthlyPrice({ wardrobe }) {
 
 
     var lineData = utils.getAnnualPurchaseData(clothes);
+    console.log('data', lineData);
     let isExistData = lineData.find((priceObj) => {
 
         if (priceObj.price !== 0) {
