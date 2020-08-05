@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
 
 function Statistics({ wardrobe }) {
 
+    console.log('wardrobe', wardrobe)
+
     /* 
     THINK 
     

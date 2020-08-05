@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 
     },
 });
-export default function ItemsList({ navigation, title, items, ClothesActions, ...rest }) {
+export default function ItemsList({ title, items, ClothesActions, ...rest }) {
 
     /*   
   받을 것 (parameter)
@@ -25,6 +25,7 @@ export default function ItemsList({ navigation, title, items, ClothesActions, ..
     넘겨줄 때 clothes 로 넘겨줘야 함 
 
     */
+
     function renderItem({ item, index }) {
 
 
@@ -32,7 +33,7 @@ export default function ItemsList({ navigation, title, items, ClothesActions, ..
 
         return (
             <Item item={fromJS(item)} index={index}
-                ClothesActions={ClothesActions} navigation={navigation} />
+                ClothesActions={ClothesActions} />
         );
     }
 

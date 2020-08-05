@@ -155,29 +155,3 @@ function SignIn({ navigation }) {
 }
 
 export default SignIn;
-
-
-/* 
-if()를 쓸까? 아니면 위에서 promise형태로 써도 될까?
-1. 첫번째 로그인 성공 후 async storage에 토큰을 저장해놨다가
-AsyncStorage.setItem('Email',email)
-AsyncStorage.setItem('Password', password)     
-2-1. 성공하게 되면 그 토큰을 asyncstorage에 저장해서 계속 쓰고
-AsyncStorage.setItem('TOKEN', token);
-2-2-1. 실패하게 되면 async storage에 있는 아이디, 비밀번호를 통해 로그인을 한다
-axios.post('http://13.125.237.84:5000/user/signin', {
-    email: AsyncStorage.getItem('Email')
-    password: AsyncStorage.getItem('Password')
-}).then(async res
-    try { 
-    2-2-2. 위 과정이 성공하면 그 토큰을 asyncstorage에 새로 저장한다.
-        let token = res.data.token;
-        AsyncStorage.setItem('TOKEN', token);
-    } catch(e) {
-        console.warn(e)
-    }
-)
-    
-AsyncStorage.setItem('TOKEN', token);
-*/
-

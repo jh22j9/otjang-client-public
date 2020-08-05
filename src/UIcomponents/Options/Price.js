@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     inputPriceText: {
-
+        paddingLeft: 13
 
     },
 
@@ -53,7 +53,8 @@ function Price({ temporaryClothing, ClothesActions, ...rest }) {
             <Text style={styles.inputPriceText}>구매가격</Text>
             <View style={styles.inputPrice}>
                 <TextInput style={styles.inputPriceNumber}
-                    keyboardType='number-pad' placeholder='XXXX 원'
+                    keyboardType='number-pad'
+                    placeholder={temporaryClothing.get('price') ? `${temporaryClothing.get('price')} 원` : 'XXXX 원'}
                     onChangeText={price => setPrice(price)}
                     onEndEditing={savePrice}
                 >

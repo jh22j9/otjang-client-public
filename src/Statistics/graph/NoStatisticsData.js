@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 });
 
 
-export default function NoData() {
+export default function NoStatisticsData() {
     return (
 
         <View style={styles.container}>
