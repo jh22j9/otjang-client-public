@@ -13,13 +13,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SignIn from './src/SignIn/SignIn'
 import SignUp from './src/SignUp/SignUp'
 import MainContainer from './src/Main/MainContainer';
-import AddItems from './src/AddItems/AddItems'
 import AddItemsContainer from './src/AddItems/AddItemsContainer'
-import ItemInfo from './src/ItemInfo/ItemInfo'
 import ItemInfoContainer from './src/ItemInfo/ItemInfoContainer'
-import EditItem from './src/EditItem/EditItem'
 import EditItemContainer from './src/EditItem/EditItemContainer'
-import Statistics from './src/Statistics/Statistics'
 import MyInfo from './src/MyInfo/MyInfo'
 import MyInfoContainer from './src/MyInfo/MyInfoContainer'
 import Setting from './src/Setting/Setting'
@@ -31,7 +27,6 @@ import StatisticsContainer from './src/Statistics/StatisticsContainer'
 import ChangePassword from './src/MyInfo/ChangePassword'
 import HowToWash from './src/Wash/HowToWash'
 
-import Item from './src/UIcomponents/Item'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from "react-redux";
 import store from './store';
@@ -75,7 +70,6 @@ function App() {
             <Stack.Screen name='ClothingContainer' component={ClothingContainer} />
             <Stack.Screen name='ShoeContainer' component={ShoeContainer} />
             <Stack.Screen name='BagAccContainer' component={BagAccContainer} />
-            <Stack.Screen name='Item' component={Item} />
             <Stack.Screen name='HowToWash' component={HowToWash} />
           </Stack.Navigator>
         </NavigationContainer>

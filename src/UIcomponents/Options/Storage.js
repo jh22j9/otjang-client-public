@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     inputStorageText: {
-
+        paddingLeft: 13
 
     },
 
@@ -43,7 +43,8 @@ function Storage({ temporaryClothing, ClothesActions, ...rest }) {
 
             <Text style={styles.inputStorageText}>보관장소</Text>
             <View style={styles.inputStorage}>
-                <TextInput style={styles.inputStorageNumber} placeholder='보관장소'
+                <TextInput style={styles.inputStorageNumber}
+                    placeholder={temporaryClothing.get('storage') ? `${temporaryClothing.get('storage')}` : '보관장소'}
                     onChangeText={storage => setStorage(storage)}
                     onEndEditing={saveStorage}
                 >
