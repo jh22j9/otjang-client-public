@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text, StyleSheet, Dimensions, Pressable } from 'react-native';
 import AllClothesContainer from './BottomTab/AllClothesContainer';
 import ClothingContainer from './BottomTab/ClothingContainer';
 import ShoeContainer from './BottomTab/ShoeContainer';
@@ -9,7 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import AddButton from '../UIcomponents/AddButton'
-import { Map, List, is } from 'immutable';
+import { Map, List } from 'immutable';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation, useRoute } from '@react-navigation/native';
 const Tab = createMaterialBottomTabNavigator();
