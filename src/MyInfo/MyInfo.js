@@ -65,7 +65,10 @@ function MyInfo({ clothing, shoes, accessories }) {
                                 text: "취소", onPress: () => console.log("Cancle Pressed"),
                                 style: "cancle"
                             },
-                            { text: "확인", onPress: () => MyInfoNavigation.navigate('SignIn') }
+                            { text: "확인", onPress: () =>{
+                                AsyncStorage.multiRemove[['TOKEN','EMAIL','PASSSWORD']] //혹시나 해서 추가함
+                                MyInfoNavigation.navigate('SignIn') 
+                            }}
                         ],
                         { cancelable: false }
                     );
