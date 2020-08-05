@@ -1,29 +1,40 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, Dimensions, Alert } from 'react-native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Gallery from '../UIcomponents/Gallery'
-import FormButton from '../UIcomponents/FormButton'
-import CategoryList from '../UIcomponents/CategoryList';
-import TypeList from '../UIcomponents/TypeList'
-import Season from '../UIcomponents/Season'
-import ExtraOptions from '../UIcomponents/ExtraOptions'
 import EditButton from '../UIcomponents/EditButton';
 import DeleteButton from '../UIcomponents/DeleteButton';
 import AsyncStorage from '@react-native-community/async-storage';
-
+const { width, height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
-    container: {
+
+    wrapper: {
         display: 'flex',
+        flexDirection: 'column',
         flex: 1,
+    },
+
+    imageContainer: {
+        flex: 5,
+        display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         paddingVertical: 20,
         paddingHorizontal: 40
     },
     text: {
-        paddingVertical: 6,
+        paddingVertical: 8,
         fontSize: 18
-    }
+    },
+    infoContainer: {
+        flex: 4,
+        display: 'flex',
+        flexDirection: 'column',
+        padding: 15,
+    },
+    buttonContainer: {
+        flex: 2,
+    },
+
 })
 
 function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
@@ -114,36 +125,38 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
     function renderItemInfoText() {
 
         return (
-            <View style={styles.textContainer}>
 
+
+            <ScrollView>
                 <Text style={styles.text}>
                     {`category : ${category}`}
                 </Text>
 
                 {type ? <Text style={styles.text}>{`type : ${type}`}</Text> : <></>}
                 {seasons ? <Text style={styles.text}>{`계절 : ${seasons}`}</Text> : <></>}
-                {price ? <Text style={styles.text}>{`가격 : ${price}`}</Text> : <></>}
+                {price ? <Text style={styles.text}>{`가격 : ${price} 원`}</Text> : <></>}
                 {storage ? <Text style={styles.text}>{`보관장소 : ${storage}`}</Text> : <></>}
                 {brand ? <Text style={styles.text}>{`brand : ${brand}`}</Text> : <></>}
                 {buydate ? <Text style={styles.text}>{`구매일자 : ${buydate}`}</Text> : <></>}
-            </View>)
+            </ScrollView>
+        )
     }
 
     return (
-        <View style={{
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
-            <View style={styles.container}>
-                <View>
-                    <Gallery temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
-                    {renderItemInfoText()}
-                </View>
+        <View style={styles.wrapper}>
+            <View style={styles.imageContainer}>
+
+                <Gallery temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
             </View>
 
-            <EditButton onPress={moveToEditItem} />
-            <DeleteButton onPress={deleteItem} />
+            <View style={styles.infoContainer}>
+                {renderItemInfoText()}
+            </View>
+            <View style={styles.buttonContainer}>
+                <EditButton onPress={moveToEditItem} />
+                <DeleteButton onPress={deleteItem} />
+            </View>
+
         </View>
     );
 }
