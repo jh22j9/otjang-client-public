@@ -26,7 +26,7 @@ import BagAccContainer from './src/Main/BottomTab/BagAccContainer'
 import StatisticsContainer from './src/Statistics/StatisticsContainer'
 import ChangePassword from './src/MyInfo/ChangePassword'
 import HowToWash from './src/Wash/HowToWash'
-
+import { StyleSheet } from 'react-native'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from "react-redux";
 import store from './store';
@@ -41,7 +41,10 @@ const theme = {
 
   },
 };
+const styles = StyleSheet.create({
 
+
+})
 function App() {
 
   React.useEffect(() => {
@@ -54,23 +57,46 @@ function App() {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="SignIn">
+          <Stack.Navigator initialRouteName="SignIn" screenOptions={{
+            headerStyle: {
+              backgroundColor: 'black',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}>
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen name="AddItemsContainer" component={AddItemsContainer} />
-            <Stack.Screen name="ItemInfoContainer" component={ItemInfoContainer} />
-            <Stack.Screen name="EditItemContainer" component={EditItemContainer} />
-            <Stack.Screen name='StatisticsContainer' component={StatisticsContainer} />
-            <Stack.Screen name="MyInfo" component={MyInfo} />
-            <Stack.Screen name="MyInfoContainer" component={MyInfoContainer} />
-            <Stack.Screen name="ChangePassword" component={ChangePassword} />
-            <Stack.Screen name="Setting" component={Setting} />
-            <Stack.Screen name='MainContainer' component={MainContainer} />
-            <Stack.Screen name='AllClothesContainer' component={AllClothesContainer} />
-            <Stack.Screen name='ClothingContainer' component={ClothingContainer} />
-            <Stack.Screen name='ShoeContainer' component={ShoeContainer} />
-            <Stack.Screen name='BagAccContainer' component={BagAccContainer} />
-            <Stack.Screen name='HowToWash' component={HowToWash} />
+            <Stack.Screen name="AddItemsContainer" component={AddItemsContainer}
+            />
+            <Stack.Screen name="ItemInfoContainer" component={ItemInfoContainer}
+            />
+            <Stack.Screen name="EditItemContainer" component={EditItemContainer}
+            />
+            <Stack.Screen name='StatisticsContainer' component={StatisticsContainer}
+              options={{ title: 'Statistics' }} />
+            <Stack.Screen name="MyInfo" component={MyInfo}
+            />
+            <Stack.Screen name="MyInfoContainer" component={MyInfoContainer}
+              options={{ title: 'MyInfo' }} />
+            <Stack.Screen name="ChangePassword" component={ChangePassword}
+            />
+            <Stack.Screen name="Setting" component={Setting}
+            />
+            <Stack.Screen name='MainContainer' component={MainContainer}
+              options={{ title: 'Main' }} />
+            <Stack.Screen name='AllClothesContainer' component={AllClothesContainer}
+            />
+            <Stack.Screen name='ClothingContainer' component={ClothingContainer}
+            />
+            <Stack.Screen name='ShoeContainer' component={ShoeContainer}
+            />
+            <Stack.Screen name='BagAccContainer' component={BagAccContainer}
+            />
+            <Stack.Screen name='HowToWash' component={HowToWash}
+              options={{ title: '세탁기호' }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

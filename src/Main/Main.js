@@ -96,6 +96,7 @@ function Main({ ClothesActions }) {
             <Tab.Navigator
                 initialRouteName="AllClothes"
                 activeColor="white"
+                screenOptions={{ tabBarColor: 'black' }}
             >
                 <Tab.Screen name="AllClothes" component={AllClothesContainer}
                     options={{
