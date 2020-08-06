@@ -103,6 +103,12 @@ export const washlist = [
     id: '26',
     description: "드라이클리닝 불가.",
     photo: require('./WashImages/26.jpg')
+  }, {
+    id: '27',
+    photo: require('./WashImages/white.jpg')
+  }, {
+    id: '28',
+    photo: require('./WashImages/white.jpg')
   }
 ]
 
