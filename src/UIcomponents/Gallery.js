@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, TouchableOpacity, Image, } from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { decode } from 'base64-arraybuffer';
@@ -73,6 +73,7 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
                 let promiseS3 = s3bucket.upload(params).promise()
 
                 promiseS3.then(function (data) {
+                    ClothesActions.setTemporaryClothing(temporaryClothing.set('isLoading', false))
                     ClothesActions.setTemporaryClothing(temporaryClothing.set('image', data.Location))
                 }).catch((err) => { console.warn(err) })
             })
@@ -90,7 +91,7 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
                 console.log('User tapped custom button: ', response.customButton);
             } else {
                 console.log('response확인', response)
-
+                ClothesActions.setTemporaryClothing(temporaryClothing.set('isLoading', true))
                 /* 
                 THINK 
                 무조건 s3 로 보낸 후 받은 uri 를 임시 저장창고에 저장 
@@ -127,9 +128,33 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
         });
     }
 
+    function renderImage() {
+
+
+        /* 
+        THINK 조건을 확실히 분리를 해야함
+        > 로딩이 FALSE, 이미지가 있을 때 
+        > 로딩이 TRUE 일 때 -> 이미지가 있던 말던 로딩 이미지 띄워야 
+        > 
+        */
+        if (temporaryClothing.get('isLoading')) {
+            return <ActivityIndicator size={height * 0.35} color='#999999' />
+        }
+
+        else if (!temporaryClothing.get('isLoading') && temporaryClothing.get('image')) {
+            return (<Image resizeMode='stretch' style={styles.image} source={{ uri: temporaryClothing.get('image') }} loadingIndicatorSource={} />)
+        }
+
+        else {
+            return (<Icon name='image' color={'black'} size={230} />)
+        }
+    }
+
     return (<TouchableOpacity style={styles.imagePicker} onPress={selectPhotoTapped}{...rest} >
-        {temporaryClothing.get('image') ? <Image resizeMode='stretch' style={styles.image} source={{ uri: temporaryClothing.get('image') }} />
-            : <Icon name='image' color={'black'} size={230} />}
+
+        {renderImage()}
+        {/* temporaryClothing.get('image') ? <Image resizeMode='stretch' style={styles.image} source={{ uri: temporaryClothing.get('image') }} />
+            : <Icon name='image' color={'black'} size={230} /> */}
     </TouchableOpacity>)
 
 }

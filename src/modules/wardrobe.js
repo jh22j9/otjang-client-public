@@ -64,7 +64,8 @@ export const initialState = Map({
             price: null,
             brand: null,
             storage: null,
-            season: Map(seasonObject)
+            season: Map(seasonObject),
+            isLoading: false,
         }),
     ]),
     shoes: List([
@@ -80,7 +81,8 @@ export const initialState = Map({
             price: null,
             brand: null,
             storage: null,
-            season: Map(seasonObject)
+            season: Map(seasonObject),
+            isLoading: false,
         }),
     ]),
     accessories: List([
@@ -96,7 +98,8 @@ export const initialState = Map({
             price: null,
             brand: null,
             storage: null,
-            season: Map(seasonObject)
+            season: Map(seasonObject),
+            isLoading: false,
         }),
     ]),
     temporaryClothing: Map({
@@ -108,7 +111,8 @@ export const initialState = Map({
         price: null,
         brand: null,
         storage: null,
-        season: Map(seasonObject)
+        season: Map(seasonObject),
+        isLoading: false,
     })
 
 })
