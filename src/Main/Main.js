@@ -75,7 +75,15 @@ function Main({ ClothesActions }) {
 
     React.useEffect(() => {
         async function getClothes() {
-            let token = await AsyncStorage.getItem('TOKEN');
+
+            let token;
+            try {
+                token = await AsyncStorage.getItem('TOKEN');
+            } catch (error) {
+
+                console.warn(error);
+            }
+
             // token = JSON.parse(token);
             ClothesActions.getClothesFromServer(token);
         }
