@@ -33,9 +33,6 @@ function Item ({ item }) {
         source={item.photo}
         style={{width:60, height:60, alignSelf:"center"}}
       />
-      <View style={{marginLeft:35}}>
-        <Text style={{fontSize:17}}>{item.description}</Text>
-      </View>
     </View>
   )
 }
