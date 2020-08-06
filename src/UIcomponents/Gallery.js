@@ -142,7 +142,7 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
         }
 
         else if (!temporaryClothing.get('isLoading') && temporaryClothing.get('image')) {
-            return (<Image resizeMode='stretch' style={styles.image} source={{ uri: temporaryClothing.get('image') }} loadingIndicatorSource={} />)
+            return (<Image resizeMode='stretch' style={styles.image} source={{ uri: temporaryClothing.get('image') }} />)
         }
 
         else {
