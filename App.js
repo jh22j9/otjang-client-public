@@ -26,6 +26,7 @@ import BagAccContainer from './src/Main/BottomTab/BagAccContainer'
 import StatisticsContainer from './src/Statistics/StatisticsContainer'
 import ChangePassword from './src/MyInfo/ChangePassword'
 import HowToWash from './src/Wash/HowToWash'
+import CustomAlert from './src/Wash/CustomAlert'
 import { StyleSheet } from 'react-native'
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from "react-redux";
@@ -96,6 +97,8 @@ function App() {
             />
             <Stack.Screen name='HowToWash' component={HowToWash}
               options={{ title: '세탁기호' }}
+            />
+            <Stack.Screen name="CustomAlert" component={CustomAlert} 
             />
           </Stack.Navigator>
         </NavigationContainer>
