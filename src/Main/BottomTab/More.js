@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-paper';
+import { View, StyleSheet, Text } from 'react-native';
+import { Button, Portal, Modal, Badge } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
@@ -124,15 +124,14 @@ function More() {
             <Button
                 style={styles.devInfo}
                 icon="hanger"
-                onPress={showModal}>
+                r>
                 DEV INFO
                 </Button>
             <View style={styles.modalContainer} >
                 <Portal>
                     <Modal
-                        visible={visible}
-                        onDismiss={hideModal}>
 
+                    >
                         <View style={styles.modal}>
 
                             <View style={styles.badgeContainer}>
