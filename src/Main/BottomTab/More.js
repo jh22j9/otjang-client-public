@@ -7,7 +7,7 @@ import { Border } from 'victory-native';
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         paddingTop: 60
@@ -23,18 +23,18 @@ const styles = StyleSheet.create({
         marginTop: 45
     },
     modalContainer: {
-        flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
-
+        alignItems: 'center',
     },
     modal: {
+        display: 'flex',
+        flexDirection: 'column',
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "white",
         borderRadius: 20,
         width: "70%",
-        height: "55%",
+        height: "70%",
         paddingVertical: 50,
         paddingHorizontal: 40,
         shadowColor: "#000",
@@ -108,41 +108,42 @@ function More() {
     const hideModal = () => setVisible(false);
 
     return (
-        <Provider>
-            <View style={styles.container}>
-                <Button
-                    style={styles.button}
-                    icon="account"
-                    mode="contained"
-                    onPress={moveToMyInfo}>
-                    MY INFO
+        <View style={styles.container}>
+            <Button
+                style={styles.button}
+                icon="account"
+                mode="contained"
+                onPress={moveToMyInfo}>
+                MY INFO
                 </Button>
-                <Button
-                    style={styles.button}
-                    icon="graph"
-                    mode="contained"
-                    onPress={moveToStatistics}>
-                    STATISTICS
+            <Button
+                style={styles.button}
+                icon="graph"
+                mode="contained"
+                onPress={moveToStatistics}>
+                STATISTICS
                 </Button>
-                <Button
-                    style={styles.button}
-                    icon="washing-machine"
-                    mode="contained"
-                    onPress={moveToWashing}>
-                    HOW TO WASH
+            <Button
+                style={styles.button}
+                icon="washing-machine"
+                mode="contained"
+                onPress={moveToWashing}>
+                HOW TO WASH
                 </Button>
-                <Button
-                    style={styles.devInfo}
-                    icon="hanger"
-                    onPress={showModal}>
-                    DEV INFO
+            <Button
+                style={styles.devInfo}
+                icon="hanger"
+                onPress={showModal}>
+                DEV INFO
                 </Button>
-                <View>
-                    <Portal style={styles.modalContainer}>
-                        <Modal
-                            visible={visible}
-                            onDismiss={hideModal}
-                            contentContainerStyle={styles.modal}>
+            <View style={styles.modalContainer} >
+                <Portal>
+                    <Modal
+                        visible={visible}
+                        onDismiss={hideModal}>
+
+                        <View style={styles.modal}>
+
                             <View style={styles.badgeContainer}>
                                 <Badge
                                     style={[styles.badge1, styles.badge]}
@@ -172,11 +173,11 @@ function More() {
                                     <Text>@ lllgresi </Text>
                                 </View>
                             </View>
-                        </Modal>
-                    </Portal>
-                </View>
+                        </View>
+                    </Modal>
+                </Portal>
             </View>
-        </Provider>
+        </View>
     );
 }
 
