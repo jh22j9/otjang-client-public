@@ -1,20 +1,17 @@
-import * as React from 'react';
-
-import { View, Text, Pressable, StyleSheet } from 'react-native';
-import { Modal, Portal, Button, Provider, Badge } from 'react-native-paper';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { Border } from 'victory-native';
 
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 60
+        justifyContent: 'center'
     },
     button: {
-        width: "60%",
-        height: "15%",
+        width: "65%",
+        height: "20%",
         justifyContent: "center",
         margin: 20,
         borderRadius: 30
@@ -83,29 +80,23 @@ const styles = StyleSheet.create({
     content: {
         lineHeight: 25
     }
-});
+})
 
 function More() {
 
-    const moreNavigation = useNavigation();
+    const navigation = useNavigation();
 
     function moveToStatistics() {
-        moreNavigation.navigate('StatisticsContainer');
-    };
+        navigation.navigate('StatisticsContainer');
+    }
 
     function moveToMyInfo() {
-        moreNavigation.navigate('MyInfoContainer');
-    };
+        navigation.navigate('MyInfoContainer');
+    }
 
     function moveToWashing() {
-        moreNavigation.navigate('HowToWash');
-        console.log('세탁 이동')
-    };
-
-    const [visible, setVisible] = React.useState(false);
-
-    const showModal = () => setVisible(true);
-    const hideModal = () => setVisible(false);
+        navigation.navigate('HowToWash'); //정적인 데이터만 담을거라서 container가 필요하진 않은데... 음... 이건 좀 물어봐야 할 것 같아..!
+    }
 
     return (
         <View style={styles.container}>

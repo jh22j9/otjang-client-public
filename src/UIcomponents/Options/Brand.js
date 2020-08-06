@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     },
     inputBrandText: {
 
-
+        paddingLeft: 13
     },
 
 
@@ -42,7 +42,8 @@ function Brand({ temporaryClothing, ClothesActions, ...rest }) {
 
             <Text style={styles.inputBrandText}>브랜드</Text>
             <View style={styles.inputBrand}>
-                <TextInput style={styles.inputBrandNumber} placeholder='브랜드'
+                <TextInput style={styles.inputBrandNumber}
+                    placeholder={temporaryClothing.get('brand') ? `${temporaryClothing.get('brand')}` : 'brand'}
                     onChangeText={brand => setBrand(brand)}
                     onEndEditing={saveBrand}
                 >

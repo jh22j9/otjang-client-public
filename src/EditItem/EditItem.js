@@ -1,8 +1,5 @@
-import * as React from 'react';
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Image, Dimensions, FlatList } from 'react-native';
-import { IconButton, Colors, Button, Card, Chip, List } from 'react-native-paper';
-import ImagePicker from 'react-native-image-picker';
-import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
+import React from 'react';
+import { View, ScrollView, StyleSheet, Dimensions, } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Gallery from '../UIcomponents/Gallery'
 import FormButton from '../UIcomponents/FormButton'
@@ -33,12 +30,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderWidth: 2,
     },
-    optionsContainer: {
-
-    },
 })
 
-function EditItem({ navigation, route, user, temporaryClothing, ClothesActions, ServerActions }) {
+function EditItem({ navigation, route, temporaryClothing, ClothesActions, }) {
 
     const { index, category } = route.params;
 

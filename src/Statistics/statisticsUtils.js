@@ -23,7 +23,6 @@ export function getAnnualPurchaseData(clothesList) {
 
     var monthlyPriceSum = [];
 
-
     for (let i = 1; i <= 12; i++) {
 
         let monthlyPriceObject = { buydate: null, price: null }
@@ -56,9 +55,9 @@ export function getPrice(clothesList) {
 
 export function getMonthlyList(clothesList, buydate) {
 
-    function confirmMonth(clothes) {
 
-        if (clothes.buydate === Number(buydate)) {
+    function confirmMonth(clothes) {
+        if (Number(clothes.buydate) === buydate) {
             return true;
         }
 

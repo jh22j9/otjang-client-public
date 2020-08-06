@@ -1,22 +1,11 @@
-import * as React from 'react';
-import { StyleSheet, View, Text, Dimensions, Image } from 'react-native';
+import React from 'react';
 import BagContainer from '../TopTab/BagAccTab/BagContainer';
 import HeadContainer from '../TopTab/BagAccTab/HeadContainer';
 import JewelryContainer from '../TopTab/BagAccTab/JewelryContainer';
 import OtherAccContainer from '../TopTab/BagAccTab/OtherAccContainer';
-const { width, height } = Dimensions.get('screen');
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 const Tab = createMaterialTopTabNavigator();
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: "flex-start",
-        padding: 25
-    },
-});
 
 
 function BagAcc() {
