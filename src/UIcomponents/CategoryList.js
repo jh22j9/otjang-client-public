@@ -73,8 +73,8 @@ export default function CategoryList({ temporaryClothing, ClothesActions,...rest
                 icon={() => (<MaterialCommunityIcons name="hat-fedora" size={22} />)}
                 textStyle={{ fontSize: 20 }}
                 selected={temporaryClothing.get('category').get('accessories')}
-                            
-            >잡화
+                           
+           >잡화
             </Chip>
         </View>
     )
