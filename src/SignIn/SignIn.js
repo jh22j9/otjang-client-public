@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     }
 
 })
-
+// #6200EE
 function SignIn({ navigation }) {
     useEffect(() => {
         autoLogin()
