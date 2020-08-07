@@ -73,10 +73,10 @@ function EditItem({ navigation, route, temporaryClothing, ClothesActions, }) {
                 <TypeList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
                 <Season temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
                 <ExtraOptions temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+                <View style={styles.saveButtonContainer}>
+                    <FormButton title='저장' modeValue='contained' onPress={saveEditedItem} />
+                </View>
             </ScrollView>
-            <View style={styles.saveButtonContainer}>
-                <FormButton title='저장' modeValue='contained' onPress={saveEditedItem} />
-            </View>
         </View>
     );
 }

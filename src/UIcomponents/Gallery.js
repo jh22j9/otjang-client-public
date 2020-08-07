@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity, Image, ActivityIndicator, View } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { decode } from 'base64-arraybuffer';
@@ -24,16 +24,17 @@ const styles = StyleSheet.create({
         width: width * 0.9,
         height: height * 0.35,
     },
+    loadingIndicator: {
+
+        height: height * 0.35,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 
 })
 
-/*
-THINK: 
-
-
-clothesObj 옷에 대한 모든 정보가 담긴 객체 
-수정사항이 생길 때마다 아래 객체에 반영하여 state 변경시킨다. 
-*/
 
 export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) {
 
@@ -50,7 +51,7 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
         };
 
         const uploadImageOnS3 = (file) => {
-            // var uri = '초기값';
+
             const s3bucket = new S3({
                 accessKeyId: ACCESS_KEY_ID,
                 secretAccessKey: SECRET_ACCESS_KEY,
@@ -92,15 +93,6 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
             } else {
                 console.log('response확인', response)
                 ClothesActions.setTemporaryClothing(temporaryClothing.set('isLoading', true))
-                /* 
-                THINK 
-                무조건 s3 로 보낸 후 받은 uri 를 임시 저장창고에 저장 
-                
-                */
-
-                /* 
-                BUG : S3 로 부터 이미지 URI 를 받은후 -> setTemporaryClothing() 가 실행되어야 함
-                */
 
                 function uploadS3Uri() {
 
@@ -130,15 +122,12 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
 
     function renderImage() {
 
-
-        /* 
-        THINK 조건을 확실히 분리를 해야함
-        > 로딩이 FALSE, 이미지가 있을 때 
-        > 로딩이 TRUE 일 때 -> 이미지가 있던 말던 로딩 이미지 띄워야 
-        > 
-        */
         if (temporaryClothing.get('isLoading')) {
-            return <ActivityIndicator size={height * 0.35} color='#999999' />
+
+            return (<View style={styles.loadingIndicator}>
+                <ActivityIndicator size={100} color='#999999' />
+            </View>)
+
         }
 
         else if (!temporaryClothing.get('isLoading') && temporaryClothing.get('image')) {

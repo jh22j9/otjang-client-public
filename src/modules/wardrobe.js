@@ -52,7 +52,7 @@ const categoryObject = {
 export const initialState = Map({
     clothing: List([
         Map({
-            item_id: 18,
+            item_id: null,
             image: dog1,
 
             category: Map({
@@ -70,7 +70,7 @@ export const initialState = Map({
     ]),
     shoes: List([
         Map({
-            item_id: 31,
+            item_id: null,
             image: dog2,
             category: Map({
                 ...categoryObject,
@@ -87,7 +87,7 @@ export const initialState = Map({
     ]),
     accessories: List([
         Map({
-            item_id: 56,
+            item_id: null,
             image: dog3,
             category: Map({
                 ...categoryObject,
@@ -129,7 +129,7 @@ function AddItemInServer(sendingClothingToServer) {
 
     
     */
-    const url = 'http://13.125.237.84:5000/item'
+    const url = 'http://15.165.197.67:5000/item'
     const token = sendingClothingToServer.token;
     const item = sendingClothingToServer.item.toJS();
 
@@ -150,7 +150,7 @@ function updateItemInServer(sendingClothingToServer) {
     const item = sendingClothingToServer.item.toJS();
     const id = item.item_id;
 
-    const url = `http://13.125.237.84:5000/item/${id}`
+    const url = `http://15.165.197.67:5000/item/${id}`
     const token = sendingClothingToServer.token;
 
     /* 
@@ -177,7 +177,7 @@ function deleteItemInServer(deletingClothingToServer) {
 
     const item = deletingClothingToServer.item.toJS();
     const id = item.item_id;
-    const url = `http://13.125.237.84:5000/item/${id}`
+    const url = `http://15.165.197.67:5000/item/${id}`
     const token = deletingClothingToServer.token;
 
 
@@ -189,7 +189,7 @@ function deleteItemInServer(deletingClothingToServer) {
 
 function getItemsFromServer(token) {
 
-    const url = 'http://13.125.237.84:5000/info';
+    const url = 'http://15.165.197.67:5000/info';
     const config = { headers: { token: token } }
     return axios.get(url, config).then((res) => (res))
         .catch((err) => { console.warn(err) });

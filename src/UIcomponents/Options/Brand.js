@@ -43,7 +43,7 @@ function Brand({ temporaryClothing, ClothesActions, ...rest }) {
             <Text style={styles.inputBrandText}>브랜드</Text>
             <View style={styles.inputBrand}>
                 <TextInput style={styles.inputBrandNumber}
-                    placeholder={temporaryClothing.get('brand') ? `${temporaryClothing.get('brand')}` : 'brand'}
+                    placeholder={temporaryClothing.get('brand') ? `${temporaryClothing.get('brand')}` : '브랜드'}
                     onChangeText={brand => setBrand(brand)}
                     onEndEditing={saveBrand}
                 >

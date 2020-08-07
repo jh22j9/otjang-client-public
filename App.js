@@ -54,6 +54,9 @@ function App() {
     }, 3000);
   }, [])
 
+  /* 
+  TODO : STACK HEADER 없애기 
+  */
   return (
     <Provider store={store}>
       <PaperProvider theme={theme}>

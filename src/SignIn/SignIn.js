@@ -51,7 +51,7 @@ function SignIn({ navigation }) {
         let arr = await AsyncStorage.multiGet(['EMAIL', 'PASSWORD'])
         if (arr[0][1] && arr[1][1]) {
             try {
-                axios.post('http://13.125.237.84:5000/user/signin', {
+                axios.post('http://15.165.197.67:5000/user/signin', {
                     email: arr[0][1],
                     password: arr[1][1]
                 }).then(async res => {
@@ -80,7 +80,7 @@ function SignIn({ navigation }) {
 
     //처음 로그인
     const handleSignIn = (email, password) => {
-        axios.post('http://13.125.237.84:5000/user/signin', {
+        axios.post('http://15.165.197.67:5000/user/signin', {
             email: email,
             password: password
 
@@ -122,6 +122,7 @@ function SignIn({ navigation }) {
 
     return (
         <View style={styles.container} >
+            {/* TODO 로고자리 */}
             <Title style={styles.titleText}>Welcome to Otjang</Title>
             <FormInput
                 labelName='Email'

@@ -51,11 +51,11 @@ export default function CategoryList({ temporaryClothing, ClothesActions,...rest
 
             <Chip 
                 onPress={selectClothing}
-                icon={() => (<FontAwesome5Icons name="tshirt"  size={25} />)}
+                icon={() => (<FontAwesome5Icons name="tshirt"  size={20} />)}
                 textStyle={{ fontSize: 20 }}
                 selected={temporaryClothing.get('category').get('clothing')}
                             
-            >clothing
+            >의류
             </Chip>
 
             <Chip 
@@ -64,16 +64,16 @@ export default function CategoryList({ temporaryClothing, ClothesActions,...rest
                 textStyle={{ fontSize: 20 }}
                 selected={temporaryClothing.get('category').get('shoes')}
                             
-            >shoes
+            >신발
             </Chip>
 
             <Chip 
                 onPress={selectAccessories}
-                icon={() => (<MaterialCommunityIcons name="hat-fedora" size={25} />)}
+                icon={() => (<MaterialCommunityIcons name="hat-fedora" size={22} />)}
                 textStyle={{ fontSize: 20 }}
                 selected={temporaryClothing.get('category').get('accessories')}
                             
-            >Accessories
+            >액세서리
             </Chip>
         </View>
     )
