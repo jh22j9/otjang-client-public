@@ -54,7 +54,7 @@ function MyInfo({ clothing, shoes, accessories }) {
     }
 
     const handleDeleteAccount = (token) => {
-        const url = `http://13.125.237.84:5000/user/delete`;
+        const url = `http://15.165.197.67:5000/user/delete`;
         const config = { headers: { token: token } };
         axios.delete(url, config)
             .then(res => {
@@ -65,10 +65,12 @@ function MyInfo({ clothing, shoes, accessories }) {
                                 text: "취소", onPress: () => console.log("Cancle Pressed"),
                                 style: "cancle"
                             },
-                            { text: "확인", onPress: () =>{
-                                AsyncStorage.multiRemove[['TOKEN','EMAIL','PASSSWORD']] //혹시나 해서 추가함
-                                MyInfoNavigation.navigate('SignIn') 
-                            }}
+                            {
+                                text: "확인", onPress: () => {
+                                    AsyncStorage.multiRemove[['TOKEN', 'EMAIL', 'PASSSWORD']] //혹시나 해서 추가함
+                                    MyInfoNavigation.navigate('SignIn')
+                                }
+                            }
                         ],
                         { cancelable: false }
                     );
@@ -96,9 +98,9 @@ function MyInfo({ clothing, shoes, accessories }) {
                     left={props => <List.Icon {...props} icon="format-list-numbered" />}
                     expanded='true'>
                     <List.Item title={`보관함에 총 ${allItemsCount}/100 개의 아이템이 있습니다.`} />
-                    <List.Item title={`옷장 (${clothingCount})`} />
-                    <List.Item title={`신발장 (${shoesCount})`} />
-                    <List.Item title={`장신구함 (${accCount})`} />
+                    <List.Item title={`의류 (${clothingCount})`} />
+                    <List.Item title={`신발 (${shoesCount})`} />
+                    <List.Item title={`잡화 (${accCount})`} />
                 </List.Accordion>
 
             </List.Section >

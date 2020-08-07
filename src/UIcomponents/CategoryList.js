@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
         justifyContent:'space-around',
         alignItems: 'center',
         height: height * 0.1,
+        
     },
     selectedContainer: {
         backgroundColor: '#e8dad5',
@@ -73,7 +74,7 @@ export default function CategoryList({ temporaryClothing, ClothesActions,...rest
                 textStyle={{ fontSize: 20 }}
                 selected={temporaryClothing.get('category').get('accessories')}
                             
-            >액세서리
+            >잡화
             </Chip>
         </View>
     )

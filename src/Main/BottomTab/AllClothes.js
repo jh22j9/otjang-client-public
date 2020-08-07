@@ -26,13 +26,13 @@ function AllClothes({ clothing, shoes, accessories, temporaryClothing, ClothesAc
 
     return (
         <View style={styles.container}>
-            <ItemsList title='Clothing' items={clothing} temporaryClothing={temporaryClothing}
+            <ItemsList title='의류' items={clothing} temporaryClothing={temporaryClothing}
                 ClothesActions={ClothesActions}
             />
-            <ItemsList title='Shoes' items={shoes} temporaryClothing={temporaryClothing}
+            <ItemsList title='신발' items={shoes} temporaryClothing={temporaryClothing}
                 ClothesActions={ClothesActions}
             />
-            <ItemsList title='Accessories' items={accessories} temporaryClothing={temporaryClothing}
+            <ItemsList title='잡화' items={accessories} temporaryClothing={temporaryClothing}
                 ClothesActions={ClothesActions}
             />
         </View>

@@ -89,7 +89,7 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
                         style={styles.chip}
                         selected={temporaryClothing.get('type').get('other')}
                         textStyle={{ fontSize: 15 }}>
-                        •••
+                        ••• 기타
                     </Chip>
                 </ScrollView>
             </View>

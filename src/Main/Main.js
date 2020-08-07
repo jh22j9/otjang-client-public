@@ -108,7 +108,7 @@ function Main({ ClothesActions }) {
             >
                 <Tab.Screen name="AllClothes" component={AllClothesContainer}
                     options={{
-                        tabBarLabel: 'AllClothes',
+                        tabBarLabel: '홈',
                         // Tab.Navigator 에서 설정한 color 를 상속받기 위함 
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="home" color={color} size={26} />
@@ -117,7 +117,7 @@ function Main({ ClothesActions }) {
                 />
                 <Tab.Screen name="Clothing" component={ClothingContainer}
                     options={{
-                        tabBarLabel: 'Clothing',
+                        tabBarLabel: '의류',
                         tabBarIcon: ({ color }) => (
                             <FontAwesome5Icons name="tshirt" color={color} size={20} />
                         ),
@@ -125,7 +125,7 @@ function Main({ ClothesActions }) {
                 />
                 <Tab.Screen name="Shoe" component={ShoeContainer}
                     options={{
-                        tabBarLabel: 'Shoe',
+                        tabBarLabel: '신발',
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="shoe-formal" color={color} size={26} />
                         ),
@@ -133,7 +133,7 @@ function Main({ ClothesActions }) {
                 />
                 <Tab.Screen name="Accessories" component={BagAccContainer}
                     options={{
-                        tabBarLabel: 'Accessories',
+                        tabBarLabel: '잡화',
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="hat-fedora" color={color} size={26} />
                         ),
@@ -141,7 +141,7 @@ function Main({ ClothesActions }) {
                 />
                 <Tab.Screen name="More" component={More}
                     options={{
-                        tabBarLabel: 'More',
+                        tabBarLabel: '더보기',
                         tabBarIcon: ({ color }) => (
                             <MaterialCommunityIcons name="dots-horizontal" color={color} size={26} />
                         ),
