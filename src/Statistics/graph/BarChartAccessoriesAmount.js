@@ -20,10 +20,10 @@ export default function BarChartAccessoriesAmount({ wardrobe }) {
     // dummy
     // const accessories = utils.accessories;
     var AccessoriesTypeAmount = [
-        { type: 'bag', amount: utils.getTypeList(accessories, 'bag').length },
-        { type: 'head', amount: utils.getTypeList(accessories, 'head').length },
-        { type: 'jewelry', amount: utils.getTypeList(accessories, 'jewelry').length },
-        { type: 'other', amount: utils.getTypeList(accessories, 'other').length },
+        { type: '가방', amount: utils.getTypeList(accessories, 'bag').length },
+        { type: '모자', amount: utils.getTypeList(accessories, 'head').length },
+        { type: '액세서리', amount: utils.getTypeList(accessories, 'jewelry').length },
+        { type: '기타', amount: utils.getTypeList(accessories, 'other').length },
     ]
     // amount 가 전부다 0이면 no data 표시한다. 
 

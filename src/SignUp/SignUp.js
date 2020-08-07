@@ -40,7 +40,7 @@ function SignUp({ navigation }) {
     };
 
     const handleSignUp = (email, password) => {
-        axios.post('http://13.125.237.84:5000/user/signup', {
+        axios.post('http://15.165.197.67:5000/user/signup', {
             email: email,
             password: password
         }).then(res => {

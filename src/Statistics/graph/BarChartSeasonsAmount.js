@@ -31,10 +31,10 @@ export default function BarChartSeasonsAmount({ wardrobe }) {
     // const clothes = utils.clothes;
 
     var seasonsAmount = [
-        { category: 'spring', amount: utils.getSeasonList(clothes, 'spring').length },
-        { category: 'summer', amount: utils.getSeasonList(clothes, 'summer').length },
-        { category: 'fall', amount: utils.getSeasonList(clothes, 'fall').length },
-        { category: 'winter', amount: utils.getSeasonList(clothes, 'winter').length }
+        { category: '봄', amount: utils.getSeasonList(clothes, 'spring').length },
+        { category: '여름', amount: utils.getSeasonList(clothes, 'summer').length },
+        { category: '가을', amount: utils.getSeasonList(clothes, 'fall').length },
+        { category: '겨울', amount: utils.getSeasonList(clothes, 'winter').length }
     ]
 
     let isExistData = seasonsAmount.find((seasonsAmountObj) => {
