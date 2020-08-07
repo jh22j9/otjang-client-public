@@ -26,10 +26,10 @@ export default function PieChartClothingPercentage({ wardrobe }) {
     const clothingPrice = utils.getPrice(clothing);
 
     var data = [
-        { type: 'top', percentage: Math.floor(utils.getPrice(topList) / clothingPrice * 100) },
-        { type: 'bottom', percentage: Math.floor(utils.getPrice(bottomList) / clothingPrice * 100) },
-        { type: 'outer', percentage: Math.floor(utils.getPrice(outerList) / clothingPrice * 100) },
-        { type: 'dress', percentage: Math.floor(utils.getPrice(dressList) / clothingPrice * 100) }
+        { type: '상의', percentage: Math.floor(utils.getPrice(topList) / clothingPrice * 100) },
+        { type: '하의', percentage: Math.floor(utils.getPrice(bottomList) / clothingPrice * 100) },
+        { type: '자켓', percentage: Math.floor(utils.getPrice(outerList) / clothingPrice * 100) },
+        { type: '드레스', percentage: Math.floor(utils.getPrice(dressList) / clothingPrice * 100) }
     ]
 
 
@@ -39,13 +39,14 @@ export default function PieChartClothingPercentage({ wardrobe }) {
 
     }
 
-    let isExistData = data.find((percentageObj) => {
+    let isExistData = data.filter((percentageObj) => {
 
         if (percentageObj.percentage) {
             return true;
         }
     })
-    if (!isExistData) {
+
+    if (isExistData.length < 2) {
         return <NoStatisticsData />
     }
     return (
