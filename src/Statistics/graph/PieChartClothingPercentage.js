@@ -46,7 +46,7 @@ export default function PieChartClothingPercentage({ wardrobe }) {
         }
     })
 
-    if (isExistData.length < 2) {
+    if (isExistData.length < 1) {
         return <NoStatisticsData />
     }
     return (
@@ -62,7 +62,7 @@ export default function PieChartClothingPercentage({ wardrobe }) {
                 width={400} height={400}
                 style={{ labels: { fill: "black", fontWeight: '700' } }}
                 theme={VictoryTheme.material}
-                data={data} x={'type'} y={'percentage'}
+                data={isExistData} x={'type'} y={'percentage'}
                 innerRadius={50}
                 labelRadius={72}
                 labels={transformPieLabels}
