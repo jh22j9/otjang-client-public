@@ -13,10 +13,10 @@ function BagAcc() {
     return (
         <>
             <Tab.Navigator>
-                <Tab.Screen name="💼" component={BagContainer} />
-                <Tab.Screen name="🧢" component={HeadContainer} />
-                <Tab.Screen name="💎" component={JewelryContainer} />
-                <Tab.Screen name="•••" component={OtherAccContainer} />
+                <Tab.Screen name="💼 가방" component={BagContainer} />
+                <Tab.Screen name="🧢 모자" component={HeadContainer} />
+                <Tab.Screen name="💎 액세서리" component={JewelryContainer} />
+                <Tab.Screen name="••• 기타" component={OtherAccContainer} />
             </Tab.Navigator>
         </>
     );

@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, FlatList, StyleSheet, Dimensions } from 'react-native';
+import { View, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
 import { Title } from 'react-native-paper';
 import Item from './Item'
 import { Map, List, fromJS } from 'immutable';
 const styles = StyleSheet.create({
     title: {
 
-        margin: 15,
+        marginLeft: 20,
         marginBottom: 10,
-
+        fontSize: 16,
+        fontWeight: '700'
     },
 });
 export default function ItemsList({ title, items, ClothesActions, ...rest }) {
@@ -40,7 +41,7 @@ export default function ItemsList({ title, items, ClothesActions, ...rest }) {
 
     return (
         <View>
-            <Title style={styles.title}>{`${title} (${items.toJS().length})`}</Title>
+            <Text style={styles.title}>{`${title} (${items.toJS().length})`}</Text>
             <FlatList
                 horizontal={true}
                 data={items.toJS()}

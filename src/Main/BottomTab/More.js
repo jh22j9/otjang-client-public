@@ -105,27 +105,27 @@ function More() {
                 icon="account"
                 mode="contained"
                 onPress={moveToMyInfo}>
-                MY INFO
+                내 정보
                 </Button>
             <Button
                 style={styles.button}
                 icon="graph"
                 mode="contained"
                 onPress={moveToStatistics}>
-                STATISTICS
+                통계
                 </Button>
             <Button
                 style={styles.button}
                 icon="washing-machine"
                 mode="contained"
                 onPress={moveToWashing}>
-                HOW TO WASH
+                세탁표시기호
                 </Button>
             <Button
                 style={styles.devInfo}
                 icon="hanger"
                 r>
-                DEV INFO
+                개발자 정보
                 </Button>
             <View style={styles.modalContainer} >
                 <Portal>

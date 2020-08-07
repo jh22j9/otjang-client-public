@@ -556,9 +556,9 @@ function Statistics({ wardrobe }) {
 
                 <View style={styles.selectionContainer}>
                     <Chip icon="calendar-month" onPress={handleDuration} selected={selectStatistics.duration}>기간</Chip>
-                    <Chip icon="hat-fedora" onPress={handleCategory} selected={selectStatistics.category}>Category</Chip>
                     <Chip icon="weather-partly-snowy-rainy" onPress={handleSeason} selected={selectStatistics.season}>계절</Chip>
-                    <Chip icon="tshirt-v" onPress={handleType} selected={selectStatistics.type}>Type</Chip>
+                    <Chip icon="hat-fedora" onPress={handleCategory} selected={selectStatistics.category}>카테고리</Chip>
+                    <Chip icon="tshirt-v" onPress={handleType} selected={selectStatistics.type}>타입</Chip>
                 </View>
 
             </View>

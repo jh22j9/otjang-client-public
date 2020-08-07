@@ -13,10 +13,10 @@ function Clothing() {
     return (
         <>
             <Tab.Navigator>
-                <Tab.Screen name="👕" component={TopContainer} />
-                <Tab.Screen name="👖" component={BottomContainer} />
-                <Tab.Screen name="🥼" component={OuterContainer} />
-                <Tab.Screen name="👗" component={DressContainer} />
+                <Tab.Screen name="👕 상의" component={TopContainer} />
+                <Tab.Screen name="👖 하의" component={BottomContainer} />
+                <Tab.Screen name="🧥 자켓" component={OuterContainer} />
+                <Tab.Screen name="👗 드레스" component={DressContainer} />
             </Tab.Navigator>
         </>
     );

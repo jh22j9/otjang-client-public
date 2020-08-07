@@ -12,10 +12,10 @@ function Shoe() {
     return (
         <>
             <Tab.Navigator>
-                <Tab.Screen name="👟" component={SneakersContainer} />
-                <Tab.Screen name="👞" component={LeatherContainer} />
-                <Tab.Screen name="👡" component={SandalsContainer} />
-                <Tab.Screen name="👢" component={BootsContainer} />
+                <Tab.Screen name="👟 운동화" component={SneakersContainer} />
+                <Tab.Screen name="👞 구두" component={LeatherContainer} />
+                <Tab.Screen name="👡 샌들" component={SandalsContainer} />
+                <Tab.Screen name="👢 부츠" component={BootsContainer} />
             </Tab.Navigator>
         </>
     );
