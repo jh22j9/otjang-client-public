@@ -258,15 +258,15 @@ function Statistics({ wardrobe }) {
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, clothingPrice: true })
                             _menu.hide();
-                        }}>의류 구매금액</MenuItem>
+                        }}>의류 구매 금액</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, clothingPercentage: true })
                             _menu.hide();
-                        }}>의류 구매비율</MenuItem>
+                        }}>의류 구매 비율</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, clothingAmount: true })
                             _menu.hide();
-                        }}>의류 보유수량</MenuItem>
+                        }}>의류 보유 수량</MenuItem>
                     </>)
             }
 
@@ -276,15 +276,15 @@ function Statistics({ wardrobe }) {
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, shoesPrice: true })
                             _menu.hide();
-                        }}>신발 구매금액</MenuItem>
+                        }}>신발 구매 금액</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, shoesPercentage: true })
                             _menu.hide();
-                        }}>신발 구매비율</MenuItem>
+                        }}>신발 구매 비율</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, shoesAmount: true })
                             _menu.hide();
-                        }}>신발 보유수량</MenuItem>
+                        }}>신발 보유 수량</MenuItem>
                     </>)
             }
 
@@ -294,15 +294,15 @@ function Statistics({ wardrobe }) {
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, accessoriesPrice: true })
                             _menu.hide();
-                        }}>잡화 구매금액</MenuItem>
+                        }}>잡화 구매 금액</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, accessoriesPercentage: true })
                             _menu.hide();
-                        }}>잡화 구매비율</MenuItem>
+                        }}>잡화 구매 비율</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, accessoriesAmount: true })
                             _menu.hide();
-                        }}>잡화 보유수량</MenuItem>
+                        }}>잡화 보유 수량</MenuItem>
                     </>)
             }
 
@@ -356,7 +356,7 @@ function Statistics({ wardrobe }) {
                     <Menu
                         ref={setMenuRef}
                         button={<Pressable onPress={showMenu} style={styles.popupMenuButton}>
-                            <Text >통계  </Text>
+                            <Text >조회  </Text>
                             <View>
                                 <Icon name='caret-down' size={22} />
                             </View>
@@ -386,14 +386,14 @@ function Statistics({ wardrobe }) {
                     <Menu
                         ref={setMenuRef}
                         button={<Pressable onPress={showMenu} style={styles.popupMenuButton}>
-                            <Text >통계선택  </Text>
+                            <Text >조회  </Text>
                             <View>
                                 <Icon name='caret-down' size={22} />
                             </View>
 
                         </Pressable>}
                     >
-                        <MenuItem onPress={hideMenu}>월별 구매금액</MenuItem>
+                        <MenuItem onPress={hideMenu}>월별 구매 금액</MenuItem>
                     </Menu>
                 </View>
                 <View style={styles.graphContainer}>
@@ -449,16 +449,16 @@ function Statistics({ wardrobe }) {
                     <Menu
                         ref={setMenuRef}
                         button={<Pressable onPress={showMenu} style={styles.popupMenuButton}>
-                            <Text >통계선택  </Text>
+                            <Text >조회  </Text>
                             <View>
                                 <Icon name='caret-down' size={22} />
                             </View>
 
                         </Pressable>}
                     >
-                        <MenuItem onPress={chooseCategoryPrice}>카테고리별 구매금액</MenuItem>
-                        <MenuItem onPress={chooseCategoryPercentage}>카테고리별 구매비율</MenuItem>
-                        <MenuItem onPress={chooseCategoryAmount}>카테고리별 보유수량</MenuItem>
+                        <MenuItem onPress={chooseCategoryPrice}>카테고리별 구매 금액</MenuItem>
+                        <MenuItem onPress={chooseCategoryPercentage}>카테고리별 구매 비율</MenuItem>
+                        <MenuItem onPress={chooseCategoryAmount}>카테고리별 보유 수량</MenuItem>
 
                     </Menu>
                 </View>
@@ -506,15 +506,15 @@ function Statistics({ wardrobe }) {
                     <Menu
                         ref={setMenuRef}
                         button={<Pressable onPress={showMenu} style={styles.popupMenuButton}>
-                            <Text >통계선택  </Text>
+                            <Text >조회  </Text>
                             <View>
                                 <Icon name='caret-down' size={22} />
                             </View>
 
                         </Pressable>}
                     >
-                        <MenuItem onPress={chooseSeasonPrice}>계절별 구매금액</MenuItem>
-                        <MenuItem onPress={chooseSeasonAmount}>계절별 보유수량</MenuItem>
+                        <MenuItem onPress={chooseSeasonPrice}>계절별 구매 금액</MenuItem>
+                        <MenuItem onPress={chooseSeasonAmount}>계절별 보유 수량</MenuItem>
 
                     </Menu>
                 </View>
