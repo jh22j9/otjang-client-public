@@ -18,7 +18,6 @@ import PieChartShoesPercentage from './graph/PieChartShoesPercentage';
 import BarChartAccessoriesPrice from './graph/BarChartAccessoriesPrice';
 import BarChartAccessoriesAmount from './graph/BarChartAccessoriesAmount';
 import PieChartAccessoriesPercentage from './graph/PieChartAccessoriesPercentage'
-const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
     container: {
@@ -70,7 +69,6 @@ const styles = StyleSheet.create({
 
 function Statistics({ wardrobe }) {
 
-    console.log('wardrobe', wardrobe)
 
     /* 
     THINK 
@@ -260,15 +258,15 @@ function Statistics({ wardrobe }) {
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, clothingPrice: true })
                             _menu.hide();
-                        }}>clothing 구매금액</MenuItem>
+                        }}>의류 구매금액</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, clothingPercentage: true })
                             _menu.hide();
-                        }}>clothing 구매비율</MenuItem>
+                        }}>의류 구매비율</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, clothingAmount: true })
                             _menu.hide();
-                        }}>clothing 보유수량</MenuItem>
+                        }}>의류 보유수량</MenuItem>
                     </>)
             }
 
@@ -278,15 +276,15 @@ function Statistics({ wardrobe }) {
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, shoesPrice: true })
                             _menu.hide();
-                        }}>shoes 구매금액</MenuItem>
+                        }}>신발 구매금액</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, shoesPercentage: true })
                             _menu.hide();
-                        }}>shoes 구매비율</MenuItem>
+                        }}>신발 구매비율</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, shoesAmount: true })
                             _menu.hide();
-                        }}>shoes 보유수량</MenuItem>
+                        }}>신발 보유수량</MenuItem>
                     </>)
             }
 
@@ -296,15 +294,15 @@ function Statistics({ wardrobe }) {
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, accessoriesPrice: true })
                             _menu.hide();
-                        }}>accessories 구매금액</MenuItem>
+                        }}>잡화 구매금액</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, accessoriesPercentage: true })
                             _menu.hide();
-                        }}>accessories 구매비율</MenuItem>
+                        }}>잡화 구매비율</MenuItem>
                         <MenuItem onPress={() => {
                             setTypeMenu({ ...AllFalseObj, accessoriesAmount: true })
                             _menu.hide();
-                        }}>accessories 보유수량</MenuItem>
+                        }}>잡화 보유수량</MenuItem>
                     </>)
             }
 
@@ -350,9 +348,9 @@ function Statistics({ wardrobe }) {
                     >
 
                         {/* 카테고리에 따라서 onPress 내용이 달라져야 함  */}
-                        <MenuItem onPress={selectClothing} >Clothing</MenuItem>
-                        <MenuItem onPress={selectShoes}>Shoes</MenuItem>
-                        <MenuItem onPress={selectAccessories} >Accessories</MenuItem>
+                        <MenuItem onPress={selectClothing} >의류</MenuItem>
+                        <MenuItem onPress={selectShoes}>신발</MenuItem>
+                        <MenuItem onPress={selectAccessories} >잡화</MenuItem>
 
                     </Menu>
                     <Menu

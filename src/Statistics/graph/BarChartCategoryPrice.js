@@ -27,9 +27,9 @@ export default function BarChartCategoryPrice({ wardrobe }) {
     const accessoriesPrice = utils.getPrice(accessories);
 
     var categoryPrice = [
-        { category: 'clothing', price: clothingPrice },
-        { category: 'shoes', price: shoesPrice },
-        { category: 'accessories', price: accessoriesPrice }
+        { category: '의류', price: clothingPrice },
+        { category: '신발', price: shoesPrice },
+        { category: '잡화', price: accessoriesPrice }
     ]
 
     let isExistData = categoryPrice.find((categoryPriceObj) => {

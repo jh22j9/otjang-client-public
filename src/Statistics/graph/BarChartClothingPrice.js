@@ -26,10 +26,10 @@ export default function BarChartClothingPrice({ wardrobe }) {
 
 
     var clothingTypePrice = [
-        { type: 'top', price: utils.getPrice(utils.getTypeList(clothing, 'top')) },
-        { type: 'bottom', price: utils.getPrice(utils.getTypeList(clothing, 'bottom')) },
-        { type: 'outer', price: utils.getPrice(utils.getTypeList(clothing, 'outer')) },
-        { type: 'dress', price: utils.getPrice(utils.getTypeList(clothing, 'dress')) },
+        { type: '상의', price: utils.getPrice(utils.getTypeList(clothing, 'top')) },
+        { type: '하의', price: utils.getPrice(utils.getTypeList(clothing, 'bottom')) },
+        { type: '자켓', price: utils.getPrice(utils.getTypeList(clothing, 'outer')) },
+        { type: '드레스', price: utils.getPrice(utils.getTypeList(clothing, 'dress')) },
 
     ]
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Portal, Modal, Badge } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
@@ -34,19 +34,12 @@ const styles = StyleSheet.create({
         height: "70%",
         paddingVertical: 50,
         paddingHorizontal: 40,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5
+
     },
     badgeContainer: {
         flexWrap: 'wrap',
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
     },
     badge: {
         margin: 5
@@ -70,7 +63,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 10,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     title: {
         fontWeight: "bold",
@@ -98,6 +91,8 @@ function More() {
         navigation.navigate('HowToWash'); //정적인 데이터만 담을거라서 container가 필요하진 않은데... 음... 이건 좀 물어봐야 할 것 같아..!
     }
 
+    const [isVisibleModal, setModal] = React.useState(false);
+
     return (
         <View style={styles.container}>
             <Button
@@ -124,14 +119,19 @@ function More() {
             <Button
                 style={styles.devInfo}
                 icon="hanger"
-                r>
+                onPress={() => { setModal(true) }}
+            >
                 개발자 정보
                 </Button>
-            <View style={styles.modalContainer} >
-                <Portal>
-                    <Modal
 
-                    >
+            <Portal onPress={() => { setModal(false) }}>
+                <Modal
+                    visible={isVisibleModal}
+                    onDismiss={() => { setModal(false) }}
+
+                >
+                    <Pressable style={styles.modalContainer}
+                        onPress={() => { setModal(false) }} >
                         <View style={styles.modal}>
 
                             <View style={styles.badgeContainer}>
@@ -164,9 +164,10 @@ function More() {
                                 </View>
                             </View>
                         </View>
-                    </Modal>
-                </Portal>
-            </View>
+
+                    </Pressable>
+                </Modal>
+            </Portal>
         </View>
     );
 }

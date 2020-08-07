@@ -29,10 +29,10 @@ export default function PieChartAccessoriesPercentage({ wardrobe }) {
     const otherList = utils.getTypeList(accessories, 'other');
 
     var data = [
-        { type: 'bag', percentage: Math.floor(utils.getPrice(bagList) / accessoriesPrice * 100) },
-        { type: 'head', percentage: Math.floor(utils.getPrice(headList) / accessoriesPrice * 100) },
-        { type: 'jewelry', percentage: Math.floor(utils.getPrice(jewelryList) / accessoriesPrice * 100) },
-        { type: 'other', percentage: Math.floor(utils.getPrice(otherList) / accessoriesPrice * 100) },
+        { type: '가방', percentage: Math.floor(utils.getPrice(bagList) / accessoriesPrice * 100) },
+        { type: '모자', percentage: Math.floor(utils.getPrice(headList) / accessoriesPrice * 100) },
+        { type: '액세서리', percentage: Math.floor(utils.getPrice(jewelryList) / accessoriesPrice * 100) },
+        { type: '기타', percentage: Math.floor(utils.getPrice(otherList) / accessoriesPrice * 100) },
     ]
 
 
@@ -42,13 +42,14 @@ export default function PieChartAccessoriesPercentage({ wardrobe }) {
 
     }
 
-    let isExistData = data.find((percentageObj) => {
+    let isExistData = data.filter((percentageObj) => {
 
         if (percentageObj.percentage) {
             return true;
         }
     })
-    if (!isExistData) {
+
+    if (isExistData.length < 1) {
         return <NoStatisticsData />
     }
     return (
@@ -63,7 +64,7 @@ export default function PieChartAccessoriesPercentage({ wardrobe }) {
                 width={400} height={400}
                 style={{ labels: { fill: "black", fontWeight: '700' } }}
                 theme={VictoryTheme.material}
-                data={data} x={'type'} y={'percentage'}
+                data={isExistData} x={'type'} y={'percentage'}
                 innerRadius={50}
                 labelRadius={72}
                 labels={transformPieLabels}
