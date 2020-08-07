@@ -38,7 +38,7 @@ function ChangePassword() {
 
   const handleChangePassword = () => {
 
-    const url = `http://13.125.237.84:5000/user/newpwd`;
+    const url = `http://15.165.197.67:5000/user/newpwd`;
     const data = {
       newpassword: newPassword,
       password: currentPassword
