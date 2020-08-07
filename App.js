@@ -62,13 +62,7 @@ function App() {
       <PaperProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="SignIn" screenOptions={{
-            headerStyle: {
-              backgroundColor: 'black',
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-              fontWeight: 'bold',
-            },
+            headerShown: false
           }}>
             <Stack.Screen name="SignIn" component={SignIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
@@ -101,7 +95,7 @@ function App() {
             <Stack.Screen name='HowToWash' component={HowToWash}
               options={{ title: '세탁기호' }}
             />
-            <Stack.Screen name="CustomAlert" component={CustomAlert} 
+            <Stack.Screen name="CustomAlert" component={CustomAlert}
             />
           </Stack.Navigator>
         </NavigationContainer>

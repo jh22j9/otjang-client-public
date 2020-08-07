@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Title, HelperText } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
@@ -15,7 +15,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         justifyContent: 'center',
         alignItems: 'center'
-
+    },
+    logo: {
+        marginTop: 120,
+        marginBottom: 20
+    },
+    formContainer: {
+        flex: 1
     },
     titleText: {
         fontSize: 24,
@@ -26,8 +32,7 @@ const styles = StyleSheet.create({
     },
     navButtonText: {
         fontSize: 16
-    }
-
+    },
 })
 
 function SignIn({ navigation }) {
@@ -123,33 +128,37 @@ function SignIn({ navigation }) {
     return (
         <View style={styles.container} >
             {/* TODO 로고자리 */}
-            <Title style={styles.titleText}>Welcome to Otjang</Title>
-            <FormInput
-                labelName='Email'
-                value={email}
-                autoCapitalize='none'
-                onChangeText={email => setEmail(email)}
-            />
-            {hasEmailError()}
-            <FormInput
-                labelName='Password'
-                value={password}
-                secureTextEntry={true}
-                onChangeText={password => setPassword(password)}
-            />
-            <FormButton
-                title='Sign In'
-                modeValue='contained'
-                labelStyle={styles.loginButtonLabel}
-                onPress={() => handleSignIn(email, password)}
-            />
-            <FormButton
-                title='Sign Up'
-                modeValue='text'
-                uppercase={false}
-                labelStyle={styles.navButtonText}
-                onPress={() => { navigation.navigate('SignUp') }}
-            />
+            <Image
+                style={styles.logo}
+                source={require('./Logo/logo.png')} />
+            <View style={styles.formContainer}>
+                <FormInput
+                    labelName='Email'
+                    value={email}
+                    autoCapitalize='none'
+                    onChangeText={email => setEmail(email)}
+                />
+                {hasEmailError()}
+                <FormInput
+                    labelName='Password'
+                    value={password}
+                    secureTextEntry={true}
+                    onChangeText={password => setPassword(password)}
+                />
+                <FormButton
+                    title='Sign In'
+                    modeValue='contained'
+                    labelStyle={styles.loginButtonLabel}
+                    onPress={() => handleSignIn(email, password)}
+                />
+                <FormButton
+                    title='Sign Up'
+                    modeValue='text'
+                    uppercase={false}
+                    labelStyle={styles.navButtonText}
+                    onPress={() => { navigation.navigate('SignUp') }}
+                />
+            </View>
         </View>
 
 
