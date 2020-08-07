@@ -99,10 +99,11 @@ function AddItems({ navigation, temporaryClothing, ClothesActions, }) {
                 <TypeList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
                 <Season temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
                 <ExtraOptions temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+                <View style={styles.saveButtonContainer}>
+                    <FormButton title='저장' modeValue='contained' onPress={saveClothes} />
+                </View>
             </ScrollView>
-            <View style={styles.saveButtonContainer}>
-                <FormButton title='저장' modeValue='contained' onPress={saveClothes} />
-            </View>
+
         </View>
     );
 }

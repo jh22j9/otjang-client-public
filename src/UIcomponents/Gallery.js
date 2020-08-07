@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, TouchableOpacity, Image, ActivityIndicator } from 'react-native';
+import { StyleSheet, Dimensions, TouchableOpacity, Image, ActivityIndicator, View } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { decode } from 'base64-arraybuffer';
@@ -24,6 +24,14 @@ const styles = StyleSheet.create({
         width: width * 0.9,
         height: height * 0.35,
     },
+    loadingIndicator: {
+
+        height: height * 0.35,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
 
 })
 
@@ -115,7 +123,11 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
     function renderImage() {
 
         if (temporaryClothing.get('isLoading')) {
-            return <ActivityIndicator size={height * 0.35} color='#999999' />
+
+            return (<View style={styles.loadingIndicator}>
+                <ActivityIndicator size={100} color='#999999' />
+            </View>)
+
         }
 
         else if (!temporaryClothing.get('isLoading') && temporaryClothing.get('image')) {

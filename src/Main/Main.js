@@ -104,6 +104,7 @@ function Main({ ClothesActions }) {
                 initialRouteName="AllClothes"
                 activeColor="white"
                 screenOptions={{ tabBarColor: 'black' }}
+            // inactiveColor='blue'
             >
                 <Tab.Screen name="AllClothes" component={AllClothesContainer}
                     options={{
