@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Portal, Modal, Badge } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         backgroundColor: "white",
         borderRadius: 20,
-        width: "70%",
-        height: "70%",
+        width: 290,
+        height: 350,
         paddingVertical: 50,
         paddingHorizontal: 40,
         shadowColor: "#000",
@@ -103,6 +103,8 @@ function More() {
         navigation.navigate('HowToWash');
     };
 
+    const [isVisibleModal, setModal] = React.useState(false);
+
     return (
         <View style={styles.container}>
             <View style={styles.buttonContainer}>
@@ -130,15 +132,18 @@ function More() {
                 <Button
                     style={styles.devInfo}
                     icon="hanger"
-                    r>
+                    onPress={() => { setModal(true) }}>
                     개발자 정보
                 </Button>
             </View>
-            <View style={styles.modalContainer} >
-                <Portal>
-                    <Modal
+            <Portal onPress={() => { setModal(false) }}>
+                <Modal
+                    visible={isVisibleModal}
+                    onDismiss={() => { setModal(false) }}>
 
-                    >
+                    <Pressable style={styles.modalContainer}
+                        onPress={() => { setModal(false) }} >
+
                         <View style={styles.modal}>
 
                             <View style={styles.badgeContainer}>
@@ -171,9 +176,10 @@ function More() {
                                 </View>
                             </View>
                         </View>
-                    </Modal>
-                </Portal>
-            </View>
+
+                    </Pressable>
+                </Modal>
+            </Portal>
         </View>
     );
 }
