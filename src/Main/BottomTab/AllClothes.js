@@ -7,26 +7,13 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-around',
-        height: '100%'
+        height: '100%',
+        marginLeft: 20
     },
 });
 
 function AllClothes({ clothing, shoes, accessories, temporaryClothing, ClothesActions, }) {
 
-
-    /* 
-    TODO: CLOTHES, SHOES ACC 분류하여 ITEMLIST 에 각각 넣어주어야 함 
-    
-    THINK 
-    상태를 각각 따로 분리해야 하나? 
-
-    1> 서버에서 데이터를 받은 후 카테고리에 따라 분류 한 후 넘겨준다. 
-
-    */
-
-    /* 
-    TODO 아이템이 1개도 없을 때에도 카드형태가 들어가도록 해야 함 
-    */
 
     return (
         <View style={styles.container}>

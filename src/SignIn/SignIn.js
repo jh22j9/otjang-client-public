@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Dimensions, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Title, HelperText } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
@@ -15,7 +15,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         justifyContent: 'center',
         alignItems: 'center'
-
+    },
+    logo: {
+        marginTop: 120,
+        marginBottom: 20
+    },
+    formContainer: {
+        flex: 1
     },
     titleText: {
         fontSize: 24,
@@ -26,8 +32,7 @@ const styles = StyleSheet.create({
     },
     navButtonText: {
         fontSize: 16
-    }
-
+    },
 })
 // #6200EE
 function SignIn({ navigation }) {
@@ -74,19 +79,13 @@ function SignIn({ navigation }) {
         }
     }
 
-    //useEffect사용하여 autoLogin()실행
-
-
-
-    //처음 로그인
     const handleSignIn = (email, password) => {
         axios.post('http://15.165.197.67:5000/user/signin', {
             email: email,
             password: password
 
-        }).then(async res => { // async 위치 변경하여 에러 해결 
-            // console.log(res.data.token)
-            try { // try, catch 구문 사용하지 않으면 RN에서 에러 발생함
+        }).then(async res => {
+            try {
 
                 let token = res.data.token;
 
@@ -103,7 +102,7 @@ function SignIn({ navigation }) {
                 console.log(e)
                 Alert.alert("유효하지 않은 회원입니다.")
             }
-        }).catch(e => { // Possible unhandled promise rejection 에러 해결 
+        }).catch(e => {
             console.log(e)
             Alert.alert("유효하지 않은 회원입니다.")
         })
@@ -122,34 +121,37 @@ function SignIn({ navigation }) {
 
     return (
         <View style={styles.container} >
-            {/* TODO 로고자리 */}
-            <Title style={styles.titleText}>Welcome to Otjang</Title>
-            <FormInput
-                labelName='Email'
-                value={email}
-                autoCapitalize='none'
-                onChangeText={email => setEmail(email)}
-            />
-            {hasEmailError()}
-            <FormInput
-                labelName='Password'
-                value={password}
-                secureTextEntry={true}
-                onChangeText={password => setPassword(password)}
-            />
-            <FormButton
-                title='Sign In'
-                modeValue='contained'
-                labelStyle={styles.loginButtonLabel}
-                onPress={() => handleSignIn(email, password)}
-            />
-            <FormButton
-                title='Sign Up'
-                modeValue='text'
-                uppercase={false}
-                labelStyle={styles.navButtonText}
-                onPress={() => { navigation.navigate('SignUp') }}
-            />
+            <Image
+                style={styles.logo}
+                source={require('./Logo/logo.png')} />
+            <View style={styles.formContainer}>
+                <FormInput
+                    labelName='이메일'
+                    value={email}
+                    autoCapitalize='none'
+                    onChangeText={email => setEmail(email)}
+                />
+                {hasEmailError()}
+                <FormInput
+                    labelName='비밀번호'
+                    value={password}
+                    secureTextEntry={true}
+                    onChangeText={password => setPassword(password)}
+                />
+                <FormButton
+                    title='로그인'
+                    modeValue='contained'
+                    labelStyle={styles.loginButtonLabel}
+                    onPress={() => handleSignIn(email, password)}
+                />
+                <FormButton
+                    title='회원가입'
+                    modeValue='text'
+                    uppercase={false}
+                    labelStyle={styles.navButtonText}
+                    onPress={() => { navigation.navigate('SignUp') }}
+                />
+            </View>
         </View>
 
 
