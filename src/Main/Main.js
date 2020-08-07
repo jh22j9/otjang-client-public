@@ -12,8 +12,6 @@ import { Map, List } from 'immutable';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation, useRoute } from '@react-navigation/native';
 const Tab = createMaterialBottomTabNavigator();
-// shoe-formal
-
 
 const emptyClothing = Map({
     item_id: null,
@@ -32,32 +30,9 @@ const emptyClothing = Map({
 
 function Main({ ClothesActions }) {
 
-
-    /* 
-        TODO>
-        
-        서버에서 전체 의류 데이터를 받으면 
-        CLOTHING, SHOES, ACC 로 분류한다. 
-
-    */
-    /* 
-
-    TODO 
-
-    MORE 에서는 플러스 버튼 지우기 
-
-    TAB BAR 가 more 에 focused 되어있을 때만 지운다. 
-
-    or more 을 tab press 했을 때만 지운다. 
-
-    navigation
-    */
-
     const navigation = useNavigation();
 
     const route = useRoute();
-    // var history = mainRoute.state.history;
-    // THINK 맨 처음에는 STATE 가 없음 
     const routeKeys = Object.keys(route);
     const isInStateInRoute = routeKeys.find((key) => { return key === 'state' });
     var history;
@@ -104,7 +79,6 @@ function Main({ ClothesActions }) {
                 initialRouteName="AllClothes"
                 activeColor="white"
                 screenOptions={{ tabBarColor: 'black' }}
-            // inactiveColor='blue'
             >
                 <Tab.Screen name="AllClothes" component={AllClothesContainer}
                     options={{

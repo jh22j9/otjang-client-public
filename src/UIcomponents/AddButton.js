@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     buttonContainer: {
         position: 'absolute',
         right: width / 30,
-        bottom: height / 12,
+        bottom: height / 11,
         backgroundColor: '#6200ee'
     },
 });

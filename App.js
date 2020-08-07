@@ -61,7 +61,7 @@ function App() {
     <Provider store={store}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="SignIn" screenOptions={{
+          <Stack.Navigator initialRouteName="MainContainer" screenOptions={{
             headerShown: false
           }}>
             <Stack.Screen name="SignIn" component={SignIn} />
