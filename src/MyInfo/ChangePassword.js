@@ -38,7 +38,7 @@ function ChangePassword() {
 
   const handleChangePassword = () => {
 
-    const url = `http://13.125.237.84:5000/user/newpwd`;
+    const url = `http://15.165.197.67:5000/user/newpwd`;
     const data = {
       newpassword: newPassword,
       password: currentPassword
@@ -91,7 +91,7 @@ function ChangePassword() {
         onChangeText={password => setConfirmPassword(password)}
       />
       <FormButton
-        title='저장하기'
+        title='저장'
         modeValue='contained'
         labelStyle={styles.signUpButtonLabel}
         onPress={handleChangePassword}

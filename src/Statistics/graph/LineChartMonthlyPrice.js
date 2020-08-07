@@ -20,24 +20,27 @@ export default function LineChartMonthlyPrice({ wardrobe }) {
     const shoes = wardrobe.shoes;
     const accessories = wardrobe.accessories;
     const clothes = clothing.concat(shoes).concat(accessories);
+    var lineData = utils.getAnnualPurchaseData(clothes);
 
-
-
+    console.log('lineData', lineData)
+    let priceData = lineData.map((data) => (data.price));
+    let maxPrice = Math.max(...priceData);
+    console.log('maxPrice', maxPrice)
+    let domainY = [0, maxPrice * 1.5]
     //  dummy data 
 
     // const clothes = utils.clothes;
 
-    const [monthDomain, setMonthDomain] = React.useState({ x: [0.5, 6.5], y: [0, 900000] });
+    const [monthDomain, setMonthDomain] = React.useState({ x: [0.5, 6.5], y: [...domainY] });
 
 
     function handleMonthDomain(domain) {
-
-        setMonthDomain(domain)
+        setMonthDomain({ x: domain.x, y: [...domainY] })
     }
 
 
 
-    var lineData = utils.getAnnualPurchaseData(clothes);
+
     let isExistData = lineData.find((priceObj) => {
 
         if (priceObj.price !== 0) {
@@ -74,7 +77,7 @@ export default function LineChartMonthlyPrice({ wardrobe }) {
             domain={[1, 12]}
         />
         <VictoryAxis dependentAxis crossAxis
-            domain={[1, 10]}
+            domain={[1, maxPrice * 2 / 10000]}
             tickFormat={(data) => (`${data / 10000}만원`)}
         />
 

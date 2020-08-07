@@ -226,7 +226,7 @@ function Buydate({ temporaryClothing,ClothesActions, ...rest }) {
 
         <View style={styles.buydateContainer}>
 
-            <Text style={styles.inputBuydateText}>구매일자</Text>
+            <Text style={styles.inputBuydateText}>구매 일자</Text>
             <View style={styles.inputBuydate}>
 
                 <Pressable style={styles.inputBuydateYear}

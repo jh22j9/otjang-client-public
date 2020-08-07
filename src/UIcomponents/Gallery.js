@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Dimensions, TouchableOpacity, Image, ActivityIndicator, View } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { decode } from 'base64-arraybuffer';
 import S3 from 'aws-sdk/clients/s3'
 import { ACCESS_KEY_ID, SECRET_ACCESS_KEY, BUCKET } from 'envStorage';
@@ -16,11 +16,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 5,
+        margin: 123,
     },
 
     image: {
-
         width: width * 0.9,
         height: height * 0.35,
     },
@@ -135,7 +134,7 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
         }
 
         else {
-            return (<Icon name='image' color={'black'} size={230} />)
+            return (<Icon name='add-a-photo' color={'#495057'} size={60} />)
         }
     }
 

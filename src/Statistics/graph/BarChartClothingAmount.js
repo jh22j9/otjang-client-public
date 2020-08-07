@@ -24,10 +24,10 @@ export default function BarChartClothingAmount({ wardrobe }) {
     // const clothing = utils.clothing;
 
     var clothingTypeAmount = [
-        { type: 'top', amount: utils.getTypeList(clothing, 'top').length },
-        { type: 'bottom', amount: utils.getTypeList(clothing, 'bottom').length },
-        { type: 'outer', amount: utils.getTypeList(clothing, 'outer').length },
-        { type: 'dress', amount: utils.getTypeList(clothing, 'dress').length },
+        { type: '상의', amount: utils.getTypeList(clothing, 'top').length },
+        { type: '하의', amount: utils.getTypeList(clothing, 'bottom').length },
+        { type: '자켓', amount: utils.getTypeList(clothing, 'outer').length },
+        { type: '드레스', amount: utils.getTypeList(clothing, 'dress').length },
     ]
 
     let isExistData = clothingTypeAmount.find((clothingAmountObj) => {

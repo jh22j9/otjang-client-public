@@ -11,10 +11,10 @@ export default function BarChartAccessoriesPrice({ wardrobe }) {
     // const accessories = utils.accessories;
 
     var AccessoriesTypePrice = [
-        { type: 'bag', price: utils.getPrice(utils.getTypeList(accessories, 'bag')) },
-        { type: 'head', price: utils.getPrice(utils.getTypeList(accessories, 'head')) },
-        { type: 'jewelry', price: utils.getPrice(utils.getTypeList(accessories, 'jewelry')) },
-        { type: 'other', price: utils.getPrice(utils.getTypeList(accessories, 'other')) },
+        { type: '가방', price: utils.getPrice(utils.getTypeList(accessories, 'bag')) },
+        { type: '모자', price: utils.getPrice(utils.getTypeList(accessories, 'head')) },
+        { type: '액세서리', price: utils.getPrice(utils.getTypeList(accessories, 'jewelry')) },
+        { type: '기타', price: utils.getPrice(utils.getTypeList(accessories, 'other')) },
 
     ]
 

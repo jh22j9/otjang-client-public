@@ -11,14 +11,14 @@ const styles = StyleSheet.create({
     buttonContainer: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 70
+        marginTop: 100
     },
     button: {
         width: 190,
         height: 80,
         justifyContent: "center",
         margin: 20,
-        borderRadius: 30
+        borderRadius: 30,
     },
     devInfo: {
         marginTop: 45
@@ -29,23 +29,25 @@ const styles = StyleSheet.create({
     },
     modal: {
         display: 'flex',
-        flexDirection: 'column',
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "white",
         borderRadius: 20,
         width: 290,
         height: 350,
-        paddingVertical: 50,
-        paddingHorizontal: 40,
+        paddingVertical: 40,
+        paddingHorizontal: 30
     },
     badgeContainer: {
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'space-around',
+        borderBottomColor: "#F5F5F5",
+        borderBottomWidth: 2
     },
     badge: {
-        margin: 5
+        margin: 5,
+        marginBottom: 10
     },
     badge1: {
         backgroundColor: "#abfcd6"
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     content: {
-        lineHeight: 25
+        marginBottom: 4
     }
 })
 function More() {
@@ -116,16 +118,14 @@ function More() {
                 <Button
                     style={styles.devInfo}
                     icon="hanger"
-                    onPress={() => { setModal(true) }}
-                >
+                    onPress={() => { setModal(true) }}>
                     개발자 정보
                 </Button>
             </View>
             <Portal onPress={() => { setModal(false) }}>
                 <Modal
                     visible={isVisibleModal}
-                    onDismiss={() => { setModal(false) }}
-                >
+                    onDismiss={() => { setModal(false) }}>
                     <Pressable style={styles.modalContainer}
                         onPress={() => { setModal(false) }} >
                         <View style={styles.modal}>
@@ -152,9 +152,9 @@ function More() {
                             <View style={styles.textContainer}>
                                 <Text style={styles.title}>github</Text>
                                 <View style={styles.content}>
-                                    <Text>@ goodlana </Text>
-                                    <Text>@ gyeongwon1275 </Text>
-                                    <Text>@ gyu716625 </Text>
+                                    <Text style={styles.content}>@ goodlana </Text>
+                                    <Text style={styles.content}>@ gyeongwon1275 </Text>
+                                    <Text style={styles.content}>@ gyu716625 </Text>
                                     <Text>@ lllgresi </Text>
                                 </View>
                             </View>
