@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Portal, Modal, Badge } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
@@ -39,19 +38,11 @@ const styles = StyleSheet.create({
         height: 350,
         paddingVertical: 50,
         paddingHorizontal: 40,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5
     },
     badgeContainer: {
         flexWrap: 'wrap',
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
     },
     badge: {
         margin: 5
@@ -75,7 +66,7 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 10,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     title: {
         fontWeight: "bold",
@@ -86,25 +77,18 @@ const styles = StyleSheet.create({
         lineHeight: 25
     }
 })
-
 function More() {
-
     const navigation = useNavigation();
-
     function moveToStatistics() {
         navigation.navigate('StatisticsContainer');
     };
-
     function moveToMyInfo() {
         navigation.navigate('MyInfoContainer');
     };
-
     function moveToWashing() {
         navigation.navigate('HowToWash');
     };
-
     const [isVisibleModal, setModal] = React.useState(false);
-
     return (
         <View style={styles.container}>
             <View style={styles.buttonContainer}>
@@ -132,20 +116,19 @@ function More() {
                 <Button
                     style={styles.devInfo}
                     icon="hanger"
-                    onPress={() => { setModal(true) }}>
+                    onPress={() => { setModal(true) }}
+                >
                     개발자 정보
                 </Button>
             </View>
             <Portal onPress={() => { setModal(false) }}>
                 <Modal
                     visible={isVisibleModal}
-                    onDismiss={() => { setModal(false) }}>
-
+                    onDismiss={() => { setModal(false) }}
+                >
                     <Pressable style={styles.modalContainer}
                         onPress={() => { setModal(false) }} >
-
                         <View style={styles.modal}>
-
                             <View style={styles.badgeContainer}>
                                 <Badge
                                     style={[styles.badge1, styles.badge]}
@@ -176,12 +159,10 @@ function More() {
                                 </View>
                             </View>
                         </View>
-
                     </Pressable>
                 </Modal>
             </Portal>
         </View>
     );
 }
-
 export default More;
