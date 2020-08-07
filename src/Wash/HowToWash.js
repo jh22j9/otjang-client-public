@@ -1,15 +1,8 @@
-import React, { useState } from 'react';
-import { View, Image, Text, StyleSheet, FlatList, Alert, Modal } from 'react-native';
-import { List, Button, Badge } from 'react-native-paper';
-import { useNavigation } from '@react-navigation/native';
+import React, { useRef } from 'react';
+import { View, Image, Text, StyleSheet, FlatList } from 'react-native';
 import { washlist } from './WashList' // 여기서 {}의 의미
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-
-
-//삭제하기
-//import { Root, Popup } from 'popup-ui'
-//import Modal from 'react-native-modal'
-//import  Dialog, { DialogContent } from 'react-native-popup-dialog';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import RBSheet from "react-native-raw-bottom-sheet";
 
 const styles = StyleSheet.create({
   container: {
@@ -36,15 +29,28 @@ const styles = StyleSheet.create({
 })
 
 function Item ({ item }) {
+  const refRBSheet = useRef();
   return (
     <View style={styles.listItem}>
       <TouchableOpacity 
-      onPress={() => {Alert.alert(item.description)}
+      onPress={() => {refRBSheet.current.open()}
         }>
-          <Image  
+          <Image
             source={item.photo}
-            style={{width:65, height:65}}
-          />
+            style={{width:65, height:65}}>
+          </Image> 
+          <RBSheet
+            ref={refRBSheet}
+            customStyles={{
+              container: {
+                justifyContent:"center", // 세로 중앙
+                alignItems:"center" // 가로 중앙
+              }
+            }}
+            >
+            <Image source={item.photo} style={{marginBottom:15}}/>
+            <Text style={{margin: 10, fontSize:18}}>{item.description}</Text>
+          </RBSheet>
       </TouchableOpacity>
     </View>
   )
