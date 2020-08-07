@@ -13,18 +13,19 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent:'space-around',
         alignItems: 'center',
-        height: height * 0.1,
-        
+        height: height * 0.09,
+        borderColor: "white",
+        borderBottomWidth: 2,
     },
     selectedContainer: {
-        backgroundColor: '#e8dad5',
         padding: 10
     },
     notSelectedContainer: {
         padding: 10,
-
     },
-
+    chip: {
+        backgroundColor: "#f5f5f5"
+    }
 })
 
 
@@ -51,30 +52,34 @@ export default function CategoryList({ temporaryClothing, ClothesActions,...rest
         <View style={styles.container} {...rest} >
 
             <Chip 
+                style={styles.chip}
+                mode='outlined'
                 onPress={selectClothing}
-                icon={() => (<FontAwesome5Icons name="tshirt"  size={20} />)}
-                textStyle={{ fontSize: 20 }}
-                selected={temporaryClothing.get('category').get('clothing')}
-                            
-            >의류
+                icon={() => (<FontAwesome5Icons name="tshirt"  size={18} />)}
+                textStyle={{ fontSize: 15 }}
+                selected={temporaryClothing.get('category').get('clothing')}>
+                의류
             </Chip>
 
             <Chip 
+                style={styles.chip}
+                mode='outlined'
                 onPress={selectShoe}
                 icon={() => ( <MaterialCommunityIcons name="shoe-formal" size={25} />)}
-                textStyle={{ fontSize: 20 }}
-                selected={temporaryClothing.get('category').get('shoes')}
+                textStyle={{ fontSize: 15 }}
+                selected={temporaryClothing.get('category').get('shoes')}>
                             
-            >신발
+            신발
             </Chip>
 
             <Chip 
+                style={styles.chip}
+                mode='outlined'
                 onPress={selectAccessories}
                 icon={() => (<MaterialCommunityIcons name="hat-fedora" size={22} />)}
-                textStyle={{ fontSize: 20 }}
-                selected={temporaryClothing.get('category').get('accessories')}
-                           
-           >잡화
+                textStyle={{ fontSize: 15 }}
+                selected={temporaryClothing.get('category').get('accessories')}>
+            잡화
             </Chip>
         </View>
     )

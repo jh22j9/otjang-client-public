@@ -11,21 +11,20 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        height: height * 0.1,
+        height: height * 0.08,
+        backgroundColor: '#f5f5f5',
+        padding: 10,
     },
-
     selectedContainer: {
-
         backgroundColor: '#e8dad5',
         padding: 10
     },
-
     notSelectedContainer: {
-
         padding: 10
     },
-
-
+    chip: {
+        backgroundColor: '#f5f5f5',
+    }
 })
 
 export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
@@ -151,10 +150,26 @@ export default function Season({ temporaryClothing, ClothesActions, ...rest }) {
                 예를 들면 dispatch 됨가 동시에 아이콘이 바뀌도록 
         */
         <View style={styles.container} {...rest}>
-            <Chip onPress={setSpring} selected={temporaryClothing.get('season').get('spring')}>🌱 봄</Chip>
-            <Chip onPress={setSummer} selected={temporaryClothing.get('season').get('summer')}>⛱️ 여름</Chip>
-            <Chip onPress={setFall} selected={temporaryClothing.get('season').get('fall')}>🍁 가을</Chip>
-            <Chip onPress={setWinter} selected={temporaryClothing.get('season').get('winter')}>⛄ 겨울</Chip>
+            <Chip
+                style={styles.chip}
+                mode='outlined'
+                onPress={setSpring}
+                selected={temporaryClothing.get('season').get('spring')}>🌱 봄</Chip>
+            <Chip
+                style={styles.chip}
+                mode='outlined'
+                onPress={setSummer}
+                selected={temporaryClothing.get('season').get('summer')}>⛱️ 여름</Chip>
+            <Chip
+                style={styles.chip}
+                mode='outlined'
+                onPress={setFall}
+                selected={temporaryClothing.get('season').get('fall')}>🍁 가을</Chip>
+            <Chip
+                style={styles.chip}
+                mode='outlined'
+                onPress={setWinter}
+                selected={temporaryClothing.get('season').get('winter')}>⛄ 겨울</Chip>
         </View>
 
     )

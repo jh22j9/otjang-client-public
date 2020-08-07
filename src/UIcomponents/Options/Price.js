@@ -50,7 +50,7 @@ function Price({ temporaryClothing, ClothesActions, ...rest }) {
 
         <View style={styles.priceContainer}>
 
-            <Text style={styles.inputPriceText}>구매가격</Text>
+            <Text style={styles.inputPriceText}>구매 가격</Text>
             <View style={styles.inputPrice}>
                 <TextInput style={styles.inputPriceNumber}
                     keyboardType='number-pad'

@@ -91,7 +91,7 @@ function ChangePassword() {
         onChangeText={password => setConfirmPassword(password)}
       />
       <FormButton
-        title='저장하기'
+        title='저장'
         modeValue='contained'
         labelStyle={styles.signUpButtonLabel}
         onPress={handleChangePassword}

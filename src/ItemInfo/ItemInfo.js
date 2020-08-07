@@ -127,15 +127,15 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
 
             <ScrollView>
                 <Text style={styles.text}>
-                    {`category : ${category}`}
+                    {`카테고리 : ${category}`}
                 </Text>
 
-                {type ? <Text style={styles.text}>{`type : ${type}`}</Text> : <></>}
+                {type ? <Text style={styles.text}>{`타입 : ${type}`}</Text> : <></>}
                 {seasons ? <Text style={styles.text}>{`계절 : ${seasons}`}</Text> : <></>}
                 {price ? <Text style={styles.text}>{`가격 : ${price} 원`}</Text> : <></>}
-                {storage ? <Text style={styles.text}>{`보관장소 : ${storage}`}</Text> : <></>}
-                {brand ? <Text style={styles.text}>{`brand : ${brand}`}</Text> : <></>}
-                {buydate ? <Text style={styles.text}>{`구매일자 : ${buydate}`}</Text> : <></>}
+                {storage ? <Text style={styles.text}>{`보관 장소 : ${storage}`}</Text> : <></>}
+                {brand ? <Text style={styles.text}>{`브랜드 : ${brand}`}</Text> : <></>}
+                {buydate ? <Text style={styles.text}>{`구매 일자 : ${buydate}`}</Text> : <></>}
             </ScrollView>
         )
     }

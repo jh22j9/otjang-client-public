@@ -11,20 +11,20 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        height: height * 0.1,
-    },
-    contentContainer: {
-        paddingHorizontal: 20
+        justifyContent: 'space-between',
+        height: height * 0.09,
+        borderColor: "white",
+        borderBottomWidth: 2,
+        padding: 20
     },
     selectedContainer: {
-        backgroundColor: '#e8dad5',
         padding: 10
     },
     notSelectedContainer: {
         padding: 10,
     },
     chip: {
-        marginRight: 15
+        backgroundColor: '#f5f5f5',
     }
 });
 
@@ -62,108 +62,120 @@ export default function TypeList({ temporaryClothing, ClothesActions, ...rest })
     if (temporaryClothing.get('category').get('categoryValue') === 'accessories') {
         return (
             <View style={styles.container} {...rest} >
-                <ScrollView horizontal={true} contentContainerStyle={styles.contentContainer}>
-                    <Chip
-                        onPress={() => { selectType('bag') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('bag')}
-                        textStyle={{ fontSize: 15 }}>
-                        💼 가방
+                {/* <ScrollView horizontal={true} contentContainerStyle={styles.contentContainer}> */}
+                <Chip
+                    onPress={() => { selectType('bag') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('bag')}
+                    textStyle={{ fontSize: 15 }}>
+                    💼 가방
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('head') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('head')}
-                        textStyle={{ fontSize: 15 }}>
-                        🧢 모자
+                <Chip
+                    onPress={() => { selectType('head') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('head')}
+                    textStyle={{ fontSize: 15 }}>
+                    🧢 모자
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('jewelry') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('jewelry')}
-                        textStyle={{ fontSize: 15 }}>
-                        💎 액세서리
+                <Chip
+                    onPress={() => { selectType('jewelry') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('jewelry')}
+                    textStyle={{ fontSize: 15 }}>
+                    💎 액세서리
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('other') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('other')}
-                        textStyle={{ fontSize: 15 }}>
-                        ••• 기타
+                <Chip
+                    onPress={() => { selectType('other') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('other')}
+                    textStyle={{ fontSize: 15 }}>
+                    ••• 기타
                     </Chip>
-                </ScrollView>
+                {/* </ScrollView> */}
             </View>
         )
         // shoes
     } else if (temporaryClothing.get('category').get('categoryValue') === 'shoes') {
         return (
             <View style={styles.container} {...rest} >
-                <ScrollView horizontal={true} contentContainerStyle={styles.contentContainer}>
-                    <Chip
-                        onPress={() => { selectType('sneakers') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('sneakers')}
-                        textStyle={{ fontSize: 15 }}>
-                        👟 운동화
+                {/* <ScrollView horizontal={true} contentContainerStyle={styles.contentContainer}> */}
+                <Chip
+                    onPress={() => { selectType('sneakers') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('sneakers')}
+                    textStyle={{ fontSize: 15 }}>
+                    👟 운동화
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('leather') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('leather')}
-                        textStyle={{ fontSize: 15 }}>
-                        👞 구두
+                <Chip
+                    onPress={() => { selectType('leather') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('leather')}
+                    textStyle={{ fontSize: 15 }}>
+                    👞 구두
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('sandals') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('sandals')}
-                        textStyle={{ fontSize: 15 }}>
-                        👡 샌들
+                <Chip
+                    onPress={() => { selectType('sandals') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('sandals')}
+                    textStyle={{ fontSize: 15 }}>
+                    👡 샌들
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('boots') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('boots')}
-                        textStyle={{ fontSize: 15 }}>
-                        👢 부츠
+                <Chip
+                    onPress={() => { selectType('boots') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('boots')}
+                    textStyle={{ fontSize: 15 }}>
+                    👢 부츠
                     </Chip>
-                </ScrollView>
+                {/* </ScrollView> */}
             </View>
         )
         // clothing
     } else {
         return (
             <View style={styles.container} {...rest} >
-                <ScrollView horizontal={true} contentContainerStyle={styles.contentContainer}>
-                    <Chip
-                        onPress={() => { selectType('top') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('top')}
-                        textStyle={{ fontSize: 15 }}>
-                        👕 상의
+                {/* <ScrollView horizontal={true} contentContainerStyle={styles.contentContainer}> */}
+                <Chip
+                    onPress={() => { selectType('top') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('top')}
+                    textStyle={{ fontSize: 15 }}>
+                    👕 상의
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('bottom') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('bottom')}
-                        textStyle={{ fontSize: 15 }}>
-                        👖 하의
+                <Chip
+                    onPress={() => { selectType('bottom') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('bottom')}
+                    textStyle={{ fontSize: 15 }}>
+                    👖 하의
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('outer') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('outer')}
-                        textStyle={{ fontSize: 15 }}>
-                        🥼 자켓
+                <Chip
+                    onPress={() => { selectType('outer') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('outer')}
+                    textStyle={{ fontSize: 15 }}>
+                    🥼 자켓
                     </Chip>
-                    <Chip
-                        onPress={() => { selectType('dress') }}
-                        style={styles.chip}
-                        selected={temporaryClothing.get('type').get('dress')}
-                        textStyle={{ fontSize: 15 }}>
-                        👗 드레스
+                <Chip
+                    onPress={() => { selectType('dress') }}
+                    mode='outlined'
+                    style={styles.chip}
+                    selected={temporaryClothing.get('type').get('dress')}
+                    textStyle={{ fontSize: 15 }}>
+                    👗 드레스
                     </Chip>
-                </ScrollView>
+                {/* </ScrollView> */}
             </View>
         )
     };
