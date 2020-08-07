@@ -24,6 +24,10 @@ function AllClothes({ clothing, shoes, accessories, temporaryClothing, ClothesAc
 
     */
 
+    /* 
+    TODO 아이템이 1개도 없을 때에도 카드형태가 들어가도록 해야 함 
+    */
+
     return (
         <View style={styles.container}>
             <ItemsList title='의류' items={clothing} temporaryClothing={temporaryClothing}
