@@ -32,10 +32,10 @@ export default function BarChartSeasonsPrice({ wardrobe }) {
 
 
     var seasonsPrice = [
-        { season: '봄', price: utils.getPrice(utils.getSeasonList(clothes, 'spring')) },
-        { season: '여름', price: utils.getPrice(utils.getSeasonList(clothes, 'summer')) },
-        { season: '가을', price: utils.getPrice(utils.getSeasonList(clothes, 'fall')) },
-        { season: '겨울', price: utils.getPrice(utils.getSeasonList(clothes, 'winter')) },
+        { season: 'spring', price: utils.getPrice(utils.getSeasonList(clothes, 'spring')) },
+        { season: 'summer', price: utils.getPrice(utils.getSeasonList(clothes, 'summer')) },
+        { season: 'fall', price: utils.getPrice(utils.getSeasonList(clothes, 'fall')) },
+        { season: 'winter', price: utils.getPrice(utils.getSeasonList(clothes, 'winter')) },
 
     ]
 

@@ -30,9 +30,9 @@ export default function PieChartClothingTypePercentage({ wardrobe }) {
 
 
     var data = [
-        { category: '의류', percentage: Math.floor(clothingPrice / totalPrice * 100) },
-        { category: '신발', percentage: Math.floor(shoesPrice / totalPrice * 100) },
-        { category: '잡화', percentage: Math.floor(accessoriesPrice / totalPrice * 100) }
+        { category: 'clothing', percentage: Math.floor(clothingPrice / totalPrice * 100) },
+        { category: 'shoes', percentage: Math.floor(shoesPrice / totalPrice * 100) },
+        { category: 'accessories', percentage: Math.floor(accessoriesPrice / totalPrice * 100) }
     ]
 
 
@@ -42,14 +42,13 @@ export default function PieChartClothingTypePercentage({ wardrobe }) {
 
     }
 
-    let isExistData = data.filter((percentageObj) => {
+    let isExistData = data.find((percentageObj) => {
 
         if (percentageObj.percentage) {
             return true;
         }
     })
-
-    if (isExistData.length < 1) {
+    if (!isExistData) {
         return <NoStatisticsData />
     }
     return (
@@ -65,7 +64,7 @@ export default function PieChartClothingTypePercentage({ wardrobe }) {
                 width={400} height={400}
                 style={{ labels: { fill: "black", fontWeight: '700' } }}
                 theme={VictoryTheme.material}
-                data={isExistData} x={'category'} y={'percentage'}
+                data={data} x={'category'} y={'percentage'}
                 innerRadius={50}
                 labelRadius={72}
                 labels={transformPieLabels}

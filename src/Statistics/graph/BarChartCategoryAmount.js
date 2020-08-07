@@ -29,9 +29,9 @@ export default function BarChartCategoryAmount({ wardrobe }) {
 
 
     var categoryAmount = [
-        { category: '의류', amount: clothing.length },
-        { category: '신발', amount: shoes.length },
-        { category: '잡화', amount: accessories.length }
+        { category: 'clothing', amount: clothing.length },
+        { category: 'shoes', amount: shoes.length },
+        { category: 'accessories', amount: accessories.length }
     ]
 
 

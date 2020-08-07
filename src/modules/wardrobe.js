@@ -11,6 +11,11 @@ const UPDATE_ITEM = 'wardrobe/POST_UPDATEITEM';
 const REMOVE_ITEM = 'wardrobe/POST_DELETEITEM';
 const GET_CLOTHES = 'wardrobe/GET_CLOTHES'
 
+const dog1 = null
+const dog2 = null
+const dog3 = null
+
+
 const typeObject = {
     typeValue: null,
     top: false,
@@ -46,13 +51,56 @@ const categoryObject = {
 
 export const initialState = Map({
     clothing: List([
+        Map({
+            item_id: null,
+            image: dog1,
 
+            category: Map({
+                ...categoryObject,
+                categoryValue: 'clothing',
+            }),
+            type: Map(typeObject),
+            buydate: null,
+            price: null,
+            brand: null,
+            storage: null,
+            season: Map(seasonObject),
+            isLoading: false,
+        }),
     ]),
     shoes: List([
-
+        Map({
+            item_id: null,
+            image: dog2,
+            category: Map({
+                ...categoryObject,
+                categoryValue: 'shoes',
+            }),
+            type: Map(typeObject),
+            buydate: null,
+            price: null,
+            brand: null,
+            storage: null,
+            season: Map(seasonObject),
+            isLoading: false,
+        }),
     ]),
     accessories: List([
-
+        Map({
+            item_id: null,
+            image: dog3,
+            category: Map({
+                ...categoryObject,
+                categoryValue: 'accessories',
+            }),
+            type: Map(typeObject),
+            buydate: null,
+            price: null,
+            brand: null,
+            storage: null,
+            season: Map(seasonObject),
+            isLoading: false,
+        }),
     ]),
     temporaryClothing: Map({
         item_id: null,

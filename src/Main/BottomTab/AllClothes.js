@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
 
 function AllClothes({ clothing, shoes, accessories, temporaryClothing, ClothesActions, }) {
 
-
     return (
         <View style={styles.container}>
             <ItemsList title='의류' items={clothing} temporaryClothing={temporaryClothing}

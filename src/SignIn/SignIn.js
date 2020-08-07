@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         fontSize: 16
     },
 })
-// #6200EE
+
 function SignIn({ navigation }) {
     useEffect(() => {
         autoLogin()

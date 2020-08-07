@@ -22,8 +22,6 @@ const styles = StyleSheet.create({
 });
 
 export default function FormButton({ title, modeValue, ...rest }) {
-
-
     return (
         <Button
             mode={modeValue}

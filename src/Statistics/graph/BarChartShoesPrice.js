@@ -12,10 +12,10 @@ export default function BarChartShoesPrice({ wardrobe }) {
     // const shoes = utils.shoes;
 
     var shoesTypePrice = [
-        { type: '운동화', price: utils.getPrice(utils.getTypeList(shoes, 'sneakers')) },
-        { type: '구두', price: utils.getPrice(utils.getTypeList(shoes, 'leather')) },
-        { type: '핸들', price: utils.getPrice(utils.getTypeList(shoes, 'sandals')) },
-        { type: '부츠', price: utils.getPrice(utils.getTypeList(shoes, 'boots')) },
+        { type: 'sneakers', price: utils.getPrice(utils.getTypeList(shoes, 'sneakers')) },
+        { type: 'leather', price: utils.getPrice(utils.getTypeList(shoes, 'leather')) },
+        { type: 'sandals', price: utils.getPrice(utils.getTypeList(shoes, 'sandals')) },
+        { type: 'boots', price: utils.getPrice(utils.getTypeList(shoes, 'boots')) },
 
     ]
 
