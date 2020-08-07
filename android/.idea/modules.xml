@@ -12,8 +12,20 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/368823919/android-react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/368823919/android-react-native-screens.iml" group="otjang/react-native-screens" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-215974424/android-react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-215974424/android-react-native-vector-icons.iml" group="otjang/react-native-vector-icons" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="otjang/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-343685996/com.swmansion.reanimated-react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-343685996/com.swmansion.reanimated-react-native-reanimated.iml" group="otjang/react-native-reanimated" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/540271742/lottie-react-native.iml" filepath="$PROJECT_DIR$/.idea/modules/540271742/lottie-react-native.iml" group="otjang/lottie-react-native" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/otjang.iml" filepath="$PROJECT_DIR$/.idea/modules/otjang.iml" group="otjang" />
+<<<<<<< HEAD
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-622713934/react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-622713934/react-native-community_async-storage.iml" group="otjang/react-native-community_async-storage" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-815216849/react-native-community_masked-view.iml" filepath="$PROJECT_DIR$/.idea/modules/-815216849/react-native-community_masked-view.iml" group="otjang/react-native-community_masked-view" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/38675592/react-native-gesture-handler.iml" filepath="$PROJECT_DIR$/.idea/modules/38675592/react-native-gesture-handler.iml" group="otjang/react-native-gesture-handler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1497228158/react-native-image-picker.iml" filepath="$PROJECT_DIR$/.idea/modules/1497228158/react-native-image-picker.iml" group="otjang/react-native-image-picker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-343685996/react-native-reanimated.iml" filepath="$PROJECT_DIR$/.idea/modules/-343685996/react-native-reanimated.iml" group="otjang/react-native-reanimated" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-836093199/react-native-safe-area-context.iml" filepath="$PROJECT_DIR$/.idea/modules/-836093199/react-native-safe-area-context.iml" group="otjang/react-native-safe-area-context" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/336880713/react-native-screens.iml" filepath="$PROJECT_DIR$/.idea/modules/336880713/react-native-screens.iml" group="otjang/react-native-screens" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1409472724/react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/1409472724/react-native-splash-screen.iml" group="otjang/react-native-splash-screen" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1623730470/react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/1623730470/react-native-svg.iml" group="otjang/react-native-svg" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1172471730/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-1172471730/react-native-vector-icons.iml" group="otjang/react-native-vector-icons" />
+=======
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1725724084/otjang-@react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-1725724084/otjang-@react-native-community_async-storage.iml" group="otjang/@react-native-community_async-storage" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/otjang-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/otjang-app.iml" group="otjang/app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1725724084/otjang-react-native-community_async-storage.iml" filepath="$PROJECT_DIR$/.idea/modules/-1725724084/otjang-react-native-community_async-storage.iml" group="otjang/react-native-community_async-storage" />
@@ -35,6 +47,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1409472724/react-native-splash-screen.iml" filepath="$PROJECT_DIR$/.idea/modules/1409472724/react-native-splash-screen.iml" group="otjang/react-native-splash-screen" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/1623730470/react-native-svg.iml" filepath="$PROJECT_DIR$/.idea/modules/1623730470/react-native-svg.iml" group="otjang/react-native-svg" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1053894991/react-native-vector-icons.iml" filepath="$PROJECT_DIR$/.idea/modules/-1053894991/react-native-vector-icons.iml" group="otjang/react-native-vector-icons" />
+>>>>>>> bc3165b57219faf412184ee24ffabd28e5f56f75
     </modules>
   </component>
 </project>
