@@ -22,7 +22,7 @@ function Leather({ navigation, shoes, ClothesActions }) {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Leather' items={leather}
+        <ItemsList title='구두' items={leather}
           ClothesActions={ClothesActions}
           navigation={navigation} numColumns={3} horizontal={false} />
       </View>

@@ -22,7 +22,7 @@ function Sandals({ navigation, shoes, ClothesActions }) {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Sandals' items={sandals}
+        <ItemsList title='샌들' items={sandals}
           ClothesActions={ClothesActions}
           navigation={navigation} numColumns={3} horizontal={false} />
       </View>
