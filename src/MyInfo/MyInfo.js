@@ -47,10 +47,10 @@ function MyInfo({ clothing, shoes, accessories }) {
         getEmail()
     }, [])
 
-    const MyInfoNavigation = useNavigation();
+    const navigation = useNavigation();
 
     const moveToChangePassword = () => {
-        MyInfoNavigation.navigate('ChangePassword');
+        navigation.navigate('ChangePassword');
     }
 
     const handleDeleteAccount = (token) => {
@@ -68,7 +68,8 @@ function MyInfo({ clothing, shoes, accessories }) {
                             {
                                 text: "확인", onPress: () => {
                                     AsyncStorage.multiRemove[['TOKEN', 'EMAIL', 'PASSSWORD']] //혹시나 해서 추가함
-                                    MyInfoNavigation.navigate('SignIn')
+                                    navigation.popToTop();
+                                    navigation.replace('SignIn')
                                 }
                             }
                         ],
