@@ -27,8 +27,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 2,
-        borderColor: '#495057'
     },
     optionsContainer: {
 
@@ -91,7 +89,6 @@ function AddItems({ navigation, temporaryClothing, ClothesActions, }) {
 
         */
 
-
         <ScrollView >
             <Gallery temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
             <CategoryList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
@@ -102,8 +99,6 @@ function AddItems({ navigation, temporaryClothing, ClothesActions, }) {
                 <FormButton title='저장' modeValue='contained' onPress={saveClothes} />
             </View>
         </ScrollView>
-
-
     );
 }
 
