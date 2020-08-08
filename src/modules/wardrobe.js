@@ -92,9 +92,14 @@ function AddItemInServer(sendingClothingToServer) {
         brand: item.brand, storage: item.storage,
     }
     const config = { headers: { token: token } }
-    return axios.post(url, data, config)
-        .then((res) => (res))
-        .catch((err) => { console.warn(err) });
+    try {
+        return axios.post(url, data, config)
+            .then((res) => (res))
+            .catch((err) => { console.warn(err) });
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
 function updateItemInServer(sendingClothingToServer) {
@@ -121,8 +126,13 @@ function updateItemInServer(sendingClothingToServer) {
     }
 
     const config = { headers: { token: token } }
-    return axios.patch(url, data, config).then((res) => (res))
-        .catch((err) => { console.warn(err) });
+    try {
+        return axios.patch(url, data, config).then((res) => (res))
+            .catch((err) => { console.log(err) });
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 function deleteItemInServer(deletingClothingToServer) {
@@ -134,8 +144,14 @@ function deleteItemInServer(deletingClothingToServer) {
 
 
     const config = { headers: { token: token } }
-    return axios.delete(url, config).then((res) => (res))
-        .catch((err) => { console.warn(err) });
+
+    try {
+        return axios.delete(url, config).then((res) => (res))
+            .catch((err) => { console.log(err) });
+    } catch (error) {
+        console.log(error);
+    }
+
 }
 
 
@@ -143,8 +159,13 @@ function getItemsFromServer(token) {
 
     const url = 'http://15.165.197.67:5000/info';
     const config = { headers: { token: token } }
-    return axios.get(url, config).then((res) => (res))
-        .catch((err) => { console.warn(err) });
+    try {
+        return axios.get(url, config).then((res) => (res))
+            .catch((err) => { console.log(err) });
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
 export const createClothes = createAction(CREATE_CLOTHES);
@@ -369,9 +390,19 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
     },
     [`${GET_CLOTHES}_FULFILLED`]: (state, action) => {
 
+        var clothes;
+        try {
+            if (action.payload) {
+                clothes = action.payload.data.data;
+            }
+            else {
+                return state
+                clothes = null;
+            }
+        } catch (error) {
+            console.log(error);
+        }
 
-
-        const clothes = action.payload.data.data;
         /* 
         THINK 
         카테고리에 따라 분류한 것을 양식을 변경한 후 state 의 카테고리 배열에 덮어씌운다.  

@@ -56,13 +56,19 @@ function Main({ ClothesActions }) {
                 token = await AsyncStorage.getItem('TOKEN');
             } catch (error) {
 
-                console.warn(error);
+                console.log(error);
             }
 
             // token = JSON.parse(token);
             ClothesActions.getClothesFromServer(token);
         }
-        getClothes();
+
+        try {
+            getClothes();
+        } catch (error) {
+            console.log(error);
+        }
+
     }, []);
 
 
