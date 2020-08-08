@@ -18,7 +18,6 @@ function Dress({ navigation, clothing, ClothesActions }) {
 
   let jsClothing = clothing.toJS()
   let dress = fromJS(jsClothing.filter(item => item.type.dress === true))
-
   return (
     <View style={styles.container}>
       <View style={styles.container}>
