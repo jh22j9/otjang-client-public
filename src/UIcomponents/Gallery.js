@@ -98,7 +98,6 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
             } else if (response.customButton) {
                 console.log('User tapped custom button: ', response.customButton);
             } else {
-                console.log('response확인', response)
                 ClothesActions.setTemporaryClothing(temporaryClothing.set('isLoading', true))
 
                 function uploadS3Uri() {

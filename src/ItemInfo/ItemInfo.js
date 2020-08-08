@@ -48,13 +48,13 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
 
     const { index } = route.params;
     var clothing = temporaryClothing.toJS();
-    const category = clothing.category.categoryValue;
-    const type = clothing.type.typeValue;
+    const category = categoryToKorean(clothing.category.categoryValue);
+    const type = typeToKorean(clothing.type.typeValue);
     const seasons = convertSeasonsText(clothing.season.seasonArray).join(' ');
     const { brand, storage, price } = clothing;
     const buydate = convertBuydateText(clothing.buydate);
 
-    console.log('brand', brand)
+
     function moveToEditItem() {
         navigation.navigate('EditItemContainer', { index: index, category: category })
     };
@@ -127,6 +127,73 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
         }
 
         return convertedSeasons;
+    }
+
+    function categoryToKorean(category) {
+
+
+        if (category === 'clothing') {
+            return '의류'
+        }
+
+        else if (category === 'shoes') {
+            return '신발'
+        }
+        else if (category === 'accessories') {
+
+            return '잡화'
+        }
+    }
+
+    function typeToKorean(type) {
+
+        if (type === 'top') {
+            return '상의'
+        }
+
+        else if (type === 'bottom') {
+            return '하의'
+        }
+        else if (type === 'outer') {
+
+            return '자켓'
+        }
+        else if (type === 'dress') {
+
+            return '드레스'
+        }
+        else if (type === 'sneakers') {
+
+            return '운동화'
+        }
+        else if (type === 'leather') {
+
+            return '구두'
+        }
+        else if (type === 'sandals') {
+
+            return '샌들'
+        }
+        else if (type === 'boots') {
+
+            return '부츠'
+        }
+        else if (type === 'bag') {
+
+            return '가방'
+        }
+        else if (type === 'head') {
+
+            return '모자'
+        }
+        else if (type === 'jewelry') {
+
+            return '액세서리'
+        }
+        else if (type === 'other') {
+
+            return '기타'
+        }
     }
 
     function renderItemInfoText() {
