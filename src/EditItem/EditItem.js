@@ -19,8 +19,6 @@ const styles = StyleSheet.create({
     },
     extraOptions: {
         display: 'flex',
-        borderColor: 'black',
-        borderWidth: 2,
     },
     saveButtonContainer: {
         height: height * 0.1,
@@ -28,7 +26,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 2,
     },
 })
 

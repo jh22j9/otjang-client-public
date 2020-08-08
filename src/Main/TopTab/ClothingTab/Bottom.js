@@ -22,9 +22,9 @@ function Bottom({ navigation, clothing, ClothesActions }) {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Bottom' items={bottom}
+        <ItemsList title='하의' items={bottom}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );

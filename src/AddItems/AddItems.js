@@ -20,8 +20,6 @@ const styles = StyleSheet.create({
     },
     extraOptions: {
         display: 'flex',
-        borderColor: 'black',
-        borderWidth: 2,
     },
     saveButtonContainer: {
         height: height * 0.1,
@@ -29,8 +27,6 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        borderWidth: 2,
-        borderColor: '#495057'
     },
     optionsContainer: {
 
@@ -92,20 +88,17 @@ function AddItems({ navigation, temporaryClothing, ClothesActions, }) {
 
 
         */
-        <View style={styles.container}>
 
-            <ScrollView >
-                <Gallery temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
-                <CategoryList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
-                <TypeList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
-                <Season temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
-                <ExtraOptions temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
-                <View style={styles.saveButtonContainer}>
-                    <FormButton title='저장' modeValue='contained' onPress={saveClothes} />
-                </View>
-            </ScrollView>
-
-        </View>
+        <ScrollView >
+            <Gallery temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <CategoryList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <TypeList temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <Season temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <ExtraOptions temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
+            <View style={styles.saveButtonContainer}>
+                <FormButton title='저장' modeValue='contained' onPress={saveClothes} />
+            </View>
+        </ScrollView>
     );
 }
 

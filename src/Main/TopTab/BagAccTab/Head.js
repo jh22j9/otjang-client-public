@@ -22,9 +22,9 @@ function Head({ navigation, accessories, ClothesActions }) {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Head' items={head}
+        <ItemsList title='모자' items={head}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );

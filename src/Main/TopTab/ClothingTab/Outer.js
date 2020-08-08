@@ -22,9 +22,9 @@ function Outer({ navigation, clothing, ClothesActions }) {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Outer' items={outer}
+        <ItemsList title='자켓' items={outer}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );

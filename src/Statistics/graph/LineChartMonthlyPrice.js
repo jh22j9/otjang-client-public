@@ -22,10 +22,8 @@ export default function LineChartMonthlyPrice({ wardrobe }) {
     const clothes = clothing.concat(shoes).concat(accessories);
     var lineData = utils.getAnnualPurchaseData(clothes);
 
-    console.log('lineData', lineData)
     let priceData = lineData.map((data) => (data.price));
     let maxPrice = Math.max(...priceData);
-    console.log('maxPrice', maxPrice)
     let domainY = [0, maxPrice * 1.5]
     //  dummy data 
 

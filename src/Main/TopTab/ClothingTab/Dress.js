@@ -22,9 +22,9 @@ function Dress({ navigation, clothing, ClothesActions }) {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Dress' items={dress}
+        <ItemsList title='드레스' items={dress}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );
