@@ -48,8 +48,10 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
 
     const { index } = route.params;
     var clothing = temporaryClothing.toJS();
-    const category = categoryToKorean(clothing.category.categoryValue);
-    const type = typeToKorean(clothing.type.typeValue);
+    const category = clothing.category.categoryValue
+    const koreanCategory = categoryToKorean(clothing.category.categoryValue);
+    const type = clothing.type.typeValue
+    const koreanType = typeToKorean(clothing.type.typeValue);
     const seasons = convertSeasonsText(clothing.season.seasonArray).join(' ');
     const { brand, storage, price } = clothing;
     const buydate = convertBuydateText(clothing.buydate);
@@ -212,8 +214,8 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
                         style={styles.accordion}
                         expanded='true'>
                         <List.Item style={styles.list}
-                            title={`카테고리 : ${category}`} />
-                        <List.Item title={`타입 : ${type}`} />
+                            title={`카테고리 : ${koreanCategory}`} />
+                        <List.Item title={`타입 : ${koreanType}`} />
                     </List.Accordion>
                     <List.Accordion
                         title="추가 정보"
