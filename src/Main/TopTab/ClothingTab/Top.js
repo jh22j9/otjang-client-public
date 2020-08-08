@@ -22,7 +22,7 @@ function Top({ navigation, clothing, ClothesActions }) {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Top' items={top}
+        <ItemsList title='상의' items={top}
           ClothesActions={ClothesActions}
           navigation={navigation} numColumns={3} horizontal={false} />
       </View>

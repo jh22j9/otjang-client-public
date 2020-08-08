@@ -22,7 +22,7 @@ function Bag({ navigation, accessories, ClothesActions }) {
   return (
     <View style={styles.container}>
       <View style={styles.container}>
-        <ItemsList title='Bag' items={bag}
+        <ItemsList title='가방' items={bag}
           ClothesActions={ClothesActions}
           navigation={navigation} numColumns={3} horizontal={false} />
       </View>

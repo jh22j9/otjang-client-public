@@ -7,11 +7,17 @@ import BootsContainer from '../TopTab/ShoesTab/BootsContainer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 const Tab = createMaterialTopTabNavigator();
 
+const tabStyle = {
+
+    pressColor: '#E6E9F5',
+    indicatorStyle: { backgroundColor: '#6200EE' }
+
+}
 
 function Shoe() {
     return (
         <>
-            <Tab.Navigator>
+            <Tab.Navigator tabBarOptions={tabStyle}>
                 <Tab.Screen name="👟 운동화" component={SneakersContainer} />
                 <Tab.Screen name="👞 구두" component={LeatherContainer} />
                 <Tab.Screen name="👡 샌들" component={SandalsContainer} />
