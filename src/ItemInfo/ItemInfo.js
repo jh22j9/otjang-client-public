@@ -54,6 +54,7 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
     const { brand, storage, price } = clothing;
     const buydate = convertBuydateText(clothing.buydate);
 
+    console.log('brand', brand)
     function moveToEditItem() {
         navigation.navigate('EditItemContainer', { index: index, category: category })
     };
@@ -168,12 +169,12 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
                                 title={`보관 장소 : ${storage}`} />
                             : <></>}
                         {brand ?
-                            <Text
+                            <List.Item
                                 style={styles.list}
                                 title={`브랜드 : ${brand}`} />
                             : <></>}
                         {buydate ?
-                            <Text
+                            <List.Item
                                 style={styles.list}
                                 title={`구매 일자 : ${buydate}`} />
                             : <></>}
