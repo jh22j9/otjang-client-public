@@ -24,7 +24,7 @@ function Leather({ navigation, shoes, ClothesActions }) {
       <View style={styles.container}>
         <ItemsList title='Leather' items={leather}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );

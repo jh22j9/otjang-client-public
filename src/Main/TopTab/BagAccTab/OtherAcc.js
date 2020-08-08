@@ -24,7 +24,7 @@ function OtherAcc({ navigation, accessories, ClothesActions }) {
       <View style={styles.container}>
         <ItemsList title='Other' items={other}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );

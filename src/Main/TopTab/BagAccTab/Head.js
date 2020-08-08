@@ -24,7 +24,7 @@ function Head({ navigation, accessories, ClothesActions }) {
       <View style={styles.container}>
         <ItemsList title='Head' items={head}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );

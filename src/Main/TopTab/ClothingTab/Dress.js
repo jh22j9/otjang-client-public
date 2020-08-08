@@ -24,7 +24,7 @@ function Dress({ navigation, clothing, ClothesActions }) {
       <View style={styles.container}>
         <ItemsList title='Dress' items={dress}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );

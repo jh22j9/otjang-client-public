@@ -24,7 +24,7 @@ function Bag({ navigation, accessories, ClothesActions }) {
       <View style={styles.container}>
         <ItemsList title='Bag' items={bag}
           ClothesActions={ClothesActions}
-          navigation={navigation} />
+          navigation={navigation} numColumns={3} horizontal={false} />
       </View>
     </View>
   );
