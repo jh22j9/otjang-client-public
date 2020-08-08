@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, Alert } from 'react-native';
+import { List } from 'react-native-paper';
 import Gallery from '../UIcomponents/Gallery'
 import EditButton from '../UIcomponents/EditButton';
 import DeleteButton from '../UIcomponents/DeleteButton';
 import AsyncStorage from '@react-native-community/async-storage';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const styles = StyleSheet.create({
 
     wrapper: {
@@ -33,6 +35,12 @@ const styles = StyleSheet.create({
     buttonContainer: {
         flex: 2,
     },
+    accordion: {
+        height: 50
+    },
+    list: {
+        height: 40
+    }
 
 })
 
@@ -59,8 +67,7 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
         let token = await AsyncStorage.getItem('TOKEN');
         let sendingClothingToServer = { index: index, token: token, item: temporaryClothing }
         ClothesActions.removeClothesToServer(sendingClothingToServer);
-
-    }
+    };
 
     function deleteItem() {
 
@@ -123,19 +130,56 @@ function ItemInfo({ route, navigation, temporaryClothing, ClothesActions }) {
 
     function renderItemInfoText() {
 
+        const [expanded, setExpanded] = React.useState(false);
+
+        const handlePress = () => setExpanded(!expanded);
+
         return (
 
             <ScrollView>
-                <Text style={styles.text}>
-                    {`카테고리 : ${category}`}
-                </Text>
+                <List.Section>
 
-                {type ? <Text style={styles.text}>{`타입 : ${type}`}</Text> : <></>}
-                {seasons ? <Text style={styles.text}>{`계절 : ${seasons}`}</Text> : <></>}
-                {price ? <Text style={styles.text}>{`가격 : ${price} 원`}</Text> : <></>}
-                {storage ? <Text style={styles.text}>{`보관 장소 : ${storage}`}</Text> : <></>}
-                {brand ? <Text style={styles.text}>{`브랜드 : ${brand}`}</Text> : <></>}
-                {buydate ? <Text style={styles.text}>{`구매 일자 : ${buydate}`}</Text> : <></>}
+                    <List.Accordion
+                        title="기본 정보"
+                        style={styles.accordion}
+                        expanded='true'>
+                        <List.Item style={styles.list}
+                            title={`카테고리 : ${category}`} />
+                        <List.Item title={`타입 : ${type}`} />
+                    </List.Accordion>
+                    <List.Accordion
+                        title="추가 정보"
+                        style={styles.accordion}
+                        expanded={expanded}
+                        onPress={handlePress}>
+                        {seasons ?
+                            <List.Item
+                                style={styles.list}
+                                title={`계절 : ${seasons}`} />
+                            : <></>}
+                        {price ?
+                            <List.Item
+                                style={styles.list}
+                                title={`가격 : ${price} 원`} />
+                            : <></>}
+                        {storage ?
+                            <List.Item
+                                style={styles.list}
+                                title={`보관 장소 : ${storage}`} />
+                            : <></>}
+                        {brand ?
+                            <Text
+                                style={styles.list}
+                                title={`브랜드 : ${brand}`} />
+                            : <></>}
+                        {buydate ?
+                            <Text
+                                style={styles.list}
+                                title={`구매 일자 : ${buydate}`} />
+                            : <></>}
+                    </List.Accordion>
+
+                </List.Section>
             </ScrollView>
         )
     }
