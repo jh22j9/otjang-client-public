@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 123,
+        margin: 40,
     },
 
     image: {
@@ -30,6 +30,14 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    iconContainter: {
+        height: height * 0.35,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+
     }
 
 })
@@ -134,7 +142,11 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
         }
 
         else {
-            return (<Icon name='add-a-photo' color={'#495057'} size={60} />)
+            return (
+                <View style={styles.loadingIndicator}>
+                    <Icon name='add-a-photo' color={'#495057'} size={60} />
+                </View>
+            )
         }
     }
 
