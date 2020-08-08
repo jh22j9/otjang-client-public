@@ -2,19 +2,23 @@ import React from 'react';
 import { View, StyleSheet, Text, Pressable } from 'react-native';
 import { Button, Portal, Modal, Badge } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-
 const styles = StyleSheet.create({
     container: {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     },
+    buttonContainer: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 100
+    },
     button: {
-        width: "65%",
-        height: "20%",
+        width: 190,
+        height: 80,
         justifyContent: "center",
         margin: 20,
-        borderRadius: 30
+        borderRadius: 30,
     },
     devInfo: {
         marginTop: 45
@@ -25,24 +29,25 @@ const styles = StyleSheet.create({
     },
     modal: {
         display: 'flex',
-        flexDirection: 'column',
         alignItems: "center",
         justifyContent: "center",
         backgroundColor: "white",
         borderRadius: 20,
-        width: "70%",
-        height: "70%",
-        paddingVertical: 50,
-        paddingHorizontal: 40,
-
+        width: 290,
+        height: 350,
+        paddingVertical: 40,
+        paddingHorizontal: 30
     },
     badgeContainer: {
         flexWrap: 'wrap',
         flexDirection: 'row',
         justifyContent: 'space-around',
+        borderBottomColor: "#F5F5F5",
+        borderBottomWidth: 2
     },
     badge: {
-        margin: 5
+        margin: 5,
+        marginBottom: 10
     },
     badge1: {
         backgroundColor: "#abfcd6"
@@ -71,69 +76,59 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     content: {
-        lineHeight: 25
+        marginBottom: 4
     }
 })
-
 function More() {
-
     const navigation = useNavigation();
-
     function moveToStatistics() {
         navigation.navigate('StatisticsContainer');
-    }
-
+    };
     function moveToMyInfo() {
         navigation.navigate('MyInfoContainer');
-    }
-
+    };
     function moveToWashing() {
-        navigation.navigate('HowToWash'); //정적인 데이터만 담을거라서 container가 필요하진 않은데... 음... 이건 좀 물어봐야 할 것 같아..!
-    }
-
+        navigation.navigate('HowToWash');
+    };
     const [isVisibleModal, setModal] = React.useState(false);
-
     return (
         <View style={styles.container}>
-            <Button
-                style={styles.button}
-                icon="account"
-                mode="contained"
-                onPress={moveToMyInfo}>
-                내 정보
+            <View style={styles.buttonContainer}>
+                <Button
+                    style={styles.button}
+                    icon="account"
+                    mode="contained"
+                    onPress={moveToMyInfo}>
+                    내 정보
                 </Button>
-            <Button
-                style={styles.button}
-                icon="graph"
-                mode="contained"
-                onPress={moveToStatistics}>
-                통계
+                <Button
+                    style={styles.button}
+                    icon="graph"
+                    mode="contained"
+                    onPress={moveToStatistics}>
+                    통계
                 </Button>
-            <Button
-                style={styles.button}
-                icon="washing-machine"
-                mode="contained"
-                onPress={moveToWashing}>
-                세탁표시기호
+                <Button
+                    style={styles.button}
+                    icon="washing-machine"
+                    mode="contained"
+                    onPress={moveToWashing}>
+                    세탁표시기호
                 </Button>
-            <Button
-                style={styles.devInfo}
-                icon="hanger"
-                onPress={() => { setModal(true) }}
-            >
-                개발자 정보
+                <Button
+                    style={styles.devInfo}
+                    icon="hanger"
+                    onPress={() => { setModal(true) }}>
+                    개발자 정보
                 </Button>
-
+            </View>
             <Portal onPress={() => { setModal(false) }}>
                 <Modal
                     visible={isVisibleModal}
-                    onDismiss={() => { setModal(false) }}
-
-                >
+                    onDismiss={() => { setModal(false) }}>
                     <Pressable style={styles.modalContainer}
                         onPress={() => { setModal(false) }} >
                         <View style={styles.modal}>
-
                             <View style={styles.badgeContainer}>
                                 <Badge
                                     style={[styles.badge1, styles.badge]}
@@ -157,19 +152,17 @@ function More() {
                             <View style={styles.textContainer}>
                                 <Text style={styles.title}>github</Text>
                                 <View style={styles.content}>
-                                    <Text>@ goodlana </Text>
-                                    <Text>@ gyeongwon1275 </Text>
-                                    <Text>@ gyu716625 </Text>
+                                    <Text style={styles.content}>@ goodlana </Text>
+                                    <Text style={styles.content}>@ gyeongwon1275 </Text>
+                                    <Text style={styles.content}>@ gyu716625 </Text>
                                     <Text>@ lllgresi </Text>
                                 </View>
                             </View>
                         </View>
-
                     </Pressable>
                 </Modal>
             </Portal>
         </View>
     );
 }
-
 export default More;

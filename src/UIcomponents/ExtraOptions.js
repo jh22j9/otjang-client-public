@@ -30,7 +30,7 @@ function ExtraOptions({ temporaryClothing, ClothesActions, ...rest }) {
 
     return (
 
-        <List.Accordion title="추가옵션 펼치기" style={styles.inputContainer} >
+        <List.Accordion title="추가 옵션 선택" style={styles.inputContainer} >
             <Buydate temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
             <Price temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />
             <Brand temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />

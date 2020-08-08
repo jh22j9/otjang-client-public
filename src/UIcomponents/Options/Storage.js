@@ -41,10 +41,10 @@ function Storage({ temporaryClothing, ClothesActions, ...rest }) {
 
         <View style={styles.storageContainer}>
 
-            <Text style={styles.inputStorageText}>보관장소</Text>
+            <Text style={styles.inputStorageText}>보관 장소</Text>
             <View style={styles.inputStorage}>
                 <TextInput style={styles.inputStorageNumber}
-                    placeholder={temporaryClothing.get('storage') ? `${temporaryClothing.get('storage')}` : '보관장소'}
+                    placeholder={temporaryClothing.get('storage') ? `${temporaryClothing.get('storage')}` : '보관 장소'}
                     onChangeText={storage => setStorage(storage)}
                     onEndEditing={saveStorage}
                 >

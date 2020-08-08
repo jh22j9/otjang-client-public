@@ -24,7 +24,11 @@ export default function ItemsList({ title, items, ClothesActions, ...rest }) {
 
     return (
         <View>
-            <Text style={styles.title}>{`${title} (${items.toJS().length})`}</Text>
+            {/* <Text style={styles.title}>{`${title} (${items.toJS().length})`}</Text> */}
+            {items.toJS().length === 0 ?
+                <Text>등록된 아이템이 없습니다.</Text>
+                :
+                <Text style={styles.title}>{`${title} (${items.toJS().length})`}</Text>}
             <FlatList
                 horizontal={true}
                 data={items.toJS()}
