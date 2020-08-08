@@ -71,7 +71,7 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
 
             return s3bucket.createBucket(() => {
                 const params = {
-                    Bucket: 'otjang-image-storage',
+                    Bucket: BUCKET,
                     Key: file.name,
                     Body: arrayBuffer,
                     ContentDisposition: contentDeposition,
