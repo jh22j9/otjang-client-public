@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Title, HelperText } from 'react-native-paper';
@@ -8,6 +8,11 @@ import FormButton from '../UIcomponents/FormButton';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
+import {
+    GoogleSignin,
+    GoogleSigninButton,
+    statusCodes,
+} from '@react-native-community/google-signin';
 
 const styles = StyleSheet.create({
     container: {
@@ -21,7 +26,8 @@ const styles = StyleSheet.create({
         marginBottom: 20
     },
     formContainer: {
-        flex: 1
+        flex: 1,
+        alignItems: 'center'
     },
     titleText: {
         fontSize: 24,
@@ -33,15 +39,53 @@ const styles = StyleSheet.create({
     navButtonText: {
         fontSize: 16
     },
-})
-// #6200EE
+    googleBtn: {
+        // height: 40,
+        width: 280,
+        padding: 10,
+        margin: 10,
+        marginBottom: 30
+    }
+});
+
 function SignIn({ navigation }) {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     useEffect(() => {
         autoLogin()
-    })
+    }, []);
 
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    useEffect(() => {
+        GoogleSignin.configure({
+            webClientId: '973758398206-rj00f4b4aqltp6d3kpgbciv4vo6it2h7.apps.googleusercontent.com',
+            offlineAccess: true,
+            forceCodeForRefreshToken: true,
+        });
+    }, []);
+
+    const handleGoogleSignIn = async () => {
+        try {
+            await GoogleSignin.hasPlayServices();
+            const userInfo = await GoogleSignin.signIn();
+            console.log({ userInfo });
+            let email = userInfo.user.email;
+            await AsyncStorage.setItem('EMAIL', email);
+            navigation.navigate('MainContainer');
+        } catch (error) {
+            console.log({ error })
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+                // user cancelled the login flow
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+                // operation (e.g. sign in) is in progress already
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+                // play services not available or outdated
+            } else {
+                // some other error happened
+            }
+        }
+    };
 
     const hasEmailError = () => {
 
@@ -77,7 +121,7 @@ function SignIn({ navigation }) {
                 console.log(e)
             }
         }
-    }
+    };
 
     const handleSignIn = (email, password) => {
         axios.post('http://15.165.197.67:5000/user/signin', {
@@ -93,8 +137,6 @@ function SignIn({ navigation }) {
                     await AsyncStorage.setItem('TOKEN', token);
                     await AsyncStorage.setItem('EMAIL', email);
                     await AsyncStorage.setItem('PASSWORD', password);
-                    // setEmail('');
-                    // setPassword('');
 
                     return navigation.replace('MainContainer');
                 }
@@ -107,17 +149,6 @@ function SignIn({ navigation }) {
             Alert.alert("유효하지 않은 회원입니다.")
         })
     };
-
-
-    // async function autoSignIn(e='',p='') {
-    //     let arr = await AsyncStorage.multiGet(['EMAIL','PASSWORD'])
-    //     if(!arr) {
-    //         await handleSignIn(e,p)
-    //     } else {
-    //         handleSignIn(arr[0][1], arr[1][1])
-    //         //SignIn 버튼 누른 거랑 같은 효과가 나와야 함... 그런데 왜 안나와?
-    //     }
-    // }
 
     return (
         <View style={styles.container} >
@@ -144,6 +175,11 @@ function SignIn({ navigation }) {
                     labelStyle={styles.loginButtonLabel}
                     onPress={() => handleSignIn(email, password)}
                 />
+                <GoogleSigninButton
+                    style={styles.googleBtn}
+                    size={GoogleSigninButton.Size.Wide}
+                    color={GoogleSigninButton.Color.Light}
+                    onPress={handleGoogleSignIn} />
                 <FormButton
                     title='회원가입'
                     modeValue='text'
