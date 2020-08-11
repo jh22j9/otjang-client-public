@@ -6,109 +6,88 @@
  * @flow strict-local
  */
 
+
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import SignIn from './src/SignIn/SignIn'
+import SignUp from './src/SignUp/SignUp'
+import MainContainer from './src/Main/MainContainer';
+import AddItemsContainer from './src/AddItems/AddItemsContainer'
+import ItemInfoContainer from './src/ItemInfo/ItemInfoContainer'
+import EditItemContainer from './src/EditItem/EditItemContainer'
+import MyInfo from './src/MyInfo/MyInfo'
+import MyInfoContainer from './src/MyInfo/MyInfoContainer'
+import AllClothesContainer from './src/Main/BottomTab/AllClothesContainer'
+import ClothingContainer from './src/Main/BottomTab/ClothingContainer'
+import ShoeContainer from './src/Main/BottomTab/ShoeContainer'
+import BagAccContainer from './src/Main/BottomTab/BagAccContainer'
+import StatisticsContainer from './src/Statistics/StatisticsContainer'
+import ChangePassword from './src/MyInfo/ChangePassword'
+import HowToWash from './src/Wash/HowToWash'
+import CustomAlert from './src/Wash/CustomAlert'
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { Provider } from "react-redux";
+import store from './store';
 
-const App: () => React$Node = () => {
+import SplashScreen from 'react-native-splash-screen';
+
+const Stack = createStackNavigator();
+
+
+function App() {
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 3000);
+  }, [])
+
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+    <Provider store={store}>
+      <PaperProvider >
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="MainContainer" screenOptions={{
+            headerShown: false
+          }}>
+            <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="AddItemsContainer" component={AddItemsContainer}
+            />
+            <Stack.Screen name="ItemInfoContainer" component={ItemInfoContainer}
+            />
+            <Stack.Screen name="EditItemContainer" component={EditItemContainer}
+            />
+            <Stack.Screen name='StatisticsContainer' component={StatisticsContainer}
+              options={{ title: 'Statistics' }} />
+            <Stack.Screen name="MyInfo" component={MyInfo}
+            />
+            <Stack.Screen name="MyInfoContainer" component={MyInfoContainer}
+              options={{ title: 'MyInfo' }} />
+            <Stack.Screen name="ChangePassword" component={ChangePassword}
+            />
+            <Stack.Screen name='MainContainer' component={MainContainer}
+              options={{ title: 'Main' }} />
+            <Stack.Screen name='AllClothesContainer' component={AllClothesContainer}
+            />
+            <Stack.Screen name='ClothingContainer' component={ClothingContainer}
+            />
+            <Stack.Screen name='ShoeContainer' component={ShoeContainer}
+            />
+            <Stack.Screen name='BagAccContainer' component={BagAccContainer}
+            />
+            <Stack.Screen name='HowToWash' component={HowToWash}
+              options={{ title: '세탁기호' }}
+            />
+            <Stack.Screen name="CustomAlert" component={CustomAlert}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    </Provider>
 
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+  );
+}
 
 export default App;

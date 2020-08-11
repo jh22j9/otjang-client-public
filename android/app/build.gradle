@@ -1,7 +1,7 @@
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
-
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -134,6 +134,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true    
+
     }
     splits {
         abi {
@@ -216,3 +218,5 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+apply plugin: 'com.google.gms.google-services'
