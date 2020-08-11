@@ -4,7 +4,7 @@ import { Card, } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AsyncStorage from '@react-native-community/async-storage';
 import { useNavigation } from '@react-navigation/native';
-const { width, height } = Dimensions.get('screen');
+const { width, } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
     card: {

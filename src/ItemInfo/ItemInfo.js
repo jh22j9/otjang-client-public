@@ -1,11 +1,10 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet, Alert } from 'react-native';
+import { View, ScrollView, StyleSheet, Alert } from 'react-native';
 import { List } from 'react-native-paper';
 import Gallery from '../UIcomponents/Gallery'
 import EditButton from '../UIcomponents/EditButton';
 import DeleteButton from '../UIcomponents/DeleteButton';
 import AsyncStorage from '@react-native-community/async-storage';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 const styles = StyleSheet.create({
 
     wrapper: {

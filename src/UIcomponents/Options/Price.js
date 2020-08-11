@@ -35,9 +35,6 @@ const styles = StyleSheet.create({
 })
 
 
-// NOTICE: props 로 받는 temporaryClothing 은 상태변화 전 상태이다. 
-// 저장버튼 누를 때는 변화된 상태가 반영된다.
-// Price 함수 안에서는 즉각 변화된 temporaryClothing 을 확인할 수 없다. 
 function Price({ temporaryClothing, ClothesActions, ...rest }) {
     const [price, setPrice] = React.useState('');
 

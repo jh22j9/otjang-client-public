@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Dimensions, Text, TouchableOpacity, ScrollView } from 'react-native';
-import FontAwesome5Icons from 'react-native-vector-icons/FontAwesome5';
-import { Map, List } from 'immutable';
-const { width, height } = Dimensions.get('screen');
+import { View, StyleSheet, Dimensions, } from 'react-native';
+import { Map, } from 'immutable';
+const { height } = Dimensions.get('screen');
 import { Chip } from 'react-native-paper'
 
 const styles = StyleSheet.create({

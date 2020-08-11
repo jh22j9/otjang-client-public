@@ -90,13 +90,9 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
 
 
         ImagePicker.showImagePicker(options, response => {
-            console.log('Response = ', response);
             if (response.didCancel) {
-                console.log('User cancelled photo picker');
             } else if (response.error) {
-                console.log('ImagePicker Error: ', response.error);
             } else if (response.customButton) {
-                console.log('User tapped custom button: ', response.customButton);
             } else {
                 ClothesActions.setTemporaryClothing(temporaryClothing.set('isLoading', true))
 
@@ -112,7 +108,6 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
                     try {
                         uploadImageOnS3(file);
                     } catch (error) {
-                        console.warn(err)
                     }
 
                 }
@@ -152,8 +147,6 @@ export default function Gallery({ temporaryClothing, ClothesActions, ...rest }) 
     return (<TouchableOpacity style={styles.imagePicker} onPress={selectPhotoTapped}{...rest} >
 
         {renderImage()}
-        {/* temporaryClothing.get('image') ? <Image resizeMode='stretch' style={styles.image} source={{ uri: temporaryClothing.get('image') }} />
-            : <Icon name='image' color={'black'} size={230} /> */}
     </TouchableOpacity>)
 
 }

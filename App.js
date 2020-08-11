@@ -18,7 +18,6 @@ import ItemInfoContainer from './src/ItemInfo/ItemInfoContainer'
 import EditItemContainer from './src/EditItem/EditItemContainer'
 import MyInfo from './src/MyInfo/MyInfo'
 import MyInfoContainer from './src/MyInfo/MyInfoContainer'
-import Setting from './src/Setting/Setting'
 import AllClothesContainer from './src/Main/BottomTab/AllClothesContainer'
 import ClothingContainer from './src/Main/BottomTab/ClothingContainer'
 import ShoeContainer from './src/Main/BottomTab/ShoeContainer'
@@ -79,8 +78,6 @@ function App() {
             <Stack.Screen name="MyInfoContainer" component={MyInfoContainer}
               options={{ title: 'MyInfo' }} />
             <Stack.Screen name="ChangePassword" component={ChangePassword}
-            />
-            <Stack.Screen name="Setting" component={Setting}
             />
             <Stack.Screen name='MainContainer' component={MainContainer}
               options={{ title: 'Main' }} />

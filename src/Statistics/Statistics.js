@@ -70,32 +70,7 @@ const styles = StyleSheet.create({
 function Statistics({ wardrobe }) {
 
 
-    /* 
-    THINK 
-    
-    > 전체 월별 금액 추이 (O)
-    
-    > 전체 카테고리별 금액 비율 (O)
-    
-    > 전체 카테고리별 금액 (O)
 
-    > 전체 카테고리별 의류 수 (O)
-    
-    > 전체 계절별 의류 수 (o)
-
-    > 전체 계절별 금액 (o)
-    
-    */
-
-
-    /* 
-    THINK 
-
-    - 기간별, 계절별, 카테고리별, TYPE 별 선택 메뉴 -> 최상단 
-
-    - 바로 아래에 우측에 통계메뉴 선택 
-    
-    */
 
     const [selectStatistics, setStatistics] = React.useState({ duration: true, category: false, season: false, type: false });
     const [categoryMenu, setCategoryMenu] = React.useState({ price: true, percentage: false, amount: false });
@@ -131,13 +106,6 @@ function Statistics({ wardrobe }) {
     }
 
 
-    /* 
-    TODO : 메뉴까지 포함해서 기간, CATEGORY,계절, TYPE 별 렌더링 되도록 해야함 
-
-    selectStatistics STATE 를 기준으로 조건을 4개로 나누어 렌더링 
-
-    이후 다시 메뉴선택에따라 렌더링 되도록 지정  
-    */
 
 
 
@@ -173,15 +141,7 @@ function Statistics({ wardrobe }) {
     function renderTypeGraph() {
 
 
-        /* 
-        THINK 
 
-        카테고리 선택 -> 통계선택할 수 있도록 
-
-        카테고리에 따라서 내용은 같은데 그래프는 달라짐 
-
-        clothins, shoes, accessories 에 따라서 menu 의 onPress 가 달라지게 된다. 
-        */
 
         function chooseTypeGraph() {
 

@@ -5,9 +5,6 @@ import NoStatisticsData from './NoStatisticsData';
 export default function BarChartCategoryPrice({ wardrobe }) {
 
 
-    // 실제 data 
-
-
 
     const clothing = wardrobe.clothing;
     const shoes = wardrobe.shoes;
@@ -15,13 +12,6 @@ export default function BarChartCategoryPrice({ wardrobe }) {
 
 
 
-    // dummy data 
-
-    // const clothing = utils.clothing;
-    // const shoes = utils.shoes;
-    // const accessories = utils.accessories;
-
-    // 서버, dummy 공통적용
     const clothingPrice = utils.getPrice(clothing);
     const shoesPrice = utils.getPrice(shoes);
     const accessoriesPrice = utils.getPrice(accessories);
@@ -41,8 +31,6 @@ export default function BarChartCategoryPrice({ wardrobe }) {
     if (!isExistData) {
         return <NoStatisticsData />
     }
-    // BUG PRICE, AMOUNT 는 실제 숫자가 아니면 그래프에서 계산을 하지 못한다. 
-    // 그래프에 계산되는 것은 숫자로 하고 표시되는 축 만 바꿔야 한다. 
 
     return (
         <VictoryChart>

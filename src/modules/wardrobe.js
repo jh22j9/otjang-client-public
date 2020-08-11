@@ -6,9 +6,9 @@ const REMOVE_CLOTHES = 'wardrobe/REMOVE_CLOTHES';
 const SET_CLOTHES = 'wardrobe/SET_CLOTHES';
 const SET_TEMPORARY_CLOTHING = 'wardrobe/SET_TEMPORARY_CLOTHING';
 // 서버
-const ADD_ITEM = 'wardrobe/POST_ADDITEM';
-const UPDATE_ITEM = 'wardrobe/POST_UPDATEITEM';
-const REMOVE_ITEM = 'wardrobe/POST_DELETEITEM';
+const ADD_ITEM = 'wardrobe/ADD_ITEM';
+const UPDATE_ITEM = 'wardrobe/UPDATE_ITEM';
+const REMOVE_ITEM = 'wardrobe/DELETE_ITEM';
 const GET_CLOTHES = 'wardrobe/GET_CLOTHES'
 
 const typeObject = {
@@ -69,18 +69,8 @@ export const initialState = Map({
 
 })
 
-// 액션 생성자
-// 해당 액션상성자가 어떤 parameter 를 받아야 하는지 주석으로 적음 
 function AddItemInServer(sendingClothingToServer) {
 
-
-    /* 
-    BUG AXIOS 에서 자동으로 JSON 으로 변환하며 이미 문자열로 된 TOKEN 에 "" 을 한번 더 붙여서 
-    서버에서 토큰을 확인하지 못함. 
-    AsyncStorage 에서 get 한 이후 데이터를 JSON.parse() 하여 해결함 
-
-    
-    */
     const url = 'http://15.165.197.67:5000/item'
     const token = sendingClothingToServer.token;
     const item = sendingClothingToServer.item.toJS();
@@ -109,14 +99,6 @@ function updateItemInServer(sendingClothingToServer) {
 
     const url = `http://15.165.197.67:5000/item/${id}`
     const token = sendingClothingToServer.token;
-
-    /* 
-       TODO: DATA 형식 문제로 수정이 안되고 있음 확인바람 
-       */
-
-    /* THINK
-     item.season.seasonArray 에 NULL 이 있다면 제거해라 
-    */
 
     const noNullValueSeason = item.season.seasonArray.filter((season) => (season !== null))
     const data = {
@@ -174,7 +156,6 @@ export const setClothes = createAction(SET_CLOTHES); // {index:4,clothes:{item_i
 export const setTemporaryClothing = createAction(SET_TEMPORARY_CLOTHING) // {item_id:43,image:'sfsdf',type:null....}}
 
 
-// sendingClothingToServer={token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const createClothesToServer = (sendingClothingToServer) => ({
 
     type: ADD_ITEM,
@@ -184,7 +165,6 @@ export const createClothesToServer = (sendingClothingToServer) => ({
         return sendingClothingToServer.item.set('item_id', id);
     }
 })
-// sendingClothingToServer={token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const updateClothesToServer = (sendingClothingToServer) => ({
 
     type: UPDATE_ITEM,
@@ -194,7 +174,6 @@ export const updateClothesToServer = (sendingClothingToServer) => ({
         return sendingClothingToServer;
     }
 })
-// sendingClothingToServer={index:index,token:AsyncStorage.getItem('TOKEN'),item:temporaryClothing}
 export const removeClothesToServer = (deletingClothingToServer) => ({
 
     type: REMOVE_ITEM,
@@ -222,9 +201,6 @@ function addItemInClient(state, action) {
     const shoes = state.get('shoes');
     const accessories = state.get('accessories');
 
-    // THINK: 의류에 대한 정보를 등록한 후 저장하기 버튼을 누르면 서버에 post 요청을 보내고
-    // 이후 응답으로 받은 id 를 받아서 argument 로 넘긴다.
-    // newClothing -> ID 가 있는 상태 
     const newClothing = action.payload;
     const category = newClothing.get('category').get('categoryValue');
 
@@ -316,70 +292,28 @@ function deleteItemInClient(state, action) {
 }
 
 
-// 우리의 액션타입에는 접두사가 들어가있기 때문에 그냥 CREATE: 를 하면 안되고, [CREATE]: 로 해주어야합니다.
 export default handleActions({
 
-    /* 
-    THINK 
-    
-    서버 관련된 처리를 REDUX 전에 처리해야 함 추가,수정,삭제 전부 
-    */
     [CREATE_CLOTHES]: (state, action) => {
 
         return addItemInClient(state, action)
 
-        // THINK: 의류에 대한 정보를 등록한 후 저장하기 버튼을 누르면 서버에 post 요청을 보내고
-        // 이후 응답으로 받은 id 를 받아서 argument 로 넘긴다.
-        // newClothing -> ID 가 있는 상태 
-        /* 
-        TODO: 
-        newClothing 에서 CATEGORY 를 확인하여 해당 CATEGORY 키에 PUSH 한다. 
- 
-        1> payload 에 category 를 같이 보낸다. 
- 
-        2> 
-        */
-        /* ex> createClothes({item_id:45,image:dfds,type:top,category:clothes....}) 
-            argument 로 설정한 값이 payload key 안에 들어간다. 
-            action.payload = {item_id:45,image:dfds,type:top,category:clothes....}
-         */
 
     },
-    /* THINK
-    
-    삭제할려면 POP 이 아니라 특정 INDEX 에 있는 항목을 삭제해야 함 
-    
-    CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배열에서 검색하여 
-    해당 객체의 배열 내 INDEX 를 찾고 SPLICE 로 해당 객체를 배열에서 제거한다. 
-    
-     */
     [REMOVE_CLOTHES]: (state, action) => {
 
 
         return deleteItemInClient(state, action);
     },
 
-    /* THINK
-
-수정하려면  특정 INDEX 에 있는 항목을 수정해야 함 
-의류들은 신발, 악세서리, 티셔츠 등으로 나눠져 관리 되기 때문에 
-INDEX 를 argument 로 보내는 건 의미가 없음 
-CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배열에서 검색하여 
-해당 객체의 배열 내 INDEX 를 찾고 SPLICE 로 해당 객체를 배열에서 제거한다. 
-
- */
     [SET_CLOTHES]: (state, action) => {
 
-        /* THINK: payload= {index:3,clothes:{item_id:43,image:'sfsdf',type:null....}} 
-            의류정보가 담긴 객체로 덮어 씌움  
-        */
 
         return updateItemInClient(state, action);
     },
 
     [SET_TEMPORARY_CLOTHING]: (state, action) => {
 
-        // payload = {item_id:43,image:'sfsdf',type:null....}
         const temporaryClothing = action.payload;
         return state.set('temporaryClothing', temporaryClothing)
 
@@ -403,11 +337,6 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
             console.log(error);
         }
 
-        /* 
-        THINK 
-        카테고리에 따라 분류한 것을 양식을 변경한 후 state 의 카테고리 배열에 덮어씌운다.  
-
-        */
 
         function checkSeason(clothesObject) {
 
@@ -415,11 +344,6 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
                 seasonArray: [null, null, null, null],
                 spring: false, summer: false, fall: false, winter: false
             }
-            /* 
-            THINK 1이면 해당 계절 TRUE 로 변경하고 SEASON ARR 해당 위치에 값 추가 
-            아니면 그대로 NULL, FALSE 로 놔둠 
-
-            */
 
             if (clothesObject.sp === 1) {
                 seasonObject.seasonArray[0] = 'sp';
@@ -447,8 +371,6 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
         function changeClothesForm(clothes) {
 
-            // TODO : 서버에서 받은 데이터의 형식을 클라이언트에서 관리하는 형식으로 변경
-            //  clothes-> ARRAY 
 
             var clientClothingArray = [];
 
@@ -469,13 +391,11 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
                     }
                 }
 
-                // 카테고리,type 확인한 후 해당 카테고리 ,type 를 true 로 변경 
-
                 clientClothingObject.category[`${clothes[i].category}`] = true;
                 clientClothingObject.type[`${clothes[i].type}`] = true;
                 clientClothingObject.season = checkSeason(clothes[i]);
 
-                // season 0 -> false season 1 -> true 
+
                 clientClothingArray.push(clientClothingObject);
             }
             return clientClothingArray;
@@ -487,7 +407,7 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
         const clothingInClient = fromJS(changeClothesForm(clothingFromServer))
         const shoesInClient = fromJS(changeClothesForm(shoesFromServer))
         const accessoriesInClient = fromJS(changeClothesForm(accessoriesFromServer))
-        // TODO, BUG : 서버로부터 계절을 받아서 분배하지 못하고 있다. 
+
 
 
         return state.set('clothing', clothingInClient).set('shoes', shoesInClient).set('accessories', accessoriesInClient)
@@ -515,13 +435,7 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
 
 
     [`${UPDATE_ITEM}_PENDING`]: (state, action) => {
-        /* 
-        BUG 
-        
-        PENDING 일때 기존 STATE 를 그대로 리턴해야함 
-        
-        { state } 로 리턴하고 있었음.. 
-        */
+
         return state
 
     },
@@ -536,13 +450,6 @@ CLOTHES 각 객체가 가지고 있는 ITEM_ID 를 가지고 전체 CLOTHES 배�
     },
 
     [`${REMOVE_ITEM}_PENDING`]: (state, action) => {
-        /* 
-        BUG 
-        
-        PENDING 일때 기존 STATE 를 그대로 리턴해야함 
-        
-        { state } 로 리턴하고 있었음.. 
-        */
         return state
 
     },

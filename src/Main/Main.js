@@ -59,7 +59,6 @@ function Main({ ClothesActions }) {
                 console.log(error);
             }
 
-            // token = JSON.parse(token);
             ClothesActions.getClothesFromServer(token);
         }
 

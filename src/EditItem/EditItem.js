@@ -8,7 +8,7 @@ import TypeList from '../UIcomponents/TypeList'
 import Season from '../UIcomponents/Season'
 import ExtraOptions from '../UIcomponents/ExtraOptions'
 
-const { width, height } = Dimensions.get('screen');
+const { height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
 
     container: {
