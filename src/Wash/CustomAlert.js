@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Image, Button } from 'react-native'
+import { StyleSheet, View, Text, Image, Button } from 'react-native'
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
 
-    flex:0.5,
+    flex: 0.5,
     flexDirection: "column",
-    width:"80%",
+    width: "80%",
     justifyContent: "center",
     alignSelf: 'center',
     alignContent: 'center',
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 
 
   },
-  photo:{
+  photo: {
     opacity: 1,
     justifyContent: "center",
     alignItems: "center",
@@ -32,16 +32,15 @@ const styles = StyleSheet.create({
 export default class CustomAlert extends Component {
   render() {
     return (
-      <View style={{...styles.container, backgroundColor: '(0,0,0,0.5)'}}>
+      <View style={{ ...styles.container, backgroundColor: '(0,0,0,0.5)' }}>
         <Image style={styles.photo} source={require('./WashImages/1.jpg')} />
-        <Text style={{fontSize:20}}>테스트용</Text>
+        <Text style={{ fontSize: 20 }}>테스트용</Text>
         <Button
-  style={{fontSize: 20, color: 'green'}}
-  styleDisabled={{color: 'red'}}
-  // onPress={()=>}
-  title="Press Me"
->
-  Press Me
+          style={{ fontSize: 20, color: 'green' }}
+          styleDisabled={{ color: 'red' }}
+          title="Press Me"
+        >
+          Press Me
 </Button>
       </View>
     )

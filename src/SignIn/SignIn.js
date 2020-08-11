@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, Alert } from 'react-native';
+import { View, StyleSheet, Image, Alert } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Title, HelperText } from 'react-native-paper';
+import { HelperText } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
 

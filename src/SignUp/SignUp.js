@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 import { Title, HelperText } from 'react-native-paper';
 import FormInput from '../UIcomponents/FormInput';
 import FormButton from '../UIcomponents/FormButton';
-// import { Button } from 'react-native-elements';
 
 import axios from 'axios';
 

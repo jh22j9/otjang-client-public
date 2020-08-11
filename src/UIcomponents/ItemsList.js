@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, FlatList, StyleSheet, Dimensions, Text } from 'react-native';
-import { Title } from 'react-native-paper';
+import { View, FlatList, StyleSheet, Text } from 'react-native';
 import Item from './Item'
-import { Map, List, fromJS } from 'immutable';
+import { fromJS } from 'immutable';
 const styles = StyleSheet.create({
     title: {
         marginLeft: 10,
@@ -24,7 +23,6 @@ export default function ItemsList({ title, items, ClothesActions, ...rest }) {
 
     return (
         <View>
-            {/* <Text style={styles.title}>{`${title} (${items.toJS().length})`}</Text> */}
             {items.toJS().length === 0 ?
                 <Text>등록된 아이템이 없습니다.</Text>
                 :

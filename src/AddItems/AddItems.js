@@ -9,7 +9,7 @@ import TypeList from '../UIcomponents/TypeList'
 import Season from '../UIcomponents/Season'
 import ExtraOptions from '../UIcomponents/ExtraOptions'
 
-const { width, height } = Dimensions.get('screen');
+const { height } = Dimensions.get('screen');
 const styles = StyleSheet.create({
 
     container: {
@@ -33,29 +33,12 @@ const styles = StyleSheet.create({
     },
 
 
-    // THINK : 전체를 12 로 하여 버튼 1 OPTION 선택 11 로 FLEX 지정 
 
 })
 
 
 function AddItems({ navigation, temporaryClothing, ClothesActions, }) {
 
-    /*  
-    BUG: 권한 문제 해결, but 이미지를 출력하지 못하고 있음 
-    uri 로 출력하지 못해 내부파일경로로 설정해보았지만 출력하지 못함 
-    결국 Image 컴포넌트가 안되서 react-native-paper 의 Card.cover 를 사용함 
-
-    SOLVED: Image 태그 사용시 크기를 지정하지 않아서 이미지가 출력이 되지 않았음을 확인하였다. 
-    이후 styles 에 크기를 지정하여 해결하였다.  
-     */
-
-    /* 
-    THINK: 
-    사진선택시 상태변경, type 선택시 상태변경, 계절 선택시 상태변경 , 옵션선택시 상태변경
-
-    저장 버튼 누르면 현재 의류의 상태 객체를 서버에 보내고 id 를 받아서 저장 
-
-    */
     function addItemInClient() {
         ClothesActions.createClothes(temporaryClothing);
     }
@@ -78,16 +61,6 @@ function AddItems({ navigation, temporaryClothing, ClothesActions, }) {
 
     }
     return (
-        /* THINK: 전체를 스크롤뷰 로 감싸야 함
-            저장버튼의 위치를 고정시키기 위해 데이터 선택 란은 전체 Scroll View 
-
-        */
-
-        /* 
-        BUG: 기존 FLEX 로 설정해둔 VIEW 를 SCROLLVIEW 로 변경하자 FLEX 속성이 작동하지 않음 
-
-
-        */
 
         <ScrollView >
             <Gallery temporaryClothing={temporaryClothing} ClothesActions={ClothesActions} />

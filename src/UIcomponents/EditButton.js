@@ -1,9 +1,7 @@
 import React from 'react';
-import { StyleSheet, Dimensions, Text, Pressable } from 'react-native';
-import { IconButton, Colors, Button, FAB } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-// MaterialCommunityIcons
-// pluscircleo
+import { StyleSheet, Dimensions, } from 'react-native';
+import { FAB } from 'react-native-paper';
+
 const { width, height } = Dimensions.get('screen');
 
 const styles = StyleSheet.create({

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, Alert } from 'react-native';
-import { List, Button, Badge } from 'react-native-paper';
+import { View, StyleSheet, Alert } from 'react-native';
+import { List, Button, } from 'react-native-paper';
 import AsyncStorage from '@react-native-community/async-storage'
 import { useNavigation } from '@react-navigation/native';
 

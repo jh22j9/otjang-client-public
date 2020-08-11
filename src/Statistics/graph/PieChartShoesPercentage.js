@@ -1,22 +1,13 @@
 import React from 'react';
-import { VictoryBar, VictoryLine, VictoryPie, VictoryGroup, VictoryScatter, VictoryChart, VictoryLabel, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
+import { VictoryPie, VictoryTheme, } from "victory-native";
 import * as utils from '../statisticsUtils';
 import NoStatisticsData from './NoStatisticsData';
 export default function PieChartClothingPercentage({ wardrobe }) {
-
-    // 실제 data 
-
 
 
     const shoes = wardrobe.shoes;
 
 
-
-    //  dummy data 
-
-    // const shoes = utils.shoes;
-
-    // 서버, dummy 공통적용
     const sneakersList = utils.getTypeList(shoes, 'sneakers');
     const leatherList = utils.getTypeList(shoes, 'leather');
     const sandalsList = utils.getTypeList(shoes, 'sandals');

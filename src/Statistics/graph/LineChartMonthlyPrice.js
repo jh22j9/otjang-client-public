@@ -1,18 +1,12 @@
 import React from 'react';
-import * as dummy from '../dummyData';
-import { VictoryLine, VictoryScatter, VictoryChart, VictoryLabel, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
+
+import { VictoryLine, VictoryScatter, VictoryChart, VictoryTheme, VictoryAxis, VictoryZoomContainer } from "victory-native";
 import * as utils from '../statisticsUtils';
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { Text } from 'react-native'
+
 import NoStatisticsData from './NoStatisticsData';
 export default function LineChartMonthlyPrice({ wardrobe }) {
 
 
-    /*
-        THINK 도메인은 실수좌표계 이다. 
-        
-    */
-    // 실제 data 
 
 
 
@@ -25,9 +19,6 @@ export default function LineChartMonthlyPrice({ wardrobe }) {
     let priceData = lineData.map((data) => (data.price));
     let maxPrice = Math.max(...priceData);
     let domainY = [0, maxPrice * 1.5]
-    //  dummy data 
-
-    // const clothes = utils.clothes;
 
     const [monthDomain, setMonthDomain] = React.useState({ x: [0.5, 6.5], y: [...domainY] });
 

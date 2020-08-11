@@ -67,10 +67,7 @@ export function getMonthlyList(clothesList, buydate) {
 }
 
 export function getMonthlyPrice(clothesList, buydate) {
-    /* 
-        THINK 
-        특정달에 해당하는 항목의 전체 금액을 리턴한다. 
-    */
+
     return getPrice(getMonthlyList(clothesList, buydate))
 
 }
