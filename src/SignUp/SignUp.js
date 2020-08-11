@@ -57,29 +57,29 @@ function SignUp({ navigation }) {
 
     return (
         <View style={styles.container} >
-            <Title style={styles.titleText}>Sign Up</Title>
+            <Title style={styles.titleText}>회원가입</Title>
             <FormInput
-                labelName='Email'
+                labelName='이메일'
                 value={email}
                 autoCapitalize='none'
                 onChangeText={email => setEmail(email)}
             />
             {hasEmailError()}
             <FormInput
-                labelName='Password'
+                labelName='비밀번호'
                 value={password}
                 secureTextEntry={true}
                 onChangeText={password => setPassword(password)}
             />
             <FormButton
-                title='Sign Up'
+                title='회원가입'
                 modeValue='contained'
                 labelStyle={styles.signUpButtonLabel}
                 onPress={() => handleSignUp(email, password)}
             />
 
             <FormButton
-                title='go to Sign In'
+                title='로그인 화면으로'
                 icon='keyboard-backspace'
                 modeValue='text'
                 uppercase={false}
