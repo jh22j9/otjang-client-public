@@ -1,13 +1,3 @@
-import * as dummy from './dummyData';
-export const clothing = dummy.clothing.toJS();
-export const shoes = dummy.shoes.toJS();
-export const accessories = dummy.accessories.toJS();
-export const clothes = clothing.concat(shoes).concat(accessories);
-
-export const totalClothingPrice = getPrice(clothing);
-export const totalShoesPrice = getPrice(shoes);
-export const totalAccessoriesPrice = getPrice(accessories);
-export const totalPrice = getPrice(clothes);
 
 var currentMonth = new Date().getMonth() + 1;
 

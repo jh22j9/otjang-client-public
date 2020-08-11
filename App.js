@@ -26,25 +26,16 @@ import StatisticsContainer from './src/Statistics/StatisticsContainer'
 import ChangePassword from './src/MyInfo/ChangePassword'
 import HowToWash from './src/Wash/HowToWash'
 import CustomAlert from './src/Wash/CustomAlert'
-import { StyleSheet } from 'react-native'
-import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+
+import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from "react-redux";
 import store from './store';
 
 import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createStackNavigator();
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-
-  },
-};
-const styles = StyleSheet.create({
 
 
-})
 function App() {
 
   React.useEffect(() => {
@@ -53,14 +44,11 @@ function App() {
     }, 3000);
   }, [])
 
-  /* 
-  TODO : STACK HEADER 없애기 
-  */
   return (
     <Provider store={store}>
-      <PaperProvider theme={theme}>
+      <PaperProvider >
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="SignIn" screenOptions={{
+          <Stack.Navigator initialRouteName="MainContainer" screenOptions={{
             headerShown: false
           }}>
             <Stack.Screen name="SignIn" component={SignIn} />
