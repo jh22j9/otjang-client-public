@@ -29,12 +29,12 @@
 
 |회원가입/탈퇴|비밀번호 변경|자동 로그인|
 :---:|:---:|:---:
-|![](https://media.giphy.com/media/QWA42CW0NprNrZPmIV/giphy.gif)|내용 2|내용 3|내용 4|
+|![](https://media.giphy.com/media/QWA42CW0NprNrZPmIV/giphy.gif)|![](https://media.giphy.com/media/W4hxt0VCtaRnEjIdlE/giphy.gif)|![](https://media.giphy.com/media/j1tjeohHchMHIvyRMx/giphy.gif)|
 
 |카테고리|아이템 추가|아이템 편집|
 :---:|:---:|:---:
-|내용 1|내용 2|![](https://media.giphy.com/media/cmTRGUdqVWfk2FSlzg/giphy.gif)|
+|![](https://media.giphy.com/media/IhgeIWAQgetBfmKRyv/giphy.gif)|![](https://media.giphy.com/media/U3OcdcgyINDxHIJdAF/giphy.gif)|![](https://media.giphy.com/media/cmTRGUdqVWfk2FSlzg/giphy.gif)|
 
 |아이템 삭제|통계|세탁표시기호|
 :---:|:---:|:---:
-|![](https://gph.is/g/4DNVNJ6)|![](https://media.giphy.com/media/dZue9jWekTtb3y5doS/giphy.gif)|![](https://media.giphy.com/media/JsDpGYoIFWCKDqJH7y/giphy.gif)|
+|![](https://media.giphy.com/media/WnBE8yFr19i2Y4ubCT/giphy.gif)|![](https://media.giphy.com/media/dZue9jWekTtb3y5doS/giphy.gif)|![](https://media.giphy.com/media/JsDpGYoIFWCKDqJH7y/giphy.gif)|
