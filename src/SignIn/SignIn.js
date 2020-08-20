@@ -57,36 +57,6 @@ function SignIn({ navigation }) {
         autoLogin()
     }, []);
 
-    useEffect(() => {
-        GoogleSignin.configure({
-            webClientId: '973758398206-rj00f4b4aqltp6d3kpgbciv4vo6it2h7.apps.googleusercontent.com',
-            offlineAccess: true,
-            forceCodeForRefreshToken: true,
-        });
-    }, []);
-
-    const handleGoogleSignIn = async () => {
-        try {
-            await GoogleSignin.hasPlayServices();
-            const userInfo = await GoogleSignin.signIn();
-            console.log({ userInfo });
-            let email = userInfo.user.email;
-            await AsyncStorage.setItem('EMAIL', email);
-            navigation.navigate('MainContainer');
-        } catch (error) {
-            console.log({ error })
-            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-                // user cancelled the login flow
-            } else if (error.code === statusCodes.IN_PROGRESS) {
-                // operation (e.g. sign in) is in progress already
-            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-                // play services not available or outdated
-            } else {
-                // some other error happened
-            }
-        }
-    };
-
     const hasEmailError = () => {
 
         if (email.length > 4 && email.includes('@') === false) {
@@ -175,11 +145,6 @@ function SignIn({ navigation }) {
                     labelStyle={styles.loginButtonLabel}
                     onPress={() => handleSignIn(email, password)}
                 />
-                <GoogleSigninButton
-                    style={styles.googleBtn}
-                    size={GoogleSigninButton.Size.Wide}
-                    color={GoogleSigninButton.Color.Light}
-                    onPress={handleGoogleSignIn} />
                 <FormButton
                     title='회원가입'
                     modeValue='text'
