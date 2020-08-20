@@ -34,7 +34,7 @@
 
 |카테고리|아이템 추가|아이템 편집|
 :---:|:---:|:---:
-|![](https://media.giphy.com/media/IhgeIWAQgetBfmKRyv/giphy.gif)|![](https://media.giphy.com/media/U3OcdcgyINDxHIJdAF/giphy.gif)|![](https://media.giphy.com/media/cmTRGUdqVWfk2FSlzg/giphy.gif)|
+|![](https://media.giphy.com/media/IhgeIWAQgetBfmKRyv/giphy.gif)|![](https://media.giphy.com/media/lrbiqoVmAQQij2GupH/giphy.gif)|![](https://media.giphy.com/media/cmTRGUdqVWfk2FSlzg/giphy.gif)|
 
 |아이템 삭제|통계|세탁표시기호|
 :---:|:---:|:---:
