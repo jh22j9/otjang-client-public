@@ -34,7 +34,7 @@
 
 |카테고리|아이템 추가|아이템 편집|
 :---:|:---:|:---:
-|![](https://media.giphy.com/media/IhgeIWAQgetBfmKRyv/giphy.gif)|![](https://media.giphy.com/media/lrbiqoVmAQQij2GupH/giphy.gif)|![](https://media.giphy.com/media/cmTRGUdqVWfk2FSlzg/giphy.gif)|
+|![](https://media.giphy.com/media/IhgeIWAQgetBfmKRyv/giphy.gif)|![](https://www.notion.so/o-t-j-a-n-g-a28bfcbe15ef4b2ab7cb4322b4221274#0a0c1af17f89432ab8a99f9fc20627c8)|![](https://media.giphy.com/media/cmTRGUdqVWfk2FSlzg/giphy.gif)|
 
 |아이템 삭제|통계|세탁표시기호|
 :---:|:---:|:---:
