@@ -30,7 +30,7 @@
 
 |회원가입/탈퇴|비밀번호 변경|자동 로그인|
 :---:|:---:|:---:
-|![](https://media.giphy.com/media/QWA42CW0NprNrZPmIV/giphy.gif)|![](https://media.giphy.com/media/W4hxt0VCtaRnEjIdlE/giphy.gif)|![](https://media.giphy.com/media/j1tjeohHchMHIvyRMx/giphy.gif)|
+|![](https://ifh.cc/v-gr9dR5)|![](https://media.giphy.com/media/W4hxt0VCtaRnEjIdlE/giphy.gif)|![](https://ifh.cc/v-MNVAks)|
 
 |카테고리|아이템 추가|아이템 편집|
 :---:|:---:|:---:
