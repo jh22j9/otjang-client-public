@@ -30,11 +30,11 @@
 
 |회원가입/탈퇴|비밀번호 변경|자동 로그인|
 :---:|:---:|:---:
-|![](https://media.giphy.com/media/HD0L72WvTQJTWC1MG5/giphy.gif)|![](https://media.giphy.com/media/W4hxt0VCtaRnEjIdlE/giphy.gif)|![](https://ifh.cc/g/MNVAks.gif)|
+|![](https://media.giphy.com/media/HD0L72WvTQJTWC1MG5/giphy.gif)|![](https://media.giphy.com/media/W4hxt0VCtaRnEjIdlE/giphy.gif)|![](https://media.giphy.com/media/9LGwnqxydNay83NvFe/giphy.gif)|
 
 |카테고리|아이템 추가|아이템 편집|
 :---:|:---:|:---:
-|![](https://media.giphy.com/media/IhgeIWAQgetBfmKRyv/giphy.gif)|![](https://ifh.cc/g/qEhDh8.gif)|![](https://media.giphy.com/media/cmTRGUdqVWfk2FSlzg/giphy.gif)|
+|![](https://media.giphy.com/media/IhgeIWAQgetBfmKRyv/giphy.gif)|![](https://media.giphy.com/media/MuLuL7yCsr1VZFgfPQ/giphy.gif)|![](https://media.giphy.com/media/cmTRGUdqVWfk2FSlzg/giphy.gif)|
 
 |아이템 삭제|통계|세탁표시기호|
 :---:|:---:|:---:
